@@ -10,7 +10,9 @@ class SessionManager:
         self._setup_logging()
     
     def _setup_logging(self):
-        os.makedirs("/tmp", exist_ok=True)
+        logs_dir = os.path.join(os.path.dirname(__file__), "..", "..", "logs")
+        os.makedirs(logs_dir, exist_ok=True)
+        self.logs_dir = logs_dir
     
     def get_or_create_session(self, user_id: str) -> JamieAgent:
         if user_id not in self.sessions:
@@ -32,7 +34,7 @@ class SessionManager:
             return "I'm sorry, I encountered an error processing your request. Please try again."
     
     def _log_user_event(self, user_id: str, event: str):
-        log_file = f"/tmp/{user_id}.log"
+        log_file = os.path.join(self.logs_dir, f"{user_id}.log")
         with open(log_file, "a") as f:
             f.write(f"{event}\n")
     
