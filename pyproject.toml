@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "jamie"
+version = "0.1.0"
+description = "a simple food recommendation agent"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi",
+  "uvicorn",
+  "langgraph",
+  "pydantic",
+  "google-generativeai",
+  "python-dotenv",
+  "requests"
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]

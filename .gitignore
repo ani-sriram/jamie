@@ -1,0 +1,10 @@
+.env
+.venv
+
+.DS_Store
+
+src/data/restaurants.json
+src/data/recipes.json
+
+__pycache__/
+*.py[cod]

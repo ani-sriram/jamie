@@ -1,0 +1,34 @@
+# Jamie - LLM-Powered Food Recommendation Agent
+
+Jamie is a conversational assistant that helps users decide what to eat by suggesting restaurant meals, delivery options, or home-cooked recipes.
+
+## Features
+
+- Multi-turn conversational agent using LangGraph
+- Restaurant meal recommendations
+- Home-cooked recipe suggestions
+- Mock ordering system
+- Per-user containerized isolation
+
+## Quick Start
+
+1. Install dependencies:
+```bash
+uv sync
+```
+
+2. Set up environment variables:
+```bash
+export GEMINI_API_KEY=XXXXX
+# Add a .env with your Gemini API key
+```
+
+3. Run the application:
+```bash
+uv run src/main.py
+```
+
+## API Endpoints
+
+- `POST /chat/{user_id}` - Send messages to Jamie
+- `GET /health` - Health check
