@@ -1,0 +1,89 @@
+[
+  {
+    "id": "recipe_001",
+    "title": "Classic Spaghetti Carbonara",
+    "ingredients": ["spaghetti", "eggs", "pancetta", "parmesan cheese", "black pepper", "garlic"],
+    "instructions": [
+      "Cook spaghetti according to package directions",
+      "Cook pancetta in a large skillet until crispy",
+      "Beat eggs with parmesan cheese and black pepper",
+      "Drain pasta and immediately toss with pancetta",
+      "Remove from heat and quickly stir in egg mixture",
+      "Serve immediately with extra parmesan"
+    ],
+    "prep_time": 10,
+    "cook_time": 20,
+    "difficulty": "medium",
+    "servings": 4
+  },
+  {
+    "id": "recipe_002",
+    "title": "Simple Chicken Stir Fry",
+    "ingredients": ["chicken breast", "bell peppers", "broccoli", "soy sauce", "garlic", "ginger", "rice"],
+    "instructions": [
+      "Cut chicken into bite-sized pieces",
+      "Heat oil in a large wok or skillet",
+      "Cook chicken until golden brown",
+      "Add vegetables and stir fry for 3-4 minutes",
+      "Add soy sauce, garlic, and ginger",
+      "Serve over cooked rice"
+    ],
+    "prep_time": 15,
+    "cook_time": 15,
+    "difficulty": "easy",
+    "servings": 3
+  },
+  {
+    "id": "recipe_003",
+    "title": "Mediterranean Quinoa Bowl",
+    "ingredients": ["quinoa", "cherry tomatoes", "cucumber", "olives", "feta cheese", "olive oil", "lemon"],
+    "instructions": [
+      "Cook quinoa according to package directions",
+      "Chop tomatoes and cucumber into bite-sized pieces",
+      "Mix quinoa with vegetables and olives",
+      "Crumble feta cheese on top",
+      "Drizzle with olive oil and lemon juice",
+      "Season with salt and pepper"
+    ],
+    "prep_time": 10,
+    "cook_time": 15,
+    "difficulty": "easy",
+    "servings": 2
+  },
+  {
+    "id": "recipe_004",
+    "title": "Beef Tacos with Guacamole",
+    "ingredients": ["ground beef", "taco shells", "avocado", "lime", "onion", "cilantro", "cheese", "lettuce"],
+    "instructions": [
+      "Brown ground beef in a skillet",
+      "Season with taco seasoning",
+      "Mash avocado with lime juice and salt",
+      "Warm taco shells",
+      "Fill shells with beef, cheese, and lettuce",
+      "Top with guacamole and cilantro"
+    ],
+    "prep_time": 20,
+    "cook_time": 15,
+    "difficulty": "easy",
+    "servings": 4
+  },
+  {
+    "id": "recipe_005",
+    "title": "Chocolate Chip Cookies",
+    "ingredients": ["flour", "butter", "sugar", "eggs", "vanilla", "chocolate chips", "baking soda"],
+    "instructions": [
+      "Preheat oven to 375°F",
+      "Mix butter and sugars until creamy",
+      "Beat in eggs and vanilla",
+      "Combine flour and baking soda",
+      "Gradually add flour mixture to butter mixture",
+      "Stir in chocolate chips",
+      "Drop rounded tablespoons onto ungreased cookie sheets",
+      "Bake 9-11 minutes until golden brown"
+    ],
+    "prep_time": 15,
+    "cook_time": 11,
+    "difficulty": "easy",
+    "servings": 24
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "rest_001",
+    "name": "Mario's Italian Kitchen",
+    "location": "123 Main St, Downtown",
+    "cuisine_type": "Italian",
+    "meals": ["Margherita Pizza", "Spaghetti Carbonara", "Chicken Parmigiana", "Tiramisu"],
+    "rating": 4.5,
+    "price_range": "$$"
+  },
+  {
+    "id": "rest_002", 
+    "name": "Sakura Sushi",
+    "location": "456 Oak Ave, Midtown",
+    "cuisine_type": "Japanese",
+    "meals": ["California Roll", "Salmon Nigiri", "Chicken Teriyaki", "Miso Soup"],
+    "rating": 4.3,
+    "price_range": "$$$"
+  },
+  {
+    "id": "rest_003",
+    "name": "Burger Palace",
+    "location": "789 Pine St, Uptown", 
+    "cuisine_type": "American",
+    "meals": ["Classic Burger", "BBQ Bacon Burger", "Veggie Burger", "Sweet Potato Fries"],
+    "rating": 4.1,
+    "price_range": "$"
+  },
+  {
+    "id": "rest_004",
+    "name": "Spice Garden",
+    "location": "321 Elm St, Eastside",
+    "cuisine_type": "Indian", 
+    "meals": ["Chicken Curry", "Butter Chicken", "Vegetable Biryani", "Naan Bread"],
+    "rating": 4.4,
+    "price_range": "$$"
+  },
+  {
+    "id": "rest_005",
+    "name": "Taco Fiesta",
+    "location": "654 Maple Dr, Westside",
+    "cuisine_type": "Mexican",
+    "meals": ["Beef Tacos", "Chicken Burrito", "Vegetarian Quesadilla", "Guacamole"],
+    "rating": 4.2,
+    "price_range": "$"
+  }
+]
