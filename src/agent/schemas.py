@@ -5,17 +5,13 @@ from enum import Enum
 class IntentType(str, Enum):
     RESTAURANT = "restaurant"
     RECIPE = "recipe"
-    ORDER = "order"
     UNKNOWN = "unknown"
 
 class Restaurant(BaseModel):
-    id: str
     name: str
-    location: str
-    cuisine_type: str
-    meals: List[str]
-    rating: float
-    price_range: str
+    location: Optional[str]
+    priceLevel: Optional[str]
+    description: Optional[str] = None
 
 class Ingredient(BaseModel):
     name: str

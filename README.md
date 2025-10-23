@@ -20,6 +20,7 @@ uv sync
 2. Set up environment variables:
 ```bash
 export GEMINI_API_KEY=XXXXX
+export PLACES_API_KEY=XXXXX
 # Add a .env with your Gemini API key
 ```
 
