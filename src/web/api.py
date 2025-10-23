@@ -24,10 +24,20 @@ async def chat(user_id: str, request: ChatRequest):
         raise HTTPException(status_code=400, detail="Message cannot be empty")
     
     try:
+        print(f"[DEBUG] Processing message for user {user_id}: {request.message}")
         response = session_manager.process_message(user_id, request.message)
+        print(f"[DEBUG] Got response: {response}")
         return ChatResponse(response=response, user_id=user_id)
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
+        import traceback
+        error_trace = traceback.format_exc()
+        print(f"[ERROR] Failed to process message:\n{error_trace}")
+        raise HTTPException(status_code=500, detail={
+            "error": str(e),
+            "traceback": error_trace,
+            "user_id": user_id,
+            "message": request.message
+        })
 
 @app.delete("/chat/{user_id}")
 async def clear_session(user_id: str):
