@@ -1,4 +1,5 @@
 from typing import Dict, Any, List
+import json
 from langgraph.graph import StateGraph, END
 from langgraph.prebuilt import ToolNode
 from .llm_client import GeminiClient
@@ -78,6 +79,10 @@ class JamieAgent:
     def _search_restaurants(self, state: SessionState) -> SessionState:
         last_message = state.messages[-1].content if state.messages else ""
         
+        # Track tool usage
+        state.context["tools_used"] = state.context.get("tools_used", [])
+        state.context["tools_used"].append("RestaurantTool.search_restaurants")
+        
         restaurants = self.restaurant_tool.search_restaurants(last_message)
         state.context["restaurants"] = [rest.model_dump() for rest in restaurants]
         return state
@@ -85,17 +90,55 @@ class JamieAgent:
     def _search_recipes(self, state: SessionState) -> SessionState:
         last_message = state.messages[-1].content if state.messages else ""
         
-        system_prompt = """Extract ingredients mentioned in the user's message. 
-        Return only a comma-separated list of ingredients."""
+        # Track tool usage
+        state.context["tools_used"] = state.context.get("tools_used", [])
         
-        ingredients_response = self.llm_client.generate_response(
+        # Extract search criteria
+        system_prompt = """Analyze the user's recipe request and extract:
+        1. Ingredients to include (with quantities if specified)
+        2. Ingredients to exclude
+        3. Maximum total time (in minutes)
+        4. Difficulty level (easy/medium/hard)
+        5. Dietary preferences or cuisine types (as tags)
+        6. Minimum servings needed
+        
+        Return a JSON object with these fields (null if not mentioned):
+        {
+            "ingredients": [{"name": "ingredient", "quantity": number or null, "unit": "unit" or null}, ...],
+            "excluded_ingredients": ["ingredient1", ...],
+            "max_total_time": number or null,
+            "difficulty": "easy/medium/hard" or null,
+            "tags": ["tag1", "tag2", ...],
+            "servings": number or null
+        }"""
+        
+        search_criteria = self.llm_client.generate_response(
             f"User message: {last_message}",
             system_prompt
         )
         
-        ingredients = [ing.strip() for ing in ingredients_response.split(",")]
-        recipes = self.recipe_tool.find_recipes(ingredients)
+        try:
+            criteria = json.loads(search_criteria)
+            # We call find_recipes here, so record that actual tool usage
+            state.context["tools_used"].append("RecipeTool.find_recipes")
+            # Extract just the ingredient names from the ingredient objects
+            ingredient_names = [ing["name"] for ing in criteria.get("ingredients", [])]
+            recipes = self.recipe_tool.find_recipes(
+                ingredients=ingredient_names,
+                difficulty=criteria.get("difficulty"),
+                max_prep_time=criteria.get("max_total_time")
+            )
+        except json.JSONDecodeError:
+            # Fallback to simple ingredient search
+            ingredient_names = [ing.strip() for ing in search_criteria.split(",")]
+            # Record the fallback tool call as well
+            state.context["tools_used"].append("RecipeTool.find_recipes")
+            recipes = self.recipe_tool.find_recipes(ingredient_names)
+        
         state.context["recipes"] = [recipe.model_dump() for recipe in recipes]
+        
+        # Add search criteria to context for response generation
+        state.context["search_criteria"] = criteria if "criteria" in locals() else {"ingredients": ingredient_names}
         return state
     
     def _place_order(self, state: SessionState) -> SessionState:
@@ -111,9 +154,13 @@ class JamieAgent:
         
         try:
             restaurant_name, meal_name = order_info.split("|")
+            # Track tool usage
+            state.context["tools_used"] = state.context.get("tools_used", [])
+            state.context["tools_used"].append("RestaurantTool.get_restaurant_by_id")
             restaurant = self.restaurant_tool.get_restaurant_by_id(restaurant_name.strip())
             
             if restaurant:
+                state.context["tools_used"].append("OrderTool.place_order")
                 order = self.order_tool.place_order(restaurant.id, meal_name.strip())
                 state.context["order"] = order.model_dump()
             else:
@@ -126,28 +173,85 @@ class JamieAgent:
     def _generate_response(self, state: SessionState) -> SessionState:
         last_message = state.messages[-1].content if state.messages else ""
         
-        system_prompt = """You are Jamie, a helpful food recommendation assistant. 
-        Be conversational and helpful. Use the context data to provide relevant recommendations."""
+        # Different prompts based on intent
+        if state.current_intent == IntentType.UNKNOWN:
+            system_prompt = """You are Jamie, a helpful food recommendation assistant.
+            Respond to general greetings warmly and explain what you can help with:
+            1. Finding and recommending recipes
+            2. Finding restaurants and their menus
+            3. Placing food orders
+            
+            If the user's message is unclear, ask for clarification about which of these services they need."""
+        else:
+            system_prompt = """You are Jamie, a helpful food recommendation assistant.
+            Be conversational and helpful. When discussing recipes:
+            1. Format ingredient lists clearly with quantities and units
+            2. Mention relevant tags (cuisine type, dietary info, etc.)
+            3. Include total time and difficulty level
+            4. If the search had specific criteria, acknowledge them in your response
+            5. Suggest similar recipes based on tags when relevant"""
         
         context_info = ""
         if "restaurants" in state.context:
             context_info += f"Restaurants: {state.context['restaurants']}\n"
         if "recipes" in state.context:
             context_info += f"Recipes: {state.context['recipes']}\n"
+            if "search_criteria" in state.context:
+                context_info += f"Search Criteria: {state.context['search_criteria']}\n"
         if "order" in state.context:
             context_info += f"Order: {state.context['order']}\n"
         if "order_error" in state.context:
             context_info += f"Order Error: {state.context['order_error']}\n"
         
-        response = self.llm_client.generate_response(
-            f"User: {last_message}\nContext: {context_info}",
-            system_prompt
+        try:
+            response = self.llm_client.generate_response(
+                f"User: {last_message}\nContext: {context_info}",
+                system_prompt
+            )
+            
+            # Include tool usage in response
+            tools_used = state.context.get("tools_used", [])
+            
+            if state.current_intent == IntentType.UNKNOWN:
+                if not last_message.strip():
+                    response = "Hello! I'm Jamie, your food assistant. I can help you with:\n" \
+                             "1. Finding and recommending recipes\n" \
+                             "2. Finding restaurants and their menus\n" \
+                             "3. Placing food orders\n\n" \
+                             "What would you like help with?"
+                else:
+                    response = f"{response}\n\nYou can ask me about recipes, restaurants, or placing orders. How can I help?"
+                    
+        except Exception as e:
+            response = "I'm having trouble understanding that. Could you try rephrasing your request? " \
+                      "I can help with recipes, restaurants, or placing orders."
+            tools_used = []
+        response_with_tools = (
+            f"{response}\n\n"
+            f"[Debug Info]\n"
+            f"Tools used in this interaction:\n"
+            f"- " + "\n- ".join(tools_used)
         )
         
-        state.context["response"] = response
+        state.context["response"] = response_with_tools
         return state
     
     def process_message(self, user_id: str, message: str) -> str:
-        state = SessionState(user_id=user_id, messages=[UserMessage(content=message)])
-        result = self.graph.invoke(state)
-        return result["context"].get("response", "I'm sorry, I couldn't process your request.")
+        try:
+            print(f"[DEBUG] Creating session state for user {user_id}")
+            state = SessionState(user_id=user_id, messages=[UserMessage(content=message)])
+            
+            print(f"[DEBUG] Invoking graph")
+            result = self.graph.invoke(state)
+            
+            print(f"[DEBUG] Graph result context: {result.get('context', {})}")
+            response = result["context"].get("response", "I'm sorry, I couldn't process your request.")
+            print(f"[DEBUG] Final response: {response}")
+            return response
+            
+        except Exception as e:
+            import traceback
+            error_trace = traceback.format_exc()
+            print(f"[ERROR] Error in process_message:\n{error_trace}")
+            print(f"[ERROR] State at failure: {vars(state) if 'state' in locals() else 'No state'}")
+            raise
