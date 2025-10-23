@@ -9,9 +9,16 @@ class Config:
     PORT = int(os.getenv("PORT", 8000))
     DEBUG = os.getenv("DEBUG", "false").lower() == "true"
     
+    # GCP Storage Configuration
+    BASE_BUCKET = os.getenv("BASE_BUCKET")
+    
     @classmethod
     def validate(cls):
         if not cls.GEMINI_API_KEY:
             raise ValueError("GEMINI_API_KEY environment variable is required")
+        
+        if not cls.BASE_BUCKET:
+            raise ValueError("BASE_BUCKET environment variable is required")
+            
         if not cls.PLACES_API_KEY:
             raise ValueError("PLACES_API_KEY environment variable is required")

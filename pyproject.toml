@@ -14,6 +14,7 @@ dependencies = [
   "langgraph",
   "pydantic",
   "google-generativeai",
+  "google-cloud-storage",
   "python-dotenv",
   "requests"
 ]

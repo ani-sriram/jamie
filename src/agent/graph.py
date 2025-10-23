@@ -3,7 +3,8 @@ import json
 from langgraph.graph import StateGraph, END
 from langgraph.prebuilt import ToolNode
 from .clients import GeminiClient
-from .schemas import SessionState, IntentType, AgentResponse, UserMessage
+from .schemas import SessionState, IntentType, ConversationMessage, MessageRole
+from datetime import datetime
 from .tools.restaurants import RestaurantTool
 from .tools.recipes import RecipeTool
 
@@ -40,14 +41,28 @@ class JamieAgent:
         
         return workflow.compile()
     
+    def _build_conversation_context(self, messages: List[ConversationMessage]) -> str:
+        """Build a conversation context string from all messages"""
+        if not messages:
+            return "No previous conversation."
+        
+        context_parts = []
+        for msg in messages:
+            role = "User" if msg.role == MessageRole.USER else "Assistant"
+            context_parts.append(f"{role}: {msg.content}")
+        
+        return "\n".join(context_parts)
+    
     def _classify_intent(self, state: SessionState) -> SessionState:
         system_prompt = """You are Jamie, a food recommendation assistant. 
         Classify the user's intent as one of: restaurant, recipe, or unknown.
+        Consider the full conversation context to understand references like "that first one", "the restaurant you mentioned", etc.
         Return only the intent type."""
         
-        last_message = state.messages[-1].content if state.messages else ""
+        # Use full conversation history for context
+        conversation_context = self._build_conversation_context(state.messages)
         intent_response = self.llm_client.generate_response(
-            f"User message: {last_message}",
+            f"Conversation context: {conversation_context}",
             system_prompt
         )
         
@@ -73,18 +88,20 @@ class JamieAgent:
             return "unknown"
     
     def _search_restaurants(self, state: SessionState) -> SessionState:
-        last_message = state.messages[-1].content if state.messages else ""
+        # Use full conversation history for context
+        conversation_context = self._build_conversation_context(state.messages)
         
         # Track tool usage
         state.context["tools_used"] = state.context.get("tools_used", [])
         state.context["tools_used"].append("RestaurantTool.search_restaurants")
-        restaurants = self.restaurant_tool.search_restaurants(last_message)
+        restaurants = self.restaurant_tool.search_restaurants(conversation_context)
         print(f"Found {len(restaurants)} restaurants")
         state.context["restaurants"] = [rest.model_dump() for rest in restaurants]
         return state
     
     def _search_recipes(self, state: SessionState) -> SessionState:
-        last_message = state.messages[-1].content if state.messages else ""
+        # Use full conversation history for context
+        conversation_context = self._build_conversation_context(state.messages)
         
         # Track tool usage
         state.context["tools_used"] = state.context.get("tools_used", [])
@@ -98,6 +115,8 @@ class JamieAgent:
         5. Dietary preferences or cuisine types (as tags)
         6. Minimum servings needed
         
+        Consider the full conversation context to understand references like "that recipe you mentioned", "the ingredients from before", etc.
+        
         Return a JSON object with these fields (null if not mentioned):
         {
             "ingredients": [{"name": "ingredient", "quantity": number or null, "unit": "unit" or null}, ...],
@@ -109,7 +128,7 @@ class JamieAgent:
         }"""
         
         search_criteria = self.llm_client.generate_response(
-            f"User message: {last_message}",
+            f"Conversation context: {conversation_context}",
             system_prompt
         )
         
@@ -138,13 +157,15 @@ class JamieAgent:
         return state
     
     def _place_order(self, state: SessionState) -> SessionState:
-        last_message = state.messages[-1].content if state.messages else ""
+        # Use full conversation history for context
+        conversation_context = self._build_conversation_context(state.messages)
         
         system_prompt = """Extract restaurant name and meal name from the user's message.
+        Consider the full conversation context to understand references like "that restaurant", "the first one", etc.
         Return format: restaurant_name|meal_name"""
         
         order_info = self.llm_client.generate_response(
-            f"User message: {last_message}",
+            f"Conversation context: {conversation_context}",
             system_prompt
         )
         
@@ -167,7 +188,8 @@ class JamieAgent:
         return state
     
     def _generate_response(self, state: SessionState) -> SessionState:
-        last_message = state.messages[-1].content if state.messages else ""
+        # Use full conversation history for context
+        conversation_context = self._build_conversation_context(state.messages)
         
         # Different prompts based on intent
         if state.current_intent == IntentType.UNKNOWN:
@@ -180,12 +202,19 @@ class JamieAgent:
             If the user's message is unclear, ask for clarification about which of these services they need."""
         else:
             system_prompt = """You are Jamie, a helpful food recommendation assistant.
-            Be conversational and helpful. When discussing recipes:
+            Be conversational and helpful. Use the full conversation context to understand references like "that first one", "the restaurant you mentioned", etc.
+            
+            When discussing recipes:
             1. Format ingredient lists clearly with quantities and units
             2. Mention relevant tags (cuisine type, dietary info, etc.)
             3. Include total time and difficulty level
             4. If the search had specific criteria, acknowledge them in your response
-            5. Suggest similar recipes based on tags when relevant"""
+            5. Suggest similar recipes based on tags when relevant
+            
+            When discussing restaurants:
+            1. Reference specific restaurants mentioned in the conversation
+            2. Use context from previous messages to understand references like "the first one" or "that place"
+            3. Provide helpful details about location, price, and cuisine type"""
         
         context_info = ""
         print("Generating response with context:\n\n", state.context)
@@ -198,7 +227,7 @@ class JamieAgent:
         
         try:
             response = self.llm_client.generate_response(
-                f"User: {last_message}\nContext: {context_info}",
+                f"Conversation context: {conversation_context}\nContext: {context_info}",
                 system_prompt
             )
             
@@ -206,7 +235,7 @@ class JamieAgent:
             tools_used = state.context.get("tools_used", [])
             
             if state.current_intent == IntentType.UNKNOWN:
-                if not last_message.strip():
+                if not conversation_context.strip() or conversation_context == "No previous conversation.":
                     response = "Hello! I'm Jamie, your food assistant. I can help you with:\n" \
                              "1. Finding and recommending recipes\n" \
                              "2. Finding restaurants and their menus\n" \
@@ -229,10 +258,25 @@ class JamieAgent:
         state.context["response"] = response_with_tools
         return state
     
-    def process_message(self, user_id: str, message: str) -> str:
+    def process_message(self, user_id: str, message: str, session_id: str = None, conversation_history: List[ConversationMessage] = None) -> str:
         try:
-            print(f"[DEBUG] Creating session state for user {user_id}")
-            state = SessionState(user_id=user_id, messages=[UserMessage(content=message)])
+            conversation_message = ConversationMessage(
+                session_id=session_id or "",
+                user_id=user_id,
+                role=MessageRole.USER,
+                content=message,
+                timestamp=datetime.utcnow().isoformat() + "Z"
+            )
+            
+            # Combine conversation history with current message
+            all_messages = (conversation_history or []) + [conversation_message]
+            
+            print(f"[DEBUG] Creating session state for user {user_id} with {len(all_messages)} messages")
+            state = SessionState(
+                user_id=user_id, 
+                session_id=session_id or "",
+                messages=all_messages
+            )
             
             print(f"[DEBUG] Invoking graph")
             result = self.graph.invoke(state)

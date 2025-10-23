@@ -1,11 +1,23 @@
 from pydantic import BaseModel
 from typing import List, Optional, Dict, Any
 from enum import Enum
+from datetime import datetime
 
 class IntentType(str, Enum):
     RESTAURANT = "restaurant"
     RECIPE = "recipe"
     UNKNOWN = "unknown"
+
+class MessageRole(str, Enum):
+    USER = "user"
+    ASSISTANT = "assistant"
+
+class ConversationMessage(BaseModel):
+    session_id: str
+    user_id: str
+    role: MessageRole
+    content: str
+    timestamp: str
 
 class Restaurant(BaseModel):
     name: str
@@ -36,10 +48,6 @@ class Order(BaseModel):
     status: str
     total_price: float
 
-class UserMessage(BaseModel):
-    content: str
-    timestamp: Optional[str] = None
-
 class AgentResponse(BaseModel):
     message: str
     intent: Optional[IntentType] = None
@@ -48,6 +56,7 @@ class AgentResponse(BaseModel):
 
 class SessionState(BaseModel):
     user_id: str
-    messages: List[UserMessage] = []
+    session_id: str
+    messages: List[ConversationMessage] = []
     current_intent: Optional[IntentType] = None
     context: Dict[str, Any] = {}
