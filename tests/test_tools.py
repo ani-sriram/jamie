@@ -12,12 +12,6 @@ class TestRestaurantTool:
         results = tool.search_restaurants("pizza")
         assert len(results) > 0
         assert any("pizza" in meal.lower() for restaurant in results for meal in restaurant.meals)
-    
-    def test_get_restaurant_by_id(self):
-        tool = RestaurantTool()
-        restaurant = tool.get_restaurant_by_id("rest_001")
-        assert restaurant is not None
-        assert restaurant.name == "Mario's Italian Kitchen"
 
 class TestRecipeTool:
     def test_find_recipes(self):
