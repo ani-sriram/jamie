@@ -2,14 +2,22 @@
   {
     "id": "recipe_001",
     "title": "Classic Spaghetti Carbonara",
-    "ingredients": ["spaghetti", "eggs", "pancetta", "parmesan cheese", "black pepper", "garlic"],
+    "ingredients": [
+        {"name": "spaghetti", "quantity": 1, "unit": "pound"},
+        {"name": "eggs", "quantity": 3, "unit": "large"},
+        {"name": "pancetta", "quantity": 4, "unit": "ounces"},
+        {"name": "parmesan cheese", "quantity": 1, "unit": "cup"},
+        {"name": "black pepper", "quantity": 1, "unit": "teaspoon"},
+        {"name": "garlic", "quantity": 2, "unit": "cloves"}
+      ],
+      "tags": ["italian", "pasta", "quick", "main course"],
     "instructions": [
       "Cook spaghetti according to package directions",
       "Cook pancetta in a large skillet until crispy",
       "Beat eggs with parmesan cheese and black pepper",
       "Drain pasta and immediately toss with pancetta",
-      "Remove from heat and quickly stir in egg mixture",
-      "Serve immediately with extra parmesan"
+      "Quickly stir in egg mixture until creamy",
+      "Serve immediately with extra cheese and pepper"
     ],
     "prep_time": 10,
     "cook_time": 20,
@@ -18,72 +26,361 @@
   },
   {
     "id": "recipe_002",
-    "title": "Simple Chicken Stir Fry",
-    "ingredients": ["chicken breast", "bell peppers", "broccoli", "soy sauce", "garlic", "ginger", "rice"],
+    "title": "Quick Chicken Stir-Fry",
+    "ingredients": [
+        {"name": "chicken breast", "quantity": 1, "unit": "pound"},
+        {"name": "broccoli", "quantity": 2, "unit": "cups"},
+        {"name": "carrots", "quantity": 2, "unit": "medium"},
+        {"name": "soy sauce", "quantity": 0.25, "unit": "cup"},
+        {"name": "ginger", "quantity": 1, "unit": "tablespoon"},
+        {"name": "garlic", "quantity": 3, "unit": "cloves"},
+        {"name": "vegetable oil", "quantity": 2, "unit": "tablespoons"},
+        {"name": "rice", "quantity": 2, "unit": "cups"}
+      ],
+      "tags": ["asian", "chicken", "stir-fry", "quick", "main course"],
     "instructions": [
       "Cut chicken into bite-sized pieces",
-      "Heat oil in a large wok or skillet",
-      "Cook chicken until golden brown",
-      "Add vegetables and stir fry for 3-4 minutes",
-      "Add soy sauce, garlic, and ginger",
-      "Serve over cooked rice"
+      "Chop vegetables into even sizes",
+      "Heat oil in wok over high heat",
+      "Stir-fry chicken until golden",
+      "Add vegetables and stir-fry until tender-crisp",
+      "Add sauce and simmer until thickened",
+      "Serve over rice"
     ],
     "prep_time": 15,
-    "cook_time": 15,
-    "difficulty": "easy",
-    "servings": 3
-  },
-  {
-    "id": "recipe_003",
-    "title": "Mediterranean Quinoa Bowl",
-    "ingredients": ["quinoa", "cherry tomatoes", "cucumber", "olives", "feta cheese", "olive oil", "lemon"],
-    "instructions": [
-      "Cook quinoa according to package directions",
-      "Chop tomatoes and cucumber into bite-sized pieces",
-      "Mix quinoa with vegetables and olives",
-      "Crumble feta cheese on top",
-      "Drizzle with olive oil and lemon juice",
-      "Season with salt and pepper"
-    ],
-    "prep_time": 10,
-    "cook_time": 15,
-    "difficulty": "easy",
-    "servings": 2
-  },
-  {
-    "id": "recipe_004",
-    "title": "Beef Tacos with Guacamole",
-    "ingredients": ["ground beef", "taco shells", "avocado", "lime", "onion", "cilantro", "cheese", "lettuce"],
-    "instructions": [
-      "Brown ground beef in a skillet",
-      "Season with taco seasoning",
-      "Mash avocado with lime juice and salt",
-      "Warm taco shells",
-      "Fill shells with beef, cheese, and lettuce",
-      "Top with guacamole and cilantro"
-    ],
-    "prep_time": 20,
     "cook_time": 15,
     "difficulty": "easy",
     "servings": 4
   },
   {
-    "id": "recipe_005",
-    "title": "Chocolate Chip Cookies",
-    "ingredients": ["flour", "butter", "sugar", "eggs", "vanilla", "chocolate chips", "baking soda"],
+    "id": "recipe_003",
+    "title": "Classic French Onion Soup",
+    "ingredients": [
+        {"name": "onions", "quantity": 6, "unit": "large"},
+        {"name": "beef broth", "quantity": 6, "unit": "cups"},
+        {"name": "butter", "quantity": 0.5, "unit": "cup"},
+        {"name": "flour", "quantity": 2, "unit": "tablespoons"},
+        {"name": "white wine", "quantity": 0.5, "unit": "cup"},
+        {"name": "baguette", "quantity": 1, "unit": "loaf"},
+        {"name": "gruyere cheese", "quantity": 2, "unit": "cups"},
+        {"name": "thyme", "quantity": 2, "unit": "sprigs"}
+      ],
+      "tags": ["french", "soup", "comfort food", "main course"],
     "instructions": [
-      "Preheat oven to 375°F",
-      "Mix butter and sugars until creamy",
-      "Beat in eggs and vanilla",
-      "Combine flour and baking soda",
-      "Gradually add flour mixture to butter mixture",
-      "Stir in chocolate chips",
-      "Drop rounded tablespoons onto ungreased cookie sheets",
-      "Bake 9-11 minutes until golden brown"
+      "Slice onions thinly",
+      "Caramelize onions in butter for 45 minutes",
+      "Add flour and cook for 1 minute",
+      "Add wine and reduce",
+      "Add broth and simmer for 30 minutes",
+      "Top with bread and cheese",
+      "Broil until cheese is golden and bubbly"
+    ],
+    "prep_time": 20,
+    "cook_time": 90,
+    "difficulty": "medium",
+    "servings": 6
+  },
+  {
+    "id": "recipe_004",
+    "title": "Quick Avocado Toast",
+    "ingredients": [
+        {"name": "sourdough bread", "quantity": 2, "unit": "slices"},
+        {"name": "avocado", "quantity": 1, "unit": "large"},
+        {"name": "lime juice", "quantity": 1, "unit": "tablespoon"},
+        {"name": "salt", "quantity": 0.25, "unit": "teaspoon"},
+        {"name": "red pepper flakes", "quantity": 0.25, "unit": "teaspoon"},
+        {"name": "eggs", "quantity": 2, "unit": "large"}
+      ],
+      "tags": ["breakfast", "vegetarian", "quick", "healthy"],
+    "instructions": [
+      "Toast bread until golden",
+      "Mash avocado with lime juice and salt",
+      "Spread on toast",
+      "Top with red pepper flakes",
+      "Optional: add poached egg"
+    ],
+    "prep_time": 5,
+    "cook_time": 5,
+    "difficulty": "easy",
+    "servings": 2
+  },
+  {
+    "id": "recipe_005",
+    "title": "Beef Wellington",
+    "ingredients": [
+        {"name": "beef tenderloin", "quantity": 2, "unit": "pounds"},
+        {"name": "mushrooms", "quantity": 1, "unit": "pound"},
+        {"name": "prosciutto", "quantity": 4, "unit": "ounces"},
+        {"name": "puff pastry", "quantity": 1, "unit": "sheet"},
+        {"name": "egg", "quantity": 1, "unit": "large"},
+        {"name": "dijon mustard", "quantity": 2, "unit": "tablespoons"},
+        {"name": "thyme", "quantity": 2, "unit": "sprigs"},
+        {"name": "shallots", "quantity": 2, "unit": "medium"}
+      ],
+      "tags": ["beef", "special occasion", "british", "main course", "gourmet"],
+    "instructions": [
+      "Sear beef on all sides",
+      "Make mushroom duxelles",
+      "Wrap beef in prosciutto and duxelles",
+      "Wrap in puff pastry",
+      "Brush with egg wash",
+      "Bake until golden and medium-rare"
+    ],
+    "prep_time": 60,
+    "cook_time": 45,
+    "difficulty": "hard",
+    "servings": 6
+  },
+  {
+    "id": "recipe_006",
+    "title": "Fresh Summer Gazpacho",
+    "ingredients": [
+      "tomatoes",
+      "cucumber",
+      "red pepper",
+      "garlic",
+      "olive oil",
+      "sherry vinegar",
+      "bread",
+      "salt"
+    ],
+    "instructions": [
+      "Roughly chop vegetables",
+      "Blend until smooth",
+      "Season to taste",
+      "Chill for at least 2 hours",
+      "Serve with croutons"
+    ],
+    "prep_time": 20,
+    "cook_time": 0,
+    "difficulty": "easy",
+    "servings": 4
+  },
+  {
+    "id": "recipe_007",
+    "title": "Homemade Pizza Dough",
+    "ingredients": [
+      "flour",
+      "yeast",
+      "salt",
+      "sugar",
+      "olive oil",
+      "warm water"
+    ],
+    "instructions": [
+      "Mix yeast with warm water and sugar",
+      "Combine flour and salt",
+      "Mix wet and dry ingredients",
+      "Knead for 10 minutes",
+      "Let rise for 1 hour",
+      "Shape and use as desired"
+    ],
+    "prep_time": 20,
+    "cook_time": 60,
+    "difficulty": "medium",
+    "servings": 4
+  },
+  {
+    "id": "recipe_008",
+    "title": "Thai Green Curry",
+    "ingredients": [
+      "coconut milk",
+      "green curry paste",
+      "chicken",
+      "bamboo shoots",
+      "thai basil",
+      "fish sauce",
+      "palm sugar",
+      "eggplant"
+    ],
+    "instructions": [
+      "Heat coconut milk until oil separates",
+      "Add curry paste and fry",
+      "Add chicken and cook through",
+      "Add vegetables and simmer",
+      "Season with fish sauce and sugar",
+      "Garnish with thai basil"
     ],
     "prep_time": 15,
-    "cook_time": 11,
+    "cook_time": 25,
+    "difficulty": "medium",
+    "servings": 4
+  },
+  {
+    "id": "recipe_009",
+    "title": "Classic Apple Pie",
+    "ingredients": [
+      "flour",
+      "butter",
+      "apples",
+      "sugar",
+      "cinnamon",
+      "nutmeg",
+      "lemon juice",
+      "egg"
+    ],
+    "instructions": [
+      "Make pie crust",
+      "Slice apples and toss with spices",
+      "Fill pie crust",
+      "Top with second crust",
+      "Brush with egg wash",
+      "Bake until golden"
+    ],
+    "prep_time": 45,
+    "cook_time": 45,
+    "difficulty": "hard",
+    "servings": 8
+  },
+  {
+    "id": "recipe_010",
+    "title": "Simple Greek Salad",
+    "ingredients": [
+      "cucumber",
+      "tomatoes",
+      "red onion",
+      "feta cheese",
+      "kalamata olives",
+      "olive oil",
+      "oregano",
+      "salt"
+    ],
+    "instructions": [
+      "Chop vegetables into chunks",
+      "Add olives and feta",
+      "Drizzle with olive oil",
+      "Season with oregano and salt",
+      "Toss gently"
+    ],
+    "prep_time": 10,
+    "cook_time": 0,
+    "difficulty": "easy",
+    "servings": 4
+  },
+  {
+    "id": "recipe_011",
+    "title": "Homemade Sushi Rolls",
+    "ingredients": [
+      "sushi rice",
+      "nori sheets",
+      "salmon",
+      "cucumber",
+      "avocado",
+      "rice vinegar",
+      "wasabi",
+      "soy sauce"
+    ],
+    "instructions": [
+      "Cook and season sushi rice",
+      "Prepare fillings",
+      "Place nori on bamboo mat",
+      "Spread rice and add fillings",
+      "Roll tightly",
+      "Slice into pieces"
+    ],
+    "prep_time": 40,
+    "cook_time": 20,
+    "difficulty": "hard",
+    "servings": 4
+  },
+  {
+    "id": "recipe_012",
+    "title": "Classic Chocolate Chip Cookies",
+    "ingredients": [
+      "butter",
+      "sugar",
+      "brown sugar",
+      "eggs",
+      "vanilla",
+      "flour",
+      "baking soda",
+      "chocolate chips"
+    ],
+    "instructions": [
+      "Cream butter and sugars",
+      "Beat in eggs and vanilla",
+      "Mix in dry ingredients",
+      "Fold in chocolate chips",
+      "Drop onto baking sheets",
+      "Bake until golden"
+    ],
+    "prep_time": 15,
+    "cook_time": 12,
     "difficulty": "easy",
     "servings": 24
+  },
+  {
+    "id": "recipe_013",
+    "title": "Vegetarian Lentil Curry",
+    "ingredients": [
+      "red lentils",
+      "onion",
+      "garlic",
+      "ginger",
+      "curry powder",
+      "coconut milk",
+      "spinach",
+      "tomatoes"
+    ],
+    "instructions": [
+      "Sauté onion, garlic, and ginger",
+      "Add spices and toast",
+      "Add lentils and liquid",
+      "Simmer until lentils are tender",
+      "Stir in coconut milk and spinach",
+      "Season to taste"
+    ],
+    "prep_time": 10,
+    "cook_time": 30,
+    "difficulty": "easy",
+    "servings": 6
+  },
+  {
+    "id": "recipe_014",
+    "title": "Homemade Pasta",
+    "ingredients": [
+      "flour",
+      "eggs",
+      "olive oil",
+      "salt"
+    ],
+    "instructions": [
+      "Mix ingredients to form dough",
+      "Knead until smooth",
+      "Rest for 30 minutes",
+      "Roll out thinly",
+      "Cut into desired shape",
+      "Cook in boiling water"
+    ],
+    "prep_time": 20,
+    "cook_time": 5,
+    "difficulty": "medium",
+    "servings": 4
+  },
+  {
+    "id": "recipe_015",
+    "title": "Quick Fish Tacos",
+    "ingredients": [
+      "white fish",
+      "lime",
+      "tortillas",
+      "cabbage",
+      "cilantro",
+      "sour cream",
+      "avocado",
+      "hot sauce"
+    ],
+    "instructions": [
+      "Season and grill fish",
+      "Warm tortillas",
+      "Shred cabbage",
+      "Make lime crema",
+      "Assemble tacos",
+      "Serve with garnishes"
+    ],
+    "prep_time": 15,
+    "cook_time": 10,
+    "difficulty": "easy",
+    "servings": 4
   }
 ]
