@@ -2,13 +2,18 @@ import google.generativeai as genai
 from typing import Optional
 from ..config import Config
 import requests
+import os
 
 
 class GeminiClient:
-    def __init__(self):
+    def __init__(self, timeout_seconds: Optional[int] = None):
         Config.validate()
         genai.configure(api_key=Config.GEMINI_API_KEY)
         self.model = genai.GenerativeModel("gemini-2.5-flash")
+        # Default timeout can be overridden by env var or constructor
+        self.timeout_seconds = (
+            timeout_seconds if timeout_seconds is not None else int(os.getenv("GEMINI_TIMEOUT_SECONDS", "20"))
+        )
 
     def generate_response(
         self, prompt: str, system_prompt: Optional[str] = None
@@ -17,7 +22,10 @@ class GeminiClient:
         if system_prompt:
             full_prompt = f"{system_prompt}\n\n{prompt}"
 
-        response = self.model.generate_content(full_prompt)
+        response = self.model.generate_content(
+            full_prompt,
+            request_options={"timeout": self.timeout_seconds},
+        )
         return response.text
 
     def generate_with_tools(
@@ -27,7 +35,11 @@ class GeminiClient:
         if system_prompt:
             full_prompt = f"{system_prompt}\n\n{prompt}"
 
-        response = self.model.generate_content(full_prompt, tools=tools)
+        response = self.model.generate_content(
+            full_prompt,
+            tools=tools,
+            request_options={"timeout": self.timeout_seconds},
+        )
         return response.text
 
 
