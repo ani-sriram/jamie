@@ -17,15 +17,21 @@ class Restaurant(BaseModel):
     rating: float
     price_range: str
 
+class Ingredient(BaseModel):
+    name: str
+    quantity: Optional[float] = None
+    unit: Optional[str] = None
+
 class Recipe(BaseModel):
     id: str
     title: str
-    ingredients: List[str]
+    ingredients: List[Ingredient]
     instructions: List[str]
     prep_time: int
     cook_time: int
     difficulty: str
     servings: int
+    tags: List[str] = []
 
 class Order(BaseModel):
     id: str
