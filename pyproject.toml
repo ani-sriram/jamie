@@ -16,7 +16,8 @@ dependencies = [
   "google-generativeai",
   "google-cloud-storage",
   "python-dotenv",
-  "requests"
+  "requests",
+  "pytest"
 ]
 
 [tool.hatch.build.targets.wheel]

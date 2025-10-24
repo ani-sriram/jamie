@@ -15,6 +15,7 @@ Jamie is a conversational assistant that helps users decide what to eat by sugge
 1. Install dependencies:
 ```bash
 uv sync
+uv pip install -e .
 ```
 
 2. Set up environment variables:
@@ -24,11 +25,24 @@ export PLACES_API_KEY=XXXXX
 # Add a .env with your Gemini API key
 ```
 
-3. Run the application:
+3. Run the backend application:
 ```bash
 uv run src/main.py
 ```
+4. Start the front end:
+    1. Navigate to the frontend directory:
+    ```bash
+    cd frontend
+    ```
 
+    2. Install dependencies:
+    ```bash
+    npm install
+    ```
+
+    3. Start the development server:
+    ```bash
+    npm start
 ## API Endpoints
 
 - `POST /chat/{user_id}` - Send messages to Jamie

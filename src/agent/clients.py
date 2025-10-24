@@ -1,6 +1,6 @@
 import google.generativeai as genai
 from typing import Optional
-from ..config import Config
+from config import Config
 import requests
 
 
@@ -56,7 +56,7 @@ class PlacesClient:
         except Exception as e:
             print(f"Error searching places: {e}")
             return {}
-    
+
     def get_place_details(self, place_id: str) -> dict:
         url = f"{self.base_url}/{place_id}"
         field_mask = (

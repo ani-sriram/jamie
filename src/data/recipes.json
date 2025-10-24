@@ -3,12 +3,12 @@
     "id": "recipe_001",
     "title": "Classic Spaghetti Carbonara",
     "ingredients": [
-        {"name": "spaghetti", "quantity": 1, "unit": "pound"},
-        {"name": "eggs", "quantity": 3, "unit": "large"},
-        {"name": "pancetta", "quantity": 4, "unit": "ounces"},
-        {"name": "parmesan cheese", "quantity": 1, "unit": "cup"},
-        {"name": "black pepper", "quantity": 1, "unit": "teaspoon"},
-        {"name": "garlic", "quantity": 2, "unit": "cloves"}
+        {"name": "spaghetti", "quantity": 1, "unit": "pound","calories": 2000},
+        {"name": "eggs", "quantity": 3, "unit": "large","calories": 210},
+        {"name": "pancetta", "quantity": 4, "unit": "ounces","calories": 400},
+        {"name": "parmesan cheese", "quantity": 1, "unit": "cup","calories": 431},
+        {"name": "black pepper", "quantity": 1, "unit": "teaspoon","calories": 6},
+        {"name": "garlic", "quantity": 2, "unit": "cloves","calories": 9}
       ],
       "tags": ["italian", "pasta", "quick", "main course"],
     "instructions": [
@@ -28,14 +28,15 @@
     "id": "recipe_002",
     "title": "Quick Chicken Stir-Fry",
     "ingredients": [
-        {"name": "chicken breast", "quantity": 1, "unit": "pound"},
-        {"name": "broccoli", "quantity": 2, "unit": "cups"},
-        {"name": "carrots", "quantity": 2, "unit": "medium"},
-        {"name": "soy sauce", "quantity": 0.25, "unit": "cup"},
-        {"name": "ginger", "quantity": 1, "unit": "tablespoon"},
-        {"name": "garlic", "quantity": 3, "unit": "cloves"},
-        {"name": "vegetable oil", "quantity": 2, "unit": "tablespoons"},
-        {"name": "rice", "quantity": 2, "unit": "cups"}
+        {"name": "chicken breast", "quantity": 1, "unit": "pound","calories": 165},
+        {"name": "bell peppers", "quantity": 2, "unit": "medium","calories": 50},
+        {"name": "broccoli", "quantity": 2, "unit": "cups", "calories": 55},
+        {"name": "carrots", "quantity": 2, "unit": "medium","calories": 25},
+        {"name": "soy sauce", "quantity": 0.25, "unit": "cup","calories": 30},
+        {"name": "ginger", "quantity": 1, "unit": "tablespoon","calories": 5},
+        {"name": "garlic", "quantity": 3, "unit": "cloves","calories": 12},
+        {"name": "vegetable oil", "quantity": 2, "unit": "tablespoons","calories": 240},
+        {"name": "rice", "quantity": 2, "unit": "cups","calories": 400}
       ],
       "tags": ["asian", "chicken", "stir-fry", "quick", "main course"],
     "instructions": [
@@ -56,14 +57,14 @@
     "id": "recipe_003",
     "title": "Classic French Onion Soup",
     "ingredients": [
-        {"name": "onions", "quantity": 6, "unit": "large"},
-        {"name": "beef broth", "quantity": 6, "unit": "cups"},
-        {"name": "butter", "quantity": 0.5, "unit": "cup"},
-        {"name": "flour", "quantity": 2, "unit": "tablespoons"},
-        {"name": "white wine", "quantity": 0.5, "unit": "cup"},
-        {"name": "baguette", "quantity": 1, "unit": "loaf"},
-        {"name": "gruyere cheese", "quantity": 2, "unit": "cups"},
-        {"name": "thyme", "quantity": 2, "unit": "sprigs"}
+        {"name": "onions", "quantity": 6, "unit": "large","calories": 120},
+        {"name": "beef broth", "quantity": 6, "unit": "cups","calories": 60},
+        {"name": "butter", "quantity": 0.5, "unit": "cup","calories": 810},
+        {"name": "flour", "quantity": 2, "unit": "tablespoons","calories": 56},
+        {"name": "white wine", "quantity": 0.5, "unit": "cup","calories": 100},
+        {"name": "baguette", "quantity": 1, "unit": "loaf","calories": 300},
+        {"name": "gruyere cheese", "quantity": 2, "unit": "cups","calories": 800},
+        {"name": "thyme", "quantity": 2, "unit": "sprigs","calories": 2}
       ],
       "tags": ["french", "soup", "comfort food", "main course"],
     "instructions": [
@@ -84,12 +85,12 @@
     "id": "recipe_004",
     "title": "Quick Avocado Toast",
     "ingredients": [
-        {"name": "sourdough bread", "quantity": 2, "unit": "slices"},
-        {"name": "avocado", "quantity": 1, "unit": "large"},
-        {"name": "lime juice", "quantity": 1, "unit": "tablespoon"},
-        {"name": "salt", "quantity": 0.25, "unit": "teaspoon"},
-        {"name": "red pepper flakes", "quantity": 0.25, "unit": "teaspoon"},
-        {"name": "eggs", "quantity": 2, "unit": "large"}
+        {"name": "sourdough bread", "quantity": 2, "unit": "slices", "calories": 100},
+        {"name": "avocado", "quantity": 1, "unit": "large", "calories": 100},
+        {"name": "lime juice", "quantity": 1, "unit": "tablespoon", "calories": 10},
+        {"name": "salt", "quantity": 0.25, "unit": "teaspoon", "calories": 0},
+        {"name": "red pepper flakes", "quantity": 0.25, "unit": "teaspoon", "calories": 0},
+        {"name": "eggs", "quantity": 2, "unit": "large", "calories": 100}
       ],
       "tags": ["breakfast", "vegetarian", "quick", "healthy"],
     "instructions": [
@@ -108,16 +109,16 @@
     "id": "recipe_005",
     "title": "Beef Wellington",
     "ingredients": [
-        {"name": "beef tenderloin", "quantity": 2, "unit": "pounds"},
-        {"name": "mushrooms", "quantity": 1, "unit": "pound"},
-        {"name": "prosciutto", "quantity": 4, "unit": "ounces"},
-        {"name": "puff pastry", "quantity": 1, "unit": "sheet"},
-        {"name": "egg", "quantity": 1, "unit": "large"},
-        {"name": "dijon mustard", "quantity": 2, "unit": "tablespoons"},
-        {"name": "thyme", "quantity": 2, "unit": "sprigs"},
-        {"name": "shallots", "quantity": 2, "unit": "medium"}
+        {"name": "beef tenderloin", "quantity": 2, "unit": "pounds", "calories": 1000},
+        {"name": "mushrooms", "quantity": 1, "unit": "pound", "calories": 200},
+        {"name": "prosciutto", "quantity": 4, "unit": "ounces", "calories": 200},
+        {"name": "puff pastry", "quantity": 1, "unit": "sheet", "calories": 400},
+        {"name": "egg", "quantity": 1, "unit": "large", "calories": 70},
+        {"name": "dijon mustard", "quantity": 2, "unit": "tablespoons", "calories": 20},
+        {"name": "thyme", "quantity": 2, "unit": "sprigs", "calories": 2},
+        {"name": "shallots", "quantity": 2, "unit": "medium", "calories": 20}
       ],
-      "tags": ["beef", "special occasion", "british", "main course", "gourmet"],
+      "tags": ["Beef", "Special occasion", "British", "Main course", "Gourmet"],
     "instructions": [
       "Sear beef on all sides",
       "Make mushroom duxelles",
@@ -135,14 +136,14 @@
     "id": "recipe_006",
     "title": "Fresh Summer Gazpacho",
     "ingredients": [
-      "tomatoes",
-      "cucumber",
-      "red pepper",
-      "garlic",
-      "olive oil",
-      "sherry vinegar",
-      "bread",
-      "salt"
+      {"name": "tomatoes", "quantity": 2, "unit": "medium", "calories": 50},
+      {"name": "cucumber", "quantity": 1, "unit": "medium", "calories": 10},
+      {"name": "red pepper", "quantity": 1, "unit": "medium", "calories": 50},
+      {"name": "garlic", "quantity": 2, "unit": "cloves", "calories": 10},
+      {"name": "olive oil", "quantity": 1, "unit": "cup", "calories": 80},
+      {"name": "sherry vinegar", "quantity": 1, "unit": "cup", "calories": 10},
+      {"name": "bread", "quantity": 1, "unit": "loaf", "calories": 200},
+      {"name": "salt", "quantity": 1, "unit": "teaspoon", "calories": 0}
     ],
     "instructions": [
       "Roughly chop vegetables",
@@ -160,12 +161,12 @@
     "id": "recipe_007",
     "title": "Homemade Pizza Dough",
     "ingredients": [
-      "flour",
-      "yeast",
-      "salt",
-      "sugar",
-      "olive oil",
-      "warm water"
+      {"name": "flour", "quantity": 2, "unit": "cups", "calories": 400},
+      {"name": "yeast", "quantity": 1, "unit": "packet", "calories": 100},
+      {"name": "salt", "quantity": 1, "unit": "teaspoon", "calories": 0},
+      {"name": "sugar", "quantity": 1, "unit": "tablespoon", "calories": 10},
+      {"name": "olive oil", "quantity": 1, "unit": "cup", "calories": 80},
+      {"name": "warm water", "quantity": 1, "unit": "cup", "calories": 100}
     ],
     "instructions": [
       "Mix yeast with warm water and sugar",
@@ -184,14 +185,14 @@
     "id": "recipe_008",
     "title": "Thai Green Curry",
     "ingredients": [
-      "coconut milk",
-      "green curry paste",
-      "chicken",
-      "bamboo shoots",
-      "thai basil",
-      "fish sauce",
-      "palm sugar",
-      "eggplant"
+      {"name": "coconut milk", "quantity": 1, "unit": "cup", "calories": 200},
+      {"name": "green curry paste", "quantity": 1, "unit": "cup", "calories": 50},
+      {"name": "chicken", "quantity": 1, "unit": "pound", "calories": 400},
+      {"name": "bamboo shoots", "quantity": 1, "unit": "cup", "calories": 50},
+      {"name": "thai basil", "quantity": 1, "unit": "cup", "calories": 10},
+      {"name": "fish sauce", "quantity": 1, "unit": "cup", "calories": 30},
+      {"name": "palm sugar", "quantity": 1, "unit": "cup", "calories": 200},
+      {"name": "eggplant", "quantity": 1, "unit": "cup", "calories": 50}
     ],
     "instructions": [
       "Heat coconut milk until oil separates",
@@ -210,14 +211,14 @@
     "id": "recipe_009",
     "title": "Classic Apple Pie",
     "ingredients": [
-      "flour",
-      "butter",
-      "apples",
-      "sugar",
-      "cinnamon",
-      "nutmeg",
-      "lemon juice",
-      "egg"
+      {"name": "flour", "quantity": 2, "unit": "cups", "calories": 400},
+      {"name": "butter", "quantity": 1, "unit": "cup", "calories": 80}, 
+      {"name": "apples", "quantity": 4, "unit": "medium", "calories": 100},
+      {"name": "sugar", "quantity": 1, "unit": "cup", "calories": 200},
+      {"name": "cinnamon", "quantity": 1, "unit": "tablespoon", "calories": 10},
+      {"name": "nutmeg", "quantity": 1, "unit": "teaspoon", "calories": 10},
+      {"name": "lemon juice", "quantity": 1, "unit": "tablespoon", "calories": 10},
+      {"name": "egg", "quantity": 1, "unit": "large", "calories": 70}
     ],
     "instructions": [
       "Make pie crust",
@@ -236,14 +237,14 @@
     "id": "recipe_010",
     "title": "Simple Greek Salad",
     "ingredients": [
-      "cucumber",
-      "tomatoes",
-      "red onion",
-      "feta cheese",
-      "kalamata olives",
-      "olive oil",
-      "oregano",
-      "salt"
+      {"name": "cucumber", "quantity": 1, "unit": "medium", "calories": 10},
+      {"name": "tomatoes", "quantity": 2, "unit": "medium", "calories": 50},
+      {"name": "red onion", "quantity": 1, "unit": "medium", "calories": 10},
+      {"name": "feta cheese", "quantity": 1, "unit": "cup", "calories": 200},
+      {"name": "kalamata olives", "quantity": 1, "unit": "cup", "calories": 200},
+      {"name": "olive oil", "quantity": 1, "unit": "cup", "calories": 80},
+      {"name": "oregano", "quantity": 1, "unit": "tablespoon", "calories": 10},
+      {"name": "salt", "quantity": 1, "unit": "teaspoon", "calories": 0}
     ],
     "instructions": [
       "Chop vegetables into chunks",
@@ -261,14 +262,14 @@
     "id": "recipe_011",
     "title": "Homemade Sushi Rolls",
     "ingredients": [
-      "sushi rice",
-      "nori sheets",
-      "salmon",
-      "cucumber",
-      "avocado",
-      "rice vinegar",
-      "wasabi",
-      "soy sauce"
+      {"name": "sushi rice", "quantity": 2, "unit": "cups", "calories": 400},
+      {"name": "nori sheets", "quantity": 1, "unit": "sheet", "calories": 100},
+      {"name": "salmon", "quantity": 1, "unit": "pound", "calories": 400},
+      {"name": "cucumber", "quantity": 1, "unit": "medium", "calories": 10},
+      {"name": "avocado", "quantity": 1, "unit": "medium", "calories": 100},
+      {"name": "rice vinegar", "quantity": 1, "unit": "cup", "calories": 10},
+      {"name": "wasabi", "quantity": 1, "unit": "tablespoon", "calories": 10},
+      {"name": "soy sauce", "quantity": 1, "unit": "cup", "calories": 100}
     ],
     "instructions": [
       "Cook and season sushi rice",
@@ -287,14 +288,14 @@
     "id": "recipe_012",
     "title": "Classic Chocolate Chip Cookies",
     "ingredients": [
-      "butter",
-      "sugar",
-      "brown sugar",
-      "eggs",
-      "vanilla",
-      "flour",
-      "baking soda",
-      "chocolate chips"
+      {"name": "butter", "quantity": 1, "unit": "cup", "calories": 80},
+      {"name": "sugar", "quantity": 1, "unit": "cup", "calories": 200},
+      {"name": "brown sugar", "quantity": 1, "unit": "cup", "calories": 200},
+      {"name": "eggs", "quantity": 2, "unit": "large", "calories": 70},
+      {"name": "vanilla", "quantity": 1, "unit": "tablespoon", "calories": 10},
+      {"name": "flour", "quantity": 2, "unit": "cups", "calories": 400},
+      {"name": "baking soda", "quantity": 1, "unit": "teaspoon", "calories": 0},
+      {"name": "chocolate chips", "quantity": 1, "unit": "cup", "calories": 200}
     ],
     "instructions": [
       "Cream butter and sugars",
@@ -313,14 +314,14 @@
     "id": "recipe_013",
     "title": "Vegetarian Lentil Curry",
     "ingredients": [
-      "red lentils",
-      "onion",
-      "garlic",
-      "ginger",
-      "curry powder",
-      "coconut milk",
-      "spinach",
-      "tomatoes"
+      {"name": "red lentils", "quantity": 1, "unit": "cup", "calories": 100},
+      {"name": "onion", "quantity": 1, "unit": "medium", "calories": 10},
+      {"name": "garlic", "quantity": 2, "unit": "cloves", "calories": 10},
+      {"name": "ginger", "quantity": 1, "unit": "tablespoon", "calories": 10},
+      {"name": "curry powder", "quantity": 1, "unit": "tablespoon", "calories": 10},
+      {"name": "coconut milk", "quantity": 1, "unit": "cup", "calories": 200},
+      {"name": "spinach", "quantity": 1, "unit": "cup", "calories": 100},
+      {"name": "tomatoes", "quantity": 2, "unit": "medium", "calories": 50}
     ],
     "instructions": [
       "Sauté onion, garlic, and ginger",
@@ -339,10 +340,10 @@
     "id": "recipe_014",
     "title": "Homemade Pasta",
     "ingredients": [
-      "flour",
-      "eggs",
-      "olive oil",
-      "salt"
+      {"name": "flour", "quantity": 2, "unit": "cups", "calories": 400},
+      {"name": "eggs", "quantity": 2, "unit": "large", "calories": 140},
+      {"name": "olive oil", "quantity": 1, "unit": "cup", "calories": 80},
+      {"name": "salt", "quantity": 1, "unit": "teaspoon", "calories": 0}
     ],
     "instructions": [
       "Mix ingredients to form dough",
@@ -361,14 +362,14 @@
     "id": "recipe_015",
     "title": "Quick Fish Tacos",
     "ingredients": [
-      "white fish",
-      "lime",
-      "tortillas",
-      "cabbage",
-      "cilantro",
-      "sour cream",
-      "avocado",
-      "hot sauce"
+      {"name": "white fish", "quantity": 1, "unit": "pound", "calories": 400},  
+      {"name": "lime", "quantity": 1, "unit": "medium", "calories": 10},
+      {"name": "tortillas", "quantity": 1, "unit": "sheet", "calories": 100},
+      {"name": "cabbage", "quantity": 1, "unit": "medium", "calories": 10},
+      {"name": "cilantro", "quantity": 1, "unit": "cup", "calories": 10},
+      {"name": "sour cream", "quantity": 1, "unit": "cup", "calories": 100},
+      {"name": "avocado", "quantity": 1, "unit": "medium", "calories": 100},
+      {"name": "hot sauce", "quantity": 1, "unit": "tablespoon", "calories": 10}
     ],
     "instructions": [
       "Season and grill fish",

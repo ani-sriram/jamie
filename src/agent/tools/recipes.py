@@ -3,7 +3,8 @@ import sqlite3
 import os
 from typing import List, Optional
 from pathlib import Path
-from ..schemas import Recipe, Ingredient
+from agent.schemas import Recipe, Ingredient
+
 
 def get_connection(db_path: Optional[str] = None) -> sqlite3.Connection:
     """Get a SQLite connection with Row factory"""
@@ -13,13 +14,18 @@ def get_connection(db_path: Optional[str] = None) -> sqlite3.Connection:
     conn.row_factory = sqlite3.Row
     return conn
 
+
 class RecipeTool:
     def __init__(self, db_path: Optional[str] = None):
         """Initialize RecipeTool with optional custom db_path"""
         self.db_path = db_path
-    
-    def find_recipes(self, ingredients: List[str], difficulty: Optional[str] = None,
-                    max_prep_time: Optional[int] = None) -> List[Recipe]:
+
+    def find_recipes(
+        self,
+        ingredients: List[str],
+        difficulty: Optional[str] = None,
+        max_prep_time: Optional[int] = None,
+    ) -> List[Recipe]:
         """Find recipes containing any of the given ingredients"""
         where_clauses = []
         params = []
@@ -31,11 +37,11 @@ class RecipeTool:
             ing_clauses.append("ingredients_text LIKE '%'||?||'%'")
             params.append(ing_name.lower())
         where_clauses.append(f"({' OR '.join(ing_clauses)})")
-        
+
         if difficulty:
             where_clauses.append("difficulty = ?")
             params.append(difficulty)
-        
+
         if max_prep_time:
             where_clauses.append("prep_time <= ?")
             params.append(max_prep_time)
@@ -53,7 +59,7 @@ class RecipeTool:
             return [self._row_to_recipe(row) for row in rows]
         finally:
             conn.close()
-    
+
     def get_recipe_by_id(self, recipe_id: str) -> Optional[Recipe]:
         """Get a single recipe by ID"""
         conn = get_connection()
@@ -64,7 +70,7 @@ class RecipeTool:
             return self._row_to_recipe(row) if row else None
         finally:
             conn.close()
-    
+
     def search_by_title(self, title: str) -> List[Recipe]:
         """Search recipes by title (case-insensitive partial match)"""
         conn = get_connection()
@@ -72,7 +78,7 @@ class RecipeTool:
             cur = conn.cursor()
             cur.execute(
                 "SELECT * FROM recipes WHERE lower(title) LIKE '%'||?||'%' LIMIT 5",
-                (title.lower(),)
+                (title.lower(),),
             )
             rows = cur.fetchall()
             return [self._row_to_recipe(row) for row in rows]
@@ -81,6 +87,7 @@ class RecipeTool:
 
     def search_recipes(
         self,
+        recipe_title: Optional[str] = None,
         ingredients: Optional[List[str]] = None,
         excluded_ingredients: Optional[List[str]] = None,
         max_total_time: Optional[int] = None,
@@ -88,7 +95,7 @@ class RecipeTool:
         difficulty: Optional[str] = None,
         servings: Optional[int] = None,
         tags: Optional[List[str]] = None,
-        limit: int = 5
+        limit: int = 5,
     ) -> List[Recipe]:
         """
         Main search method supporting all filter combinations
@@ -104,7 +111,11 @@ class RecipeTool:
         """
         where_clauses = []
         params = []
-        
+
+        if recipe_title:
+            where_clauses.append("title LIKE '%'||?||'%'")
+            params.append(recipe_title.lower())  # case-insensitive partial match
+
         if ingredients:
             # Match any of the ingredients (OR logic)
             ing_clauses = []
@@ -113,31 +124,31 @@ class RecipeTool:
                 ing_clauses.append("ingredients_text LIKE '%'||?||'%'")
                 params.append(ing_name.lower())
             where_clauses.append(f"({' OR '.join(ing_clauses)})")
-        
+
         if excluded_ingredients:
             # Exclude these ingredients (AND NOT logic)
             for ing in excluded_ingredients:
                 ing_name = ing["name"] if isinstance(ing, dict) else str(ing)
                 where_clauses.append("ingredients_text NOT LIKE '%'||?||'%'")
                 params.append(ing_name.lower())
-        
+
         if max_total_time:
             where_clauses.append("(prep_time + cook_time) <= ?")
             params.append(max_total_time)
-        
+
         if max_prep_time:
             where_clauses.append("prep_time <= ?")
             params.append(max_prep_time)
-        
+
         if difficulty:
             where_clauses.append("difficulty = ?")
             params.append(difficulty)
-        
+
         if servings:
             where_clauses.append("servings >= ?")
             params.append(servings)
-        
-        if tags:
+
+        if tags and not recipe_title:
             # Match any of the tags (OR logic)
             tag_clauses = []
             for tag in tags:
@@ -163,26 +174,32 @@ class RecipeTool:
         """Convert a database row to a Recipe model"""
         if not row:
             raise ValueError("Cannot convert None row to Recipe")
-        
+
         # Parse JSON fields
-        ingredients = json.loads(row['ingredients_json'])
-        instructions = json.loads(row['instructions_json'])
-        
+        ingredients = json.loads(row["ingredients_json"])
+        instructions = json.loads(row["instructions_json"])
+
         # For backward compatibility, ensure ingredients is List[str]
         ingredients_list = []
         for ing in ingredients:
             if isinstance(ing, dict):
-                ingredients_list.append(Ingredient(name=ing['name'], quantity=ing.get('quantity'), unit=ing.get('unit')))
+                ingredients_list.append(
+                    Ingredient(
+                        name=ing["name"],
+                        quantity=ing.get("quantity"),
+                        unit=ing.get("unit"),
+                    )
+                )
             else:
                 ingredients_list.append(Ingredient(name=str(ing)))
-        
+
         return Recipe(
-            id=row['id'],
-            title=row['title'],
+            id=row["id"],
+            title=row["title"],
             ingredients=ingredients_list,
             instructions=instructions,
-            prep_time=row['prep_time'],
-            cook_time=row['cook_time'],
-            difficulty=row['difficulty'],
-            servings=row['servings']
+            prep_time=row["prep_time"],
+            cook_time=row["cook_time"],
+            difficulty=row["difficulty"],
+            servings=row["servings"],
         )
