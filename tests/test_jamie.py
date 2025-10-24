@@ -162,8 +162,7 @@ class TestJamieAgent:
             "No, that's too expensive",
             "Actually, I changed my mind, I want Mexican food",
             "But it has to be vegetarian",
-            "And open late",
-            "Actually, forget it, I'll just cook at home",
+            "And open past 9 PM",
         ]
         return self.run_conversation(
             agent, conversation, "Restaurant Picky Customer", test_logger
@@ -173,12 +172,9 @@ class TestJamieAgent:
         """Customer with location confusion"""
         conversation = [
             "Find sushi restaurants",
-            "I'm in... wait, where am I?",
-            "I think I'm in Seattle",
-            "Actually, I'm in Portland",
-            "No wait, I'm in Seattle, downtown",
-            "Which one has the best reviews?",
-            "What about the one with the blue sign?",
+            "I think I'm in Seattle near the Space Needle. Not sure which neighborhood this is",
+            "No wait, I'm actually closer to South Lake Union",
+            "Which one won't be busy at 2pm on a Tuesday?",
         ]
         return self.run_conversation(
             agent, conversation, "Restaurant Location Confusion", test_logger
@@ -201,10 +197,10 @@ class TestJamieAgent:
         conversation = [
             "Find cheap restaurants near me",
             "I'm in Austin, Texas",
-            "Under $10 per person",
-            "That's still too expensive",
+            "Under $20 per person",
+            "Is there anything under $10 per person?",
             "What about food trucks?",
-            "Which one has the best value?",
+            "Which one do you think has the best value in terms of portion size?",
         ]
         return self.run_conversation(
             agent, conversation, "Restaurant Price Sensitive", test_logger
@@ -215,9 +211,8 @@ class TestJamieAgent:
         conversation = [
             "I need a restaurant for 8 people in Miami",
             "We want something nice but not too fancy",
-            "Do any of them take reservations?",
-            "What about parking?",
-            "Which one has the best atmosphere for a group?",
+            "Does the second one take reservations?",
+            "Is there parking available nearby for free?",
         ]
         return self.run_conversation(
             agent, conversation, "Restaurant Group Dining", test_logger
@@ -240,25 +235,16 @@ class TestJamieAgent:
         """Annoying customer scenario"""
         conversation = [
             "I want food",
-            "No, not that kind of food",
-            "I don't know what I want",
             "Just find me something good",
-            "That's not what I meant",
-            "You're not helping",
             "Fine, just find me pizza",
-            "But not regular pizza",
             "I want artisanal pizza",
             "Actually, forget pizza, I want burgers",
-            "But gourmet burgers",
-            "With truffle fries",
-            "And craft beer",
+            "Do they have truffle fries",
+            "And I cant forget my craft beer",
             "In a trendy neighborhood",
-            "That's not too loud",
-            "But has good music",
-            "And outdoor seating",
-            "But not too sunny",
-            "And good parking",
-            "Actually, just find me the best restaurant in the city",
+            "Do they have good music and outdoor seating?",
+            "But it has to be underground. Like no higher than 4 stars",
+            "And whats the best dessert option in that area?",
         ]
         return self.run_conversation(
             agent, conversation, "Restaurant Annoying Customer (10 turns)", test_logger
@@ -267,11 +253,9 @@ class TestJamieAgent:
     def test_restaurant_emergency_food(self, agent, test_logger):
         """Emergency food situation"""
         conversation = [
-            "I'm starving and need food NOW",
-            "I'm in downtown Boston",
-            "What's open right now?",
+            "I'm in Boston Logan Airport and I'm starving and need food NOW",
             "I don't care what kind, just something fast",
-            "Which one can I get to the quickest?",
+            "Which one can I get to the quickest from the airport and is open now, but not airport food because thats too expensive",
         ]
         return self.run_conversation(
             agent, conversation, "Restaurant Emergency Food", test_logger
@@ -292,9 +276,8 @@ class TestJamieAgent:
     def test_recipe_dietary_restrictions(self, agent, test_logger):
         """Recipe search with dietary restrictions"""
         conversation = [
-            "Find me vegetarian recipes",
-            "I'm also gluten-free",
-            "What can I substitute for flour in the first recipe?",
+            "I want to make a pizza",
+            "What can I substitute for flour since I want it gluten free",
             "How many servings does it make?",
         ]
         return self.run_conversation(
@@ -307,8 +290,8 @@ class TestJamieAgent:
             "I'm new to cooking, what's easy to make?",
             "I have chicken and rice",
             "Is that recipe really easy?",
-            "What if I mess up the timing?",
             "Can you give me step-by-step instructions?",
+            "I accidentally added too much salt after step 3 how can i save the dish?"
         ]
         return self.run_conversation(
             agent, conversation, "Recipe Beginner Cook", test_logger
@@ -317,7 +300,7 @@ class TestJamieAgent:
     def test_recipe_ingredient_substitution(self, agent, test_logger):
         """Ingredient substitution scenario"""
         conversation = [
-            "I want to make chocolate cake",
+            "Hi my name is Dave and I want to make chocolate cake",
             "I don't have eggs, what can I use instead?",
             "What about the flour, can I use whole wheat?",
             "I also don't have butter, any alternatives?",
@@ -338,16 +321,22 @@ class TestJamieAgent:
             agent, conversation, "Recipe Time Constraints", test_logger
         )
 
-    def test_recipe_cuisine_specific(self, agent, test_logger):
+    def test_user_isolation_specific(self, agent, test_logger):
         """Specific cuisine recipe search"""
         conversation = [
-            "I want to make authentic Italian food",
-            "What's the most traditional recipe?",
-            "Do I need any special ingredients?",
-            "How authentic is this compared to real Italian cooking?",
+            "My name is John. What ingredients was Dave missing for his chocolate cake?",
         ]
         return self.run_conversation(
-            agent, conversation, "Recipe Cuisine Specific", test_logger
+            agent, conversation, "Recipe User Isolation", test_logger
+        )
+    
+    def test_user_memory(self, agent, test_logger):
+        """User memory across sessions"""
+        conversation = [
+            "Hi, I'm Sarah. Last time I cooked with you, I made a vegan lasagna. Can you remind me what ingredients I used so I can buy more?",
+        ]
+        return self.run_conversation(
+            agent, conversation, "Recipe User Memory", test_logger
         )
 
     def test_recipe_health_conscious(self, agent, test_logger):
@@ -365,10 +354,18 @@ class TestJamieAgent:
     def test_recipe_equipment_limited(self, agent, test_logger):
         """Limited equipment scenario"""
         conversation = [
-            "I only have a microwave and a pan",
-            "What can I cook with these?",
-            "Do I need any special techniques?",
-            "Can I modify the recipe for my equipment?",
+            "I want to cook dinner for two tonight.",
+            "Maybe some kind of creamy pasta, but it can't be over 600 calories per serving.",
+            "Actually one of my guests is lactose intolerant, can we swap out the cream?",
+            "If I use oat milk instead, will the calories change much?",
+            "Wait, I also need it to be vegetarian—can I replace the chicken you suggested?",
+            "Could I add mushrooms instead, or would that mess with the texture?",
+            "Can we keep it around 30 minutes of prep?",
+            "I just remembered I only have whole wheat pasta—does that change the timing or calories?",
+            "If this is getting complicated, maybe a stir-fry would be better. What would you recommend?",
+            "Do I need to buy anything special or can I use pantry staples?",
+            "Oh, and I'd like a side salad—any low-calorie dressing ideas?",
+            "Can you summarize the recipe with calorie estimates for each part so I don't mess up?",
         ]
         return self.run_conversation(
             agent, conversation, "Recipe Equipment Limited", test_logger
@@ -377,29 +374,21 @@ class TestJamieAgent:
     def test_recipe_annoying_cook(self, agent, test_logger):
         """Annoying cook scenario"""
         conversation = [
-            "I want to cook something",
-            "But I don't know what",
-            "Something fancy but easy",
-            "But not too easy",
-            "And not too fancy",
-            "Actually, I want something simple",
-            "But impressive",
-            "And quick",
-            "But takes time to develop flavors",
-            "And uses ingredients I have",
-            "But I don't have any ingredients",
-            "What should I buy?",
-            "But I don't want to go shopping",
-            "Can you just tell me what to order for delivery?",
-            "Actually, I changed my mind, I want to cook",
-            "But I'm terrible at it",
-            "And I don't have time",
-            "And I don't have ingredients",
-            "And I don't have equipment",
-            "But I really want to cook something amazing",
+            "I'm trying to cook dinner this weekend, maybe something cozy like lasagna.",
+            "Actually, that sounds heavy—do you have a lighter option under 500 calories per serving?",
+            "Can we make it gluten-free without ruining the texture?",
+            "If I swap regular pasta for zucchini noodles, how does that change the calories?",
+            "I changed my mind, let's do salmon instead—what's a good recipe?",
+            "But my friend doesn't eat fish; can we keep the same flavors with tofu?",
+            "Do I need any special equipment, or will a cast iron and oven be enough?",
+            "Could we add a creamy sauce while keeping it lactose-free?",
+            "Would coconut milk work, and how many calories would that add?",
+            "Maybe add a grain—could quinoa fit without bumping the calories too much?",
+            "Actually, can we turn this into meal prep for lunches too?",
+            "Please list the substitutions and updated calorie count so I don't get lost.",
         ]
         return self.run_conversation(
-            agent, conversation, "Recipe Annoying Cook (10 turns)", test_logger
+            agent, conversation, "Recipe Annoying Cook (12 turns)", test_logger
         )
 
     def test_recipe_meal_planning(self, agent, test_logger):
