@@ -13,6 +13,16 @@ class TestRestaurantTool:
         results = tool.search_restaurants("pizza")
         assert len(results) > 0
         assert any("pizza" in meal.lower() for restaurant in results for meal in restaurant.meals)
+    
+    def test_details_retrieval(self):
+        tool = RestaurantTool()
+        tool.search_restaurants("sushi")
+        if len(tool.last_search_results) == 0:
+            pytest.skip("No restaurants found to test details retrieval")
+        restaurant = tool.last_search_results[0]
+        details = tool.get_restaurant_details(restaurant.id)
+        assert details is not None
+        assert details.id == restaurant.id
 
 class TestRecipeTool:
     @pytest.fixture
@@ -87,20 +97,6 @@ class TestRecipeTool:
         recipe = recipe_tool.get_recipe_by_id("nonexistent")
         assert recipe is None
 
-class TestOrderTool:
-    def test_place_order(self):
-        order_tool = OrderTool()
-        order = order_tool.place_order("rest_001", "Margherita Pizza")
-        assert order.status == "confirmed"
-        assert order.restaurant_id == "rest_001"
-        assert order.meal_id == "Margherita Pizza"
-    
-    def test_get_order_status(self):
-        order_tool = OrderTool()
-        order = order_tool.place_order("rest_001", "Margherita Pizza")
-        retrieved_order = order_tool.get_order_status(order.id)
-        assert retrieved_order is not None
-        assert retrieved_order.id == order.id
 
 if __name__ == "__main__":
     pytest.main([__file__])

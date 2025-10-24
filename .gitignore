@@ -4,7 +4,7 @@
 .DS_Store
 
 src/data/*
-
+service-account-key.json
 logs/*
 
 __pycache__/

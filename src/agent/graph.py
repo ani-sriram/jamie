@@ -20,6 +20,7 @@ class JamieAgent:
         
         workflow.add_node("intent_classifier", self._classify_intent)
         workflow.add_node("restaurant_search", self._search_restaurants)
+        workflow.add_node("restaurant_details", self._get_restaurant_details)
         workflow.add_node("recipe_search", self._search_recipes)
         workflow.add_node("generate_response", self._generate_response)
         
@@ -29,13 +30,15 @@ class JamieAgent:
             "intent_classifier",
             self._route_intent,
             {
-                "restaurant": "restaurant_search",
+                "restaurant_search": "restaurant_search",
+                "restaurant_details": "restaurant_details",
                 "recipe": "recipe_search", 
                 "unknown": "generate_response"
             }
         )
 
         workflow.add_edge("restaurant_search", "generate_response")
+        workflow.add_edge("restaurant_details", "generate_response")
         workflow.add_edge("recipe_search", "generate_response")
         workflow.add_edge("generate_response", END)
         
@@ -55,11 +58,13 @@ class JamieAgent:
     
     def _classify_intent(self, state: SessionState) -> SessionState:
         system_prompt = """You are Jamie, a food recommendation assistant. 
-        Classify the user's intent as one of: restaurant, recipe, or unknown.
-        Consider the full conversation context to understand references like "that first one", "the restaurant you mentioned", etc.
-        Return only the intent type."""
+        Classify the user's intent as one of: restaurant_search, restaurant_details, recipe, or unknown.
+        - Use 'restaurant_search' for new searches (e.g., "find italian food").
+        - Use 'restaurant_details' for follow-up questions about specific restaurants that have already been mentioned (e.g., "what are the hours for the second one?", "tell me more about that place").
+        - Use 'recipe' for recipe-related queries.
         
-        # Use full conversation history for context
+        Consider the full conversation context. Return only the intent type."""
+        
         conversation_context = self._build_conversation_context(state.messages)
         intent_response = self.llm_client.generate_response(
             f"Conversation context: {conversation_context}",
@@ -67,7 +72,8 @@ class JamieAgent:
         )
         
         intent_map = {
-            "restaurant": IntentType.RESTAURANT,
+            "restaurant_search": IntentType.RESTAURANT,
+            "restaurant_details": IntentType.RESTAURANT_DETAILS,
             "recipe": IntentType.RECIPE,
         }
         
@@ -78,14 +84,37 @@ class JamieAgent:
     
     def _route_intent(self, state: SessionState) -> str:
         if state.current_intent == IntentType.RESTAURANT:
-            print("Routing to restaurant search")
-            return "restaurant"
+            return "restaurant_search"
+        elif state.current_intent == IntentType.RESTAURANT_DETAILS:
+            return "restaurant_details"
         elif state.current_intent == IntentType.RECIPE:
             print("Routing to recipe search")
             return "recipe"
         else:
             print("Routing to unknown")
             return "unknown"
+    
+    def _get_restaurant_details(self, state: SessionState) -> SessionState:
+        # Use full conversation history for context
+        conversation_context = self._build_conversation_context(state.messages)
+        
+        system_prompt = """The user has requested details about a specific restaurant. Figure out which restaurant they are referring to from the conversation context. Then provide its ID."""
+        
+        restaurant_id = self.llm_client.generate_response(
+            f"Conversation context: {conversation_context}",
+            system_prompt
+        ).strip()
+        print(f"Fetching details for restaurant ID: {restaurant_id}")
+        # Track tool usage
+        state.context["tools_used"] = state.context.get("tools_used", [])
+        state.context["tools_used"].append("RestaurantTool.get_restaurant_details")
+        details = self.restaurant_tool.get_restaurant_details(restaurant_id)
+        if details:
+            state.context["restaurant_details"] = details.model_dump()
+        else:
+            state.context["restaurant_details_error"] = "Could not retrieve restaurant details."
+        
+        return state
     
     def _search_restaurants(self, state: SessionState) -> SessionState:
         # Use full conversation history for context
