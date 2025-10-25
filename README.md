@@ -2,52 +2,69 @@
 
 Jamie is a conversational assistant that helps users decide what to eat by suggesting restaurant meals, delivery options, or home-cooked recipes.
 
-## Features
+## Architecture
 
-- Multi-turn conversational agent using LangGraph
-- Restaurant meal recommendations
-- Home-cooked recipe suggestions
-- Mock ordering system
-- Per-user containerized isolation
+Jamie's architecture ensures user isolation and is deployed on Google Cloud Platform:
+
+- **Frontend**: React app served from Firebase Hosting
+- **Orchestrator**: Central FastAPI service handling authentication and routing
+- **Agent Services**: Per-user Cloud Run services with complete isolation
+- **External APIs**: Gemini (LLM) and Google Places (restaurant data)
 
 ## Quick Start
 
+### Local Development
+As described in the main repo:
 1. Install dependencies:
 ```bash
 uv sync
-uv pip install -e .
-```
-
-2. Set up environment variables:
-```bash
-# Copy the example environment file
 cp env.example .env
-
-# Edit .env with your actual values
-export GCP_PROJECT_ID=XXXXX
-export GEMINI_API_KEY=XXXXX
-export PLACES_API_KEY=XXXXX
+# Edit .env with your API keys
 ```
 
-3. Run the backend application:
+2. Run backend:
 ```bash
 uv run src/main.py
 ```
-4. Start the front end:
-    1. Navigate to the frontend directory:
-    ```bash
-    cd frontend
-    ```
 
-    2. Install dependencies:
-    ```bash
-    npm install
-    ```
+3. Run frontend:
+```bash
+cd frontend
+npm install
+npm start
+```
 
-    3. Start the development server:
-    ```bash
-    npm start
+### Production Deployment
+```bash
+# Set environment variables
+export GCP_PROJECT_ID="your-project-id"
+export GEMINI_API_KEY="your-gemini-key"
+export PLACES_API_KEY="your-places-key"
+
+# Deploy to GCP
+./deployment/deploy.sh
+
+# Deploy frontend to Firebase
+cd frontend
+npm run build
+firebase deploy
+```
+More details can be found in `/deployment/README.md`.
+
 ## API Endpoints
 
-- `POST /chat/{user_id}` - Send messages to Jamie
+- `POST /signin` - User authentication
+- `POST /chat` - Send messages to Jamie
+- `GET /chat/sessions` - List user sessions
 - `GET /health` - Health check
+
+## Development
+
+- **Backend**: Python with FastAPI, LangGraph, and Google Cloud services
+- **Frontend**: React with Firebase Hosting
+- **Deployment**: Docker containers on Google Cloud Run
+- **Storage**: Cloud Storage for user session data
+
+## AI usage in development
+
+AI coding assistants helped in the development of this project. They were particularly useful in understanding the orchestration and deployment process on GCP.
