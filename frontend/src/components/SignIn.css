@@ -36,6 +36,15 @@
   gap: 20px;
 }
 
+.error-message {
+  background-color: #fee;
+  color: #c33;
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  border: 1px solid #fcc;
+}
+
 .input-group {
   text-align: left;
 }

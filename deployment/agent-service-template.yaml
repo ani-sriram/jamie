@@ -1,0 +1,52 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: jamie-agent-template
+  annotations:
+    run.googleapis.com/ingress: all
+spec:
+  template:
+    metadata:
+      annotations:
+        run.googleapis.com/execution-environment: gen2
+        run.googleapis.com/cpu-throttling: "false"
+        autoscaling.knative.dev/maxScale: "1"
+        autoscaling.knative.dev/minScale: "0"
+    spec:
+      containerConcurrency: 1
+      timeoutSeconds: 300
+      containers:
+      - image: gcr.io/PROJECT_ID/jamie-agent:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: USER_ID
+          value: "PLACEHOLDER_USER_ID"
+        - name: GEMINI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: jamie-secrets
+              key: gemini-api-key
+        - name: PLACES_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: jamie-secrets
+              key: places-api-key
+        - name: BASE_BUCKET
+          value: "PLACEHOLDER_BASE_BUCKET"
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "1"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 5

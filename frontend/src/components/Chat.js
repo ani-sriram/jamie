@@ -12,6 +12,14 @@ const Chat = ({ user, token, onSignOut }) => {
   const [isLoadingSessions, setIsLoadingSessions] = useState(false);
   const messagesEndRef = useRef(null);
 
+  const getBackendUrl = () => {
+    const backendUrl = process.env.REACT_APP_API_URL;
+    if (!backendUrl) {
+      throw new Error('Backend API URL not configured');
+    }
+    return backendUrl;
+  };
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -27,7 +35,7 @@ const Chat = ({ user, token, onSignOut }) => {
   const loadSessions = async () => {
     setIsLoadingSessions(true);
     try {
-      const response = await axios.get('/chat/sessions', {
+      const response = await axios.get(`${getBackendUrl()}/chat/sessions`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setSessions(response.data.sessions);
@@ -45,7 +53,7 @@ const Chat = ({ user, token, onSignOut }) => {
 
   const loadSessionHistory = async (sessionId) => {
     try {
-      const response = await axios.get(`/chat/sessions/${sessionId}/history`, {
+      const response = await axios.get(`${getBackendUrl()}/chat/sessions/${sessionId}/history`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -76,7 +84,7 @@ const Chat = ({ user, token, onSignOut }) => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post('/chat', {
+      const response = await axios.post(`${getBackendUrl()}/chat`, {
         message: userMessage.content,
         session_id: currentSessionId
       }, {
@@ -127,7 +135,7 @@ const Chat = ({ user, token, onSignOut }) => {
     if (!currentSessionId) return;
     
     try {
-      await axios.delete(`/chat/sessions/${currentSessionId}`, {
+      await axios.delete(`${getBackendUrl()}/chat/sessions/${currentSessionId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setMessages([]);

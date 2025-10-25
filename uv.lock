@@ -282,6 +282,60 @@ wheels = [
 ]
 
 [[package]]
+name = "google-cloud-iam"
+version = "2.20.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "google-api-core", version = "2.25.2", source = { registry = "https://pypi.org/simple" }, extra = ["grpc"], marker = "python_full_version >= '3.14'" },
+    { name = "google-api-core", version = "2.26.0", source = { registry = "https://pypi.org/simple" }, extra = ["grpc"], marker = "python_full_version < '3.14'" },
+    { name = "google-auth" },
+    { name = "grpc-google-iam-v1" },
+    { name = "grpcio" },
+    { name = "proto-plus" },
+    { name = "protobuf" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/f0/53/e73091b5f012e669d1ec501b70c99e8e8e86f6fa09cf56f47ae3fb0395a5/google_cloud_iam-2.20.0.tar.gz", hash = "sha256:06568ed8313f59fac46d21a5aae4c54eb1dda9f6bcecf2736c58ab1065dc9173", size = 480552, upload-time = "2025-10-14T15:42:54.9Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/f7/78/664349481896f85d7e79a1fdd5d322e9052126da8065f67c75ad2c17c97a/google_cloud_iam-2.20.0-py3-none-any.whl", hash = "sha256:643fcf6db3100772f222c7173bc1af15541a05ec1c43785191e835146ed150b8", size = 448329, upload-time = "2025-10-14T15:42:40.287Z" },
+]
+
+[[package]]
+name = "google-cloud-run"
+version = "0.12.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "google-api-core", version = "2.25.2", source = { registry = "https://pypi.org/simple" }, extra = ["grpc"], marker = "python_full_version >= '3.14'" },
+    { name = "google-api-core", version = "2.26.0", source = { registry = "https://pypi.org/simple" }, extra = ["grpc"], marker = "python_full_version < '3.14'" },
+    { name = "google-auth" },
+    { name = "grpc-google-iam-v1" },
+    { name = "grpcio" },
+    { name = "proto-plus" },
+    { name = "protobuf" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/71/f2/11883b47c445367746ad7451c54b2e82870b1c71049ba612bcff66647bd4/google_cloud_run-0.12.0.tar.gz", hash = "sha256:b97ac4c4abdb495f49163105494cc9f95d7a07b9dd8d5f4fdb3fb0f3a674325e", size = 434903, upload-time = "2025-10-20T14:57:03.745Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/28/ca/b0e3eed15f97d292ab64e95f86946ca0aa93be3729fae63258ce90a58695/google_cloud_run-0.12.0-py3-none-any.whl", hash = "sha256:396d52c366a2febdd9be806813f71fc7701262458674f376fe649f92a25652f1", size = 397677, upload-time = "2025-10-20T14:53:48.336Z" },
+]
+
+[[package]]
+name = "google-cloud-secret-manager"
+version = "2.25.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "google-api-core", version = "2.25.2", source = { registry = "https://pypi.org/simple" }, extra = ["grpc"], marker = "python_full_version >= '3.14'" },
+    { name = "google-api-core", version = "2.26.0", source = { registry = "https://pypi.org/simple" }, extra = ["grpc"], marker = "python_full_version < '3.14'" },
+    { name = "google-auth" },
+    { name = "grpc-google-iam-v1" },
+    { name = "grpcio" },
+    { name = "proto-plus" },
+    { name = "protobuf" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/c3/7c/be2d11415eec83c400d315cf9876ba29742bc7af90df391d357763463cd2/google_cloud_secret_manager-2.25.0.tar.gz", hash = "sha256:a3792bb1cb307326908297a61536031ac94852c22248f04ae112ff51a853b561", size = 269853, upload-time = "2025-10-14T15:42:59.511Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/fe/74/bf87966a6ee48c98d1b8a6a1839256911e9a2a205be76b21e54f58171615/google_cloud_secret_manager-2.25.0-py3-none-any.whl", hash = "sha256:eaf1adce3ff5dc0f24335709eba3410dc7e9d20aeea3e8df5b758e27080ebf14", size = 218548, upload-time = "2025-10-14T15:42:47.839Z" },
+]
+
+[[package]]
 name = "google-cloud-storage"
 version = "3.4.1"
 source = { registry = "https://pypi.org/simple" }
@@ -367,6 +421,25 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/30/43/b25abe02db2911397819003029bef768f68a974f2ece483e6084d1a5f754/googleapis_common_protos-1.71.0.tar.gz", hash = "sha256:1aec01e574e29da63c80ba9f7bbf1ccfaacf1da877f23609fe236ca7c72a2e2e", size = 146454, upload-time = "2025-10-20T14:58:08.732Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/25/e8/eba9fece11d57a71e3e22ea672742c8f3cf23b35730c9e96db768b295216/googleapis_common_protos-1.71.0-py3-none-any.whl", hash = "sha256:59034a1d849dc4d18971997a72ac56246570afdd17f9369a0ff68218d50ab78c", size = 294576, upload-time = "2025-10-20T14:56:21.295Z" },
+]
+
+[package.optional-dependencies]
+grpc = [
+    { name = "grpcio" },
+]
+
+[[package]]
+name = "grpc-google-iam-v1"
+version = "0.14.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "googleapis-common-protos", extra = ["grpc"] },
+    { name = "grpcio" },
+    { name = "protobuf" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/76/1e/1011451679a983f2f5c6771a1682542ecb027776762ad031fd0d7129164b/grpc_google_iam_v1-0.14.3.tar.gz", hash = "sha256:879ac4ef33136c5491a6300e27575a9ec760f6cdf9a2518798c1b8977a5dc389", size = 23745, upload-time = "2025-10-15T21:14:53.318Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/4a/bd/330a1bbdb1afe0b96311249e699b6dc9cfc17916394fd4503ac5aca2514b/grpc_google_iam_v1-0.14.3-py3-none-any.whl", hash = "sha256:7a7f697e017a067206a3dfef44e4c634a34d3dee135fe7d7a4613fe3e59217e6", size = 32690, upload-time = "2025-10-15T21:14:51.72Z" },
 ]
 
 [[package]]
@@ -507,8 +580,12 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "fastapi" },
+    { name = "google-cloud-iam" },
+    { name = "google-cloud-run" },
+    { name = "google-cloud-secret-manager" },
     { name = "google-cloud-storage" },
     { name = "google-generativeai" },
+    { name = "httpx" },
     { name = "langgraph" },
     { name = "pydantic" },
     { name = "pytest" },
@@ -520,8 +597,12 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "fastapi" },
+    { name = "google-cloud-iam" },
+    { name = "google-cloud-run" },
+    { name = "google-cloud-secret-manager" },
     { name = "google-cloud-storage" },
     { name = "google-generativeai" },
+    { name = "httpx" },
     { name = "langgraph" },
     { name = "pydantic" },
     { name = "pytest" },

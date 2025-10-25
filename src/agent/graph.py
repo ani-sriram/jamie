@@ -2,11 +2,11 @@ from typing import Dict, Any, List
 import json
 from langgraph.graph import StateGraph, END
 from langgraph.prebuilt import ToolNode
-from .clients import GeminiClient
-from .schemas import SessionState, IntentType, ConversationMessage, MessageRole
+from agent.clients import GeminiClient
+from agent.schemas import SessionState, IntentType, ConversationMessage, MessageRole
 from datetime import datetime
-from .tools.restaurants import RestaurantTool
-from .tools.recipes import RecipeTool
+from agent.tools.restaurants import RestaurantTool
+from agent.tools.recipes import RecipeTool
 
 
 class JamieAgent:

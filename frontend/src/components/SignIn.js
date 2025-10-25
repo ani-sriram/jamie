@@ -1,29 +1,39 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './SignIn.css';
 
 const SignIn = ({ onSignIn }) => {
   const [username, setUsername] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!username.trim()) return;
 
     setIsLoading(true);
+    setError('');
     
     try {
-      // Generate a simple JWT token (for testing purposes)
-      const token = btoa(JSON.stringify({ 
-        username: username.trim(), 
-        timestamp: Date.now() 
-      }));
+      const backendUrl = process.env.REACT_APP_API_URL;
+      if (!backendUrl) {
+        throw new Error('Backend API URL not configured');
+      }
+
+      const response = await axios.post(`${backendUrl}/signin`, {
+        username: username.trim()
+      });
       
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 500));
-      
-      onSignIn(username.trim(), token);
+      onSignIn(response.data.user_id, response.data.token);
     } catch (error) {
       console.error('Sign in error:', error);
+      if (error.response?.data?.detail) {
+        setError(error.response.data.detail);
+      } else if (error.message) {
+        setError(error.message);
+      } else {
+        setError('Failed to sign in. Please try again.');
+      }
     } finally {
       setIsLoading(false);
     }
@@ -36,6 +46,11 @@ const SignIn = ({ onSignIn }) => {
         <p>Sign in</p>
         
         <form onSubmit={handleSubmit} className="signin-form">
+          {error && (
+            <div className="error-message">
+              {error}
+            </div>
+          )}
           <div className="input-group">
             <label htmlFor="username">Username</label>
             <input

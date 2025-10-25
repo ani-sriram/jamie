@@ -3,7 +3,6 @@ from typing import Optional
 from agent.schemas import Order
 from agent.tools.restaurants import RestaurantTool
 
-
 class OrderTool:
     def __init__(self):
         self.restaurant_tool = RestaurantTool()

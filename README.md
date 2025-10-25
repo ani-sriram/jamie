@@ -20,9 +20,13 @@ uv pip install -e .
 
 2. Set up environment variables:
 ```bash
+# Copy the example environment file
+cp env.example .env
+
+# Edit .env with your actual values
+export GCP_PROJECT_ID=XXXXX
 export GEMINI_API_KEY=XXXXX
 export PLACES_API_KEY=XXXXX
-# Add a .env with your Gemini API key
 ```
 
 3. Run the backend application:

@@ -5,7 +5,6 @@ from typing import List, Optional
 from pathlib import Path
 from agent.schemas import Recipe, Ingredient
 
-
 def get_connection(db_path: Optional[str] = None) -> sqlite3.Connection:
     """Get a SQLite connection with Row factory"""
     if db_path is None:
