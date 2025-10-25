@@ -67,4 +67,4 @@ More details can be found in `/deployment/README.md`.
 
 ## AI usage in development
 
-AI coding assistants helped in the development of this project. They were particularly useful in understanding the orchestration and deployment process on GCP.
+AI coding assistants helped in the development of this project. They were particularly useful in understanding the orchestration and deployment process on GCP, as well as designing the frontend.
