@@ -105,65 +105,123 @@ class JamieAgent:
         # Use full conversation history for context
         conversation_context = self._build_conversation_context(state.messages)
 
-        # First try to get restaurant details by name matching
-        system_prompt = """
-        The user has requested details about a specific restaurant. 
-        Previously the user searched for restaurants and you have a list of results.
-        Figure out which restaurant they are referring to from the conversation context.
-        
-        Available restaurants from the last search:
-        {restaurant_list}
-        
-        Try to identify the restaurant by name. If you can identify the restaurant name, 
-        provide just the restaurant name. If you can't identify by name, provide the index 
-        number (starting from 0) from the list above.
-        
-        Respond with either:
-        - The restaurant name (e.g., "Pizza Palace")
-        - The index number (e.g., "2")
-        """
-
-        # Build restaurant list for the prompt
+        # Build restaurant list for the prompt (1-indexed for natural language)
         restaurant_list = []
-        for i, restaurant in enumerate(self.restaurant_tool.last_search_results):
+        for i, restaurant in enumerate(
+            self.restaurant_tool.last_search_results, start=1
+        ):
             restaurant_list.append(f"{i}. {restaurant.name} - {restaurant.location}")
-
         restaurant_list_str = "\n".join(restaurant_list)
 
-        selection = self.llm_client.generate_response(
-            f"Conversation context: {conversation_context}\n\nRestaurant list:\n{restaurant_list_str}",
-            system_prompt.format(restaurant_list=restaurant_list_str),
+        # Use structured JSON output for reliable parsing
+        system_prompt = f"""You are analyzing a conversation to identify which restaurant the user wants details about.
+
+Available restaurants from the last search:
+{restaurant_list_str}
+
+Analyze the conversation and determine which restaurant the user is referring to.
+The user might reference a restaurant by:
+- Position ("the first one", "number 2", "the third option")
+- Name ("tell me about Pizza Palace")
+- Description ("the one on Main Street")
+
+You MUST respond with ONLY a valid JSON object in this exact format:
+{{{{
+  "position": <number 1-{len(self.restaurant_tool.last_search_results)} or null>,
+  "name": "<exact restaurant name from the list or null>",
+  "confidence": "high" | "medium" | "low"
+}}}}
+
+IMPORTANT: Always try to provide BOTH position AND name when possible.
+- If the user mentions a restaurant by name, look up its position in the list above and include both.
+- If the user uses a position reference, include both the position and the corresponding name from the list.
+
+Examples:
+- User says "the first one" and first is "Pizza Palace" -> {{"position": 1, "name": "Pizza Palace", "confidence": "high"}}
+- User says "tell me about Olive Garden" and it's #3 -> {{"position": 3, "name": "Olive Garden", "confidence": "high"}}
+- User says "the Italian place" and you think it's #2 "Luigi's" -> {{"position": 2, "name": "Luigi's", "confidence": "medium"}}
+
+Do not include any other text, just the JSON object."""
+
+        selection_json = self.llm_client.generate_response(
+            f"Conversation context:\n{conversation_context}",
+            system_prompt,
         ).strip()
 
-        print(f"Restaurant selection: {selection}")
+        print(f"Restaurant selection JSON: {selection_json}")
 
         # Track tool usage
         state.context["tools_used"] = state.context.get("tools_used", [])
         state.context["tools_used"].append("RestaurantTool.get_restaurant_details")
 
-        # Try to get details by name first, then by index
         details = None
+        selection_info = ""
+
         try:
-            # Check if selection is a number (index)
-            if selection.isdigit():
-                index = int(selection)
-                details = self.restaurant_tool.get_restaurant_details_by_index(index)
-                print(
-                    f"Fetching details for restaurant at index {index}: {self.restaurant_tool.last_search_results[index].name}"
-                )
+            # Clean up the JSON response (remove markdown code blocks if present)
+            clean_json = selection_json
+            if "```" in clean_json:
+                clean_json = clean_json.split("```")[1]
+                if clean_json.startswith("json"):
+                    clean_json = clean_json[4:]
+                clean_json = clean_json.strip()
+
+            selection = json.loads(clean_json)
+            position = selection.get("position")
+            name = selection.get("name")
+            confidence = selection.get("confidence", "low")
+
+            print(
+                f"Parsed selection - position: {position}, name: {name}, confidence: {confidence}"
+            )
+
+            # Try position first (most reliable for ordinal references)
+            if position is not None and isinstance(position, int):
+                details = self.restaurant_tool.get_restaurant_by_position(position)
+                if details:
+                    selection_info = f"restaurant #{position}"
+                    print(f"Found restaurant by position {position}")
+
+            # Fall back to name matching if position didn't work
+            if details is None and name:
+                details = self.restaurant_tool.get_restaurant_details_by_name(name)
+                if details:
+                    selection_info = name
+                    print(f"Found restaurant by name: {name}")
+
+        except json.JSONDecodeError as e:
+            print(f"Failed to parse JSON response: {e}")
+            # Fallback: try to extract a number or name from the raw response
+            selection_info = selection_json
+
+            # Check for ordinal patterns
+            import re
+
+            ordinal_match = re.search(
+                r"(\d+)|first|second|third|fourth|fifth", selection_json.lower()
+            )
+            if ordinal_match:
+                ordinal_map = {
+                    "first": 1,
+                    "second": 2,
+                    "third": 3,
+                    "fourth": 4,
+                    "fifth": 5,
+                }
+                match_text = ordinal_match.group(0)
+                position = ordinal_map.get(match_text) or int(match_text)
+                details = self.restaurant_tool.get_restaurant_by_position(position)
             else:
-                # Try to get by name
-                details = self.restaurant_tool.get_restaurant_details_by_name(selection)
-                print(f"Fetching details for restaurant by name: {selection}")
-        except (ValueError, IndexError) as e:
-            print(f"Error parsing restaurant selection: {e}")
-            details = None
+                # Try name matching as last resort
+                details = self.restaurant_tool.get_restaurant_details_by_name(
+                    selection_json
+                )
 
         if details:
             state.context["restaurant_details"] = details.model_dump()
         else:
             state.context["restaurant_details_error"] = (
-                f"Could not retrieve restaurant details for: {selection}"
+                f"Could not retrieve restaurant details for: {selection_info}"
             )
 
         return state
@@ -283,9 +341,16 @@ class JamieAgent:
             5. Suggest similar recipes based on tags when relevant
             
             When discussing restaurants:
-            1. Reference specific restaurants mentioned in the conversation
-            2. Use context from previous messages to understand references like "the first one" or "that place"
-            3. Provide helpful details about location, price, and cuisine type"""
+            1. ALWAYS display ALL restaurants from the search results as a numbered list (1, 2, 3, etc.)
+            2. Format each restaurant with its number, name, location, and price level
+            3. Use context from previous messages to understand references like "the first one" or "that place"
+            4. When showing restaurant details, include hours, address, and any available information
+            5. The numbered list is important so users can reference restaurants by number later
+            
+            Example restaurant list format:
+            1. **Restaurant Name** - Address (Price Level)
+            2. **Another Restaurant** - Address (Price Level)
+            ...and so on for ALL restaurants in the results"""
 
         context_info = ""
         print("Generating response with context:\n\n", state.context)
