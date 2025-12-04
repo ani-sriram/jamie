@@ -159,3 +159,29 @@ class PlaceDetails(BaseModel):
     displayName: DisplayName
     regularSecondaryOpeningHours: Optional[List[SecondaryOpeningHours]] = None
     googleMapsLinks: Optional[GoogleMapsLinks] = None
+
+
+class UserPreferences(BaseModel):
+    dietary_restrictions: List[str] = []
+    cuisine_preferences: List[str] = []
+    price_range: Optional[str] = None
+    location: Optional[str] = None
+    default_servings: Optional[int] = None
+    preferred_difficulty: Optional[str] = None
+
+
+class SessionSummary(BaseModel):
+    session_id: str
+    user_id: str
+    timestamp: str
+    summary: str
+    key_entities: Dict[str, Any] = {}
+    intents: List[str] = []
+    tools_used: List[str] = []
+
+
+class UserProfile(BaseModel):
+    user_id: str
+    preferences: UserPreferences = UserPreferences()
+    created_at: str
+    updated_at: str

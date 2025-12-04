@@ -2,6 +2,7 @@ from typing import Dict, List
 from agent.graph import JamieAgent
 from agent.schemas import ConversationMessage, MessageRole
 from .storage import GCPSessionStorage
+from agent_service.memory_manager import MemoryManager
 import logging
 import os
 import uuid
@@ -15,6 +16,7 @@ class SessionManager:
             {}
         )  # Key: user_id, Value: List[session_id]
         self.storage = GCPSessionStorage()
+        self.memory_manager = MemoryManager()
         self._setup_logging()
 
     def _setup_logging(self):
@@ -31,7 +33,7 @@ class SessionManager:
         session_key = f"{user_id}:{session_id}"
 
         if session_key not in self.sessions:
-            self.sessions[session_key] = JamieAgent()
+            self.sessions[session_key] = JamieAgent(memory_manager=self.memory_manager)
             if user_id not in self.user_sessions:
                 self.user_sessions[user_id] = []
             if session_id not in self.user_sessions[user_id]:
@@ -67,12 +69,14 @@ class SessionManager:
         self.storage.save_message(user_message)
 
         try:
-            # Pass conversation history to agent
+            all_messages = conversation_history + [user_message]
+            
+            self.memory_manager.extract_preferences_from_conversation(user_id, all_messages)
+            
             response = agent.process_message(
                 user_id, message, session_id, conversation_history
             )
 
-            # Save assistant response to GCS
             assistant_message = ConversationMessage(
                 session_id=session_id,
                 user_id=user_id,
@@ -118,7 +122,14 @@ class SessionManager:
     def clear_session(self, user_id: str, session_id: str):
         session_key = f"{user_id}:{session_id}"
 
-        # Remove from in-memory storage
+        messages = self.storage.get_session_messages(user_id, session_id)
+        if messages:
+            intents = []
+            tools_used = []
+            self.memory_manager.create_session_summary(
+                user_id, session_id, messages, intents, tools_used
+            )
+
         if session_key in self.sessions:
             del self.sessions[session_key]
             if user_id in self.user_sessions:
@@ -126,7 +137,6 @@ class SessionManager:
                 if not self.user_sessions[user_id]:
                     del self.user_sessions[user_id]
 
-        # Remove from GCS storage
         self.storage.delete_session(user_id, session_id)
         self._log_user_event(user_id, session_id, f"Session cleared: {session_id}")
 

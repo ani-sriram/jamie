@@ -1,4 +1,4 @@
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
 import json
 from langgraph.graph import StateGraph, END
 from langgraph.prebuilt import ToolNode
@@ -10,10 +10,11 @@ from agent.tools.recipes import RecipeTool
 
 
 class JamieAgent:
-    def __init__(self):
+    def __init__(self, memory_manager=None):
         self.llm_client = GeminiClient()
         self.restaurant_tool = RestaurantTool()
         self.recipe_tool = RecipeTool()
+        self.memory_manager = memory_manager
         self.graph = self._build_graph()
 
     def _build_graph(self) -> StateGraph:
@@ -48,12 +49,20 @@ class JamieAgent:
 
         return workflow.compile()
 
-    def _build_conversation_context(self, messages: List[ConversationMessage]) -> str:
+    def _build_conversation_context(self, messages: List[ConversationMessage], user_id: str = None) -> str:
         """Build a conversation context string from all messages"""
+        context_parts = []
+        
+        if self.memory_manager and user_id:
+            preferences_context = self.memory_manager.get_user_preferences_context(user_id)
+            if preferences_context:
+                context_parts.append(preferences_context)
+        
         if not messages:
+            if context_parts:
+                return "\n".join(context_parts)
             return "No previous conversation."
 
-        context_parts = []
         for msg in messages:
             role = "User" if msg.role == MessageRole.USER else "Assistant"
             context_parts.append(f"{role}: {msg.content}")
@@ -69,7 +78,7 @@ class JamieAgent:
         - Use 'recipe_details' for follow-up questions about specific recipes that have already been mentioned (e.g., "what are the ingredients for that recipe?", "tell me more about that recipe"). Do not route to this if there is no prior recipe search in the conversation.
         Consider the full conversation context. Return only the intent type."""
 
-        conversation_context = self._build_conversation_context(state.messages)
+        conversation_context = self._build_conversation_context(state.messages, state.user_id)
         intent_response = self.llm_client.generate_response(
             f"Conversation context: {conversation_context}", system_prompt
         )
@@ -102,8 +111,7 @@ class JamieAgent:
             return "unknown"
 
     def _get_restaurant_details(self, state: SessionState) -> SessionState:
-        # Use full conversation history for context
-        conversation_context = self._build_conversation_context(state.messages)
+        conversation_context = self._build_conversation_context(state.messages, state.user_id)
 
         # First try to get restaurant details by name matching
         system_prompt = """
@@ -169,8 +177,7 @@ class JamieAgent:
         return state
 
     def _search_restaurants(self, state: SessionState) -> SessionState:
-        # Use full conversation history for context
-        conversation_context = self._build_conversation_context(state.messages)
+        conversation_context = self._build_conversation_context(state.messages, state.user_id)
         # Track tool usage
         state.context["tools_used"] = state.context.get("tools_used", [])
         state.context["tools_used"].append("RestaurantTool.search_restaurants")
@@ -180,8 +187,15 @@ class JamieAgent:
         return state
 
     def _search_recipes(self, state: SessionState) -> SessionState:
-        # Use full conversation history for context
-        conversation_context = self._build_conversation_context(state.messages)
+        conversation_context = self._build_conversation_context(state.messages, state.user_id)
+        
+        if self.memory_manager:
+            profile = self.memory_manager.get_user_profile(state.user_id)
+            prefs = profile.preferences
+            if prefs.dietary_restrictions:
+                conversation_context += f"\nNote: User has dietary restrictions: {', '.join(prefs.dietary_restrictions)}"
+            if prefs.preferred_difficulty:
+                conversation_context += f"\nNote: User prefers {prefs.preferred_difficulty} difficulty recipes"
 
         # Track tool usage
         state.context["tools_used"] = state.context.get("tools_used", [])
@@ -239,8 +253,7 @@ class JamieAgent:
         return state
 
     def _get_recipe_details(self, state: SessionState) -> SessionState:
-        # Use full conversation history for context
-        conversation_context = self._build_conversation_context(state.messages)
+        conversation_context = self._build_conversation_context(state.messages, state.user_id)
 
         system_prompt = """The user has requested details about a specific recipe. Figure out which recipe they are referring to from the conversation context. Then provide its ID. Provide the recipe Id"""
 
@@ -260,8 +273,7 @@ class JamieAgent:
         return state
 
     def _generate_response(self, state: SessionState) -> SessionState:
-        # Use full conversation history for context
-        conversation_context = self._build_conversation_context(state.messages)
+        conversation_context = self._build_conversation_context(state.messages, state.user_id)
 
         # Different prompts based on intent
         if state.current_intent == IntentType.UNKNOWN:

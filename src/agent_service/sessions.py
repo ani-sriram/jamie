@@ -2,6 +2,7 @@ from typing import Dict, List
 from agent.graph import JamieAgent
 from agent.schemas import ConversationMessage, MessageRole
 from agent_service.storage import GCPSessionStorage
+from agent_service.memory_manager import MemoryManager
 import logging
 import os
 import uuid
@@ -9,8 +10,9 @@ from datetime import datetime
 
 class SessionManager:
     def __init__(self):
-        self.sessions: Dict[str, JamieAgent] = {}  # Key: session_id
+        self.sessions: Dict[str, JamieAgent] = {}  # Key: f"{user_id}:{session_id}"
         self.storage = GCPSessionStorage()
+        self.memory_manager = MemoryManager()
         self._setup_logging()
     
     def _setup_logging(self):
@@ -22,11 +24,12 @@ class SessionManager:
         if session_id is None:
             session_id = str(uuid.uuid4())
         
-        if session_id not in self.sessions:
-            self.sessions[session_id] = JamieAgent()
+        session_key = f"{user_id}:{session_id}"
+        if session_key not in self.sessions:
+            self.sessions[session_key] = JamieAgent(memory_manager=self.memory_manager)
             self._log_user_event(user_id, session_id, f"New session created: {session_id}")
         
-        return self.sessions[session_id], session_id
+        return self.sessions[session_key], session_id
     
     def process_message(self, user_id: str, message: str, session_id: str = None) -> tuple[str, str]:
         agent, session_id = self.get_or_create_session(user_id, session_id)
@@ -47,10 +50,12 @@ class SessionManager:
         self.storage.save_message(user_message)
         
         try:
-            # Pass conversation history to agent
+            all_messages = conversation_history + [user_message]
+            
+            self.memory_manager.extract_preferences_from_conversation(user_id, all_messages)
+            
             response = agent.process_message(user_id, message, session_id, conversation_history)
             
-            # Save assistant response to GCS
             assistant_message = ConversationMessage(
                 session_id=session_id,
                 user_id=user_id,
@@ -84,17 +89,27 @@ class SessionManager:
         return self.storage.get_session_messages(user_id, session_id)
     
     def clear_session(self, user_id: str, session_id: str):
-        # Remove from in-memory storage
-        if session_id in self.sessions:
-            del self.sessions[session_id]
+        session_key = f"{user_id}:{session_id}"
         
-        # Remove from GCS storage
+        messages = self.storage.get_session_messages(user_id, session_id)
+        if messages:
+            intents = []
+            tools_used = []
+            self.memory_manager.create_session_summary(
+                user_id, session_id, messages, intents, tools_used
+            )
+        
+        if session_key in self.sessions:
+            del self.sessions[session_key]
+        
         self.storage.delete_session(user_id, session_id)
         self._log_user_event(user_id, session_id, f"Session cleared: {session_id}")
     
     def clear_all_user_sessions(self, user_id: str):
-        # Clear from in-memory storage
-        self.sessions.clear()
+        session_ids = self.storage.list_user_sessions(user_id)
+        for session_id in session_ids:
+            session_key = f"{user_id}:{session_id}"
+            if session_key in self.sessions:
+                del self.sessions[session_key]
         
-        # Clear from GCS storage
         self.storage.delete_all_user_sessions(user_id)
