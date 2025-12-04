@@ -6,7 +6,7 @@ Jamie is a conversational assistant that helps users decide what to eat by sugge
 
 Jamie's architecture ensures user isolation and is deployed on Google Cloud Platform:
 
-- **Frontend**: React app served from Firebase Hosting
+- **Frontend**: React app served from Cloud Run (nginx)
 - **Orchestrator**: Central FastAPI service handling authentication and routing
 - **Agent Services**: Per-user Cloud Run services with complete isolation
 - **External APIs**: Gemini (LLM) and Google Places (restaurant data)
@@ -38,16 +38,12 @@ npm start
 ```bash
 # Set environment variables
 export GCP_PROJECT_ID="your-project-id"
-export GEMINI_API_KEY="your-gemini-key"
-export PLACES_API_KEY="your-places-key"
+export GCP_REGION="us-west1"
+export BASE_BUCKET="your-storage-bucket"
+export ORCHESTRATOR_SERVICE_ACCOUNT="your-service-account"
 
-# Deploy to GCP
+# Deploy all services to GCP (frontend, orchestrator, and agent)
 ./deployment/deploy.sh
-
-# Deploy frontend to Firebase
-cd frontend
-npm run build
-firebase deploy
 ```
 More details can be found in `/deployment/README.md`.
 
@@ -61,7 +57,7 @@ More details can be found in `/deployment/README.md`.
 ## Development
 
 - **Backend**: Python with FastAPI, LangGraph, and Google Cloud services
-- **Frontend**: React with Firebase Hosting
+- **Frontend**: React with nginx on Cloud Run
 - **Deployment**: Docker containers on Google Cloud Run
 - **Storage**: Cloud Storage for user session data
 

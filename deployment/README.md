@@ -8,7 +8,7 @@ Jamie is deployed on GCP and maintains user isolation.
 
 The application is split into three components:
 
-1. **Frontend**: Static React app served from Firebase
+1. **Frontend**: Static React app served from Cloud Run (nginx)
 2. **Orchestrator Service**: Central FastAPI service handling authentication and routing
 3. **Agent Service**: Per-user Cloud Run services for isolated agent execution
 
@@ -32,10 +32,10 @@ The application is split into three components:
 ## Deployment Steps
 
 ### Key Required Tools
-- Google Cloud
-- Firebase
+- Google Cloud Platform (GCP)
 - Docker
 - Node.js and npm for frontend build
+- gcloud CLI
 
 ### 1. Configure Environment Variables
 
@@ -56,23 +56,36 @@ The API keys actually need not be set here. They should be set as secrets using 
 
 ### 2. Deploy
 
-There is a script to handle deploying the backend. The script will build and push docker images for the orchestrator and agent services, then deploy on GCP.
+The deployment script handles building and deploying all components (frontend, orchestrator, and agent services) to GCP Cloud Run.
 
-To run the script, at the root level:
+To run the deployment script, at the root level:
 ```bash
 ./deployment/deploy.sh
 ```
 
-Upon running the script and seeing a successful deployment, we will recieve a url for the orchestrator. This will need to be added to `frontend/.env.production` to deploy the frontend. Set the env variable `$REACT_APP_API_URL` to the orchestrator url.
+The script will:
+1. Build and push Docker images for orchestrator and agent services
+2. Deploy the orchestrator service to Cloud Run
+3. Configure service account permissions and secrets access
+4. Build the frontend React app with the orchestrator URL
+5. Build and push the frontend Docker image
+6. Deploy the frontend service to Cloud Run
 
-Now run the following:
-```bash
-cd frontend
-npm run build
-firebase deploy
-```
+Upon successful deployment, you will receive URLs for both the orchestrator and frontend services. The frontend is automatically configured to connect to the orchestrator.
 
 
 ## Service Configuration
 
-Refer to `agent-service-template.yaml` for details. The services are deployed on Cloud Run, which automatically scales instances with use. Containers are rather lightweight since model serving is done via API.
+All services are deployed on Cloud Run, which automatically scales instances with use. Containers are lightweight since model serving is done via API.
+
+### Frontend Service
+- **Service Name**: `jamie-frontend`
+- **Notes**: single instance, publicly accessible, only communicates with orchestrator
+
+### Orchestrator Service
+- **Service Name**: `jamie-orchestrator`
+- **Notes**: single instance, publicly accessible, requires JWT authentication
+
+### Agent Service
+- **Service Name**: `jamie-agent-{USERNAME}`
+- **Notes**: multiple instances dynamicaly provisioned per user, only accessible via orchestrator, refer to `agent-service-template.yaml` for container details

@@ -40,7 +40,7 @@ gcloud run deploy ${ORCHESTRATOR_SERVICE} \
   --cpu 1 \
   --min-instances 1 \
   --max-instances 20 \
-  --set-env-vars "GCP_PROJECT_ID=${PROJECT_ID},GCP_REGION=${REGION},AGENT_SERVICE_IMAGE=${AGENT_IMAGE},BASE_BUCKET=${BASE_BUCKET}" \
+  --set-env-vars "GCP_PROJECT_ID=${PROJECT_ID},GCP_REGION=${REGION},AGENT_SERVICE_IMAGE=${AGENT_IMAGE},BASE_BUCKET=${BASE_BUCKET},ORCHESTRATOR_SERVICE_ACCOUNT=${ORCHESTRATOR_SERVICE_ACCOUNT}" \
   --service-account ${ORCHESTRATOR_SERVICE_ACCOUNT}
 
 # Verifying permissions for orchestrator
@@ -54,6 +54,11 @@ gcloud projects add-iam-policy-binding ${PROJECT_ID} \
   --member="serviceAccount:${ORCHESTRATOR_SERVICE_ACCOUNT}" \
   --role="roles/iam.serviceAccountUser" \
   || echo "Service account user role already granted"
+
+gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+  --member="serviceAccount:${ORCHESTRATOR_SERVICE_ACCOUNT}" \
+  --role="roles/run.admin" \
+  || echo "Run admin role already granted (for IAM policy management)"
 
 # Verifying permissions for secrets
 echo "Verifying secret access..."
@@ -72,17 +77,70 @@ ORCHESTRATOR_URL=$(gcloud run services describe ${ORCHESTRATOR_SERVICE} --region
 
 echo ""
 echo "Backend deployment complete!"
-echo ""
 echo "Orchestrator URL: ${ORCHESTRATOR_URL}"
 echo ""
+
+# Build and deploy frontend
+FRONTEND_SERVICE="jamie-frontend"
+FRONTEND_IMAGE="gcr.io/${PROJECT_ID}/jamie-frontend"
+
+echo "Building frontend..."
+cd frontend
+
+if [ ! -d "node_modules" ]; then
+    echo "Installing frontend dependencies..."
+    npm install
+fi
+
+echo "Building frontend with REACT_APP_API_URL=${ORCHESTRATOR_URL}..."
+REACT_APP_API_URL=${ORCHESTRATOR_URL} npm run build
+
+if [ ! -d "build" ]; then
+    echo "Error: Frontend build failed. build directory not found."
+    exit 1
+fi
+
+cd ..
+
+echo "Building frontend Docker image..."
+docker build --platform linux/amd64 -f deployment/frontend.Dockerfile -t ${FRONTEND_IMAGE} .
+docker push ${FRONTEND_IMAGE}
+
+echo "Deploying frontend service..."
+gcloud run deploy ${FRONTEND_SERVICE} \
+  --image ${FRONTEND_IMAGE} \
+  --platform managed \
+  --region ${REGION} \
+  --allow-unauthenticated \
+  --memory 256Mi \
+  --cpu 1 \
+  --min-instances 0 \
+  --max-instances 10 \
+  --port 80
+
+FRONTEND_URL=$(gcloud run services describe ${FRONTEND_SERVICE} --region=${REGION} --format="value(status.url)")
+
+echo "Updating orchestrator CORS settings with frontend URL..."
+gcloud run services update ${ORCHESTRATOR_SERVICE} \
+  --region=${REGION} \
+  --update-env-vars "FRONTEND_URL=${FRONTEND_URL}" \
+  --quiet
+
+echo ""
+echo "=========================================="
+echo "Deployment complete!"
+echo "=========================================="
+echo ""
+echo "Backend Services:"
+echo "  Orchestrator URL: ${ORCHESTRATOR_URL}"
+echo ""
+echo "Frontend:"
+echo "  Frontend URL: ${FRONTEND_URL}"
+echo ""
+echo "API Configuration:"
+echo "  API keys are configured in secrets: gemini-api-key and places-api-key"
+echo ""
 echo "Next steps:"
-echo "1. Update your frontend environment variable:"
-echo "   REACT_APP_API_URL=${ORCHESTRATOR_URL}"
+echo "  1. Visit your frontend at: ${FRONTEND_URL}"
+echo "  2. Test the deployment by signing in and using the chat interface"
 echo ""
-echo "2. Build and deploy your frontend to Firebase:"
-echo "   cd frontend"
-echo "   REACT_APP_API_URL=${ORCHESTRATOR_URL} npm run build"
-echo "   firebase deploy"
-echo ""
-echo "3. API keys are already configured in secrets: gemini-api-key and places-api-key"
-echo "4. Test the deployment by visiting your Firebase frontend URL"
