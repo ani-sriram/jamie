@@ -81,7 +81,7 @@ class DisplayName(BaseModel):
     """
 
     text: str
-    languageCode: str
+    languageCode: Optional[str] = None
 
 
 class GoogleMapsLinks(BaseModel):
@@ -89,11 +89,11 @@ class GoogleMapsLinks(BaseModel):
     Model for the 'googleMapsLinks' object.
     """
 
-    directionsUri: str
-    placeUri: str
-    writeAReviewUri: str
-    reviewsUri: str
-    photosUri: str
+    directionsUri: Optional[str] = None
+    placeUri: Optional[str] = None
+    writeAReviewUri: Optional[str] = None
+    reviewsUri: Optional[str] = None
+    photosUri: Optional[str] = None
 
 
 class OpeningTimePoint(BaseModel):
@@ -102,9 +102,9 @@ class OpeningTimePoint(BaseModel):
     within an opening period.
     """
 
-    day: int
-    hour: int
-    minute: int
+    day: Optional[int] = None
+    hour: Optional[int] = None
+    minute: Optional[int] = None
 
 
 class OpeningPeriod(BaseModel):
@@ -112,8 +112,8 @@ class OpeningPeriod(BaseModel):
     Model for a single 'period' object.
     """
 
-    open: OpeningTimePoint
-    close: OpeningTimePoint
+    open: Optional[OpeningTimePoint] = None
+    close: Optional[OpeningTimePoint] = None
 
 
 class BaseOpeningHours(BaseModel):
@@ -122,10 +122,11 @@ class BaseOpeningHours(BaseModel):
     and 'regularSecondaryOpeningHours'.
     """
 
-    openNow: bool
-    periods: List[OpeningPeriod]
-    weekdayDescriptions: List[str]
-    nextCloseTime: datetime  # Pydantic will auto-parse the ISO 8601 string
+    openNow: Optional[bool] = None
+    periods: List[OpeningPeriod] = []
+    weekdayDescriptions: List[str] = []
+    nextCloseTime: Optional[datetime] = None
+    nextOpenTime: Optional[datetime] = None
 
 
 class RegularOpeningHours(BaseOpeningHours):
@@ -142,7 +143,7 @@ class SecondaryOpeningHours(BaseOpeningHours):
     Inherits from BaseOpeningHours and adds 'secondaryHoursType'.
     """
 
-    secondaryHoursType: str
+    secondaryHoursType: Optional[str] = None
 
 
 # --- Main Model ---
@@ -151,15 +152,25 @@ class SecondaryOpeningHours(BaseOpeningHours):
 class PlaceDetails(BaseModel):
     """
     The main Pydantic model for the entire place details response.
+    Flexible schema - all fields optional except name to handle varying API responses.
     """
 
     name: str
-    formattedAddress: str
+    formattedAddress: Optional[str] = None
     regularOpeningHours: Optional[RegularOpeningHours] = None
-    displayName: DisplayName
+    displayName: Optional[DisplayName] = None
     regularSecondaryOpeningHours: Optional[List[SecondaryOpeningHours]] = None
     googleMapsLinks: Optional[GoogleMapsLinks] = None
+    priceLevel: Optional[str] = None
+    rating: Optional[float] = None
+    userRatingCount: Optional[int] = None
+    websiteUri: Optional[str] = None
+    nationalPhoneNumber: Optional[str] = None
+    internationalPhoneNumber: Optional[str] = None
+    editorialSummary: Optional[Dict[str, Any]] = None
 
+    class Config:
+        extra = "allow"  # Allow additional fields from API without failing
 
 class UserPreferences(BaseModel):
     dietary_restrictions: List[str] = []
