@@ -12,7 +12,6 @@ from google.cloud.run_v2 import Service, Container, EnvVar, ResourceRequirements
 from google.auth.transport.requests import Request as AuthRequest
 from google.oauth2 import service_account
 from google.cloud import secretmanager
-from google.iam.v1 import policy_pb2
 import logging
 
 # Configure logging
@@ -22,13 +21,15 @@ logger = logging.getLogger(__name__)
 app = FastAPI(title="Jamie Orchestrator", version="0.1.0")
 security = HTTPBearer()
 
+frontend_url = os.getenv("FRONTEND_URL", "")
+cors_origins = ["http://localhost:3000"]
+
+if frontend_url:
+    cors_origins.append(frontend_url)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        f"https://{os.getenv('GCP_PROJECT_ID', 'your-project-id')}.firebaseapp.com",
-        f"https://{os.getenv('GCP_PROJECT_ID', 'your-project-id')}.web.app",
-        "http://localhost:3000",  # For local development
-    ],
+    allow_origins=cors_origins,
     allow_credentials=True,
     allow_methods=["GET", "POST", "DELETE", "OPTIONS"],
     allow_headers=["*"],
@@ -83,6 +84,76 @@ def get_secret(secret_name: str) -> str:
         logger.error(f"Failed to get secret {secret_name}: {e}")
         return None
 
+def _update_agent_service_iam_policy(service_name: str, project_id: str, region: str):
+    """Update IAM policy to remove allUsers and grant orchestrator access"""
+    try:
+        from google.iam.v1 import iam_policy_pb2
+        from google.cloud.iam_v1 import IAMPolicyClient
+        
+        orchestrator_service_account = os.getenv("ORCHESTRATOR_SERVICE_ACCOUNT")
+        if not orchestrator_service_account:
+            orchestrator_service_account = f"orchestrator@{project_id}.iam.gserviceaccount.com"
+        
+        iam_client = IAMPolicyClient()
+        resource_name = f"projects/{project_id}/locations/{region}/services/{service_name}"
+        
+        # Get existing policy
+        get_request = iam_policy_pb2.GetIamPolicyRequest(resource=resource_name)
+        existing_policy = iam_client.get_iam_policy(request=get_request)
+        
+        # Process bindings
+        bindings = []
+        invoker_binding = None
+        
+        # Find existing invoker binding
+        if existing_policy.bindings:
+            for binding in existing_policy.bindings:
+                if binding.role == "roles/run.invoker":
+                    invoker_binding = binding
+                else:
+                    bindings.append(binding)
+        
+        orchestrator_member = f"serviceAccount:{orchestrator_service_account}"
+        
+        # Create or update invoker binding
+        if invoker_binding:
+            # Remove allUsers and add orchestrator
+            members = [m for m in invoker_binding.members if m != "allUsers"]
+            if orchestrator_member not in members:
+                members.append(orchestrator_member)
+            invoker_binding.members[:] = members
+            logger.info(f"Updated invoker binding for {service_name}: removed allUsers, added orchestrator")
+        else:
+            # Create new binding with only orchestrator
+            invoker_binding = iam_policy_pb2.Binding(
+                role="roles/run.invoker",
+                members=[orchestrator_member]
+            )
+            logger.info(f"Created new invoker binding for {service_name} with orchestrator")
+        
+        bindings.append(invoker_binding)
+        
+        # Set the updated policy
+        policy = iam_policy_pb2.Policy(bindings=bindings)
+        request = iam_policy_pb2.SetIamPolicyRequest(
+            resource=resource_name,
+            policy=policy
+        )
+        
+        iam_client.set_iam_policy(request=request)
+        logger.info(f"Successfully updated IAM policy for {service_name} - orchestrator can invoke, allUsers removed")
+        
+    except ImportError as e:
+        logger.error(f"Failed to import IAM client: {e}")
+        logger.error("Cannot update IAM policy. Agent service may remain public.")
+        import traceback
+        logger.error(traceback.format_exc())
+    except Exception as e:
+        logger.error(f"Failed to update IAM policy for {service_name}: {e}")
+        logger.error("Agent service may remain public or orchestrator may not be able to invoke it.")
+        import traceback
+        logger.error(traceback.format_exc())
+
 def create_user_agent_service(user_id: str) -> str:
     """Create a Cloud Run service for a specific user"""
     try:
@@ -100,6 +171,8 @@ def create_user_agent_service(user_id: str) -> str:
                 name=f"projects/{project_id}/locations/{region}/services/{service_name}"
             )
             logger.info(f"Service {service_name} already exists")
+            # Update IAM policy for existing service to ensure it's private
+            _update_agent_service_iam_policy(service_name, project_id, region)
             return existing_service.uri
         except Exception:
             # Service doesn't exist, create it
@@ -145,26 +218,8 @@ def create_user_agent_service(user_id: str) -> str:
         result = operation.result()
         logger.info(f"Created service {service_name} with URI: {result.uri}")
         
-        # Allow unauthenticated access to the service
-        try:
-            # Use Cloud Run client's set_iam_policy method
-            policy = policy_pb2.Policy(
-                bindings=[
-                    policy_pb2.Binding(
-                        role="roles/run.invoker",
-                        members=["allUsers"]
-                    )
-                ]
-            )
-            
-            # Apply the IAM policy using the existing client
-            client.set_iam_policy(
-                resource=f"projects/{project_id}/locations/{region}/services/{service_name}",
-                policy=policy
-            )
-            logger.info(f"Set public access for service {service_name}")
-        except Exception as e:
-            logger.warning(f"Failed to set public access for {service_name}: {e}")
+        # Update IAM policy to make service private and grant orchestrator access
+        _update_agent_service_iam_policy(service_name, project_id, region)
         
         return result.uri
         
@@ -186,16 +241,23 @@ def get_identity_token(target_url: str) -> str:
     try:
         from google.auth import default
         from google.auth.transport.requests import Request
+        from google.oauth2 import id_token
         
-        credentials, _ = default()
-        
+        credentials, project = default()
         request = Request()
         
-        credentials.refresh(request)
+        # Refresh credentials if needed
+        if not credentials.valid:
+            credentials.refresh(request)
         
-        return credentials.token
+        # Get ID token with the target URL as audience for service-to-service auth
+        # The audience should be the target service URL
+        id_token_obj = id_token.fetch_id_token(request, target_url)
+        return id_token_obj
     except Exception as e:
         logger.error(f"Failed to get identity token: {e}")
+        import traceback
+        logger.error(traceback.format_exc())
         return None
 
 async def proxy_to_agent(user_id: str, endpoint: str, method: str, data: Optional[dict] = None) -> dict:
@@ -205,14 +267,16 @@ async def proxy_to_agent(user_id: str, endpoint: str, method: str, data: Optiona
         
         # Get identity token for service-to-service authentication
         identity_token = get_identity_token(agent_url)
+        if not identity_token:
+            logger.error("Failed to get identity token for agent service")
+            raise HTTPException(status_code=500, detail="Failed to authenticate with agent service")
         
         async with httpx.AsyncClient(timeout=30.0) as client:
             url = f"{agent_url}{endpoint}"
-            headers = {"X-User-ID": user_id}  # Service-to-service auth
-            
-            # Add identity token if available
-            if identity_token:
-                headers["Authorization"] = f"Bearer {identity_token}"
+            headers = {
+                "X-User-ID": user_id,  # Application-level auth header
+                "Authorization": f"Bearer {identity_token}"  # Cloud Run service-to-service auth
+            }
             
             if method == "GET":
                 response = await client.get(url, headers=headers)
@@ -228,6 +292,8 @@ async def proxy_to_agent(user_id: str, endpoint: str, method: str, data: Optiona
             
     except httpx.HTTPError as e:
         logger.error(f"Error proxying to agent service: {e}")
+        if hasattr(e, 'response') and e.response is not None:
+            logger.error(f"Response status: {e.response.status_code}, body: {e.response.text}")
         raise HTTPException(status_code=502, detail=f"Agent service error: {str(e)}")
     except Exception as e:
         logger.error(f"Unexpected error proxying to agent: {e}")
