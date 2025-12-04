@@ -41,6 +41,8 @@ export GCP_PROJECT_ID="your-project-id"
 export GCP_REGION="us-west1"
 export BASE_BUCKET="your-storage-bucket"
 export ORCHESTRATOR_SERVICE_ACCOUNT="your-service-account"
+export GEMINI_API_KEY="your-gemini-key"
+export PLACES_API_KEY="your-places-key"
 
 # Deploy all services to GCP (frontend, orchestrator, and agent)
 ./deployment/deploy.sh
