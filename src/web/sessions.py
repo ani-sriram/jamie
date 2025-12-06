@@ -7,6 +7,7 @@ import logging
 import os
 import uuid
 from datetime import datetime
+from typing import Optional
 
 
 class SessionManager:
@@ -18,6 +19,8 @@ class SessionManager:
         self.storage = GCPSessionStorage()
         self.memory_manager = MemoryManager()
         self._setup_logging()
+        # Read global toggle once; also allow per-call override
+        self._memory_disabled = os.getenv("JAMIE_DISABLE_MEMORY", "").strip().lower() in ("1", "true", "yes", "on")
 
     def _setup_logging(self):
         logs_dir = os.path.join(os.path.dirname(__file__), "..", "..", "logs")
@@ -45,7 +48,7 @@ class SessionManager:
         return self.sessions[session_key], session_id
 
     def process_message(
-        self, user_id: str, message: str, session_id: str = None
+        self, user_id: str, message: str, session_id: str = None, disable_memory: Optional[bool] = None
     ) -> tuple[str, str]:
         agent, session_id = self.get_or_create_session(user_id, session_id)
         self._log_user_event(user_id, session_id, f"Processing message: {message}")
@@ -70,9 +73,11 @@ class SessionManager:
 
         try:
             all_messages = conversation_history + [user_message]
-            
-            self.memory_manager.extract_preferences_from_conversation(user_id, all_messages)
-            
+
+            mem_off = self._memory_disabled if disable_memory is None else bool(disable_memory)
+            if not mem_off:
+                self.memory_manager.extract_preferences_from_conversation(user_id, all_messages)
+
             response = agent.process_message(
                 user_id, message, session_id, conversation_history
             )
@@ -119,11 +124,12 @@ class SessionManager:
         """Get conversation history for a specific session"""
         return self.storage.get_session_messages(user_id, session_id)
 
-    def clear_session(self, user_id: str, session_id: str):
+    def clear_session(self, user_id: str, session_id: str, disable_memory: Optional[bool] = None):
         session_key = f"{user_id}:{session_id}"
 
         messages = self.storage.get_session_messages(user_id, session_id)
-        if messages:
+        mem_off = self._memory_disabled if disable_memory is None else bool(disable_memory)
+        if messages and not mem_off:
             intents = []
             tools_used = []
             self.memory_manager.create_session_summary(

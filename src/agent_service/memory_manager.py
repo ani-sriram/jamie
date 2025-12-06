@@ -3,12 +3,18 @@ from datetime import datetime
 from agent.schemas import UserProfile, UserPreferences, SessionSummary, ConversationMessage, IntentType
 from agent_service.memory_storage import MemoryStorage
 from agent.clients import GeminiClient
+import os
 
 
 class MemoryManager:
     def __init__(self):
         self.storage = MemoryStorage()
         self.llm_client = GeminiClient()
+
+    @staticmethod
+    def _is_memory_disabled() -> bool:
+        val = os.getenv("JAMIE_DISABLE_MEMORY", "").strip().lower()
+        return val in ("1", "true", "yes", "on")
 
     def get_user_profile(self, user_id: str) -> UserProfile:
         profile = self.storage.get_user_profile(user_id)
@@ -22,6 +28,8 @@ class MemoryManager:
     def extract_preferences_from_conversation(
         self, user_id: str, messages: List[ConversationMessage]
     ) -> Optional[UserPreferences]:
+        if self._is_memory_disabled():
+            return None
         if not messages:
             return None
 
@@ -110,6 +118,17 @@ class MemoryManager:
         intents: List[IntentType],
         tools_used: List[str]
     ) -> SessionSummary:
+        if self._is_memory_disabled():
+            # Minimal placeholder summary; do not call LLM or persist
+            return SessionSummary(
+                session_id=session_id,
+                user_id=user_id,
+                timestamp=datetime.utcnow().isoformat() + "Z",
+                summary=f"Session with {len(messages)} messages",
+                key_entities={"recipes": [], "restaurants": []},
+                intents=[intent.value for intent in intents],
+                tools_used=tools_used
+            )
         conversation_text = "\n".join([
             f"{'User' if msg.role.value == 'user' else 'Assistant'}: {msg.content}"
             for msg in messages
@@ -154,9 +173,13 @@ class MemoryManager:
         return summary
 
     def get_recent_session_summaries(self, user_id: str, limit: int = 5) -> List[SessionSummary]:
+        if self._is_memory_disabled():
+            return []
         return self.storage.get_session_summaries(user_id, limit)
 
     def get_user_preferences_context(self, user_id: str) -> str:
+        if self._is_memory_disabled():
+            return ""
         profile = self.get_user_profile(user_id)
         prefs = profile.preferences
         

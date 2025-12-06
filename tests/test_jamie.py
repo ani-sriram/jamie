@@ -135,7 +135,7 @@ class TestJamieAgent:
         conversation = [
             "Find ice cream near me",
             "I'm in downtown San Francisco",
-            "Which of these is open after 11 PM?",
+            "What are the hours for the first restaurant?",
         ]
         return self.run_conversation(
             agent, conversation, "Restaurant Basic Search", test_logger

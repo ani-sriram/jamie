@@ -48,17 +48,25 @@ async def health_check():
     return {"status": "healthy", "user_id": USER_ID}
 
 @app.post("/chat", response_model=ChatResponse)
-async def chat(request: ChatRequest, user_id: str = Depends(verify_service_auth)):
+async def chat(
+    request: ChatRequest,
+    user_id: str = Depends(verify_service_auth),
+    x_disable_memory: str | None = Header(default=None, alias="X-Disable-Memory")
+):
     """Process chat message for the assigned user"""
     
     if not request.message.strip():
         raise HTTPException(status_code=400, detail="Message cannot be empty")
     
     try:
+        disable_memory = None
+        if x_disable_memory is not None:
+            disable_memory = x_disable_memory.strip().lower() in ("1", "true", "yes", "on")
         response, session_id = session_manager.process_message(
             USER_ID, 
             request.message, 
-            request.session_id
+            request.session_id,
+            disable_memory=disable_memory
         )
         return ChatResponse(response=response, user_id=USER_ID, session_id=session_id)
     except Exception as e:
@@ -77,9 +85,16 @@ async def get_session_history(session_id: str, user_id: str = Depends(verify_ser
     return SessionHistoryResponse(user_id=USER_ID, session_id=session_id, messages=messages)
 
 @app.delete("/chat/sessions/{session_id}")
-async def clear_session(session_id: str, user_id: str = Depends(verify_service_auth)):
+async def clear_session(
+    session_id: str,
+    user_id: str = Depends(verify_service_auth),
+    x_disable_memory: str | None = Header(default=None, alias="X-Disable-Memory")
+):
     """Clear specific session for the assigned user"""
-    session_manager.clear_session(USER_ID, session_id)
+    disable_memory = None
+    if x_disable_memory is not None:
+        disable_memory = x_disable_memory.strip().lower() in ("1", "true", "yes", "on")
+    session_manager.clear_session(USER_ID, session_id, disable_memory=disable_memory)
     return {"message": f"Session {session_id} cleared for user {USER_ID}"}
 
 @app.delete("/chat/sessions")

@@ -10,6 +10,7 @@ class GCPSessionStorage:
     def __init__(self):
         self.client = storage.Client()
         self.bucket_name = Config.BASE_BUCKET
+        self.timeout = Config.GCS_TIMEOUT_SECONDS
     
     def _get_session_file_path(self, user_id: str, session_id: str) -> str:
         """Get the GCS path for a session file"""
@@ -31,13 +32,13 @@ class GCPSessionStorage:
             message_line = f"{json.dumps(message_data)}\n"
             
             # Check if file exists
-            if blob.exists():
+            if blob.exists(timeout=self.timeout):
                 # Append to existing file
-                existing_content = blob.download_as_text()
-                blob.upload_from_string(existing_content + message_line)
+                existing_content = blob.download_as_text(timeout=self.timeout)
+                blob.upload_from_string(existing_content + message_line, timeout=self.timeout)
             else:
                 # Create new file
-                blob.upload_from_string(message_line)
+                blob.upload_from_string(message_line, timeout=self.timeout)
             
             return True
         except Exception as e:
@@ -51,10 +52,10 @@ class GCPSessionStorage:
             file_path = self._get_session_file_path(user_id, session_id)
             blob = bucket.blob(file_path)
             
-            if not blob.exists():
+            if not blob.exists(timeout=self.timeout):
                 return []
             
-            content = blob.download_as_text()
+            content = blob.download_as_text(timeout=self.timeout)
             messages = []
             
             for line in content.strip().split('\n'):
@@ -80,7 +81,7 @@ class GCPSessionStorage:
             bucket = self.client.bucket(self.bucket_name)
             prefix = f"sessions/{user_id}/"
             
-            blobs = bucket.list_blobs(prefix=prefix)
+            blobs = bucket.list_blobs(prefix=prefix, timeout=self.timeout)
             session_ids = []
             
             for blob in blobs:
@@ -102,8 +103,8 @@ class GCPSessionStorage:
             file_path = self._get_session_file_path(user_id, session_id)
             blob = bucket.blob(file_path)
             
-            if blob.exists():
-                blob.delete()
+            if blob.exists(timeout=self.timeout):
+                blob.delete(timeout=self.timeout)
                 return True
             return False
         except Exception as e:
@@ -116,12 +117,12 @@ class GCPSessionStorage:
             bucket = self.client.bucket(self.bucket_name)
             prefix = f"sessions/{user_id}/"
             
-            blobs = bucket.list_blobs(prefix=prefix)
+            blobs = bucket.list_blobs(prefix=prefix, timeout=self.timeout)
             deleted_count = 0
             
             for blob in blobs:
                 if blob.name.endswith('.jsonl'):
-                    blob.delete()
+                    blob.delete(timeout=self.timeout)
                     deleted_count += 1
             
             return deleted_count > 0

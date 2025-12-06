@@ -7,6 +7,7 @@ import json
 from .sessions import SessionManager
 from agent.schemas import ConversationMessage
 from config import Config
+from agent.clients import GeminiClient
 
 app = FastAPI(title="Jamie Food Agent", version="0.1.0")
 session_manager = SessionManager()
@@ -54,13 +55,20 @@ async def health_check():
 
 
 @app.post("/chat", response_model=ChatResponse)
-async def chat(request: ChatRequest, user_id: str = Depends(get_current_user)):
+async def chat(
+    request: ChatRequest,
+    user_id: str = Depends(get_current_user),
+    x_disable_memory: Optional[str] = Header(default=None, alias="X-Disable-Memory"),
+):
     if not request.message.strip():
         raise HTTPException(status_code=400, detail="Message cannot be empty")
 
     try:
+        disable_memory = None
+        if x_disable_memory is not None:
+            disable_memory = x_disable_memory.strip().lower() in ("1", "true", "yes", "on")
         response, session_id = session_manager.process_message(
-            user_id, request.message, request.session_id
+            user_id, request.message, request.session_id, disable_memory=disable_memory
         )
         return ChatResponse(response=response, user_id=user_id, session_id=session_id)
     except Exception as e:
@@ -84,8 +92,15 @@ async def get_session_history(
 
 
 @app.delete("/chat/sessions/{session_id}")
-async def clear_session(session_id: str, user_id: str = Depends(get_current_user)):
-    session_manager.clear_session(user_id, session_id)
+async def clear_session(
+    session_id: str,
+    user_id: str = Depends(get_current_user),
+    x_disable_memory: Optional[str] = Header(default=None, alias="X-Disable-Memory"),
+):
+    disable_memory = None
+    if x_disable_memory is not None:
+        disable_memory = x_disable_memory.strip().lower() in ("1", "true", "yes", "on")
+    session_manager.clear_session(user_id, session_id, disable_memory=disable_memory)
     return {"message": f"Session {session_id} cleared for user {user_id}"}
 
 
@@ -101,6 +116,11 @@ async def get_stats():
         "active_sessions": session_manager.get_session_count(),
         "status": "operational",
     }
+
+@app.on_event("shutdown")
+async def on_shutdown():
+    # Gracefully stop background LLM work so messages don't continue after server stops
+    GeminiClient.shutdown()
 
 
 if __name__ == "__main__":

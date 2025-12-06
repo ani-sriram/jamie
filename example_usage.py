@@ -5,11 +5,16 @@ Example usage of Jamie Food Agent
 
 import requests
 import json
+import base64
 
 BASE_URL = "http://localhost:8000"
 
 def test_jamie_agent():
     user_id = "demo_user"
+    # Build simple dev token expected by src/web/api.py (base64-encoded JSON with username)
+    token = base64.b64encode(json.dumps({"username": user_id}).encode()).decode()
+    headers = {"Authorization": f"Bearer {token}"}
+    session_id = None
     
     # Test messages
     test_messages = [
@@ -27,14 +32,16 @@ def test_jamie_agent():
         print(f"\n{i}. User: {message}")
         
         try:
-            response = requests.post(
-                f"{BASE_URL}/chat/{user_id}",
-                json={"message": message}
-            )
+            payload = {"message": message}
+            if session_id:
+                payload["session_id"] = session_id
+            response = requests.post(f"{BASE_URL}/chat", json=payload, headers=headers)
             
             if response.status_code == 200:
                 data = response.json()
                 print(f"   Jamie: {data['response']}")
+                # Persist session across turns
+                session_id = data.get("session_id", session_id)
             else:
                 print(f"   Error: {response.status_code} - {response.text}")
                 
