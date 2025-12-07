@@ -18,6 +18,26 @@ class RecipeTool:
     def __init__(self, db_path: Optional[str] = None):
         """Initialize RecipeTool with optional custom db_path"""
         self.db_path = db_path
+        self.last_search_results: List[Recipe] = []
+
+    def get_recipe_by_position(self, position: int) -> Optional[Recipe]:
+        """Get a recipe from the last search results by position (1-indexed)"""
+        if 1 <= position <= len(self.last_search_results):
+            return self.last_search_results[position - 1]
+        return None
+
+    def get_recipe_by_name(self, name: str) -> Optional[Recipe]:
+        """Get a recipe from last search results by name (fuzzy match)"""
+        name_lower = name.lower()
+        # Exact match first
+        for recipe in self.last_search_results:
+            if recipe.title.lower() == name_lower:
+                return recipe
+        # Partial match
+        for recipe in self.last_search_results:
+            if name_lower in recipe.title.lower() or recipe.title.lower() in name_lower:
+                return recipe
+        return None
 
     def find_recipes(
         self,
@@ -94,6 +114,7 @@ class RecipeTool:
         difficulty: Optional[str] = None,
         servings: Optional[int] = None,
         tags: Optional[List[str]] = None,
+        require_all_ingredients: bool = False,
         limit: int = 5,
     ) -> List[Recipe]:
         """
@@ -106,6 +127,8 @@ class RecipeTool:
             difficulty: Recipe difficulty level
             servings: Minimum number of servings
             tags: List of tags to match
+            require_all_ingredients: If True, recipes must contain ALL ingredients (AND).
+                                     If False, recipes can contain ANY ingredient (OR).
             limit: Maximum number of results to return
         """
         where_clauses = []
@@ -116,13 +139,14 @@ class RecipeTool:
             params.append(recipe_title.lower())  # case-insensitive partial match
 
         if ingredients:
-            # Match any of the ingredients (OR logic)
+            # Match ingredients with AND or OR based on require_all_ingredients
             ing_clauses = []
             for ing in ingredients:
                 ing_name = ing["name"] if isinstance(ing, dict) else str(ing)
                 ing_clauses.append("ingredients_text LIKE '%'||?||'%'")
                 params.append(ing_name.lower())
-            where_clauses.append(f"({' OR '.join(ing_clauses)})")
+            join_op = ' AND ' if require_all_ingredients else ' OR '
+            where_clauses.append(f"({join_op.join(ing_clauses)})")
 
         if excluded_ingredients:
             # Exclude these ingredients (AND NOT logic)
@@ -191,7 +215,9 @@ class RecipeTool:
                 )
             else:
                 ingredients_list.append(Ingredient(name=str(ing)))
-
+        tags = []
+        if row["tags"]:
+            tags = [t.strip() for t in row["tags"].split(',')]
         return Recipe(
             id=row["id"],
             title=row["title"],
@@ -201,4 +227,5 @@ class RecipeTool:
             cook_time=row["cook_time"],
             difficulty=row["difficulty"],
             servings=row["servings"],
+            tags=tags,
         )
