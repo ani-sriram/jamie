@@ -1,5 +1,6 @@
 from typing import Dict, Any, List, Optional
 import json
+import re
 from langgraph.graph import StateGraph, END
 from langgraph.prebuilt import ToolNode
 from agent.clients import GeminiClient
@@ -70,8 +71,8 @@ class JamieAgent:
         return "\n".join(context_parts)
 
     def _classify_intent(self, state: SessionState) -> SessionState:
-        system_prompt = """You are Jamie, a food recommendation assistant. 
-        Classify the user's intent as one of: restaurant_search, restaurant_details, recipe, or unknown.
+        system_prompt = """You are Jamie, a food recommendation assistant.
+        Classify the user's intent as one of: restaurant_search, restaurant_details, recipe_search, recipe_details, or unknown.
         - Use 'restaurant_search' for new searches (e.g., "find italian food").
         - Use 'restaurant_details' for follow-up questions about specific restaurants that have already been mentioned (e.g., "what are the hours for the second one?", "tell me more about that place"). Do not route to this if there is no prior restaurant search in the conversation.
         - Use 'recipe_search' for recipe-related queries.
@@ -260,73 +261,202 @@ Do not include any other text, just the JSON object."""
 
         # Extract search criteria
         system_prompt = """Analyze the user's recipe request and extract:
-        1. Ingredients to include (with quantities if specified)
-        2. Ingredients to exclude
-        3. Maximum total time (in minutes)
-        4. Difficulty level (easy/medium/hard)
-        5. Dietary preferences or cuisine types (as tags)
-        6. Minimum servings needed
+        1. Recipe title or dish name (if they mention a specific dish)
+        2. Ingredients to include (just names, no quantities needed)
+        3. Ingredients to exclude
+        4. Maximum total time (in minutes)
+        5. Difficulty level (easy/medium/hard)
+        6. Dietary preferences or cuisine types (as tags)
+        7. Minimum servings needed
+        8. Whether user wants recipes with ALL listed ingredients (true) or ANY of them (false)
+           - "I have X and Y, what can I make?" → true (they want to use up what they have)
+           - "find something with X or Y" → false (flexible, either works)
+           - Default to true when user lists multiple ingredients they have on hand
         Most likely the user will only provide a recipe title or ingredients. Don't use any fields if they are not provided.
         Consider the full conversation context to understand references like "that recipe you mentioned", "the ingredients from before", etc.
         Return a JSON object with these fields (null if not mentioned):
         {
-            "recipe_title": "recipe title" or null,
-            "ingredients": [{"name": "ingredient", "quantity": number or null, "unit": "unit" or null, "calories": number or null}, ...] or null,
+            "recipe_title": "recipe title or dish name" or null,
+            "ingredients": ["ingredient1", "ingredient2", ...] or null,
             "excluded_ingredients": ["ingredient1", ...] or null,
             "max_total_time": number or null,
-            "difficulty": "easy/medium/hard" or null,
+            "difficulty": "easy" or "medium" or "hard" or null,
             "tags": ["tag1", "tag2", ...] or null,
-            "servings": number or null
+            "servings": number or null,
+            "require_all_ingredients": true or false (default true if multiple ingredients listed)
         }"""
 
-        search_criteria = self.llm_client.generate_response(
+        criteria = self.llm_client.generate_response(
             f"Conversation context: {conversation_context}", system_prompt
         )
+
+        search_criteria = criteria
+        if "```" in search_criteria:
+            search_criteria = search_criteria.split("```")[1]
+            if search_criteria.startswith('json'):
+                search_criteria=search_criteria[4:]
+            search_criteria = search_criteria.strip()
 
         try:
             print("using search criteria:", search_criteria)
             criteria = json.loads(search_criteria)
-            # We call find_recipes here, so record that actual tool usage
-            state.context["tools_used"].append("RecipeTool.find_recipes")
-            # Extract just the ingredient names from the ingredient objects
-            ingredient_names = [ing["name"] for ing in criteria.get("ingredients", [])]
-            recipes = self.recipe_tool.find_recipes(
-                ingredients=ingredient_names,
+            state.context["tools_used"].append("RecipeTool.search_recipes")
+
+            # Extract ingredient names (handle both string and dict formats)
+            ingredients = criteria.get("ingredients") or []
+            if ingredients and isinstance(ingredients[0], dict):
+                ingredients = [ing.get("name", str(ing)) for ing in ingredients]
+
+            # First attempt: search with all provided filters
+            recipes = self.recipe_tool.search_recipes(
+                recipe_title=criteria.get("recipe_title"),
+                ingredients=ingredients if ingredients else None,
+                excluded_ingredients=criteria.get("excluded_ingredients"),
+                max_total_time=criteria.get("max_total_time"),
                 difficulty=criteria.get("difficulty"),
-                max_prep_time=criteria.get("max_total_time"),
+                servings=criteria.get("servings"),
+                tags=criteria.get("tags"),
+                require_all_ingredients=criteria.get("require_all_ingredients", True),
             )
+
+            # Fallback 1: If no results and we had filters, try with just title or ingredients
+            if not recipes and (criteria.get("difficulty") or criteria.get("max_total_time")):
+                print("No results with filters, trying without difficulty/time filters")
+                recipes = self.recipe_tool.search_recipes(
+                    recipe_title=criteria.get("recipe_title"),
+                    ingredients=ingredients if ingredients else None,
+                    excluded_ingredients=criteria.get("excluded_ingredients"),
+                )
+
+            # Fallback 2: If still no results and we have a title, try title-only search
+            if not recipes and criteria.get("recipe_title"):
+                print("No results, trying title-only search")
+                recipes = self.recipe_tool.search_by_title(criteria.get("recipe_title"))
+
+            # Fallback 3: If still no results but we have ingredients, try ingredients-only
+            if not recipes and ingredients:
+                print("No results, trying ingredients-only search")
+                recipes = self.recipe_tool.search_recipes(ingredients=ingredients)
+
         except json.JSONDecodeError:
             # Fallback to simple ingredient search
             ingredient_names = [ing.strip() for ing in search_criteria.split(",")]
-            # Record the fallback tool call as well
-            state.context["tools_used"].append("RecipeTool.find_recipes")
-            recipes = self.recipe_tool.find_recipes(ingredient_names)
+            state.context["tools_used"].append("RecipeTool.search_recipes")
+            recipes = self.recipe_tool.search_recipes(ingredients=ingredient_names)
+            criteria = {"ingredients": ingredient_names}
+
+        # Cache results for follow-up questions
+        self.recipe_tool.last_search_results = recipes
 
         state.context["recipes"] = [recipe.model_dump() for recipe in recipes]
 
         # Add search criteria to context for response generation
-        state.context["search_criteria"] = (
-            criteria if "criteria" in locals() else {"ingredients": ingredient_names}
-        )
+        state.context["search_criteria"] = criteria
         return state
 
     def _get_recipe_details(self, state: SessionState) -> SessionState:
         conversation_context = self._build_conversation_context(state.messages, state.user_id)
 
-        system_prompt = """The user has requested details about a specific recipe. Figure out which recipe they are referring to from the conversation context. Then provide its ID. Provide the recipe Id"""
+        # Build recipe list for the prompt (1-indexed for natural language)
+        recipe_list = []
+        for i, recipe in enumerate(self.recipe_tool.last_search_results, start=1):
+            recipe_list.append(f"{i}. {recipe.title} (ID: {recipe.id})")
+        recipe_list_str = "\n".join(recipe_list) if recipe_list else "No recipes from previous search."
 
-        recipe_id = self.llm_client.generate_response(
-            f"Conversation context: {conversation_context}", system_prompt
+        # Use structured JSON output for reliable parsing (like restaurant_details)
+        system_prompt = f"""You are analyzing a conversation to identify which recipe the user wants details about.
+
+Available recipes from the last search:
+{recipe_list_str}
+
+Analyze the conversation and determine which recipe the user is referring to.
+The user might reference a recipe by:
+- Position ("the first one", "number 2", "the third recipe")
+- Name ("tell me about the carbonara", "the chicken stir-fry")
+- Description ("the easy one", "the pasta dish")
+
+You MUST respond with ONLY a valid JSON object in this exact format:
+{{
+  "position": <number 1-{len(self.recipe_tool.last_search_results)} or null>,
+  "name": "<recipe name from the list or null>",
+  "confidence": "high" | "medium" | "low"
+}}
+
+IMPORTANT: Always try to provide BOTH position AND name when possible.
+Do not include any other text, just the JSON object."""
+
+        selection_json = self.llm_client.generate_response(
+            f"Conversation context:\n{conversation_context}",
+            system_prompt,
         ).strip()
-        print(f"Fetching details for recipe ID: {recipe_id}")
+
+        print(f"Recipe selection JSON: {selection_json}")
+
         # Track tool usage
         state.context["tools_used"] = state.context.get("tools_used", [])
         state.context["tools_used"].append("RecipeTool.get_recipe_details")
-        details = self.recipe_tool.get_recipe_by_id(recipe_id)
+
+        details = None
+        selection_info = ""
+
+        try:
+            # Clean up the JSON response (remove markdown code blocks if present)
+            clean_json = selection_json
+            if "```" in clean_json:
+                clean_json = clean_json.split("```")[1]
+                if clean_json.startswith("json"):
+                    clean_json = clean_json[4:]
+                clean_json = clean_json.strip()
+
+            selection = json.loads(clean_json)
+            position = selection.get("position")
+            name = selection.get("name")
+
+            print(f"Parsed selection - position: {position}, name: {name}")
+
+            # Try position first (most reliable for ordinal references)
+            if position is not None and isinstance(position, int):
+                details = self.recipe_tool.get_recipe_by_position(position)
+                if details:
+                    selection_info = f"recipe #{position}"
+                    print(f"Found recipe by position {position}")
+
+            # Fall back to name matching if position didn't work
+            if details is None and name:
+                details = self.recipe_tool.get_recipe_by_name(name)
+                if details:
+                    selection_info = name
+                    print(f"Found recipe by name: {name}")
+
+        except json.JSONDecodeError as e:
+            print(f"Failed to parse JSON response: {e}")
+            # Fallback: try to extract a number or name from the raw response
+            selection_info = selection_json
+
+            ordinal_match = re.search(
+                r"(\d+)|first|second|third|fourth|fifth", selection_json.lower()
+            )
+            if ordinal_match:
+                ordinal_map = {
+                    "first": 1,
+                    "second": 2,
+                    "third": 3,
+                    "fourth": 4,
+                    "fifth": 5,
+                }
+                match_text = ordinal_match.group(0)
+                position = ordinal_map.get(match_text) or int(match_text)
+                details = self.recipe_tool.get_recipe_by_position(position)
+            else:
+                # Try name matching as last resort
+                details = self.recipe_tool.get_recipe_by_name(selection_json)
+
         if details:
             state.context["recipe_details"] = details.model_dump()
         else:
-            state.context["recipe_details_error"] = "Could not retrieve recipe details."
+            state.context["recipe_details_error"] = (
+                f"Could not retrieve recipe details for: {selection_info}"
+            )
 
         return state
 
