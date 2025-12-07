@@ -1,7 +1,7 @@
 import json
 import sqlite3
 import os
-from typing import List, Optional
+from typing import Any, Dict, List, Optional
 from pathlib import Path
 from agent.schemas import Recipe, Ingredient
 
@@ -19,6 +19,29 @@ class RecipeTool:
         """Initialize RecipeTool with optional custom db_path"""
         self.db_path = db_path
         self.last_search_results: List[Recipe] = []
+        self._details_cache: Dict[str, Recipe] = {}  # Cache for recipe details
+
+    def clear_cache(self):
+        """Clear the details cache"""
+        self._details_cache.clear()
+        print("Recipe details cache cleared")
+
+    def get_cache_stats(self) -> Dict[str, Any]:
+        """Get cache statistics"""
+        return {
+            "cached_recipes": len(self._details_cache),
+            "cached_ids": list(self._details_cache.keys()),
+        }
+
+    def get_indexed_recipe_list(self) -> str:
+        """Return a formatted string of recipes with indices for display"""
+        if not self.last_search_results:
+            return "No recipes found."
+        lines = []
+        for i, recipe in enumerate(self.last_search_results, start=1):
+            total_time = recipe.prep_time + recipe.cook_time
+            lines.append(f"{i}. {recipe.title} ({recipe.difficulty}, {total_time} mins)")
+        return "\n".join(lines)
 
     def get_recipe_by_position(self, position: int) -> Optional[Recipe]:
         """Get a recipe from the last search results by position (1-indexed)"""
@@ -28,15 +51,33 @@ class RecipeTool:
 
     def get_recipe_by_name(self, name: str) -> Optional[Recipe]:
         """Get a recipe from last search results by name (fuzzy match)"""
-        name_lower = name.lower()
-        # Exact match first
+        name_lower = name.lower().strip()
+
+        # First: Exact match
         for recipe in self.last_search_results:
             if recipe.title.lower() == name_lower:
                 return recipe
-        # Partial match
+
+        # Second: Partial/contains match
         for recipe in self.last_search_results:
             if name_lower in recipe.title.lower() or recipe.title.lower() in name_lower:
                 return recipe
+
+        # Third: Fuzzy word overlap matching
+        name_words = set(name_lower.split())
+        best_match = None
+        best_score = 0
+        for recipe in self.last_search_results:
+            title_words = set(recipe.title.lower().split())
+            overlap = len(name_words & title_words)
+            if overlap > best_score:
+                best_score = overlap
+                best_match = recipe
+
+        if best_match and best_score > 0:
+            print(f"Found recipe by fuzzy match: {best_match.title} (score {best_score})")
+            return best_match
+
         return None
 
     def find_recipes(
@@ -81,12 +122,23 @@ class RecipeTool:
 
     def get_recipe_by_id(self, recipe_id: str) -> Optional[Recipe]:
         """Get a single recipe by ID"""
-        conn = get_connection()
+        # Check cache first
+        if recipe_id in self._details_cache:
+            print(f"Cache hit for recipe: {recipe_id}")
+            return self._details_cache[recipe_id]
+
+        print(f"Cache miss for recipe: {recipe_id}, fetching from DB...")
+        conn = get_connection(self.db_path)
         try:
             cur = conn.cursor()
             cur.execute("SELECT * FROM recipes WHERE id = ?", (recipe_id,))
             row = cur.fetchone()
-            return self._row_to_recipe(row) if row else None
+            if row:
+                recipe = self._row_to_recipe(row)
+                self._details_cache[recipe_id] = recipe  # Cache it
+                print(f"Cached recipe: {recipe_id}")
+                return recipe
+            return None
         finally:
             conn.close()
 
@@ -140,11 +192,13 @@ class RecipeTool:
 
         if ingredients:
             # Match ingredients with AND or OR based on require_all_ingredients
+            # Also check tags so "pasta" matches recipes tagged with "pasta"
             ing_clauses = []
             for ing in ingredients:
                 ing_name = ing["name"] if isinstance(ing, dict) else str(ing)
-                ing_clauses.append("ingredients_text LIKE '%'||?||'%'")
-                params.append(ing_name.lower())
+                ing_clauses.append("(ingredients_text LIKE '%'||?||'%' OR tags LIKE '%'||?||'%')")
+                params.append(ing_name.lower())  # for ingredients_text
+                params.append(ing_name.lower())  # for tags
             join_op = ' AND ' if require_all_ingredients else ' OR '
             where_clauses.append(f"({join_op.join(ing_clauses)})")
 
