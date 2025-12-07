@@ -22,21 +22,18 @@ This document explains how evaluation works in `src/scripts/evaluate_agent.py`, 
 
 ### Scenarios
 
-- Default scenarios are embedded in the script (`default_scenarios()`), covering restaurant and recipe flows.
-- You can supply your own scenario file using `--scenarios <path>`:
-  - JSON format: `[{"name": str, "messages": [str, ...]}, ...]`
-  - Each scenario is run sequentially; within a scenario, messages are posted as turns to the same session.
+- Default scenarios are embedded in the script and are grouped by user (per-user mappings).
+- Each scenario is run sequentially; within a scenario, messages are posted as turns to the same session for that user.
 
 ### Key CLI Flags
 
 - `--api-url`: Base URL for the API (default `http://localhost:8000`).
-- `--user`: Username for a simple dev token (base64-encoded payload).
+- (no `--user`): Evaluator runs all users found in the built-in scenarios mapping.
 - `--timeout`: HTTP client timeout (seconds) for each `/chat` call from the evaluator.
 - `--turn-sleep`: Optional pause (seconds) between turns to avoid burst load.
 - `--judge`: Enable LLM-as-judge scoring of the final transcripts (requires `GEMINI_API_KEY` in the eval process).
 - `--ablate-memory`: Run A/B evaluation (Memory OFF, then Memory ON) and write a single comparison report.
 - `--force-disable-memory`: Force memory OFF for all requests (useful to avoid extra LLM calls during eval). When set with `--ablate-memory`, it runs a single OFF pass.
-- `--scenarios`: Path to a JSON file of scenarios.
 
 Important: The evaluator’s `--timeout` is an HTTP client timeout. The model’s per-call timeout is configured server-side via `.env` as `JAMIE_LLM_TIMEOUT_SECONDS` and logged at server startup.
 
@@ -49,13 +46,13 @@ For each scenario:
 
 ### Outputs
 
-- Single run (no ablation):
-  - `logs/eval_results_<timestamp>.json`: Full results with all scenarios and conversations.
-  - `logs/eval_summary_<timestamp>.csv`: Scenario-level summary.
+- Per-user run artifacts (no ablation):
+  - `logs/eval_results_<user>_<timestamp>.json`: Full results with all scenarios and conversations for that user.
+  - `logs/eval_summary_<user>_<timestamp>.csv`: Scenario-level summary for that user.
 
 - Ablation (`--ablate-memory`):
-  - `logs/eval_ablation_<timestamp>.json`: Contains both ON and OFF results and a computed comparison.
-  - `logs/eval_ablation_<timestamp>.csv`: Per-scenario deltas (time and judge).
+  - `logs/eval_ablation_<user>_<timestamp>.json`: Contains both ON and OFF results and a computed comparison for a given user.
+  - `logs/eval_ablation_<user>_<timestamp>.csv`: Per-scenario deltas (time and judge) for a given user.
 
 ### Memory Behavior in Eval
 
@@ -71,6 +68,8 @@ For each scenario:
 uv run python src/scripts/evaluate_agent.py
 ```
 
+- Multi-user: uses built-in defaults (runs all defined users) or all users in a provided multi-user scenario file.
+
 - Increase HTTP timeout and add spacing between turns:
 
 ```bash
@@ -80,7 +79,8 @@ uv run python src/scripts/evaluate_agent.py --timeout 300 --turn-sleep 1.5
 - Ablation (OFF then ON) with spacing:
 
 ```bash
-uv run python src/scripts/evaluate_agent.py --timeout 300 --turn-sleep 1.5 --ablate-memory
+
+
 ```
 
 - Single pass with memory forced OFF:
@@ -95,9 +95,23 @@ uv run python src/scripts/evaluate_agent.py --timeout 300 --turn-sleep 1.5 --for
 uv run python src/scripts/evaluate_agent.py --scenarios path/to/scenarios.json
 ```
 
+Where `scenarios.json` must be a per-user mapping:
+
+```json
+{
+  "sarah": [
+    {"name": "Restaurant Basic", "messages": ["Find ice cream near me", "I'm in downtown San Francisco"]},
+    {"name": "User Memory Check", "messages": ["Hi, I'm Sarah.", "Remind me what we discussed?"]}
+  ],
+  "alex": [
+    {"name": "Recipe Basic", "messages": ["I want to make pasta"]}
+  ]
+}
+```
+
 ### How It Works (Flow)
 
-1. The evaluator creates a dev token from `--user` (simple base64 JSON).
+1. The evaluator creates a dev token for each user (simple base64 JSON).
 2. For each scenario, it POSTs messages to `/chat`, preserving a `session_id` to keep turns in the same session.
 3. If `--ablate-memory` is enabled, it runs both OFF and ON (current order: OFF first, then ON). Memory OFF uses the header `X-Disable-Memory: 1`.
 4. Optional judge pass runs locally in the evaluator using Gemini (if `--judge` and `GEMINI_API_KEY` are set).

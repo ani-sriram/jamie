@@ -50,8 +50,22 @@ class GeminiClient:
 
         def call_model():
             with self._semaphore:
-                future = self._executor.submit(self.model.generate_content, full_prompt)
-                return future.result(timeout=Config.LLM_TIMEOUT_SECONDS)
+                # Use request_options timeout so the HTTP call itself aborts
+                future = self._executor.submit(
+                    self.model.generate_content,
+                    full_prompt,
+                    request_options={"timeout": Config.LLM_TIMEOUT_SECONDS},
+                )
+                try:
+                    # Slight cushion over HTTP timeout to allow cleanup
+                    return future.result(timeout=Config.LLM_TIMEOUT_SECONDS + 5.0)
+                except FuturesTimeout:
+                    # Ensure the background task does not keep occupying a worker
+                    try:
+                        future.cancel()
+                    except Exception:
+                        pass
+                    raise
 
         response = self._with_retry(call_model)
         return response.text
@@ -66,9 +80,21 @@ class GeminiClient:
         def call_model():
             with self._semaphore:
                 future = self._executor.submit(
-                    self.model.generate_content, full_prompt, tools=tools
+                    self.model.generate_content,
+                    full_prompt,
+                    tools=tools,
+                    request_options={"timeout": Config.LLM_TIMEOUT_SECONDS},
                 )
-                return future.result(timeout=Config.LLM_TIMEOUT_SECONDS)
+                try:
+                    # Slight cushion over HTTP timeout to allow cleanup
+                    return future.result(timeout=Config.LLM_TIMEOUT_SECONDS + 5.0)
+                except FuturesTimeout:
+                    # Ensure the background task does not keep occupying a worker
+                    try:
+                        future.cancel()
+                    except Exception:
+                        pass
+                    raise
 
         response = self._with_retry(call_model)
         return response.text

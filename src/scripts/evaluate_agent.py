@@ -25,6 +25,15 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import requests
 
+# Optional Google Cloud / Vertex AI imports (for service account auth)
+try:
+    from google.oauth2 import service_account  # type: ignore
+    import vertexai  # type: ignore
+    from vertexai.generative_models import GenerativeModel  # type: ignore
+except Exception:
+    service_account = None  # type: ignore
+    vertexai = None  # type: ignore
+    GenerativeModel = None  # type: ignore
 
 # -----------------------------
 # Data models
@@ -71,49 +80,42 @@ class RunSummary:
 # Scenarios
 # -----------------------------
 
-def default_scenarios() -> List[Tuple[str, List[str]]]:
-    """Return a list of (scenario_name, messages)."""
-    return [
-        (
-            "Restaurant Basic",
-            [
-                "Find ice cream near me",
-                "I'm in downtown San Francisco",
-                "What are the hours for the first restaurant?",
-            ],
-        ),
-        (
-            "Restaurant Dietary",
-            [
-                "Find restaurants in Denver",
-                "I'm gluten-free and vegan",
-                "Do any of them have good options for me?",
-            ],
-        ),
-        (
-            "Recipe Basic",
-            [
-                "I want to make pasta",
-                "What ingredients do I need for the first recipe?",
-                "How long does it take to cook?",
-            ],
-        ),
-        (
-            "Recipe Time-Constrained",
-            [
-                "I need something I can make in 30 minutes",
-                "I have ground beef and vegetables",
-                "Which recipe is fastest?",
-            ],
-        ),
-        (
-            "User Memory Check",
-            [
-                "Hi, I'm Sarah. I like vegan Italian food.",
-                "Remind me what we discussed about my preferences?",
-            ],
-        ),
-    ]
+# Type aliases for clarity
+Scenarios = List[Tuple[str, List[str]]]
+ScenariosByUser = Dict[str, Scenarios]
+
+
+def default_scenarios() -> ScenariosByUser:
+    """
+    Return scenarios grouped by username.
+    Keys are usernames to evaluate; values are lists of (scenario_name, messages).
+    """
+
+    data_path = Path("eval_data.json")
+    if not data_path.exists():
+        raise FileNotFoundError(
+            f"Evaluation data file not found: {data_path.resolve()}. "
+            "Please create eval_data.json with scenarios."
+        )
+    with open(data_path, "r") as f:
+        raw = json.load(f)
+    # Normalize and validate structure: Dict[str, List[[name, [messages...]]]]
+    scenarios_by_user: ScenariosByUser = {}
+    if not isinstance(raw, dict):
+        raise ValueError("eval_data.json root must be an object mapping usernames to scenarios.")
+    for username, scenarios in raw.items():
+        normalized: Scenarios = []
+        if not isinstance(scenarios, list):
+            continue
+        for item in scenarios:
+            if not (isinstance(item, (list, tuple)) and len(item) == 2):
+                continue
+            name, messages = item
+            if not isinstance(messages, list):
+                continue
+            normalized.append((str(name), [str(m) for m in messages]))
+        scenarios_by_user[str(username)] = normalized
+    return scenarios_by_user
 
 
 # -----------------------------
@@ -181,24 +183,12 @@ def post_chat(api_url: str, token: str, message: str, session_id: Optional[str],
 
 def judge_conversation_gemini(messages: List[TurnResult]) -> Optional[Dict[str, Any]]:
     """
-    Use Gemini to score the conversation. Requires GEMINI_API_KEY in env.
+    Use Gemini to score the conversation.
+    Prefers Google Cloud service account credentials (Vertex AI) if available,
+    otherwise falls back to Google AI Studio API key (GEMINI_API_KEY).
     Returns a dict of scores, or None if disabled/unavailable.
     """
-    api_key = os.getenv("GEMINI_API_KEY")
-    if not api_key:
-        return None
-
-    try:
-        import google.generativeai as genai  # type: ignore
-    except Exception:
-        return None
-
-    try:
-        genai.configure(api_key=api_key)
-        model = genai.GenerativeModel("gemini-2.5-flash")
-    except Exception:
-        return None
-
+    # Build transcript and prompt first (shared across backends)
     transcript_lines = []
     for t in messages:
         transcript_lines.append(f"User: {t.user_message}")
@@ -222,10 +212,72 @@ def judge_conversation_gemini(messages: List[TurnResult]) -> Optional[Dict[str, 
         f"{transcript}\n"
     )
 
+    # 1) Try Vertex AI with service account first if available
+    #    Looks for GOOGLE_APPLICATION_CREDENTIALS or local 'service-account-key.json'
+    creds_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
+    if not creds_path:
+        default_key = Path("service-account-key.json")
+        if default_key.exists():
+            creds_path = str(default_key.resolve())
+
+    if creds_path and service_account and vertexai and GenerativeModel:
+        try:
+            # Load project_id from the service account file if not provided separately
+            project_id: Optional[str] = None
+            try:
+                with open(creds_path, "r") as f:
+                    key_data = json.load(f)
+                    project_id = key_data.get("project_id")
+            except Exception:
+                project_id = None
+
+            region = os.getenv("GOOGLE_CLOUD_REGION", "us-central1")
+            credentials = service_account.Credentials.from_service_account_file(creds_path)
+            if project_id:
+                vertexai.init(project=project_id, location=region, credentials=credentials)
+            else:
+                # project is required by vertexai.init; if missing, failover to API key path
+                raise ValueError("Missing project_id in service account key")
+
+            model_name = os.getenv("JAMIE_GEMINI_MODEL", "gemini-2.0-flash")
+            vaimodel = GenerativeModel(model_name)
+            try:
+                response = vaimodel.generate_content(prompt)
+                text = (getattr(response, "text", None) or "").strip()
+            except Exception:
+                text = ""
+
+            if text:
+                start = text.find("{")
+                end = text.rfind("}")
+                if start != -1 and end != -1 and end > start:
+                    try:
+                        obj = json.loads(text[start : end + 1])
+                        return obj
+                    except Exception:
+                        pass
+            # If Vertex call didn't yield usable JSON, drop through to API key fallback
+        except Exception:
+            # If Vertex init/usage failed for any reason, try API key fallback
+            pass
+
+    # 2) Fallback: Google AI Studio API with GEMINI_API_KEY
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        return None
     try:
+        import google.generativeai as genai  # type: ignore
+    except Exception:
+        return None
+    try:
+        genai.configure(api_key=api_key)
+        model_name = os.getenv("JAMIE_GEMINI_MODEL", "gemini-2.5-flash")
+        model = genai.GenerativeModel(model_name)
         response = model.generate_content(prompt)
+        print("--------------------------------")
+        print(response)
+        print("--------------------------------")
         text = (response.text or "").strip()
-        # Try to extract JSON object
         start = text.find("{")
         end = text.rfind("}")
         if start == -1 or end == -1 or end <= start:
@@ -260,9 +312,6 @@ def run_scenario(
     for idx, msg in enumerate(user_messages, start=1):
         turn_start = time.time()
         assistant, session_id, err = post_chat(api_url, token, msg, session_id, disable_memory=disable_memory, http_timeout=http_timeout)
-        print(f"Assistant: {assistant}")
-        print(f"Session ID: {session_id}")
-        print(f"Error: {err}")
         elapsed = time.time() - turn_start
         per_turn_times.append(elapsed)
 
@@ -391,12 +440,14 @@ def compare_runs(
 def save_reports(
     results: List[ScenarioResult],
     summary: RunSummary,
+    label: Optional[str] = None,
 ) -> Tuple[Path, Path]:
     logs_dir = ensure_logs_dir()
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
 
-    json_path = logs_dir / f"eval_results_{ts}.json"
-    csv_path = logs_dir / f"eval_summary_{ts}.csv"
+    label_part = f"{label}_" if label else ""
+    json_path = logs_dir / f"eval_results_{label_part}{ts}.json"
+    csv_path = logs_dir / f"eval_summary_{label_part}{ts}.csv"
 
     # JSON (detailed)
     payload = {
@@ -480,12 +531,14 @@ def save_ablation_reports(
     off_summary: RunSummary,
     on_results: List[ScenarioResult],
     on_summary: RunSummary,
+    label: Optional[str] = None,
 ) -> Tuple[Path, Path]:
     logs_dir = ensure_logs_dir()
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
 
-    json_path = logs_dir / f"eval_ablation_{ts}.json"
-    csv_path = logs_dir / f"eval_ablation_{ts}.csv"
+    label_part = f"{label}_" if label else ""
+    json_path = logs_dir / f"eval_ablation_{label_part}{ts}.json"
+    csv_path = logs_dir / f"eval_ablation_{label_part}{ts}.csv"
 
     comparisons = compare_runs(off_results, on_results)
 
@@ -565,11 +618,6 @@ def parse_args(argv: List[str]) -> argparse.Namespace:
         help="Base URL of the Jamie API (default: http://localhost:8000)",
     )
     parser.add_argument(
-        "--user",
-        default=os.getenv("JAMIE_EVAL_USER", "eval_user"),
-        help="Username to evaluate with (dev token is derived from this)",
-    )
-    parser.add_argument(
         "--judge",
         action="store_true",
         help="Enable LLM-as-judge scoring (requires GEMINI_API_KEY)",
@@ -596,105 +644,83 @@ def parse_args(argv: List[str]) -> argparse.Namespace:
         action="store_true",
         help="Force memory OFF for all requests (overrides ablation).",
     )
-    parser.add_argument(
-        "--scenarios",
-        type=str,
-        default="",
-        help="Path to a JSON file with scenarios. Format: [{\"name\": str, \"messages\": [str, ...]}, ...]",
-    )
     return parser.parse_args(argv)
-
-
-def load_scenarios_from_file(path: str) -> List[Tuple[str, List[str]]]:
-    p = Path(path)
-    data = json.loads(p.read_text())
-    out: List[Tuple[str, List[str]]] = []
-    for item in data:
-        out.append((item["name"], item["messages"]))
-    return out
-
 
 def main(argv: List[str]) -> int:
     args = parse_args(argv)
 
-    if args.scenarios:
-        scenarios = load_scenarios_from_file(args.scenarios)
-    else:
-        scenarios = default_scenarios()
+    scenarios = default_scenarios()
+
+    from dotenv import load_dotenv
+    load_dotenv()
 
     print("🍽️  Jamie Evaluation Runner")
     print("=" * 50)
     print(f"API URL: {args.api_url}")
-    print(f"User:    {args.user}")
     print(f"Judge:   {'enabled' if args.judge else 'disabled'}")
     print(f"Ablation:{'enabled' if args.ablate_memory else 'disabled'}")
     print(f"Turn sleep: {args.turn_sleep}s")
-    print(f"Scenarios: {len(scenarios)}")
+    run_users = list(scenarios.keys())
+    total_scenarios = sum(len(scenarios[u]) for u in run_users if u in scenarios)
+    print(f"Users:    {', '.join(run_users)}")
+    print(f"Per-user scenarios: yes (total {total_scenarios} across {len(run_users)} users)")
     print("=" * 50)
 
     try:
-        if args.ablate_memory:
-            if args.force_disable_memory:
-                print("\n⚠️  force-disable-memory is ON; running a single pass with memory OFF")
-                results, summary = run_all(
-                    args.api_url,
-                    args.user,
-                    scenarios,
-                    args.judge,
-                    disable_memory=True,
-                    http_timeout=args.timeout,
-                    turn_sleep=args.turn_sleep,
-                )
-                json_path, csv_path = save_reports(results, summary)
-            else:
-                print("\n🔧 Run A: Memory OFF")
+        # Multi-user evaluation only
+        for username in run_users:
+            user_scenarios = scenarios.get(username)
+            if not user_scenarios:
+                print(f"⚠️  Skipping unknown user '{username}' (not present in scenarios mapping)")
+                continue
+
+            print(f"\n👤 User: {username} — {len(user_scenarios)} scenarios")
+            if args.ablate_memory:
+                print("🔧 Run A: Memory OFF")
                 off_results, off_summary = run_all(
                     args.api_url,
-                    args.user,
-                    scenarios,
+                    username,
+                    user_scenarios,
                     args.judge,
                     disable_memory=True,
                     http_timeout=args.timeout,
                     turn_sleep=args.turn_sleep,
                 )
-                
-                print("\n🔧 Run B: Memory ON")
+
+                print("🔧 Run B: Memory ON")
                 on_results, on_summary = run_all(
                     args.api_url,
-                    args.user,
-                    scenarios,
+                    username,
+                    user_scenarios,
                     args.judge,
                     disable_memory=False,
                     http_timeout=args.timeout,
                     turn_sleep=args.turn_sleep,
                 )
 
-                
-                json_path, csv_path = save_ablation_reports(off_results, off_summary, on_results, on_summary)
-        else:
-            results, summary = run_all(
-                args.api_url,
-                args.user,
-                scenarios,
-                args.judge,
-                http_timeout=args.timeout,
-                turn_sleep=args.turn_sleep,
-            )
-            json_path, csv_path = save_reports(results, summary)
+                json_path, csv_path = save_ablation_reports(
+                    off_results, off_summary, on_results, on_summary, label=username
+                )
+            else:
+                results, summary = run_all(
+                    args.api_url,
+                    username,
+                    user_scenarios,
+                    args.judge,
+                    http_timeout=args.timeout,
+                    turn_sleep=args.turn_sleep,
+                )
+                json_path, csv_path = save_reports(results, summary, label=username)
 
         print("\n🎉 Evaluation completed!")
+        # When running multiple users, the last run's paths/summary variables will be shown below.
+        # We still print them as a convenience; full per-user file names include the username.
         if args.ablate_memory:
-            print(f"📝 Ablation JSON:   {json_path}")
-            print(f"🧾 Ablation CSV:    {csv_path}\n")
-        else:
-            print(f"📊 Total scenarios: {summary.total_scenarios}")
-            print(f"💬 Total turns:     {summary.total_turns}")
-            print(f"⏱️  Total time:      {summary.total_time_seconds:.2f}s")
-            print(f"📈 Overall p50:     {summary.overall_p50_turn_seconds:.2f}s")
-            print(f"📈 Overall p90:     {summary.overall_p90_turn_seconds:.2f}s")
-            print(f"📈 Overall p95:     {summary.overall_p95_turn_seconds:.2f}s")
-        print(f"📝 Detailed JSON:   {json_path}")
-        print(f"🧾 Summary CSV:     {csv_path}\n")
+            print(f"📝 Ablation JSON (last):   {json_path}")
+            print(f"🧾 Ablation CSV (last):    {csv_path}\n")
+        # For multi-user, per-user details are in the individual files.
+        print(f"📝 Detailed JSON (last):   {json_path}")
+        print(f"🧾 Summary CSV (last):     {csv_path}\n")
         return 0
     except Exception as e:
         print(f"❌ Error: {e}")

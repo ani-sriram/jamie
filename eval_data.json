@@ -1,0 +1,289 @@
+{
+  "sarah": [
+    [
+      "Restaurant Basic",
+      [
+        "Find gelato near me",
+        "I'm in SoMa, San Francisco",
+        "Is the top spot kid-friendly?"
+      ]
+    ],
+    [
+      "Restaurant Dietary",
+      [
+        "Search restaurants in Denver",
+        "I need dairy-free and nut-free options",
+        "Which place clearly labels allergens?"
+      ]
+    ],
+    [
+      "Recipe Basic",
+      [
+        "I want to bake banana bread",
+        "List ingredients for the first recipe",
+        "Any substitution for brown sugar?"
+      ]
+    ],
+    [
+      "Recipe Time-Constrained",
+      [
+        "I need dinner under 20 minutes",
+        "I have salmon and asparagus",
+        "Which recipe is quickest?"
+      ]
+    ],
+    [
+      "User Memory Check",
+      [
+        "Hi, I'm Sarah. I prefer vegetarian Mediterranean dishes.",
+        "Remind me what we discussed about my preferences?"
+      ]
+    ]
+  ],
+  "alex": [
+    [
+      "Restaurant Basic",
+      [
+        "Find coffee shops nearby",
+        "I'm near Pike Place Market, Seattle",
+        "Do they have outdoor seating?"
+      ]
+    ],
+    [
+      "Restaurant Dietary",
+      [
+        "Show restaurants in Austin",
+        "I'm keto and avoid sugar",
+        "Which one has the best low-carb options?"
+      ]
+    ],
+    [
+      "Recipe Basic",
+      [
+        "I want to make shakshuka",
+        "What do I need for the first recipe?",
+        "How spicy is it?"
+      ]
+    ],
+    [
+      "Recipe Time-Constrained",
+      [
+        "30-minute meal please",
+        "I have chicken thighs and rice",
+        "Pick the fastest recipe."
+      ]
+    ],
+    [
+      "User Memory Check",
+      [
+        "Hi, I'm Alex. I like spicy Korean food.",
+        "Remind me what we discussed about my preferences?"
+      ]
+    ]
+  ],
+  "Sam": [
+    [
+      "Restaurant Basic",
+      [
+        "Find tacos near me",
+        "I'm in the Mission District, San Francisco",
+        "Is the first spot open past 10pm?"
+      ]
+    ],
+    [
+      "Restaurant Dietary",
+      [
+        "Find restaurants in Chicago",
+        "I'm gluten-free and dairy-free",
+        "Any dedicated gluten-free kitchens?"
+      ]
+    ],
+    [
+      "Recipe Basic",
+      [
+        "I want to cook ramen",
+        "Ingredients for the first recipe?",
+        "Do I need a pressure cooker?"
+      ]
+    ],
+    [
+      "Recipe Time-Constrained",
+      [
+        "Dinner in 25 minutes",
+        "I have tofu and broccoli",
+        "Which recipe is fastest to prep?"
+      ]
+    ],
+    [
+      "User Memory Check",
+      [
+        "Hi, I'm Sam. I prefer vegan comfort food.",
+        "Remind me what we discussed about my preferences?"
+      ]
+    ]
+  ],
+  "John": [
+    [
+      "Restaurant Basic",
+      [
+        "Find burger places nearby",
+        "I'm in Midtown Manhattan",
+        "Do they take reservations?"
+      ]
+    ],
+    [
+      "Restaurant Dietary",
+      [
+        "Restaurants in Portland",
+        "I'm pescatarian",
+        "Any good seafood-forward spots?"
+      ]
+    ],
+    [
+      "Recipe Basic",
+      [
+        "I want to make lasagna",
+        "What do I need for the first recipe?",
+        "Prep time vs cook time?"
+      ]
+    ],
+    [
+      "Recipe Time-Constrained",
+      [
+        "Make something in 15 minutes",
+        "I have eggs and spinach",
+        "Which recipe is the quickest?"
+      ]
+    ],
+    [
+      "User Memory Check",
+      [
+        "Hi, I'm John. I avoid cilantro and love BBQ.",
+        "Remind me what we discussed about my preferences?"
+      ]
+    ]
+  ],
+  "Tom": [
+    [
+      "Restaurant Basic",
+      [
+        "Find pizza near me",
+        "I'm in Capitol Hill, Washington DC",
+        "Is the first place family-friendly?"
+      ]
+    ],
+    [
+      "Restaurant Dietary",
+      [
+        "Restaurants in Phoenix",
+        "I'm on a low-sodium diet",
+        "Which one lists sodium per dish?"
+      ]
+    ],
+    [
+      "Recipe Basic",
+      [
+        "I want to bake cookies",
+        "Ingredients for the first recipe?",
+        "Can I halve the butter?"
+      ]
+    ],
+    [
+      "Recipe Time-Constrained",
+      [
+        "Need a 10-minute lunch",
+        "I have turkey and lettuce",
+        "What's the fastest recipe?"
+      ]
+    ],
+    [
+      "User Memory Check",
+      [
+        "Hi, I'm Tom. I'm trying to eat high-protein meals.",
+        "Remind me what we discussed about my preferences?"
+      ]
+    ]
+  ],
+  "Jane": [
+    [
+      "Restaurant Basic",
+      [
+        "Find sushi near me",
+        "I'm in downtown Boston",
+        "Do they offer omakase?"
+      ]
+    ],
+    [
+      "Restaurant Dietary",
+      [
+        "Restaurants in San Diego",
+        "I'm vegan and soy-free",
+        "Any soy-free sushi options?"
+      ]
+    ],
+    [
+      "Recipe Basic",
+      [
+        "I want to make paella",
+        "Ingredients for the first recipe?",
+        "Serves how many people?"
+      ]
+    ],
+    [
+      "Recipe Time-Constrained",
+      [
+        "Dinner in under 30 minutes",
+        "I have shrimp and quinoa",
+        "Which option is lowest effort?"
+      ]
+    ],
+    [
+      "User Memory Check",
+      [
+        "Hi, I'm Jane. I prefer plant-based Mediterranean food.",
+        "Remind me what we discussed about my preferences?"
+      ]
+    ]
+  ],
+  "Bob": [
+    [
+      "Restaurant Basic",
+      [
+        "Find barbecue near me",
+        "I'm in Nashville",
+        "Is the first place cash-only?"
+      ]
+    ],
+    [
+      "Restaurant Dietary",
+      [
+        "Restaurants in Minneapolis",
+        "I'm diabetic and watch carbs",
+        "Which spot provides detailed nutrition info?"
+      ]
+    ],
+    [
+      "Recipe Basic",
+      [
+        "I want to make chili",
+        "What do I need for the first recipe?",
+        "Can it simmer overnight?"
+      ]
+    ],
+    [
+      "Recipe Time-Constrained",
+      [
+        "15-minute dinner idea",
+        "I have ground turkey and beans",
+        "Pick the quickest recipe."
+      ]
+    ],
+    [
+      "User Memory Check",
+      [
+        "Hi, I'm Bob. I love smoky flavors and hate mushrooms.",
+        "Remind me what we discussed about my preferences?"
+      ]
+    ]
+  ]
+}
