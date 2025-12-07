@@ -1,0 +1,543 @@
+{
+  "off_summary": {
+    "timestamp": "2025-12-07T10:43:16.973701Z",
+    "api_url": "http://localhost:8000",
+    "user": "Jane",
+    "total_scenarios": 5,
+    "total_turns": 14,
+    "total_time_seconds": 165.6852090358734,
+    "avg_scenario_time_seconds": 33.13704180717468,
+    "overall_p50_turn_seconds": 5.930373907089233,
+    "overall_p90_turn_seconds": 14.82704067230225,
+    "overall_p95_turn_seconds": 16.095576775074004
+  },
+  "on_summary": {
+    "timestamp": "2025-12-07T10:46:39.750227Z",
+    "api_url": "http://localhost:8000",
+    "user": "Jane",
+    "total_scenarios": 5,
+    "total_turns": 14,
+    "total_time_seconds": 202.7763228416443,
+    "avg_scenario_time_seconds": 40.55526456832886,
+    "overall_p50_turn_seconds": 9.157163381576538,
+    "overall_p90_turn_seconds": 16.43307065963746,
+    "overall_p95_turn_seconds": 21.997808670997614
+  },
+  "comparisons": [
+    {
+      "scenario_name": "Restaurant Basic",
+      "num_turns": 3,
+      "total_time_seconds_off": 28.30353617668152,
+      "total_time_seconds_on": 33.52607798576355,
+      "total_time_seconds_delta": 5.222541809082031,
+      "avg_turn_seconds_off": 7.924432675043742,
+      "avg_turn_seconds_on": 9.666151205698648,
+      "avg_turn_seconds_delta": 1.7417185306549063,
+      "p50_turn_seconds_off": 5.581963062286377,
+      "p50_turn_seconds_on": 8.971442937850952,
+      "p50_turn_seconds_delta": 3.389479875564575,
+      "p90_turn_seconds_off": 11.267972660064698,
+      "p90_turn_seconds_on": 11.864048528671265,
+      "p90_turn_seconds_delta": 0.596075868606567,
+      "p95_turn_seconds_off": 11.978723859786987,
+      "p95_turn_seconds_on": 12.225624227523804,
+      "p95_turn_seconds_delta": 0.24690036773681712,
+      "judge_overall_off": 1,
+      "judge_overall_on": 2,
+      "judge_overall_delta": 1,
+      "significance_hint": "likely meaningful"
+    },
+    {
+      "scenario_name": "Restaurant Dietary",
+      "num_turns": 3,
+      "total_time_seconds_off": 22.433068990707397,
+      "total_time_seconds_on": 35.87721109390259,
+      "total_time_seconds_delta": 13.44414210319519,
+      "avg_turn_seconds_off": 5.970815658569336,
+      "avg_turn_seconds_on": 10.450785001118978,
+      "avg_turn_seconds_delta": 4.4799693425496425,
+      "p50_turn_seconds_off": 6.0726799964904785,
+      "p50_turn_seconds_on": 11.095499753952026,
+      "p50_turn_seconds_delta": 5.022819757461548,
+      "p90_turn_seconds_off": 6.666575336456299,
+      "p90_turn_seconds_on": 11.291937589645386,
+      "p90_turn_seconds_delta": 4.625362253189087,
+      "p95_turn_seconds_off": 6.7408122539520265,
+      "p95_turn_seconds_on": 11.316492319107056,
+      "p95_turn_seconds_delta": 4.575680065155029,
+      "judge_overall_off": 3,
+      "judge_overall_on": 4,
+      "judge_overall_delta": 1,
+      "significance_hint": "likely meaningful"
+    },
+    {
+      "scenario_name": "Recipe Basic",
+      "num_turns": 3,
+      "total_time_seconds_off": 20.87336492538452,
+      "total_time_seconds_on": 28.948445796966553,
+      "total_time_seconds_delta": 8.075080871582031,
+      "avg_turn_seconds_off": 5.453457911809285,
+      "avg_turn_seconds_on": 8.139426072438559,
+      "avg_turn_seconds_delta": 2.6859681606292733,
+      "p50_turn_seconds_off": 5.788067817687988,
+      "p50_turn_seconds_on": 7.954421043395996,
+      "p50_turn_seconds_delta": 2.166353225708008,
+      "p90_turn_seconds_off": 6.072922325134278,
+      "p90_turn_seconds_on": 8.515528297424316,
+      "p90_turn_seconds_delta": 2.442605972290038,
+      "p95_turn_seconds_off": 6.108529138565063,
+      "p95_turn_seconds_on": 8.585666704177855,
+      "p95_turn_seconds_delta": 2.477137565612792,
+      "judge_overall_off": 1,
+      "judge_overall_on": 2,
+      "judge_overall_delta": 1,
+      "significance_hint": "likely meaningful"
+    },
+    {
+      "scenario_name": "Recipe Time-Constrained",
+      "num_turns": 3,
+      "total_time_seconds_off": 46.75318384170532,
+      "total_time_seconds_on": 61.225807666778564,
+      "total_time_seconds_delta": 14.472623825073242,
+      "avg_turn_seconds_off": 14.07441504796346,
+      "avg_turn_seconds_on": 18.898502588272095,
+      "avg_turn_seconds_delta": 4.824087540308634,
+      "p50_turn_seconds_off": 15.74314022064209,
+      "p50_turn_seconds_on": 18.081300973892212,
+      "p50_turn_seconds_delta": 2.338160753250122,
+      "p90_turn_seconds_off": 16.54870948791504,
+      "p90_turn_seconds_on": 27.033318567276,
+      "p90_turn_seconds_delta": 10.484609079360961,
+      "p95_turn_seconds_off": 16.64940564632416,
+      "p95_turn_seconds_on": 28.152320766448973,
+      "p95_turn_seconds_delta": 11.502915120124815,
+      "judge_overall_off": 2,
+      "judge_overall_on": 4,
+      "judge_overall_delta": 2,
+      "significance_hint": "likely meaningful"
+    },
+    {
+      "scenario_name": "User Memory Check",
+      "num_turns": 2,
+      "total_time_seconds_off": 12.500613927841187,
+      "total_time_seconds_on": 20.45367193222046,
+      "total_time_seconds_delta": 7.9530580043792725,
+      "avg_turn_seconds_off": 4.740247488021851,
+      "avg_turn_seconds_on": 8.718228459358215,
+      "avg_turn_seconds_delta": 3.9779809713363647,
+      "p50_turn_seconds_off": 4.740247488021851,
+      "p50_turn_seconds_on": 8.718228459358215,
+      "p50_turn_seconds_delta": 3.9779809713363647,
+      "p90_turn_seconds_off": 5.357654333114624,
+      "p90_turn_seconds_on": 10.70665762424469,
+      "p90_turn_seconds_delta": 5.349003291130066,
+      "p95_turn_seconds_off": 5.434830188751221,
+      "p95_turn_seconds_on": 10.955211269855498,
+      "p95_turn_seconds_delta": 5.5203810811042775,
+      "judge_overall_off": 1,
+      "judge_overall_on": 1,
+      "judge_overall_delta": 0,
+      "significance_hint": "unclear"
+    }
+  ],
+  "off_scenarios": [
+    {
+      "scenario_name": "Restaurant Basic",
+      "total_time_seconds": 28.30353617668152,
+      "avg_turn_seconds": 7.924432675043742,
+      "p50_turn_seconds": 5.581963062286377,
+      "p90_turn_seconds": 11.267972660064698,
+      "p95_turn_seconds": 11.978723859786987,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Find sushi near me",
+          "assistant_message": "Okay, I can definitely help you find some sushi places in San Diego! Since you're looking for vegan and soy-free options, I'll keep that in mind as you explore these.\n\nHere are a few sushi restaurants I found for you:\n\n1.  **The Yasai: Plant-Based Japanese Experience** - 4646 Convoy St Ste 101, San Diego, CA 92111, USA (Moderate)\n2.  **Cherrywine Sushi & Burmese Cuisine** - 8008 Girard Ave #210, La Jolla, CA 92037, USA (Moderate)\n3.  **Itacho Sushi - All You Can Eat** - 7319 Clairemont Mesa Blvd, San Diego, CA 92111, USA\n4.  **URBN Sushi - La Jolla** - 8895 Towne Centre Dr, San Diego, CA 92122, USA (Moderate)\n5.  **TAKARAMONO SUSHI** - 7513 La Jolla Blvd, La Jolla, CA 92037, USA\n\nLet me know if you'd like more details on any of these, or if you want to explore other options!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 5.501859903335571,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I'm in downtown Boston",
+          "assistant_message": "Ah, okay! You're in downtown Boston now, got it. Let me find some sushi spots for you there, keeping your vegan and soy-free preferences in mind.\n\nPlease give me a moment to look up some options in downtown Boston!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 5.581963062286377,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Do they offer omakase?",
+          "assistant_message": "Okay, I've found some sushi places in downtown Boston for you, keeping your vegan and soy-free preferences in mind!\n\nHere are the spots I found:\n\n1.  **Oishii Sushi Bar** - 11 E St, Boston, MA 02111, USA (Expensive)\n2.  **Avana Sushi** - 425 Washington St, Boston, MA 02108, USA (Moderate)\n3.  **Shabu & Mein** - 14 Tyler St, Boston, MA 02111, USA (Moderate)\n4.  **Irashai Sushi & Teriyaki** - 100 Summer St, Boston, MA 02110, USA (Inexpensive)\n5.  **Douzo Sushi** - 131 Dartmouth St, Boston, MA 02116, USA (Expensive)\n\nRegarding omakase, **Oishii Sushi Bar** and **Douzo Sushi** are known for offering omakase experiences. However, traditional omakase is often chef's choice and heavily features seafood. Given your vegan and soy-free preferences, I highly recommend contacting them directly to inquire about their ability to create a suitable omakase menu for you, as this is quite specific.\n\nWould you like more details on any of these, or perhaps explore other types of restaurants in Boston?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.get_restaurant_details",
+          "elapsed_seconds": 12.689475059509277,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 2,
+        "specificity": 2,
+        "grounding": 3,
+        "coherence": 1,
+        "safety": 5,
+        "overall": 1,
+        "comments": "The assistant repeatedly hallucinated vegan and soy-free preferences throughout the entire conversation, despite the user never mentioning them. While it eventually found relevant restaurants and answered the omakase question, this major flaw in understanding user intent significantly detracts from its helpfulness and coherence."
+      }
+    },
+    {
+      "scenario_name": "Restaurant Dietary",
+      "total_time_seconds": 22.433068990707397,
+      "avg_turn_seconds": 5.970815658569336,
+      "p50_turn_seconds": 6.0726799964904785,
+      "p90_turn_seconds": 6.666575336456299,
+      "p95_turn_seconds": 6.7408122539520265,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Restaurants in San Diego",
+          "assistant_message": "Hello there! I can certainly help you find some great restaurants in San Diego that fit your vegan and soy-free preferences. It looks like you're also interested in Spanish, Mediterranean, Japanese, sushi, and Asian cuisines.\n\nHere are a few options I found for you:\n\n1.  **The Yasai: Plant-Based Japanese Experience** - 4646 Convoy St Ste 101, San Diego, CA 92111, USA (Moderate)\n2.  **The Yasai: Vegan Japanese Experience at Little Italy** - 2254 India St, San Diego, CA 92101, USA (Moderate)\n3.  **Sipz Clairemont** - 5501 Clairemont Mesa Blvd, San Diego, CA 92117, USA (Inexpensive)\n4.  **True Food Kitchen** - 7007 Friars Rd Suite 394, San Diego, CA 92108, USA (Moderate)\n5.  **Loving Hut Plantbased Vegan** - 9928 Mira Mesa Blvd, San Diego, CA 92131, USA (Inexpensive)\n\nAll of these places are known for their plant-based options, which should work well with your vegan and soy-free diet. The Yasai locations and Sipz Clairemont specifically offer Japanese/Asian cuisine, which aligns with your preferences!\n\nLet me know if you'd like more details on any of these, or if you'd like to explore other options!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 6.0726799964904785,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I'm vegan and soy-free",
+          "assistant_message": "Thanks for reminding me! I've definitely got your vegan and soy-free preferences noted.\n\nThe restaurants I suggested earlier (The Yasai, Sipz Clairemont, True Food Kitchen, and Loving Hut) all have excellent plant-based options that should work well for your dietary needs.\n\nWere you looking for more restaurant recommendations with these preferences in mind, or would you like to explore something else, like finding some vegan and soy-free recipes to cook at home? Just let me know what you're in the mood for!\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 5.024717807769775,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Any soy-free sushi options?",
+          "assistant_message": "That's a great question! Finding soy-free sushi can sometimes be a bit tricky, but with your vegan preferences in mind, I've found a few places that might be perfect.\n\nHere are some restaurants in San Diego that could offer soy-free sushi options, especially the plant-based Japanese ones:\n\n1.  **The Yasai: Plant-Based Japanese Experience** - 4646 Convoy St Ste 101, San Diego, CA 92111, USA (Moderate)\n2.  **The Yasai: Vegan Japanese Experience at Little Italy** - 2254 India St, San Diego, CA 92101, USA (Moderate)\n3.  **Saigon Vegan Bistro** - 1905 El Cajon Blvd Suite B, San Diego, CA 92104, USA (Moderate)\n4.  **RAKIRAKI Ramen & Tsukemen** - 4646 Convoy St 102 - A, San Diego, CA 92111, USA (Moderate)\n5.  **Itacho Sushi - All You Can Eat** - 7319 Clairemont Mesa Blvd, San Diego, CA 92111, USA (Price not available)\n\nThe two **The Yasai** locations are particularly promising as they specialize in plant-based Japanese cuisine, which often means they are more accommodating with dietary restrictions like soy-free requests for their sushi rolls and sauces. I'd recommend checking with them directly about their specific soy-free sushi options.\n\nWould you like more details on any of these, or perhaps I could look for something else?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 6.815049171447754,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 3,
+        "specificity": 3,
+        "grounding": 2,
+        "coherence": 4,
+        "safety": 5,
+        "overall": 3,
+        "comments": "The assistant started strong, remembering preferences and providing good initial options. However, in the final turn asking for 'soy-free sushi', it recommended non-vegan restaurants (RAKIRAKI, Itacho Sushi) to a user who explicitly stated 'I'm vegan and soy-free', which is a significant grounding error."
+      }
+    },
+    {
+      "scenario_name": "Recipe Basic",
+      "total_time_seconds": 20.87336492538452,
+      "avg_turn_seconds": 5.453457911809285,
+      "p50_turn_seconds": 5.788067817687988,
+      "p90_turn_seconds": 6.072922325134278,
+      "p95_turn_seconds": 6.108529138565063,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "I want to make paella",
+          "assistant_message": "Oh, that sounds delicious! Paella is a fantastic choice.\n\nI looked for an easy, vegan, and soy-free paella recipe for you, but it seems I couldn't find one that perfectly matches all those criteria in my current database. Paella often includes seafood or chicken, and finding a soy-free vegan version that's also explicitly tagged as \"easy\" can be a bit tricky.\n\nWould you like me to try searching for:\n*   **Vegan and soy-free paella** without the \"easy\" difficulty tag?\n*   **Other easy vegan and soy-free Spanish recipes**?\n*   **Easy vegan and soy-free recipes** from your other preferred cuisines like Mediterranean, Japanese, or Asian?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 6.14413595199585,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "Ingredients for the first recipe?",
+          "assistant_message": "It looks like I wasn't able to find a paella recipe that perfectly matched all your criteria (easy, vegan, soy-free) in the last search, so I didn't provide a specific recipe.\n\nWere you perhaps referring to one of the alternative search options I suggested, or would you like me to try searching for something else? For example, I could look for:\n*   Vegan and soy-free paella (without the \"easy\" tag)\n*   Other easy vegan and soy-free Spanish recipes\n*   Easy vegan and soy-free recipes from Mediterranean, Japanese, or Asian cuisines\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.get_recipe_details",
+          "elapsed_seconds": 5.788067817687988,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Serves how many people?",
+          "assistant_message": "It seems there might be a slight misunderstanding! I haven't actually found a specific recipe yet that perfectly matches all your preferences (easy, vegan, soy-free paella). That's why I couldn't provide ingredients or serving sizes.\n\nI was asking if you'd like me to try searching for:\n*   **Vegan and soy-free paella** (without the \"easy\" difficulty tag)\n*   **Other easy vegan and soy-free Spanish recipes**\n*   **Easy vegan and soy-free recipes** from your other preferred cuisines like Mediterranean, Japanese, or Asian\n\nLet me know which option you'd prefer, or if you have another idea!\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 4.4281699657440186,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 1,
+        "specificity": 1,
+        "grounding": 1,
+        "coherence": 2,
+        "safety": 5,
+        "overall": 1,
+        "comments": "The assistant unilaterally added 'easy, vegan, and soy-free' constraints to the user's simple request for paella, then became stuck in a loop, unable to provide any recipe information and repeatedly listing the same alternatives based on its self-imposed criteria."
+      }
+    },
+    {
+      "scenario_name": "Recipe Time-Constrained",
+      "total_time_seconds": 46.75318384170532,
+      "avg_turn_seconds": 14.07441504796346,
+      "p50_turn_seconds": 15.74314022064209,
+      "p90_turn_seconds": 16.54870948791504,
+      "p95_turn_seconds": 16.64940564632416,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Dinner in under 30 minutes",
+          "assistant_message": "Hi there! Looking for a quick dinner in under 30 minutes? I can definitely help with that!\n\nBased on your preferences for vegan, soy-free, and Japanese/Asian cuisine in San Diego, here are some restaurants that might be a great fit:\n\n1.  **The Yasai: Plant-Based Japanese Experience** - 4646 Convoy St Ste 101, San Diego, CA 92111, USA (Moderate)\n2.  **Itacho Sushi - All You Can Eat** - 7319 Clairemont Mesa Blvd, San Diego, CA 92111, USA (Price not available)\n3.  **The Yasai: Vegan Japanese Experience at Little Italy** - 2254 India St, San Diego, CA 92101, USA (Moderate)\n4.  **True Food Kitchen** - 4303 La Jolla Village Dr Ste 2100, San Diego, CA 92122, USA (Moderate)\n5.  **True Food Kitchen** - 7007 Friars Rd Suite 394, San Diego, CA 92108, USA (Moderate)\n\nLet me know if any of these catch your eye, or if you'd like more details on a specific one!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 16.750101804733276,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I have shrimp and quinoa",
+          "assistant_message": "Oh, great! Sounds like you're looking to whip up something with shrimp and quinoa.\n\nI just wanted to quickly check something with you. You mentioned earlier that you prefer vegan options, but shrimp isn't vegan. Would you like me to look for recipes that include shrimp and quinoa, or should I stick to strictly vegan recipes and perhaps find something delicious you can make with just the quinoa (or other ingredients you might have)?\n\nLet me know what you'd prefer, and I'll find some fantastic ideas for you!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 9.730003118515015,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Which option is lowest effort?",
+          "assistant_message": "Ah, that's a great question! When you say \"lowest effort,\" are you referring to the effort for *me* to find the recipes, or the effort for *you* to cook them?\n\nIf you're looking for the lowest effort way to use the shrimp and quinoa you already have, we'd need to search for recipes that include shrimp. This would mean temporarily setting aside your vegan preference for this particular meal. I can definitely look for easy recipes that use both shrimp and quinoa for you!\n\nAlternatively, if you'd prefer to stick strictly to vegan options, I can find easy recipes that use just the quinoa (and other vegan ingredients you might have on hand), but wouldn't include the shrimp.\n\nWhich direction would you like to go? Let me know, and I'll find some great, easy ideas!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 15.74314022064209,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 2,
+        "specificity": 2,
+        "grounding": 2,
+        "coherence": 2,
+        "safety": 5,
+        "overall": 2,
+        "comments": "The assistant initially misinterpreted 'Dinner in under 30 minutes' as a restaurant search based on past preferences. After the user clarified with ingredients, it got stuck in a clarification loop about vegan preferences and 'lowest effort' without ever providing any actual recipe options."
+      }
+    },
+    {
+      "scenario_name": "User Memory Check",
+      "total_time_seconds": 12.500613927841187,
+      "avg_turn_seconds": 4.740247488021851,
+      "p50_turn_seconds": 4.740247488021851,
+      "p90_turn_seconds": 5.357654333114624,
+      "p95_turn_seconds": 5.434830188751221,
+      "num_turns": 2,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Hi, I'm Jane. I prefer plant-based Mediterranean food.",
+          "assistant_message": "Hi Jane! Lovely to meet you. I'm Jamie, your helpful food recommendation assistant! I can help you find and recommend delicious recipes, or if you're looking to dine out, I can help you find restaurants if you give me a location and some details about what you're craving.\n\nI see you're interested in plant-based Mediterranean food. Are you looking for a recipe to cook at home, or would you like me to find some restaurants for you?\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 5.512006044387817,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "Remind me what we discussed about my preferences?",
+          "assistant_message": "Hi Jane! Of course, I can remind you.\n\nSo far, we've discussed that you have the following preferences:\n*   **Dietary restrictions:** Vegan, soy-free\n*   **Preferred cuisines:** Spanish, Mediterranean, Japanese, sushi, and general Asian food\n*   **Location:** San Diego, CA (for restaurant searches)\n*   **Preferred difficulty (for recipes):** Easy\n\nIs there anything else you'd like to add or change to your preferences? And how can I help you today \u2013 are you looking for a recipe or a restaurant recommendation?\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 3.968488931655884,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 1,
+        "specificity": 1,
+        "grounding": 1,
+        "coherence": 2,
+        "safety": 5,
+        "overall": 1,
+        "comments": "The assistant completely hallucinated user preferences (e.g., San Diego, Japanese food, soy-free, easy difficulty) that were not mentioned in the provided transcript, failing to correctly recall the discussed preferences."
+      }
+    }
+  ],
+  "on_scenarios": [
+    {
+      "scenario_name": "Restaurant Basic",
+      "total_time_seconds": 33.52607798576355,
+      "avg_turn_seconds": 9.666151205698648,
+      "p50_turn_seconds": 8.971442937850952,
+      "p90_turn_seconds": 11.864048528671265,
+      "p95_turn_seconds": 12.225624227523804,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Find sushi near me",
+          "assistant_message": "Hey there! I can definitely help you find some sushi spots in San Diego. Since you're looking for vegan and soy-free options, I'll keep that in mind as we go.\n\nHere are a few sushi restaurants I found for you:\n\n1.  **Shiku** - 1277 Prospect St, La Jolla, CA 92037, USA (Moderate)\n2.  **The Yasai: Vegan Japanese Experience at Little Italy** - 2254 India St, San Diego, CA 92101, USA (Moderate)\n3.  **The Yasai: Plant-Based Japanese Experience** - 4646 Convoy St Ste 101, San Diego, CA 92111, USA (Moderate)\n4.  **Kinoyume Sushi and Grill** - 8843 Villa La Jolla Dr, La Jolla, CA 92037, USA (Moderate)\n5.  **URBN Sushi - La Jolla** - 8895 Towne Centre Dr, San Diego, CA 92122, USA (Moderate)\n\nDo any of these catch your eye, or would you like more details on a specific one?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 7.439810752868652,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I'm in downtown Boston",
+          "assistant_message": "My apologies, Jamie! Thanks for clarifying your location. I've updated my search to focus on downtown Boston for you, keeping your vegan and soy-free preferences in mind.\n\nHere are some sushi restaurants I found in downtown Boston:\n\n1.  **o ya** - 9 E St, Boston, MA 02111, USA (Very Expensive)\n2.  **RUKA** - 505 Washington St, Boston, MA 02111, USA (Expensive)\n3.  **Blue Ribbon Sushi** - 500a Commonwealth Ave, Boston, MA 02215, USA (Price Level not available)\n\nDo any of these sound good, or would you like to explore more options or details about one of them?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 8.971442937850952,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Do they offer omakase?",
+          "assistant_message": "That's a great question! Let me check for you if any of these sushi restaurants in downtown Boston offer omakase, keeping your vegan and soy-free preferences in mind.\n\nI'm checking the details for **o ya**, **RUKA**, and **Blue Ribbon Sushi** now.\nI'll let you know what I find!\nI'm sorry, I don't have specific information about whether these restaurants offer omakase directly in my current details. However, **o ya** is known for its high-end, chef-driven experience, which often includes omakase or tasting menus. **RUKA** also offers a sophisticated dining experience with a focus on Peruvian-Japanese cuisine, which might include a chef's tasting option.\n\nFor the most accurate and up-to-date information, especially regarding vegan and soy-free omakase options, I'd recommend checking their websites or giving them a quick call.\n\nWould you like me to provide you with the addresses and phone numbers for these restaurants so you can easily check?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.get_restaurant_details",
+          "elapsed_seconds": 12.587199926376343,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 2,
+        "specificity": 2,
+        "grounding": 2,
+        "coherence": 3,
+        "safety": 5,
+        "overall": 2,
+        "comments": "The assistant repeatedly assumed 'vegan and soy-free' preferences without the user mentioning them, and failed to definitively answer the omakase question, recommending external checks instead."
+      }
+    },
+    {
+      "scenario_name": "Restaurant Dietary",
+      "total_time_seconds": 35.87721109390259,
+      "avg_turn_seconds": 10.450785001118978,
+      "p50_turn_seconds": 11.095499753952026,
+      "p90_turn_seconds": 11.291937589645386,
+      "p95_turn_seconds": 11.316492319107056,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Restaurants in San Diego",
+          "assistant_message": "Hey there! I can definitely help you find some great restaurants in San Diego that fit your preferences. Given your soy-free and vegan dietary restrictions, and your love for Japanese, Mediterranean, and Asian cuisines, here are a few options I found for you:\n\n1.  **The Yasai: Plant-Based Japanese Experience** - 4646 Convoy St Ste 101, San Diego, CA 92111, USA (Moderate)\n2.  **The Yasai: Vegan Japanese Experience at Little Italy** - 2254 India St, San Diego, CA 92101, USA (Moderate)\n3.  **Sipz Clairemont** - 5501 Clairemont Mesa Blvd, San Diego, CA 92117, USA (Inexpensive)\n4.  **True Food Kitchen** - 4303 La Jolla Village Dr Ste 2100, San Diego, CA 92122, USA (Moderate)\n5.  **Sushi Nekosan** - 1119 Wall St, La Jolla, CA 92037, USA (Moderate)\n\nThe Yasai locations are specifically plant-based Japanese, which sounds like a perfect fit for your vegan and Japanese preferences! Sipz Clairemont also offers a lot of vegan Asian options. True Food Kitchen often has great vegan and healthy choices too.\n\nLet me know if any of these catch your eye, or if you'd like more details on a specific one!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 8.915808200836182,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I'm vegan and soy-free",
+          "assistant_message": "Absolutely! I've definitely got your vegan and soy-free preferences locked in. I made sure to keep those in mind when I suggested those restaurants for you.\n\nAre you looking for more restaurant recommendations, or would you like to explore some delicious soy-free and vegan recipes instead?\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 11.341047048568726,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Any soy-free sushi options?",
+          "assistant_message": "Great question! Finding soy-free sushi can sometimes be a bit tricky, but I'm on it! Given your vegan and soy-free preferences, here are some places in San Diego that might have what you're looking for:\n\n1.  **The Yasai: Plant-Based Japanese Experience** - 4646 Convoy St Ste 101, San Diego, CA 92111, USA (Moderate)\n2.  **The Yasai: Vegan Japanese Experience at Little Italy** - 2254 India St, San Diego, CA 92101, USA (Moderate)\n3.  **RAKIRAKI Ramen & Tsukemen** - 4646 Convoy St 102 - A, San Diego, CA 92111, USA (Moderate)\n4.  **Akari Sushi** - 7441 Girard Ave, La Jolla, CA 92037, USA (Price level not available)\n5.  **Itacho Sushi - All You Can Eat** - 7319 Clairemont Mesa Blvd, San Diego, CA 92111, USA (Price level not available)\n\nThe Yasai locations are specifically plant-based Japanese, so they are excellent candidates for vegan and soy-free sushi options, as they often use alternatives to traditional soy sauce and fish. RAKIRAKI Ramen & Tsukemen also has Japanese options, but you'd want to check their specific sushi menu for soy-free and vegan choices. For Akari Sushi and Itacho Sushi, you'd definitely want to call ahead to confirm their soy-free and vegan sushi offerings.\n\nDo any of these sound promising, or would you like me to look into details for a specific one?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 11.095499753952026,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 4,
+        "specificity": 5,
+        "grounding": 5,
+        "coherence": 4,
+        "safety": 5,
+        "overall": 4,
+        "comments": "The assistant effectively identified and remembered complex dietary restrictions, providing specific and relevant restaurant recommendations with good practical advice, though the second turn was slightly redundant."
+      }
+    },
+    {
+      "scenario_name": "Recipe Basic",
+      "total_time_seconds": 28.948445796966553,
+      "avg_turn_seconds": 8.139426072438559,
+      "p50_turn_seconds": 7.954421043395996,
+      "p90_turn_seconds": 8.515528297424316,
+      "p95_turn_seconds": 8.585666704177855,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "I want to make paella",
+          "assistant_message": "Oh, that sounds delicious! Paella is a fantastic choice.\n\nI looked for an easy, soy-free, and vegan paella recipe for you, but it seems I couldn't find one that perfectly matches all those criteria right now. Paella often includes seafood or chicken, and finding a vegan version that's also soy-free and easy can be a bit tricky.\n\nWould you like me to try searching again with slightly broader criteria? Perhaps we could look for a vegan paella recipe and then you could adapt it to be soy-free, or maybe we could look for other easy, soy-free, and vegan Spanish dishes? Let me know what you think!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 8.655805110931396,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "Ingredients for the first recipe?",
+          "assistant_message": "It looks like I wasn't able to find a paella recipe that perfectly matched all your criteria (easy, soy-free, and vegan) in our last search. So, there isn't a \"first recipe\" to provide ingredients for at the moment.\n\nWould you like me to try searching again with slightly broader criteria, or perhaps look for other easy, soy-free, and vegan Spanish dishes?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.get_recipe_details",
+          "elapsed_seconds": 7.954421043395996,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Serves how many people?",
+          "assistant_message": "I still haven't found a specific recipe that perfectly matches all your criteria (easy, soy-free, and vegan paella), so there isn't a recipe to tell you how many people it serves right now.\n\nWould you like me to try searching again with slightly broader criteria, or perhaps look for other easy, soy-free, and vegan Spanish dishes?\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 7.808052062988281,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 2,
+        "specificity": 3,
+        "grounding": 5,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 2,
+        "comments": "The assistant correctly identified its inability to find a recipe matching all criteria and explained why. However, it then got stuck in a repetitive loop, constantly reiterating that it hadn't found a recipe without effectively moving the conversation forward or offering a more proactive alternative after the initial failure."
+      }
+    },
+    {
+      "scenario_name": "Recipe Time-Constrained",
+      "total_time_seconds": 61.225807666778564,
+      "avg_turn_seconds": 18.898502588272095,
+      "p50_turn_seconds": 18.081300973892212,
+      "p90_turn_seconds": 27.033318567276,
+      "p95_turn_seconds": 28.152320766448973,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Dinner in under 30 minutes",
+          "assistant_message": "Hi there! Looking for a quick dinner tonight, under 30 minutes, in San Diego? I've found a few Japanese and Asian-inspired spots that might be perfect for you, keeping your vegan and soy-free preferences in mind.\n\nHere are some restaurants that came up in my search:\n\n1.  **The Yasai: Plant-Based Japanese Experience** - 4646 Convoy St Ste 101, San Diego, CA 92111, USA (Moderate)\n2.  **The Yasai: Vegan Japanese Experience at Little Italy** - 2254 India St, San Diego, CA 92101, USA (Moderate)\n3.  **Sushi Nekosan** - 1119 Wall St, La Jolla, CA 92037, USA (Moderate)\n4.  **Sipz Clairemont** - 5501 Clairemont Mesa Blvd, San Diego, CA 92117, USA (Inexpensive)\n5.  **RAKIRAKI Ramen & Tsukemen** - 4646 Convoy St 102 - A, San Diego, CA 92111, USA (Moderate)\n\nThese places offer Japanese and Asian cuisine, and some are explicitly plant-based or vegan, which aligns with your preferences. They could be great options for a quick dinner! Let me know if any of these catch your eye, or if you'd like more details on a specific one!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 9.342883825302124,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I have shrimp and quinoa",
+          "assistant_message": "Ah, I see you're looking to cook with shrimp and quinoa! That's a great combination.\n\nHowever, I noticed a little conflict with your dietary preferences. You mentioned earlier that you're looking for **vegan** options, but shrimp is not vegan.\n\nWould you like me to look for:\n*   Recipes using **shrimp and quinoa** (which would not be vegan)?\n*   Or, should I focus on **vegan recipes** that use quinoa (and perhaps suggest a plant-based protein instead of shrimp)?\n\nLet me know how you'd like to proceed!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 18.081300973892212,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Which option is lowest effort?",
+          "assistant_message": "That's a great question! When you ask \"which option is lowest effort,\" are you referring to the effort in *cooking* the meal, or the effort in *finding* a suitable recipe that fits your preferences?\n\nBoth paths \u2013 a recipe with shrimp and quinoa (non-vegan) or a vegan recipe with quinoa (and a plant-based protein) \u2013 could potentially have \"easy\" options. The main difference is whether we stick to your vegan preference or make an exception for this meal to use the shrimp you have.\n\nTo help me find the absolute lowest effort option for *you*, could you clarify if you're open to a non-vegan recipe for this specific meal using the shrimp, or if you'd prefer to stick strictly to vegan and find a plant-based protein to go with your quinoa? Once I know that, I can focus my search to find the easiest recipe for you!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 29.27132296562195,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 4,
+        "specificity": 4,
+        "grounding": 5,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 4,
+        "comments": "The assistant correctly identifies the ambiguity in 'lowest effort' and prioritizes clarifying the user's dietary preferences (vegan vs. using shrimp) before proceeding with a search, which is a good approach."
+      }
+    },
+    {
+      "scenario_name": "User Memory Check",
+      "total_time_seconds": 20.45367193222046,
+      "avg_turn_seconds": 8.718228459358215,
+      "p50_turn_seconds": 8.718228459358215,
+      "p90_turn_seconds": 10.70665762424469,
+      "p95_turn_seconds": 10.955211269855498,
+      "num_turns": 2,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Hi, I'm Jane. I prefer plant-based Mediterranean food.",
+          "assistant_message": "Hi Jane! It's great to meet you. I can definitely help you find some delicious plant-based Mediterranean options in San Diego.\n\nBased on your preferences, here are a few restaurants that might be a good fit:\n\n1.  **Tahini Authentic Middle Eastern Street Food** - 9625 Scholars Dr N #0113, La Jolla, CA 92037, USA (Inexpensive)\n2.  **The Yasai: Plant-Based Japanese Experience** - 4646 Convoy St Ste 101, San Diego, CA 92111, USA (Moderate)\n3.  **MARUGAME UDON** - 4353 La Jolla Village Dr suite H28, San Diego, CA 92122, USA (Inexpensive)\n4.  **Harissa Mediterranean Kitchen** - 4126 Executive Dr, La Jolla, CA 92037, USA (Moderate)\n5.  **The Yasai: Vegan Japanese Experience at Little Italy** - 2254 India St, San Diego, CA 92101, USA (Moderate)\n\nLet me know if any of these catch your eye, or if you'd like more details on a specific one!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 11.203764915466309,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "Remind me what we discussed about my preferences?",
+          "assistant_message": "Hi Jane! Of course, I can remind you of your preferences.\n\nSo far, we've discussed:\n*   **Dietary restrictions:** Soy-free, plant-based, vegan\n*   **Preferred cuisines:** Japanese, Mediterranean, Asian, sushi, Spanish\n*   **Location:** San Diego\n*   **Preferred difficulty (for recipes):** Easy\n\nIs there anything you'd like to add or change to these preferences?\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 6.232692003250122,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 1,
+        "specificity": 1,
+        "grounding": 1,
+        "coherence": 2,
+        "safety": 5,
+        "overall": 1,
+        "comments": "The assistant hallucinates nearly all of the user's preferences, including dietary restrictions, additional cuisines, location details, and recipe difficulty, which were never discussed."
+      }
+    }
+  ]
+}

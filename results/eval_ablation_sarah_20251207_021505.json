@@ -1,0 +1,543 @@
+{
+  "off_summary": {
+    "timestamp": "2025-12-07T10:11:54.254142Z",
+    "api_url": "http://localhost:8000",
+    "user": "sarah",
+    "total_scenarios": 5,
+    "total_turns": 14,
+    "total_time_seconds": 224.38468718528748,
+    "avg_scenario_time_seconds": 44.87693743705749,
+    "overall_p50_turn_seconds": 10.319575071334839,
+    "overall_p90_turn_seconds": 19.680840539932255,
+    "overall_p95_turn_seconds": 24.668685662746427
+  },
+  "on_summary": {
+    "timestamp": "2025-12-07T10:15:05.231938Z",
+    "api_url": "http://localhost:8000",
+    "user": "sarah",
+    "total_scenarios": 5,
+    "total_turns": 14,
+    "total_time_seconds": 190.9776508808136,
+    "avg_scenario_time_seconds": 38.19553017616272,
+    "overall_p50_turn_seconds": 10.14665150642395,
+    "overall_p90_turn_seconds": 14.116682457923892,
+    "overall_p95_turn_seconds": 17.81922100782394
+  },
+  "comparisons": [
+    {
+      "scenario_name": "Restaurant Basic",
+      "num_turns": 3,
+      "total_time_seconds_off": 57.195186138153076,
+      "total_time_seconds_on": 29.88440489768982,
+      "total_time_seconds_delta": -27.310781240463257,
+      "avg_turn_seconds_off": 17.562841256459553,
+      "avg_turn_seconds_on": 8.456383546193441,
+      "avg_turn_seconds_delta": -9.106457710266112,
+      "p50_turn_seconds_off": 15.64005184173584,
+      "p50_turn_seconds_on": 8.96167778968811,
+      "p50_turn_seconds_delta": -6.6783740520477295,
+      "p90_turn_seconds_off": 28.30815906524658,
+      "p90_turn_seconds_on": 9.717557191848755,
+      "p90_turn_seconds_delta": -18.590601873397826,
+      "p95_turn_seconds_off": 29.891672468185423,
+      "p95_turn_seconds_on": 9.812042117118835,
+      "p95_turn_seconds_delta": -20.079630351066587,
+      "judge_overall_off": 1,
+      "judge_overall_on": 4,
+      "judge_overall_delta": 3,
+      "significance_hint": "likely meaningful"
+    },
+    {
+      "scenario_name": "Restaurant Dietary",
+      "num_turns": 3,
+      "total_time_seconds_off": 30.580431938171387,
+      "total_time_seconds_on": 30.457340955734253,
+      "total_time_seconds_delta": -0.12309098243713379,
+      "avg_turn_seconds_off": 8.688963333765665,
+      "avg_turn_seconds_on": 8.64737860361735,
+      "avg_turn_seconds_delta": -0.04158473014831543,
+      "p50_turn_seconds_off": 8.561008930206299,
+      "p50_turn_seconds_on": 7.6297478675842285,
+      "p50_turn_seconds_delta": -0.9312610626220703,
+      "p90_turn_seconds_off": 10.381740283966064,
+      "p90_turn_seconds_on": 10.739793682098389,
+      "p90_turn_seconds_delta": 0.3580533981323253,
+      "p95_turn_seconds_off": 10.609331703186035,
+      "p95_turn_seconds_on": 11.128549408912658,
+      "p95_turn_seconds_delta": 0.5192177057266232,
+      "judge_overall_off": 4,
+      "judge_overall_on": 4,
+      "judge_overall_delta": 0,
+      "significance_hint": "unclear"
+    },
+    {
+      "scenario_name": "Recipe Basic",
+      "num_turns": 3,
+      "total_time_seconds_off": 36.59770083427429,
+      "total_time_seconds_on": 34.12279725074768,
+      "total_time_seconds_delta": -2.4749035835266113,
+      "avg_turn_seconds_off": 10.695420742034912,
+      "avg_turn_seconds_on": 9.871681213378906,
+      "avg_turn_seconds_delta": -0.8237395286560059,
+      "p50_turn_seconds_off": 9.802227020263672,
+      "p50_turn_seconds_on": 10.386775970458984,
+      "p50_turn_seconds_delta": 0.5845489501953125,
+      "p90_turn_seconds_off": 13.867187881469727,
+      "p90_turn_seconds_on": 10.572282981872558,
+      "p90_turn_seconds_delta": -3.294904899597169,
+      "p95_turn_seconds_off": 14.375307989120483,
+      "p95_turn_seconds_on": 10.595471358299255,
+      "p95_turn_seconds_delta": -3.7798366308212277,
+      "judge_overall_off": 4,
+      "judge_overall_on": 4,
+      "judge_overall_delta": 0,
+      "significance_hint": "unclear"
+    },
+    {
+      "scenario_name": "Recipe Time-Constrained",
+      "num_turns": 3,
+      "total_time_seconds_off": 46.92355704307556,
+      "total_time_seconds_on": 51.27480506896973,
+      "total_time_seconds_delta": 4.351248025894165,
+      "avg_turn_seconds_off": 14.136582056681315,
+      "avg_turn_seconds_on": 15.588477770487467,
+      "avg_turn_seconds_delta": 1.4518957138061523,
+      "p50_turn_seconds_off": 11.778470993041992,
+      "p50_turn_seconds_on": 11.954469919204712,
+      "p50_turn_seconds_delta": 0.17599892616271973,
+      "p90_turn_seconds_off": 19.15861186981201,
+      "p90_turn_seconds_on": 20.77042946815491,
+      "p90_turn_seconds_delta": 1.611817598342899,
+      "p95_turn_seconds_off": 20.08112947940826,
+      "p95_turn_seconds_on": 21.872424411773682,
+      "p95_turn_seconds_delta": 1.791294932365421,
+      "judge_overall_off": 5,
+      "judge_overall_on": 5,
+      "judge_overall_delta": 0,
+      "significance_hint": "unclear"
+    },
+    {
+      "scenario_name": "User Memory Check",
+      "num_turns": 2,
+      "total_time_seconds_off": 22.84052586555481,
+      "total_time_seconds_on": 23.751002073287964,
+      "total_time_seconds_delta": 0.9104762077331543,
+      "avg_turn_seconds_off": 9.917208433151245,
+      "avg_turn_seconds_on": 10.370334506034851,
+      "avg_turn_seconds_delta": 0.45312607288360596,
+      "p50_turn_seconds_off": 9.917208433151245,
+      "p50_turn_seconds_on": 10.370334506034851,
+      "p50_turn_seconds_delta": 0.45312607288360596,
+      "p90_turn_seconds_off": 15.258875226974487,
+      "p90_turn_seconds_on": 14.108742880821229,
+      "p90_turn_seconds_delta": -1.1501323461532582,
+      "p95_turn_seconds_off": 15.926583576202393,
+      "p95_turn_seconds_on": 14.576043927669526,
+      "p95_turn_seconds_delta": -1.3505396485328678,
+      "judge_overall_off": 2,
+      "judge_overall_on": 1,
+      "judge_overall_delta": -1,
+      "significance_hint": "likely meaningful"
+    }
+  ],
+  "off_scenarios": [
+    {
+      "scenario_name": "Restaurant Basic",
+      "total_time_seconds": 57.195186138153076,
+      "avg_turn_seconds": 17.562841256459553,
+      "p50_turn_seconds": 15.64005184173584,
+      "p90_turn_seconds": 28.30815906524658,
+      "p95_turn_seconds": 29.891672468185423,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Find gelato near me",
+          "assistant_message": "Okay, I can help you find some places for gelato! Here are a few options near you:\n\n1.  **I Scream Gelato - Lone Tree** - Park Meadows - Dining Hall, 8401 Park Meadows Center Dr, Lone Tree, CO 80124, USA (Inexpensive)\n2.  **True Food Kitchen** - 2800 E 2nd Ave Unit 101, Denver, CO 80206, USA (Moderate)\n3.  **Heaven Creamery** - 6955 S York St #420, Centennial, CO 80122, USA (Inexpensive)\n4.  **Etai's Bakery Cafe 29th Ave** - 7357 E 29th Ave, Denver, CO 80238, USA (Moderate)\n5.  **Vital Root** - 3915 Tennyson St, Denver, CO 80212, USA (Moderate)\n\nDo any of these sound good, or would you like more details on a specific one?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 5.573286056518555,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I'm in SoMa, San Francisco",
+          "assistant_message": "I'm having trouble understanding that. Could you try rephrasing your request? I can help with recipes or restaurants.\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 31.475185871124268,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Is the top spot kid-friendly?",
+          "assistant_message": "Yes, I can tell you more about **I Scream Gelato - Lone Tree**!\n\nBased on the information I have, **I Scream Gelato - Lone Tree** is generally considered **good for kids**. It's a casual spot located in the Park Meadows Dining Hall, making it a convenient and fun place for families to grab a sweet treat.\n\nWould you like to know anything else about this place, or perhaps details on another restaurant from the list?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.get_restaurant_details",
+          "elapsed_seconds": 15.64005184173584,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 1,
+        "specificity": 2,
+        "grounding": 4,
+        "coherence": 1,
+        "safety": 5,
+        "overall": 1,
+        "comments": "The assistant completely failed to understand the user's location, provided results for the wrong state, then failed to process the user's location correction, and continued to answer questions based on the incorrect initial list."
+      }
+    },
+    {
+      "scenario_name": "Restaurant Dietary",
+      "total_time_seconds": 30.580431938171387,
+      "avg_turn_seconds": 8.688963333765665,
+      "p50_turn_seconds": 8.561008930206299,
+      "p90_turn_seconds": 10.381740283966064,
+      "p95_turn_seconds": 10.609331703186035,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Search restaurants in Denver",
+          "assistant_message": "Okay, I can certainly help you look for restaurants!\n\nIt looks like the search results I have for you are actually located in La Jolla and San Diego, California, rather than Denver, Colorado. Would you still like to see these options, or should I try searching again specifically for Denver?\n\nIn the meantime, here are the restaurants I found:\n\n1.  **Tahini Authentic Middle Eastern Street Food** - 9625 Scholars Dr N #0113, La Jolla, CA 92037, USA (Inexpensive)\n2.  **Plant Power Fast Food** - 9685 Scholars Dr N, La Jolla, CA 92093, USA (Moderate)\n3.  **Daffodil Cafe** - 4747 Executive Dr, San Diego, CA 92121, USA (Price level not available)\n4.  **Mendocino Farms** - 8795 Villa La Jolla Dr, La Jolla, CA 92037, USA (Moderate)\n5.  **Everytable** - 8915 Towne Centre Dr #112, La Jolla, CA 92122, USA (Inexpensive)\n\nLet me know if you'd like to explore any of these further, or if you'd prefer I try to find some places in Denver! I'll keep your vegetarian, dairy-free, and nut-free preferences in mind, as well as your love for Mediterranean and Italian food.\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 6.668957948684692,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I need dairy-free and nut-free options",
+          "assistant_message": "Thanks for clarifying your dietary needs! I've found some great dairy-free and nut-free restaurant options for you in Denver.\n\nHere are the places I found:\n\n1.  **Watercourse Foods** - 837 E 17th Ave, Denver, CO 80218, USA (Moderate)\n2.  **True Food Kitchen** - 2800 E 2nd Ave Unit 101, Denver, CO 80206, USA (Moderate)\n3.  **Bang Up To The Elephant** - 1310 Pearl St, Denver, CO 80203, USA (Moderate)\n4.  **City O' City** - 206 E 13th Ave, Denver, CO 80203, USA (Moderate)\n5.  **Root Down** - 1600 W 33rd Ave, Denver, CO 80211, USA (Moderate)\n\nAll of these restaurants should have excellent dairy-free and nut-free choices for you. Let me know if you'd like to know more about any of them!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 8.561008930206299,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Which place clearly labels allergens?",
+          "assistant_message": "That's a great question, and it's so important to feel confident about allergen information when dining out!\n\nBased on the information I have, **True Food Kitchen** is often highlighted for its health-conscious menu and tends to provide dietary information directly on their menus, sometimes even using symbols to indicate options like gluten-free, vegetarian, and vegan. This suggests they are generally good about making allergen information accessible.\n\nThe other restaurants \u2013 **Watercourse Foods**, **Bang Up To The Elephant**, and **City O' City** \u2013 are all either fully vegan or vegetarian/vegan-friendly, which means they inherently cater to dairy-free needs. They are also generally known for being very accommodating to other dietary restrictions, including nut-free, and their staff are usually well-versed in guiding you through the menu. **Root Down** also has a strong reputation for catering to various dietary needs.\n\nWhile many of these places are excellent at accommodating allergies, the level of explicit \"labeling\" on the menu can sometimes vary. For the most up-to-date and specific information regarding nut-free options and clear allergen labeling, I always recommend calling the restaurant directly or speaking with your server upon arrival.\n\nWould you like me to get more details about True Food Kitchen, or perhaps another one of these options?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.get_restaurant_details",
+          "elapsed_seconds": 10.836923122406006,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 3,
+        "specificity": 4,
+        "grounding": 3,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 4,
+        "comments": "The assistant made a significant error in the first turn by providing restaurants in the wrong city, but it identified the mistake, recovered strongly, and provided excellent, specific, and safety-conscious advice in subsequent turns."
+      }
+    },
+    {
+      "scenario_name": "Recipe Basic",
+      "total_time_seconds": 36.59770083427429,
+      "avg_turn_seconds": 10.695420742034912,
+      "p50_turn_seconds": 9.802227020263672,
+      "p90_turn_seconds": 13.867187881469727,
+      "p95_turn_seconds": 14.375307989120483,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "I want to bake banana bread",
+          "assistant_message": "Oh, that sounds delicious! Banana bread is such a classic.\n\nI looked for an easy banana bread recipe that's vegetarian, dairy-free, and nut-free, but it looks like I don't have one that perfectly matches all those criteria in my current database.\n\nWould you like me to try searching for a similar easy, vegetarian, dairy-free, nut-free baking recipe, or perhaps broaden the search for banana bread to include recipes that might need slight modifications?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 7.400607109069824,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "List ingredients for the first recipe",
+          "assistant_message": "It looks like I wasn't able to find a banana bread recipe that perfectly matched all your dietary needs (vegetarian, dairy-free, nut-free) and preferred difficulty (easy) in my last search. So, there isn't a \"first recipe\" to list ingredients for at the moment.\n\nWould you like me to try searching for a similar easy, vegetarian, dairy-free, nut-free baking recipe, or perhaps broaden the search for banana bread to include recipes that might need slight modifications?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.get_recipe_details",
+          "elapsed_seconds": 9.802227020263672,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Any substitution for brown sugar?",
+          "assistant_message": "That's a great question about brown sugar! It's a common ingredient in many baking recipes, especially for things like banana bread.\n\nSince I haven't found a specific banana bread recipe that perfectly matches your vegetarian, dairy-free, and nut-free needs yet, I can give you some general ideas for brown sugar substitutions. The best substitute often depends on what you're trying to achieve in the recipe (like moisture, flavor, or just sweetness).\n\nHere are a few common substitutions for brown sugar:\n\n*   **White Sugar + Molasses:** For every 1 cup of brown sugar, you can use 1 cup of granulated white sugar mixed with 1 tablespoon of molasses. This is the closest in flavor and moisture.\n*   **Coconut Sugar:** This is a good natural alternative that has a similar caramel-like flavor to brown sugar, though it might be slightly less moist. You can usually substitute it cup for cup.\n*   **Maple Syrup or Honey:** These can work, but they are liquids, so you'd need to reduce other liquids in the recipe. For every 1 cup of brown sugar, you could try about 3/4 cup of maple syrup or honey, and reduce other liquids by about 1/4 cup. This will also add their distinct flavors.\n*   **Date Sugar/Date Paste:** Another natural option, date sugar can be substituted cup for cup, though it might be less moist. Date paste can also work, but like syrups, it's a liquid and will affect the texture.\n\nDo any of those sound like they might work for you?\n\nAnd just to circle back, would you like me to try searching again for an easy, vegetarian, dairy-free, nut-free baking recipe (perhaps something other than banana bread), or should I broaden the search for banana bread to include recipes that might need slight modifications to fit your dietary needs?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 14.88342809677124,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 4,
+        "specificity": 4,
+        "grounding": 5,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 4,
+        "comments": "The assistant was unable to find a recipe, which is a core function, but it communicated this clearly and offered good alternatives. It also provided helpful, general information for a substitution query."
+      }
+    },
+    {
+      "scenario_name": "Recipe Time-Constrained",
+      "total_time_seconds": 46.92355704307556,
+      "avg_turn_seconds": 14.136582056681315,
+      "p50_turn_seconds": 11.778470993041992,
+      "p90_turn_seconds": 19.15861186981201,
+      "p95_turn_seconds": 20.08112947940826,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "I need dinner under 20 minutes",
+          "assistant_message": "Okay, Jamie here! I found one recipe that fits your criteria for a quick, easy, vegetarian, dairy-free, and nut-free dinner under 20 minutes.\n\nIt's called **Quick Avocado Toast**!\n\nThis recipe is super fast, with a total time of just **10 minutes** (5 minutes prep, 5 minutes cook time), and it's rated as **easy**. It's perfect for a speedy meal!\n\nHere's what you'll need:\n*   **sourdough bread**: 2 slices\n*   **avocado**: 1 large\n*   **lime juice**: 1 tablespoon\n*   **salt**: 0.25 teaspoon\n*   **red pepper flakes**: 0.25 teaspoon\n*   **eggs**: 2 large (optional, for topping)\n\n**Tags**: vegetarian, quick, healthy, breakfast (but can definitely be a light dinner!)\n\nThis recipe is vegetarian, dairy-free, and nut-free, aligning perfectly with your preferences!\n\nIf you'd like to explore more quick and easy vegetarian meals, just let me know!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 9.627628087997437,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I have salmon and asparagus",
+          "assistant_message": "Jamie here! I see you have salmon and asparagus, which are fantastic ingredients!\n\nHowever, I'm running into a little snag with your preferences. You've previously mentioned you're looking for vegetarian meals, but salmon is a fish, so it wouldn't fit into a vegetarian diet.\n\nBecause of this, I wasn't able to find any recipes that use both salmon and asparagus *and* are vegetarian, dairy-free, and nut-free.\n\nCould you let me know how you'd like to proceed?\n*   Are you open to a non-vegetarian recipe that uses salmon and asparagus?\n*   Or would you prefer I stick to vegetarian options and look for something else you can make with asparagus (or other ingredients)?\n\nOnce I have a bit more clarity, I can find you the perfect dinner!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 21.003647089004517,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Which recipe is quickest?",
+          "assistant_message": "You're referring to the **Quick Avocado Toast** recipe! That one is super speedy, with a total time of just **10 minutes** (5 minutes prep, 5 minutes cook time). It's definitely the quickest option we've discussed so far!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.get_recipe_details",
+          "elapsed_seconds": 11.778470993041992,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 5,
+        "specificity": 5,
+        "grounding": 5,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 5,
+        "comments": "The assistant intelligently handles initial requests, remembers user preferences, addresses conflicts by offering clear options, and accurately recalls details from prior turns."
+      }
+    },
+    {
+      "scenario_name": "User Memory Check",
+      "total_time_seconds": 22.84052586555481,
+      "avg_turn_seconds": 9.917208433151245,
+      "p50_turn_seconds": 9.917208433151245,
+      "p90_turn_seconds": 15.258875226974487,
+      "p95_turn_seconds": 15.926583576202393,
+      "num_turns": 2,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Hi, I'm Sarah. I prefer vegetarian Mediterranean dishes.",
+          "assistant_message": "Hi Sarah! It's great to meet you. I can definitely help you find some delicious vegetarian Mediterranean options.\n\nBased on your preference for vegetarian Mediterranean dishes, I found one restaurant for you:\n\n1.  **CAVA** - 8849 Villa La Jolla Dr, La Jolla, CA 92037, USA (Moderate)\n\nWould you like to know more about CAVA, or perhaps explore some recipes instead? Let me know how I can help!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 16.594291925430298,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "Remind me what we discussed about my preferences?",
+          "assistant_message": "Hi Sarah! Of course, I can remind you.\n\nBased on our previous conversations, here's what I have for your preferences:\n\n*   **Dietary restrictions:** Vegetarian, dairy-free, and nut-free\n*   **Preferred cuisines:** Mediterranean, Italian, and baking\n*   **Location:** Denver, CO\n*   **Preferred difficulty:** Easy\n\nIs there anything you'd like to add or change to these preferences?\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 3.2401249408721924,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 2,
+        "specificity": 4,
+        "grounding": 1,
+        "coherence": 4,
+        "safety": 5,
+        "overall": 2,
+        "comments": "The assistant hallucinates several preferences (dairy-free, nut-free, Italian, baking, Denver, CO, Easy) that were never discussed in the provided transcript. While it correctly identified 'vegetarian' and 'Mediterranean', the majority of the information is ungrounded."
+      }
+    }
+  ],
+  "on_scenarios": [
+    {
+      "scenario_name": "Restaurant Basic",
+      "total_time_seconds": 29.88440489768982,
+      "avg_turn_seconds": 8.456383546193441,
+      "p50_turn_seconds": 8.96167778968811,
+      "p90_turn_seconds": 9.717557191848755,
+      "p95_turn_seconds": 9.812042117118835,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Find gelato near me",
+          "assistant_message": "Hey there! I found a few places that might have gelato for you. Here are the results:\n\n1.  **I Scream Gelato - Lone Tree** - Park Meadows - Dining Hall, 8401 Park Meadows Center Dr, Lone Tree, CO 80124, USA (Inexpensive)\n2.  **True Food Kitchen** - 2800 E 2nd Ave Unit 101, Denver, CO 80206, USA (Moderate)\n3.  **Spuntino** - 2639 W 32nd Ave, Denver, CO 80211, USA (Moderate)\n4.  **Acova** - 3651 Navajo St, Denver, CO 80211, USA (Moderate)\n5.  **Heaven Creamery** - 6955 S York St #420, Centennial, CO 80122, USA (Inexpensive)\n\n\"I Scream Gelato\" and \"Heaven Creamery\" sound like dedicated gelato spots, while the others might be restaurants that serve it. Let me know if you'd like more details on any of them!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 9.906527042388916,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I'm in SoMa, San Francisco",
+          "assistant_message": "Ah, my apologies! It looks like I got a bit lost on the map there. Thanks for clarifying you're in SoMa, San Francisco. Let me find some gelato spots for you there!\n\nHere are some places I found in or near SoMa, San Francisco that might have gelato:\n\n1.  **Amorino Gelato - San Francisco** - 338 Grant Ave, San Francisco, CA 94108, USA (Moderate)\n2.  **Mariposa Baking Company** - One Ferry Building #32, San Francisco, CA 94111, USA (Price level not available)\n3.  **Cotogna** - 490 Pacific Ave, San Francisco, CA 94133, USA (Expensive)\n4.  **Doppio Zero San Francisco** - 395 Hayes St, San Francisco, CA 94102, USA (Moderate)\n5.  **Tifa Chocolate & Gelato** - 1545 Locust St, Walnut Creek, CA 94596, USA (Price level not available)\n\nAmorino Gelato sounds like a dedicated gelato place, and Doppio Zero is an Italian restaurant that might have it. Mariposa Baking Company is a bakery, and Cotogna is an Italian restaurant. Tifa Chocolate & Gelato is a bit further out in Walnut Creek, but it's also a dedicated spot.\n\nLet me know if any of these catch your eye, or if you'd like more details on a specific one!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 8.96167778968811,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Is the top spot kid-friendly?",
+          "assistant_message": "That's a great question! Let me check the details for **Amorino Gelato - San Francisco** for you.\n\nBased on the information I have, Amorino Gelato is generally considered a very kid-friendly spot! It's a gelato shop, so it's a casual place focused on desserts, which usually appeals to children. While I don't have an explicit \"kid-friendly\" tag, places like this are typically perfect for families.\n\nWould you like to know anything else about Amorino, or perhaps details on another one of the places?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.get_restaurant_details",
+          "elapsed_seconds": 6.500945806503296,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 4,
+        "specificity": 5,
+        "grounding": 4,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 4,
+        "comments": "The assistant initially provided results for the wrong location but recovered very well after the user clarified, providing specific and helpful information for the correct location and answering follow-up questions thoughtfully."
+      }
+    },
+    {
+      "scenario_name": "Restaurant Dietary",
+      "total_time_seconds": 30.457340955734253,
+      "avg_turn_seconds": 8.64737860361735,
+      "p50_turn_seconds": 7.6297478675842285,
+      "p90_turn_seconds": 10.739793682098389,
+      "p95_turn_seconds": 11.128549408912658,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Search restaurants in Denver",
+          "assistant_message": "Okay, I can certainly help you find some restaurants in Denver!\n\nBased on your search, here's what I found in Denver:\n\n1.  **True Food Kitchen** - 2800 E 2nd Ave Unit 101, Denver, CO 80206, USA (Moderate)\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 6.7950828075408936,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I need dairy-free and nut-free options",
+          "assistant_message": "I understand you're looking for dairy-free and nut-free options! That's a great way to ensure a safe and enjoyable meal.\n\nWhile I can't directly filter restaurants by specific dietary restrictions like dairy-free or nut-free in my search, I can provide you with a list of restaurants in Denver. For the most accurate and up-to-date information on their offerings and to confirm they can accommodate your specific needs, I always recommend checking their menus online or calling them directly before you visit.\n\nHere are some restaurants in Denver that might be worth exploring:\n\n1.  **Edible Beats, Inc** - 3251 Osage St, Denver, CO 80211, USA (Price Level: Not specified)\n2.  **Acova** - 3651 Navajo St, Denver, CO 80211, USA (Moderate)\n3.  **Just BE Kitchen - Lohi** - 2364 15th St, Denver, CO 80202, USA (Moderate)\n4.  **True Food Kitchen** - 2800 E 2nd Ave Unit 101, Denver, CO 80206, USA (Moderate)\n5.  **North Italia** - 190 Clayton Ln, Denver, CO 80206, USA (Moderate)\n\nI hope this list gives you a good starting point! Let me know if you'd like to know more about any of these, or if you have other preferences in mind.\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 11.517305135726929,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Which place clearly labels allergens?",
+          "assistant_message": "That's a really important question, and I completely understand why you'd want to know which places clearly label allergens, especially with your nut-free and dairy-free needs.\n\nUnfortunately, I don't have specific information in my database about which restaurants explicitly label allergens on their menus. My best recommendation for finding this out would be to:\n\n1.  **Check their websites directly:** Many restaurants, especially those that cater to various dietary needs, will have their menus online with allergen information or a dedicated section for dietary restrictions.\n2.  **Call them:** A quick call to the restaurant is often the most reliable way to confirm their allergen policies and how they handle specific requests.\n\nOut of the list I provided, **True Food Kitchen** (number 4) is generally known for being very accommodating to dietary restrictions and often has clear labeling or staff who are well-versed in allergens due to their health-focused menu. However, I still recommend verifying with them directly.\n\nHere's the list again for your convenience:\n\n1.  **Edible Beats, Inc** - 3251 Osage St, Denver, CO 80211, USA (Price Level: Not specified)\n2.  **Acova** - 3651 Navajo St, Denver, CO 80211, USA (Moderate)\n3.  **Just BE Kitchen - Lohi** - 2364 15th St, Denver, CO 80202, USA (Moderate)\n4.  **True Food Kitchen** - 2800 E 2nd Ave Unit 101, Denver, CO 80206, USA (Moderate)\n5.  **North Italia** - 190 Clayton Ln, Denver, CO 80206, USA (Moderate)\n\nI hope this helps you narrow down your search!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.get_restaurant_details",
+          "elapsed_seconds": 7.6297478675842285,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 4,
+        "specificity": 3,
+        "grounding": 4,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 4,
+        "comments": "The assistant clearly communicates its limitations regarding dietary filters but provides practical advice and even a relevant suggestion (True Food Kitchen) while strongly emphasizing direct verification for safety."
+      }
+    },
+    {
+      "scenario_name": "Recipe Basic",
+      "total_time_seconds": 34.12279725074768,
+      "avg_turn_seconds": 9.871681213378906,
+      "p50_turn_seconds": 10.386775970458984,
+      "p90_turn_seconds": 10.572282981872558,
+      "p95_turn_seconds": 10.595471358299255,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "I want to bake banana bread",
+          "assistant_message": "Oh, banana bread! That sounds delicious.\n\nI looked for an easy, nut-free, dairy-free, vegetarian banana bread recipe for you, but it seems I don't have one that perfectly matches all those specific criteria in my current database.\n\nWould you like me to look for a more general banana bread recipe (perhaps without all the dietary restrictions, or maybe one that's a little more flexible)? Or perhaps I could suggest another easy, nut-free, dairy-free, vegetarian baking recipe for you?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 10.386775970458984,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "List ingredients for the first recipe",
+          "assistant_message": "Oh, it looks like I haven't actually provided a recipe yet! My apologies for the confusion.\n\nIn my last message, I mentioned that I couldn't find a banana bread recipe that perfectly matched all your nut-free, dairy-free, vegetarian, and easy criteria.\n\nWould you like me to:\n1. Look for a more general banana bread recipe (perhaps without all the dietary restrictions, or one that's a little more flexible)?\n2. Suggest another easy, nut-free, dairy-free, vegetarian baking recipe for you?\n\nOnce we decide on a recipe, I can certainly list the ingredients for you!\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 10.618659734725952,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Any substitution for brown sugar?",
+          "assistant_message": "That's a great question about substitutions! However, it looks like we haven't actually picked a specific recipe yet.\n\nIn my previous messages, I mentioned that I couldn't find a banana bread recipe that perfectly matched all your nut-free, dairy-free, vegetarian, and easy criteria.\n\nWould you like me to:\n1. Look for a more general banana bread recipe (perhaps without all the dietary restrictions, or one that's a little more flexible)?\n2. Suggest another easy, nut-free, dairy-free, vegetarian baking recipe for you?\n\nOnce we decide on a recipe, I can definitely help you with ingredient substitutions like for brown sugar!\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 8.609607934951782,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 3,
+        "specificity": 4,
+        "grounding": 5,
+        "coherence": 4,
+        "safety": 5,
+        "overall": 4,
+        "comments": "The assistant gracefully handles user requests that are premature given the current conversation state, consistently reminding the user that a recipe has not yet been selected and reiterating the available options."
+      }
+    },
+    {
+      "scenario_name": "Recipe Time-Constrained",
+      "total_time_seconds": 51.27480506896973,
+      "avg_turn_seconds": 15.588477770487467,
+      "p50_turn_seconds": 11.954469919204712,
+      "p90_turn_seconds": 20.77042946815491,
+      "p95_turn_seconds": 21.872424411773682,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "I need dinner under 20 minutes",
+          "assistant_message": "Hi there! I found one recipe that fits your request for something quick and easy, under 20 minutes, and also aligns with your vegetarian, nut-free, and dairy-free preferences.\n\nIt's called **Quick Avocado Toast**! While it's often considered a breakfast or brunch item, it's super fast and could definitely work for a light dinner.\n\nHere are the details:\n\n*   **Total Time:** 10 minutes (5 minutes prep, 5 minutes cook)\n*   **Difficulty:** Easy\n*   **Tags:** Vegetarian, Nut-Free, Dairy-Free, Quick, Healthy\n\n**Ingredients:**\n*   2 slices sourdough bread\n*   1 large avocado\n*   1 tablespoon lime juice\n*   0.25 teaspoon salt\n*   0.25 teaspoon red pepper flakes\n*   2 large eggs (optional, for topping)\n\n**Instructions:**\n1.  Toast bread until golden.\n2.  Mash avocado with lime juice and salt.\n3.  Spread on toast.\n4.  Top with red pepper flakes.\n5.  Optional: add a poached egg.\n\nThis recipe is perfect for your \"easy\" difficulty and \"under 20 minutes\" criteria, and it's naturally vegetarian, nut-free, and dairy-free.\n\nWould you like to give this a try, or should I look for something else that's more traditionally a \"dinner\" recipe, perhaps broadening the search beyond your preferred Italian and Mediterranean cuisines to find more quick options?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 11.836544036865234,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I have salmon and asparagus",
+          "assistant_message": "Hi there! You mentioned you have salmon and asparagus, and you're looking for a dinner recipe that's under 20 minutes, easy, nut-free, and dairy-free.\n\nI looked for recipes using both salmon and asparagus that fit your criteria. While I couldn't find a perfect match that includes *both* ingredients and meets all your time and difficulty preferences, I did find one recipe that uses salmon: **Homemade Sushi Rolls**.\n\nHere are the details for that recipe:\n\n*   **Total Time:** 60 minutes (40 minutes prep, 20 minutes cook)\n*   **Difficulty:** Hard\n*   **Tags:** (No specific tags were provided for this recipe, but sushi can often be made nut-free and dairy-free with careful ingredient selection.)\n\n**Ingredients:**\n*   2 cups sushi rice\n*   1 sheet nori sheets\n*   1 pound salmon\n*   1 medium cucumber\n*   1 medium avocado\n*   1 cup rice vinegar\n*   1 tablespoon wasabi\n*   1 cup soy sauce\n\n**Instructions:**\n1.  Cook and season sushi rice.\n2.  Prepare fillings.\n3.  Place nori on bamboo mat.\n4.  Spread rice and add fillings.\n5.  Roll tightly.\n6.  Slice into pieces.\n\nAs you can see, this recipe uses salmon, but it doesn't include asparagus. More importantly, it has a total time of 60 minutes and is rated 'hard' difficulty, which is quite a bit longer and more challenging than your request for under 20 minutes and easy. Also, while it can be adapted to be nut-free and dairy-free, it's not vegetarian, though you did mention having salmon on hand.\n\nGiven these mismatches, would you like me to try searching again? Perhaps we could:\n*   Look for recipes that use *just* salmon, or *just* asparagus?\n*   Relax the total time or difficulty level a bit?\n*   Or are you open to non-vegetarian options since you have salmon?\n\nLet me know how you'd like to proceed!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 22.974419355392456,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Which recipe is quickest?",
+          "assistant_message": "Based on the recipes we've discussed so far, the **Quick Avocado Toast** recipe is definitely the quickest! It has a total time of just **10 minutes**.\n\nThe Homemade Sushi Rolls, on the other hand, take 60 minutes.\n\nSo, if speed is your top priority, the Quick Avocado Toast is the way to go!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.get_recipe_details",
+          "elapsed_seconds": 11.954469919204712,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 5,
+        "specificity": 5,
+        "grounding": 5,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 5,
+        "comments": "The assistant directly and accurately answers the user's question by comparing the times of the two previously discussed recipes, correctly identifying the quickest one."
+      }
+    },
+    {
+      "scenario_name": "User Memory Check",
+      "total_time_seconds": 23.751002073287964,
+      "avg_turn_seconds": 10.370334506034851,
+      "p50_turn_seconds": 10.370334506034851,
+      "p90_turn_seconds": 14.108742880821229,
+      "p95_turn_seconds": 14.576043927669526,
+      "num_turns": 2,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Hi, I'm Sarah. I prefer vegetarian Mediterranean dishes.",
+          "assistant_message": "Hi Sarah! Nice to meet you. I'm Jamie, your food recommendation assistant!\n\nI can help you with a couple of things:\n1.  **Finding and recommending recipes** based on your preferences.\n2.  **Finding restaurants** if you give me a location and some details about what you're in the mood for.\n\nYou mentioned you prefer vegetarian Mediterranean dishes \u2013 are you looking for a recipe to cook at home, or would you like me to find some restaurants in Denver that serve that kind of food?\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 15.043344974517822,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "Remind me what we discussed about my preferences?",
+          "assistant_message": "Hi Sarah! Of course, I can remind you of your preferences.\n\nSo far, we've discussed:\n*   **Dietary restrictions:** Nut-free, dairy-free, and vegetarian.\n*   **Preferred cuisines:** Baking, Italian, and Mediterranean.\n*   **Location:** Denver (for restaurant searches).\n*   **Preferred difficulty:** Easy.\n\nIs there anything you'd like to add or change, or would you like to move on to finding a recipe or a restaurant?\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 5.69732403755188,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 1,
+        "specificity": 2,
+        "grounding": 1,
+        "coherence": 2,
+        "safety": 5,
+        "overall": 1,
+        "comments": "The assistant hallucinated several user preferences (nut-free, dairy-free, baking, Italian, Denver, easy difficulty) that were never mentioned in the transcript. The only preference discussed was 'vegetarian Mediterranean dishes'."
+      }
+    }
+  ]
+}

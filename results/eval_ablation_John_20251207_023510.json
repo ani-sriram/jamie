@@ -1,0 +1,543 @@
+{
+  "off_summary": {
+    "timestamp": "2025-12-07T10:31:58.794372Z",
+    "api_url": "http://localhost:8000",
+    "user": "John",
+    "total_scenarios": 5,
+    "total_turns": 14,
+    "total_time_seconds": 171.6625783443451,
+    "avg_scenario_time_seconds": 34.33251566886902,
+    "overall_p50_turn_seconds": 7.289776563644409,
+    "overall_p90_turn_seconds": 10.017550349235536,
+    "overall_p95_turn_seconds": 17.022598028182976
+  },
+  "on_summary": {
+    "timestamp": "2025-12-07T10:35:10.528791Z",
+    "api_url": "http://localhost:8000",
+    "user": "John",
+    "total_scenarios": 5,
+    "total_turns": 14,
+    "total_time_seconds": 191.7342174053192,
+    "avg_scenario_time_seconds": 38.34684348106384,
+    "overall_p50_turn_seconds": 8.637649059295654,
+    "overall_p90_turn_seconds": 13.84140284061432,
+    "overall_p95_turn_seconds": 18.96818114519119
+  },
+  "comparisons": [
+    {
+      "scenario_name": "Restaurant Basic",
+      "num_turns": 3,
+      "total_time_seconds_off": 26.46018695831299,
+      "total_time_seconds_on": 26.972480058670044,
+      "total_time_seconds_delta": 0.5122931003570557,
+      "avg_turn_seconds_off": 7.312484582265218,
+      "avg_turn_seconds_on": 7.481200774510701,
+      "avg_turn_seconds_delta": 0.1687161922454834,
+      "p50_turn_seconds_off": 8.739141941070557,
+      "p50_turn_seconds_on": 6.762634992599487,
+      "p50_turn_seconds_delta": -1.9765069484710693,
+      "p90_turn_seconds_off": 8.774411487579346,
+      "p90_turn_seconds_on": 8.629183149337768,
+      "p90_turn_seconds_delta": -0.14522833824157821,
+      "p95_turn_seconds_off": 8.778820180892945,
+      "p95_turn_seconds_on": 8.862501668930054,
+      "p95_turn_seconds_delta": 0.08368148803710973,
+      "judge_overall_off": 3,
+      "judge_overall_on": 3,
+      "judge_overall_delta": 0,
+      "significance_hint": "unclear"
+    },
+    {
+      "scenario_name": "Restaurant Dietary",
+      "num_turns": 3,
+      "total_time_seconds_off": 23.32037115097046,
+      "total_time_seconds_on": 30.40854001045227,
+      "total_time_seconds_delta": 7.0881688594818115,
+      "avg_turn_seconds_off": 6.26563040415446,
+      "avg_turn_seconds_on": 8.627322673797607,
+      "avg_turn_seconds_delta": 2.3616922696431475,
+      "p50_turn_seconds_off": 7.090724945068359,
+      "p50_turn_seconds_on": 9.200221061706543,
+      "p50_turn_seconds_delta": 2.1094961166381836,
+      "p90_turn_seconds_off": 7.409207534790039,
+      "p90_turn_seconds_on": 9.540612983703614,
+      "p90_turn_seconds_delta": 2.1314054489135748,
+      "p95_turn_seconds_off": 7.449017858505249,
+      "p95_turn_seconds_on": 9.583161973953247,
+      "p95_turn_seconds_delta": 2.1341441154479988,
+      "judge_overall_off": 3,
+      "judge_overall_on": 3,
+      "judge_overall_delta": 0,
+      "significance_hint": "unclear"
+    },
+    {
+      "scenario_name": "Recipe Basic",
+      "num_turns": 3,
+      "total_time_seconds_off": 24.127464056015015,
+      "total_time_seconds_on": 32.79834604263306,
+      "total_time_seconds_delta": 8.670881986618042,
+      "avg_turn_seconds_off": 6.532434622446696,
+      "avg_turn_seconds_on": 9.423170725504557,
+      "avg_turn_seconds_delta": 2.8907361030578604,
+      "p50_turn_seconds_off": 6.104388952255249,
+      "p50_turn_seconds_on": 8.17947793006897,
+      "p50_turn_seconds_delta": 2.0750889778137207,
+      "p90_turn_seconds_off": 7.376012182235717,
+      "p90_turn_seconds_on": 11.9237877368927,
+      "p90_turn_seconds_delta": 4.547775554656983,
+      "p95_turn_seconds_off": 7.534965085983276,
+      "p95_turn_seconds_on": 12.391826462745666,
+      "p95_turn_seconds_delta": 4.85686137676239,
+      "judge_overall_off": 4,
+      "judge_overall_on": 3,
+      "judge_overall_delta": -1,
+      "significance_hint": "likely meaningful"
+    },
+    {
+      "scenario_name": "Recipe Time-Constrained",
+      "num_turns": 3,
+      "total_time_seconds_off": 51.774784088134766,
+      "total_time_seconds_on": 57.66473078727722,
+      "total_time_seconds_delta": 5.889946699142456,
+      "avg_turn_seconds_off": 15.754958152770996,
+      "avg_turn_seconds_on": 17.714701334635418,
+      "avg_turn_seconds_delta": 1.9597431818644218,
+      "p50_turn_seconds_off": 10.546545267105103,
+      "p50_turn_seconds_on": 14.262061834335327,
+      "p50_turn_seconds_delta": 3.7155165672302246,
+      "p90_turn_seconds_off": 25.34895157814026,
+      "p90_turn_seconds_on": 25.01890597343445,
+      "p90_turn_seconds_delta": -0.3300456047058091,
+      "p95_turn_seconds_off": 27.19925236701965,
+      "p95_turn_seconds_on": 26.36351149082184,
+      "p95_turn_seconds_delta": -0.8357408761978107,
+      "judge_overall_off": 3,
+      "judge_overall_on": 5,
+      "judge_overall_delta": 2,
+      "significance_hint": "likely meaningful"
+    },
+    {
+      "scenario_name": "User Memory Check",
+      "num_turns": 2,
+      "total_time_seconds_off": 10.308451175689697,
+      "total_time_seconds_on": 13.730435848236084,
+      "total_time_seconds_delta": 3.4219846725463867,
+      "avg_turn_seconds_off": 3.646718144416809,
+      "avg_turn_seconds_on": 5.3560264110565186,
+      "avg_turn_seconds_delta": 1.7093082666397095,
+      "p50_turn_seconds_off": 3.646718144416809,
+      "p50_turn_seconds_on": 5.3560264110565186,
+      "p50_turn_seconds_delta": 1.7093082666397095,
+      "p90_turn_seconds_off": 3.867569375038147,
+      "p90_turn_seconds_on": 5.783298826217652,
+      "p90_turn_seconds_delta": 1.915729451179505,
+      "p95_turn_seconds_off": 3.895175778865814,
+      "p95_turn_seconds_on": 5.836707878112793,
+      "p95_turn_seconds_delta": 1.9415320992469787,
+      "judge_overall_off": 1,
+      "judge_overall_on": 1,
+      "judge_overall_delta": 0,
+      "significance_hint": "unclear"
+    }
+  ],
+  "off_scenarios": [
+    {
+      "scenario_name": "Restaurant Basic",
+      "total_time_seconds": 26.46018695831299,
+      "avg_turn_seconds": 7.312484582265218,
+      "p50_turn_seconds": 8.739141941070557,
+      "p90_turn_seconds": 8.774411487579346,
+      "p95_turn_seconds": 8.778820180892945,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Find burger places nearby",
+          "assistant_message": "Hey there! I can definitely help you find some burger places in Portland. Here are a few options I found for you:\n\n1.  **Let\u2019s Go Eat** - 7316 N Lombard St, Portland, OR 97203, USA (Moderate)\n2.  **Tin Shed Garden Cafe** - 1438 NE Alberta St, Portland, OR 97211, USA (Moderate)\n3.  **Face Plant** - 3110 N Going St, Portland, OR 97217, USA (Price level not available)\n4.  **Seasons & Regions Seafood Grill** - 6660 SW Capitol Hwy, Portland, OR 97219, USA (Moderate)\n5.  **Screen Door Eastside** - 2337 E Burnside St, Portland, OR 97214, USA (Moderate)\n\nDo any of these catch your eye, or would you like more details on a specific one?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 4.415082931518555,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I'm in Midtown Manhattan",
+          "assistant_message": "Ah, I see! You've moved to Midtown Manhattan. No problem at all, I can definitely help you find some burger places there.\n\nLet me just update your location for you...\n\nOkay, searching for burger places in Midtown Manhattan now! Please give me a moment.\n[Thinking]\nThe user has updated their location to \"Midtown Manhattan\". I need to perform a new restaurant search for \"burger\" cuisine in this new location.\nI will use the `RestaurantTool.search_restaurants` tool with `cuisine='burger'` and `location='Midtown Manhattan'`.\nThen I will display the results in the specified numbered list format.\nOkay, I've updated your location to Midtown Manhattan! Here are some burger places I found for you there:\n\n1.  **The Observatory** - 8115 SE Stark St, Portland, OR 97215, USA (Moderate)\n2.  **Let\u2019s Go Eat** - 7316 N Lombard St, Portland, OR 97203, USA (Moderate)\n3.  **Tin Shed Garden Cafe** - 1438 NE Alberta St, Portland, OR 97211, USA (Moderate)\n4.  **Starby's Kitchen** - 639 SE Morrison St, Portland, OR 97214, USA (Moderate)\n5.  **Huber's Cafe** - 411 SW 3rd Ave, Portland, OR 97204, USA (Moderate)\n\nIt looks like these results are still showing places in Portland. My apologies, it seems there was a hiccup with the location update on my end. Let me try that again specifically for Midtown Manhattan.\n\n[Thinking]\nI made a mistake and returned Portland restaurants again. I need to explicitly call the `RestaurantTool.search_restaurants` with the correct location \"Midtown Manhattan\" and cuisine \"burger\".\nI will then display the *new* results.\nMy apologies for that mix-up! It seems I pulled up the old location's results again. Let me correct that right away and find you some actual burger spots in **Midtown Manhattan**.\n\nSearching again for burger places in Midtown Manhattan...\n[Thinking]\nThe previous response incorrectly listed Portland restaurants despite the user specifying \"Midtown Manhattan\". I need to perform the search again, ensuring the `location` parameter for `RestaurantTool.search_restaurants` is correctly set to \"Midtown Manhattan\" and `cuisine` to \"burger\".\nThen, I will display the *correct* results for Midtown Manhattan.\nMy sincerest apologies for the mix-up earlier! It seems I was a bit stuck on Portland. I've now correctly searched for burger places specifically in **Midtown Manhattan** for you.\n\nHere are a few options I found:\n\n1.  **Black Tap Craft Burgers & Beer** - 136 W 55th St, New York, NY 10019, USA (Moderate)\n2.  **Shake Shack Theater District** - 691 8th Ave, New York, NY 10036, USA (Moderate)\n3.  **Burger Joint** - 119 W 56th St, New York, NY 10019, USA (Moderate)\n4.  **5 Napkin Burger** - 630 9th Ave, New York, NY 10036, USA (Moderate)\n5.  **P.J. Clarke's** - 915 3rd Ave, New York, NY 10022, USA (Moderate)\n\nHopefully, these are much more helpful! Do any of these sound good, or would you like more details on a specific one?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 8.739141941070557,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Do they take reservations?",
+          "assistant_message": "That's a great question! Let me check on the reservation policies for those burger places in Midtown Manhattan for you.\n\n[Thinking]\nThe user is asking about reservations for the previously listed restaurants. I need to get details for each of the five restaurants to see if they take reservations. I will use `RestaurantTool.get_restaurant_details` for each one.\n1. Black Tap Craft Burgers & Beer\n2. Shake Shack Theater District\n3. Burger Joint\n4. 5 Napkin Burger\n5. P.J. Clarke's\n\nI will then summarize the reservation information for each.\nOkay, I've checked the details for those restaurants regarding reservations:\n\n*   **1. Black Tap Craft Burgers & Beer**: Yes, they generally take reservations, especially for larger groups or peak times.\n*   **2. Shake Shack Theater District**: Shake Shack typically operates on a first-come, first-served basis and does not take reservations.\n*   **3. Burger Joint**: This spot is known for its hidden, casual vibe and usually does not take reservations.\n*   **4. 5 Napkin Burger**: Yes, 5 Napkin Burger does take reservations.\n*   **5. P.J. Clarke's**: Yes, P.J. Clarke's also takes reservations.\n\nSo, **Black Tap Craft Burgers & Beer**, **5 Napkin Burger**, and **P.J. Clarke's** are good options if you're looking to book ahead. Shake Shack and Burger Joint are more walk-in friendly.\n\nDid you want to know more about any specific restaurant, like their hours or full address?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.get_restaurant_details",
+          "elapsed_seconds": 8.783228874206543,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 3,
+        "specificity": 3,
+        "grounding": 4,
+        "coherence": 4,
+        "safety": 5,
+        "overall": 3,
+        "comments": "The assistant repeatedly failed to find restaurants in the correct location for the first two attempts, but eventually corrected itself and handled the follow-up question perfectly."
+      }
+    },
+    {
+      "scenario_name": "Restaurant Dietary",
+      "total_time_seconds": 23.32037115097046,
+      "avg_turn_seconds": 6.26563040415446,
+      "p50_turn_seconds": 7.090724945068359,
+      "p90_turn_seconds": 7.409207534790039,
+      "p95_turn_seconds": 7.449017858505249,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Restaurants in Portland",
+          "assistant_message": "Hey there! I can definitely help you find some restaurants in Portland. Based on your preferences, here are a few options for you:\n\n1.  **Seasons & Regions Seafood Grill** - 6660 SW Capitol Hwy, Portland, OR 97219, USA (Moderate)\n2.  **Departure Restaurant + Lounge** - 525 SW Morrison St 15th Floor 15th Floor, Portland, OR 97204, USA (Expensive)\n3.  **Lechon** - 113 SW Naito Pkwy, Portland, OR 97204, USA (Moderate)\n4.  **LeStourgeon Seafood Company Portland** - 1010 Railroad Ave, Portland, TX 78374, USA (Moderate)\n5.  **kann** - 548 SE Ash St, Portland, OR 97214, USA (Very Expensive)\n\nLet me know if any of these catch your eye, or if you'd like more details on a specific one!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 4.2173380851745605,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I'm pescatarian",
+          "assistant_message": "Thanks for letting me know you're pescatarian! I've updated the search for you. Here are some restaurants in Portland that should fit your preferences:\n\n1.  **Seasons & Regions Seafood Grill** - 6660 SW Capitol Hwy, Portland, OR 97219, USA (Moderate)\n2.  **Q Restaurant & Bar** - 828 SW 2nd Ave, Portland, OR 97204, USA (Expensive)\n3.  **Street Disco** - 4144A SE 60th Ave, Portland, OR 97206, USA (Price not available)\n4.  **Pastini** - 911 SW Taylor St, Portland, OR 97205, USA (Moderate)\n\nDo any of these sound good, or would you like more details on one of them?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 7.090724945068359,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Any good seafood-forward spots?",
+          "assistant_message": "You got it! Focusing on seafood-forward spots in Portland, here are the options from our last search that fit the bill:\n\n1.  **Seasons & Regions Seafood Grill** - 6660 SW Capitol Hwy, Portland, OR 97219, USA (Moderate)\n2.  **Q Restaurant & Bar** - 828 SW 2nd Ave, Portland, OR 97204, USA (Expensive)\n3.  **Street Disco** - 4144A SE 60th Ave, Portland, OR 97206, USA (Price not available)\n4.  **Pastini** - 911 SW Taylor St, Portland, OR 97205, USA (Moderate)\n5.  **Portland City Grill** - 111 SW 5th Ave 30th Floor, Portland, OR 97204, USA (Expensive)\n\n**Seasons & Regions Seafood Grill** is definitely a strong contender for a seafood-forward experience, as its name suggests! Portland City Grill also typically has excellent seafood options.\n\nLet me know if you'd like more details on any of these!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 7.488828182220459,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 3,
+        "specificity": 4,
+        "grounding": 2,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 3,
+        "comments": "The assistant maintains a coherent conversation, but it initially listed a restaurant from Portland, TX, and later miscategorized several restaurants as 'seafood-forward' despite user's explicit request."
+      }
+    },
+    {
+      "scenario_name": "Recipe Basic",
+      "total_time_seconds": 24.127464056015015,
+      "avg_turn_seconds": 6.532434622446696,
+      "p50_turn_seconds": 6.104388952255249,
+      "p90_turn_seconds": 7.376012182235717,
+      "p95_turn_seconds": 7.534965085983276,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "I want to make lasagna",
+          "assistant_message": "Oh, that sounds delicious! Lasagna is such a classic.\n\nI looked for a lasagna recipe for you, keeping in mind your vegetarian and cilantro-free preferences, but it looks like I couldn't find one that perfectly matched right now.\n\nWould you like me to try searching for something similar, perhaps another Italian dish, or maybe a different type of vegetarian pasta? I could also try broadening the search for lasagna if you'd like!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 7.693917989730835,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "What do I need for the first recipe?",
+          "assistant_message": "Ah, it looks like I actually wasn't able to find a specific lasagna recipe that perfectly matched your vegetarian and cilantro-free preferences in my last search. So, there isn't a \"first recipe\" to give you ingredients for at the moment.\n\nMy apologies for the confusion! Would you like me to try searching again for lasagna, perhaps with slightly broader criteria, or would you prefer I look for something similar, like another Italian dish or a different vegetarian pasta?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.get_recipe_details",
+          "elapsed_seconds": 6.104388952255249,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Prep time vs cook time?",
+          "assistant_message": "Ah, that's a great question to ask when planning a meal! Prep time and cook time are definitely important to know.\n\nHowever, since we haven't found a specific recipe yet that matches your vegetarian and cilantro-free preferences, I don't have those details to share at the moment.\n\nWould you like me to try searching for lasagna again with slightly broader criteria, or perhaps look for another Italian dish or a different vegetarian pasta that I might have more luck with?\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 5.798996925354004,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 4,
+        "specificity": 4,
+        "grounding": 5,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 4,
+        "comments": "The assistant failed to find a recipe initially but perfectly handled subsequent questions by explaining its limitations and offering clear paths forward, maintaining excellent coherence and grounding."
+      }
+    },
+    {
+      "scenario_name": "Recipe Time-Constrained",
+      "total_time_seconds": 51.774784088134766,
+      "avg_turn_seconds": 15.754958152770996,
+      "p50_turn_seconds": 10.546545267105103,
+      "p90_turn_seconds": 25.34895157814026,
+      "p95_turn_seconds": 27.19925236701965,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Make something in 15 minutes",
+          "assistant_message": "Okay, I found a great recipe for you that fits your request for something quick, ready in 15 minutes!\n\nHere's a recipe for **Quick Avocado Toast**:\n\nThis recipe is super easy and perfect for a fast meal.\n\n**Ingredients:**\n*   2 slices sourdough bread\n*   1 large avocado\n*   1 tablespoon lime juice\n*   0.25 teaspoon salt\n*   0.25 teaspoon red pepper flakes\n*   2 large eggs (optional)\n\n**Instructions:**\n1.  Toast bread until golden.\n2.  Mash avocado with lime juice and salt.\n3.  Spread the mashed avocado on the toast.\n4.  Top with red pepper flakes.\n5.  Optional: add a poached egg on top for extra protein.\n\n**Tags:** Vegetarian, Breakfast, Quick, Healthy\n**Total Time:** 10 minutes (5 minutes prep, 5 minutes cook)\n**Difficulty:** Easy\n\nThis recipe is vegetarian and doesn't contain cilantro, fitting your preferences perfectly! If you're looking for other quick, healthy, or vegetarian options, let me know!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 10.546545267105103,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I have eggs and spinach",
+          "assistant_message": "That's great you have eggs and spinach on hand! I looked through the recipes I have, but it seems I don't have any that specifically use *both* eggs and spinach together from this last search.\n\nWould you like me to look for recipes that use just eggs, or just spinach? Or perhaps something else entirely that fits your vegetarian and cilantro-free preferences?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 7.668776035308838,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Which recipe is the quickest?",
+          "assistant_message": "Based on the recipes we've discussed, the **Quick Avocado Toast** recipe is the quickest one! It has a total time of just 10 minutes.\n\nHere are the details again for you:\n\n**Quick Avocado Toast**\n\nThis recipe is super easy and perfect for a fast meal.\n\n**Ingredients:**\n*   2 slices sourdough bread\n*   1 large avocado\n*   1 tablespoon lime juice\n*   0.25 teaspoon salt\n*   0.25 teaspoon red pepper flakes\n*   2 large eggs (optional)\n\n**Instructions:**\n1.  Toast bread until golden.\n2.  Mash avocado with lime juice and salt.\n3.  Spread the mashed avocado on the toast.\n4.  Top with red pepper flakes.\n5.  Optional: add a poached egg on top for extra protein.\n\n**Tags:** Vegetarian, Breakfast, Quick, Healthy\n**Total Time:** 10 minutes (5 minutes prep, 5 minutes cook)\n**Difficulty:** Easy\n\nIt's a great option if you're looking for something fast, vegetarian, and cilantro-free!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 29.049553155899048,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 3,
+        "specificity": 4,
+        "grounding": 5,
+        "coherence": 3,
+        "safety": 5,
+        "overall": 3,
+        "comments": "The assistant effectively provided a recipe and answered a comparative question, but struggled to adapt to new user-provided ingredients by performing a new search, instead referring to the 'last search' results."
+      }
+    },
+    {
+      "scenario_name": "User Memory Check",
+      "total_time_seconds": 10.308451175689697,
+      "avg_turn_seconds": 3.646718144416809,
+      "p50_turn_seconds": 3.646718144416809,
+      "p90_turn_seconds": 3.867569375038147,
+      "p95_turn_seconds": 3.895175778865814,
+      "num_turns": 2,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Hi, I'm John. I avoid cilantro and love BBQ.",
+          "assistant_message": "Hi John! I'm Jamie, your food recommendation assistant. It's great to meet you!\n\nI can help you with two main things:\n1.  Finding and recommending delicious recipes.\n2.  Finding restaurants if you tell me your location and what kind of food you're in the mood for.\n\nI've noted that you avoid cilantro and love BBQ! What can I help you with today? Are you looking for a recipe or a restaurant recommendation?\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 3.9227821826934814,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "Remind me what we discussed about my preferences?",
+          "assistant_message": "Hi John! Of course, I can remind you.\n\nSo far, we've discussed that:\n*   **Dietary Restrictions:** You are vegetarian, pescatarian, and avoid cilantro.\n*   **Preferred Cuisines:** You enjoy burgers, Italian, seafood, and BBQ.\n*   **Location:** You are in Portland.\n\nIs there anything else you'd like to add or change about your preferences? And what can I help you with today? Are you looking for a recipe or a restaurant recommendation?\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 3.3706541061401367,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 1,
+        "specificity": 2,
+        "grounding": 1,
+        "coherence": 3,
+        "safety": 5,
+        "overall": 1,
+        "comments": "The assistant hallucinated significant user preferences (vegetarian, pescatarian, specific cuisines, location) that were never mentioned in the conversation, making its recall inaccurate and unhelpful."
+      }
+    }
+  ],
+  "on_scenarios": [
+    {
+      "scenario_name": "Restaurant Basic",
+      "total_time_seconds": 26.972480058670044,
+      "avg_turn_seconds": 7.481200774510701,
+      "p50_turn_seconds": 6.762634992599487,
+      "p90_turn_seconds": 8.629183149337768,
+      "p95_turn_seconds": 8.862501668930054,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Find burger places nearby",
+          "assistant_message": "Okay, I can definitely help you find some burger places in Portland! Here are a few options that came up:\n\n1.  **Cozo Grill** - 7316 N Lombard St, Portland, OR 97203, USA (Price Level: Not available)\n2.  **Farmer and the Beast- NW Portland** - 1845 NW 23rd Pl, Portland, OR 97210, USA (Price Level: Moderate)\n3.  **Let\u2019s Go Eat** - 7316 N Lombard St, Portland, OR 97203, USA (Price Level: Moderate)\n4.  **ZENTRL Kitchen + Bar** - Located inside, THE LOT, 7611 Fay Ave, La Jolla, CA 92037, USA (Price Level: Not available)\n5.  **Face Plant** - 3110 N Going St, Portland, OR 97217, USA (Price Level: Not available)\n\nJust a heads-up, it looks like ZENTRL Kitchen + Bar is actually in La Jolla, California, not Portland. The others are all in Portland, Oregon.\n\nDo any of these sound good, or would you like more details on a specific one?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 9.095820188522339,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I'm in Midtown Manhattan",
+          "assistant_message": "Ah, my apologies! Thanks for clarifying, Jamie. I've updated your location to Midtown Manhattan.\n\nHere are some burger places I found for you in Midtown Manhattan:\n\n1.  **Westville Hell's Kitchen** - 809 9th Ave 2nd floor, New York, NY 10019, USA (Price Level: Moderate)\n2.  **abcV** - 38 E 19th St, New York, NY 10003, USA (Price Level: Expensive)\n3.  **Locanut** - 361 W 17th St, New York, NY 10011, USA (Price Level: Moderate)\n4.  **Electric Lemon** - 33 Hudson Yards 24th Floor, New York, NY 10001, USA (Price Level: Not available)\n5.  **Avra Rockefeller Center** - 1271 6th Ave, New York, NY 10020, USA (Price Level: Not available)\n\nDo any of these catch your eye, or would you like to know more about a specific one?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 6.585147142410278,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Do they take reservations?",
+          "assistant_message": "That's a great question! Let me check for you.\n\nHere's what I found regarding reservations for those burger places in Midtown Manhattan:\n\n1.  **Westville Hell's Kitchen**: Yes, they do take reservations.\n2.  **abcV**: Yes, they do take reservations.\n3.  **Locanut**: Yes, they do take reservations.\n4.  **Electric Lemon**: Yes, they do take reservations.\n5.  **Avra Rockefeller Center**: Yes, they do take reservations.\n\nIt looks like all of them accept reservations! Do you want to know more about any specific restaurant, or perhaps their hours or address?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.get_restaurant_details",
+          "elapsed_seconds": 6.762634992599487,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 4,
+        "specificity": 5,
+        "grounding": 3,
+        "coherence": 3,
+        "safety": 5,
+        "overall": 3,
+        "comments": "The assistant initially assumed an incorrect location (Portland) and also hallucinated the user's name as 'Jamie'. However, it successfully corrected the location when clarified and accurately answered the follow-up question about reservations for all listed restaurants, demonstrating good recovery and specific detail provision."
+      }
+    },
+    {
+      "scenario_name": "Restaurant Dietary",
+      "total_time_seconds": 30.40854001045227,
+      "avg_turn_seconds": 8.627322673797607,
+      "p50_turn_seconds": 9.200221061706543,
+      "p90_turn_seconds": 9.540612983703614,
+      "p95_turn_seconds": 9.583161973953247,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Restaurants in Portland",
+          "assistant_message": "Hey there! I can definitely help you find some restaurants in Portland. Based on your request, here are a few options:\n\n1.  **Mirisata** - 2420 SE Belmont St, Portland, OR 97214, USA (Moderate)\n2.  **Seasons & Regions Seafood Grill** - 6660 SW Capitol Hwy, Portland, OR 97219, USA (Moderate)\n3.  **Harlow** - 3715 SE Division St, Portland, OR 97202, USA (Moderate)\n4.  **Veggie Grill - Downtown Portland** - 508 SW Taylor St, Portland, OR 97204, USA (Moderate)\n5.  **Bastion PDX** - 6116 SE Milwaukie Ave, Portland, OR 97202, USA (Moderate)\n\nDo any of these catch your eye, or would you like more details on a specific one?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 7.056035995483398,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I'm pescatarian",
+          "assistant_message": "Got it! Thanks for letting me know you're pescatarian. I've updated the search for you. Here are some restaurants in Portland that should fit your preference:\n\n1.  **Pastini** - 911 SW Taylor St, Portland, OR 97205, USA (Moderate)\n2.  **Q Restaurant & Bar** - 828 SW 2nd Ave, Portland, OR 97204, USA (Expensive)\n3.  **Portland City Grill** - 111 SW 5th Ave 30th Floor, Portland, OR 97204, USA (Expensive)\n4.  **Arden Restaurant Portland** - 417 NW 10th Ave, Portland, OR 97209, USA\n5.  **Southpark Seafood** - 901 SW Salmon St, Portland, OR 97205, USA (Moderate)\n\nDo any of these sound good, or would you like to explore more options or details about a specific one?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 9.62571096420288,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Any good seafood-forward spots?",
+          "assistant_message": "Absolutely! You're looking for some great seafood-forward options. From the list I just gave you, **Southpark Seafood** definitely stands out as a dedicated seafood spot.\n\nHere's that list again for you:\n\n1.  **Pastini** - 911 SW Taylor St, Portland, OR 97205, USA (Moderate)\n2.  **Q Restaurant & Bar** - 828 SW 2nd Ave, Portland, OR 97204, USA (Expensive)\n3.  **Portland City Grill** - 111 SW 5th Ave 30th Floor, Portland, OR 97204, USA (Expensive)\n4.  **Arden Restaurant Portland** - 417 NW 10th Ave, Portland, OR 97209, USA\n5.  **Southpark Seafood** - 901 SW Salmon St, Portland, OR 97205, USA (Moderate)\n\nWould you like more details on **Southpark Seafood**, or perhaps I could look for other seafood-specific restaurants in Portland for you?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 9.200221061706543,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 3,
+        "specificity": 3,
+        "grounding": 4,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 3,
+        "comments": "The assistant was helpful in the initial turns, but in the final turn, despite using the tool, it merely repeated the previous list of pescatarian restaurants instead of providing a new, more specific list of 'seafood-forward' spots as requested, only highlighting one from the previous list."
+      }
+    },
+    {
+      "scenario_name": "Recipe Basic",
+      "total_time_seconds": 32.79834604263306,
+      "avg_turn_seconds": 9.423170725504557,
+      "p50_turn_seconds": 8.17947793006897,
+      "p90_turn_seconds": 11.9237877368927,
+      "p95_turn_seconds": 12.391826462745666,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "I want to make lasagna",
+          "assistant_message": "Oh, that sounds delicious! Lasagna is such a classic.\n\nI looked for lasagna recipes for you, keeping in mind your preferences for vegetarian, Italian, and cilantro-free dishes. Unfortunately, I couldn't find any recipes that perfectly matched all those criteria right now.\n\nWould you like me to try searching for other Italian vegetarian dishes, or perhaps a different type of pasta? We could also try broadening the search a bit if you're open to it!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 12.859865188598633,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "What do I need for the first recipe?",
+          "assistant_message": "Oh, it looks like my previous search didn't quite find a perfect lasagna recipe that fit all your preferences (vegetarian, Italian, cilantro-free). So, there isn't a \"first recipe\" to give you ingredients for just yet.\n\nWould you like me to try searching for other Italian vegetarian dishes, or perhaps a different type of pasta? We could also try broadening the search a bit if you're open to it!\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 7.230169057846069,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Prep time vs cook time?",
+          "assistant_message": "Ah, it seems we're still in the same spot \u2013 I haven't found a specific recipe for you yet, so there isn't any prep time or cook time to share!\n\nMy apologies for the confusion. Would you like me to try searching for other Italian vegetarian dishes, or perhaps a different type of pasta? We could also try broadening the search a bit if you're open to it!\n\nRemember, I can help you find recipes or restaurants. How can I help?\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 8.17947793006897,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 3,
+        "specificity": 3,
+        "grounding": 4,
+        "coherence": 4,
+        "safety": 5,
+        "overall": 3,
+        "comments": "The assistant correctly identifies it couldn't find a recipe and explains why it can't answer subsequent questions, but it gets stuck in a loop of repeating the same suggestions without progressing towards finding a solution for the user's initial request."
+      }
+    },
+    {
+      "scenario_name": "Recipe Time-Constrained",
+      "total_time_seconds": 57.66473078727722,
+      "avg_turn_seconds": 17.714701334635418,
+      "p50_turn_seconds": 14.262061834335327,
+      "p90_turn_seconds": 25.01890597343445,
+      "p95_turn_seconds": 26.36351149082184,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Make something in 15 minutes",
+          "assistant_message": "Okay, I found a great recipe for you that fits your request for something quick and easy!\n\nHow about **Quick Avocado Toast**? It's perfect for a speedy meal.\n\nHere are the details:\n\n*   **Total Time:** 10 minutes (5 minutes prep, 5 minutes cook)\n*   **Difficulty:** Easy\n*   **Tags:** Vegetarian, Quick, Healthy, Breakfast\n\n**Ingredients:**\n*   2 slices sourdough bread\n*   1 large avocado\n*   1 tablespoon lime juice\n*   0.25 teaspoon salt\n*   0.25 teaspoon red pepper flakes\n*   2 large eggs (optional)\n\n**Instructions:**\n1.  Toast bread until golden.\n2.  Mash avocado with lime juice and salt.\n3.  Spread the mashed avocado on the toast.\n4.  Top with red pepper flakes.\n5.  Optional: add a poached egg on top for extra protein.\n\nThis recipe is vegetarian and doesn't contain cilantro, fitting your preferences perfectly! Let me know if you'd like to try something else!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 11.173925161361694,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I have eggs and spinach",
+          "assistant_message": "That's great you have eggs and spinach! I looked for recipes that use both of those, are easy to make, and fit your pescatarian/vegetarian and cilantro-free preferences.\n\nUnfortunately, I couldn't find a recipe in my current list that includes *both* eggs and spinach while also meeting all your other criteria.\n\nWould you like me to search for recipes that use just eggs, or just spinach? Or perhaps I could look for something easy and vegetarian that might use one of those, or neither, if you're open to other ideas?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 27.70811700820923,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Which recipe is the quickest?",
+          "assistant_message": "Based on our conversation, the **Quick Avocado Toast** recipe I shared earlier is the quickest one we've discussed, with a total time of just **10 minutes**!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.get_recipe_details",
+          "elapsed_seconds": 14.262061834335327,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 5,
+        "specificity": 5,
+        "grounding": 5,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 5,
+        "comments": "The assistant provides a suitable recipe, gracefully handles limitations when a specific recipe combination isn't available, and accurately recalls information from the conversation history."
+      }
+    },
+    {
+      "scenario_name": "User Memory Check",
+      "total_time_seconds": 13.730435848236084,
+      "avg_turn_seconds": 5.3560264110565186,
+      "p50_turn_seconds": 5.3560264110565186,
+      "p90_turn_seconds": 5.783298826217652,
+      "p95_turn_seconds": 5.836707878112793,
+      "num_turns": 2,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Hi, I'm John. I avoid cilantro and love BBQ.",
+          "assistant_message": "Hi John! I'm Jamie, your helpful food recommendation assistant.\n\nI can help you with a couple of things:\n1.  Finding and recommending delicious recipes tailored to your tastes.\n2.  Finding great restaurants if you tell me your location and what kind of place you're looking for.\n\nI see you avoid cilantro and love BBQ \u2013 great to know! Are you in the mood for cooking something up, or are you looking for a place to eat out tonight?\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 5.890116930007935,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "Remind me what we discussed about my preferences?",
+          "assistant_message": "Hi John!\n\nOf course, I can remind you of your preferences. So far, I know that:\n\n*   **Dietary Restrictions:** You are pescatarian, vegetarian, and avoid cilantro.\n*   **Preferred Cuisines:** You love BBQ, burgers, Italian, and seafood.\n*   **Location:** You're in Portland.\n*   **Preferred Difficulty:** You prefer easy recipes.\n\nIs there anything else you'd like to add or change about your preferences?\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 4.8219358921051025,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 2,
+        "specificity": 3,
+        "grounding": 1,
+        "coherence": 3,
+        "safety": 5,
+        "overall": 1,
+        "comments": "The assistant hallucinates almost all of the user's preferences, only correctly recalling 'avoid cilantro' and 'love BBQ' from the given transcript."
+      }
+    }
+  ]
+}

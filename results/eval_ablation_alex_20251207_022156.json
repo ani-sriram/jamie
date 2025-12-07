@@ -1,0 +1,543 @@
+{
+  "off_summary": {
+    "timestamp": "2025-12-07T10:18:15.658809Z",
+    "api_url": "http://localhost:8000",
+    "user": "alex",
+    "total_scenarios": 5,
+    "total_turns": 14,
+    "total_time_seconds": 190.4225628376007,
+    "avg_scenario_time_seconds": 38.08451256752014,
+    "overall_p50_turn_seconds": 7.460414171218872,
+    "overall_p90_turn_seconds": 18.526008558273322,
+    "overall_p95_turn_seconds": 22.948094236850736
+  },
+  "on_summary": {
+    "timestamp": "2025-12-07T10:21:56.992869Z",
+    "api_url": "http://localhost:8000",
+    "user": "alex",
+    "total_scenarios": 5,
+    "total_turns": 14,
+    "total_time_seconds": 221.3336238861084,
+    "avg_scenario_time_seconds": 44.26672477722168,
+    "overall_p50_turn_seconds": 10.570943117141724,
+    "overall_p90_turn_seconds": 21.058438849449157,
+    "overall_p95_turn_seconds": 21.68341624736786
+  },
+  "comparisons": [
+    {
+      "scenario_name": "Restaurant Basic",
+      "num_turns": 3,
+      "total_time_seconds_off": 20.479401111602783,
+      "total_time_seconds_on": 26.355918884277344,
+      "total_time_seconds_delta": 5.8765177726745605,
+      "avg_turn_seconds_off": 5.321375926335652,
+      "avg_turn_seconds_on": 7.281198978424072,
+      "avg_turn_seconds_delta": 1.95982305208842,
+      "p50_turn_seconds_off": 4.962828874588013,
+      "p50_turn_seconds_on": 7.6496970653533936,
+      "p50_turn_seconds_delta": 2.686868190765381,
+      "p90_turn_seconds_off": 6.9104578495025635,
+      "p90_turn_seconds_on": 7.809381818771362,
+      "p90_turn_seconds_delta": 0.8989239692687985,
+      "p95_turn_seconds_off": 7.153911471366881,
+      "p95_turn_seconds_on": 7.829342412948608,
+      "p95_turn_seconds_delta": 0.6754309415817268,
+      "judge_overall_off": 1,
+      "judge_overall_on": 2,
+      "judge_overall_delta": 1,
+      "significance_hint": "likely meaningful"
+    },
+    {
+      "scenario_name": "Restaurant Dietary",
+      "num_turns": 3,
+      "total_time_seconds_off": 32.43463397026062,
+      "total_time_seconds_on": 43.75295615196228,
+      "total_time_seconds_delta": 11.31832218170166,
+      "avg_turn_seconds_off": 9.307265679041544,
+      "avg_turn_seconds_on": 13.080781062444052,
+      "avg_turn_seconds_delta": 3.7735153834025077,
+      "p50_turn_seconds_off": 8.953007936477661,
+      "p50_turn_seconds_on": 12.746552228927612,
+      "p50_turn_seconds_delta": 3.793544292449951,
+      "p90_turn_seconds_off": 13.05854001045227,
+      "p90_turn_seconds_on": 18.711240911483767,
+      "p90_turn_seconds_delta": 5.652700901031496,
+      "p95_turn_seconds_off": 13.571731519699096,
+      "p95_turn_seconds_on": 19.456826996803283,
+      "p95_turn_seconds_delta": 5.885095477104187,
+      "judge_overall_off": 4,
+      "judge_overall_on": 3,
+      "judge_overall_delta": -1,
+      "significance_hint": "likely meaningful"
+    },
+    {
+      "scenario_name": "Recipe Basic",
+      "num_turns": 3,
+      "total_time_seconds_off": 37.55857586860657,
+      "total_time_seconds_on": 35.268702030181885,
+      "total_time_seconds_delta": -2.2898738384246826,
+      "avg_turn_seconds_off": 11.014963706334433,
+      "avg_turn_seconds_on": 10.25345746676127,
+      "avg_turn_seconds_delta": -0.761506239573162,
+      "p50_turn_seconds_off": 7.523463249206543,
+      "p50_turn_seconds_on": 10.07934021949768,
+      "p50_turn_seconds_delta": 2.5558769702911377,
+      "p90_turn_seconds_off": 17.387703704833985,
+      "p90_turn_seconds_on": 10.86590485572815,
+      "p90_turn_seconds_delta": -6.521798849105835,
+      "p95_turn_seconds_off": 18.620733761787413,
+      "p95_turn_seconds_on": 10.964225435256958,
+      "p95_turn_seconds_delta": -7.656508326530455,
+      "judge_overall_off": 4,
+      "judge_overall_on": 5,
+      "judge_overall_delta": 1,
+      "significance_hint": "likely meaningful"
+    },
+    {
+      "scenario_name": "Recipe Time-Constrained",
+      "num_turns": 3,
+      "total_time_seconds_off": 63.72791767120361,
+      "total_time_seconds_on": 66.38364696502686,
+      "total_time_seconds_delta": 2.655729293823242,
+      "avg_turn_seconds_off": 19.738404273986816,
+      "avg_turn_seconds_on": 20.623051246007282,
+      "avg_turn_seconds_delta": 0.8846469720204659,
+      "p50_turn_seconds_off": 15.427912950515747,
+      "p50_turn_seconds_on": 21.425307035446167,
+      "p50_turn_seconds_delta": 5.99739408493042,
+      "p90_turn_seconds_off": 26.041348886489867,
+      "p90_turn_seconds_on": 22.015270948410034,
+      "p90_turn_seconds_delta": -4.026077938079833,
+      "p95_turn_seconds_off": 27.36802837848663,
+      "p95_turn_seconds_on": 22.089016437530518,
+      "p95_turn_seconds_delta": -5.279011940956114,
+      "judge_overall_off": 5,
+      "judge_overall_on": 5,
+      "judge_overall_delta": 0,
+      "significance_hint": "unclear"
+    },
+    {
+      "scenario_name": "User Memory Check",
+      "num_turns": 2,
+      "total_time_seconds_off": 12.894577980041504,
+      "total_time_seconds_on": 21.18441081047058,
+      "total_time_seconds_delta": 8.289832830429077,
+      "avg_turn_seconds_off": 4.943090915679932,
+      "avg_turn_seconds_on": 9.088091373443604,
+      "avg_turn_seconds_delta": 4.145000457763672,
+      "p50_turn_seconds_off": 4.943090915679932,
+      "p50_turn_seconds_on": 9.088091373443604,
+      "p50_turn_seconds_delta": 4.145000457763672,
+      "p90_turn_seconds_off": 5.86543493270874,
+      "p90_turn_seconds_on": 12.06906213760376,
+      "p90_turn_seconds_delta": 6.20362720489502,
+      "p95_turn_seconds_off": 5.980727934837342,
+      "p95_turn_seconds_on": 12.44168348312378,
+      "p95_turn_seconds_delta": 6.460955548286439,
+      "judge_overall_off": 1,
+      "judge_overall_on": 1,
+      "judge_overall_delta": 0,
+      "significance_hint": "unclear"
+    }
+  ],
+  "off_scenarios": [
+    {
+      "scenario_name": "Restaurant Basic",
+      "total_time_seconds": 20.479401111602783,
+      "avg_turn_seconds": 5.321375926335652,
+      "p50_turn_seconds": 4.962828874588013,
+      "p90_turn_seconds": 6.9104578495025635,
+      "p95_turn_seconds": 7.153911471366881,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Find coffee shops nearby",
+          "assistant_message": "Hey there! I looked for coffee shops for you, and here are the places I found in Austin:\n\n1.  **Conscious Kitchen Atx** - 3620 Bee Caves Rd c, West Lake Hills, TX 78746, USA\n2.  **Revoluci\u00f3n** - 207 San Jacinto Blvd Suite 200, Austin, TX 78701, USA (Moderate)\n3.  **Beach Break Market** - 5646 La Jolla Blvd, La Jolla, CA 92037, USA\n4.  **Bouldin Creek Cafe** - 1900 S 1st St, Austin, TX 78704, USA (Inexpensive)\n5.  **True Food Kitchen** - 222 West Ave Ste HR100, Austin, TX 78701, USA (Moderate)\n\nOut of these, **Bouldin Creek Cafe** (number 4) is definitely a cafe and a great spot for coffee! Revoluci\u00f3n (number 2) might also have coffee options. It looks like Beach Break Market (number 3) is actually in La Jolla, CA, so that one might not be what you're looking for in Austin.\n\nLet me know if you'd like more details on any of these!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 7.397365093231201,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I'm near Pike Place Market, Seattle",
+          "assistant_message": "Okay, got it! You're in Seattle now, near Pike Place Market. Let me find some coffee shops for you in that area.\n\nSearching for coffee shops near Pike Place Market, Seattle...\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 3.603933811187744,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Do they have outdoor seating?",
+          "assistant_message": "That's a great question! I'm still waiting for the search results to come back for coffee shops near Pike Place Market in Seattle. Once I have that list, I'll be able to check if any of them have outdoor seating for you.\n\nPlease bear with me for a moment!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.get_restaurant_details",
+          "elapsed_seconds": 4.962828874588013,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 1,
+        "specificity": 2,
+        "grounding": 1,
+        "coherence": 1,
+        "safety": 5,
+        "overall": 1,
+        "comments": "The assistant initially hallucinates a location (Austin). After the user corrects it to Seattle, the assistant states it is searching but never provides results, failing to fulfill the core request over multiple turns."
+      }
+    },
+    {
+      "scenario_name": "Restaurant Dietary",
+      "total_time_seconds": 32.43463397026062,
+      "avg_turn_seconds": 9.307265679041544,
+      "p50_turn_seconds": 8.953007936477661,
+      "p90_turn_seconds": 13.05854001045227,
+      "p95_turn_seconds": 13.571731519699096,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Show restaurants in Austin",
+          "assistant_message": "Okay, I can certainly help you find some restaurants! Here are the places I found in the search results. While you asked for Austin, some of these results are from other locations that came up in the broader search.\n\n1.  **Conscious Kitchen Atx** - 3620 Bee Caves Rd c, West Lake Hills, TX 78746, USA\n2.  **Voqozo** - 8657 Villa La Jolla Dr Ste 103, La Jolla, CA 92037, USA (Moderate)\n3.  **True Food Kitchen** - 222 West Ave Ste HR100, Austin, TX 78701, USA (Moderate)\n4.  **Beach Break Market** - 5646 La Jolla Blvd, La Jolla, CA 92037, USA\n5.  **everbowl** - 4150 Regents Park Row Suite 165, La Jolla, CA 92037, USA\n\nTrue Food Kitchen (number 3) is located right in Austin! Let me know if you'd like more details on any of these, or if you'd like me to refine the search for Austin specifically.\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 8.953007936477661,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I'm keto and avoid sugar",
+          "assistant_message": "Thanks for reminding me about your dietary preferences! I'll make sure to keep \"keto\" and \"sugar-free\" in mind for our search.\n\nLet me find some restaurants in Austin that fit those criteria for you.\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 4.88386607170105,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Which one has the best low-carb options?",
+          "assistant_message": "Okay, I've taken your \"keto\" and \"sugar-free\" preferences into account and searched for restaurants in Austin! \"Best\" can be subjective, but here are some great options that cater to low-carb diets:\n\n1.  **Conscious Kitchen Atx** - 3620 Bee Caves Rd c, West Lake Hills, TX 78746, USA\n2.  **True Food Kitchen** - 222 West Ave Ste HR100, Austin, TX 78701, USA (Moderate)\n3.  **Picnik** - 4801 Burnet Rd, Austin, TX 78756, USA (Moderate)\n4.  **Kerbey Lane Cafe** - 3704 Kerbey Ln, Austin, TX 78731, USA (Inexpensive)\n\nBased on their known offerings and cuisine types:\n\n*   **Conscious Kitchen Atx** (number 1) is explicitly \"Keto-friendly,\" making it a very strong contender for excellent low-carb options.\n*   **Picnik** (number 3) is also a fantastic choice, known for its \"Keto\" and \"Paleo\" menus, which are naturally low in carbs and sugar-free.\n*   **True Food Kitchen** (number 2) focuses on healthy eating with many \"Gluten-Free Options\" and fresh ingredients, so you'll likely find several suitable low-carb dishes there, though it might require a bit more careful selection.\n*   **Kerbey Lane Cafe** (number 4) is a classic Austin diner. While they have a wide menu, finding dedicated low-carb or sugar-free options might be a bit more challenging compared to the others, but they often have customizable breakfast plates that could work.\n\nI'd lean towards **Conscious Kitchen Atx** or **Picnik** if you're looking for the most straightforward and dedicated low-carb/keto options!\n\nWould you like more details on any of these, like their hours or specific menu highlights?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.get_restaurant_details",
+          "elapsed_seconds": 14.084923028945923,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 4,
+        "specificity": 4,
+        "grounding": 3,
+        "coherence": 4,
+        "safety": 5,
+        "overall": 4,
+        "comments": "The assistant initially failed to filter by location, providing results outside Austin, but then effectively incorporated dietary restrictions and provided well-justified, specific low-carb restaurant recommendations in Austin."
+      }
+    },
+    {
+      "scenario_name": "Recipe Basic",
+      "total_time_seconds": 37.55857586860657,
+      "avg_turn_seconds": 11.014963706334433,
+      "p50_turn_seconds": 7.523463249206543,
+      "p90_turn_seconds": 17.387703704833985,
+      "p95_turn_seconds": 18.620733761787413,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "I want to make shakshuka",
+          "assistant_message": "Oh, that sounds delicious! Shakshuka is a fantastic choice.\n\nI looked for an easy, keto, and sugar-free shakshuka recipe for you, but it seems I couldn't find one that perfectly matches all those criteria in my current database. Shakshuka often includes tomatoes, which can sometimes be a bit higher in carbs for strict keto, and finding a sugar-free version that's also easy and keto-compliant can be tricky.\n\nWould you like me to:\n1. Look for a shakshuka recipe without the keto and sugar-free restrictions?\n2. Search for other easy keto and sugar-free recipes?\n3. See if there are any restaurants in Austin that serve shakshuka?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 7.523463249206543,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "What do I need for the first recipe?",
+          "assistant_message": "It looks like there wasn't a specific shakshuka recipe found that met all your criteria (easy, keto, sugar-free) in that last search, so I don't have an ingredient list for a \"first recipe.\"\n\nWould you like me to try one of these options instead?\n1. Look for a shakshuka recipe without the keto and sugar-free restrictions?\n2. Search for other easy keto and sugar-free recipes?\n3. See if there are any restaurants in Austin that serve shakshuka?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.get_recipe_details",
+          "elapsed_seconds": 5.667664051055908,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "How spicy is it?",
+          "assistant_message": "It seems there wasn't a specific shakshuka recipe found that met all your criteria (easy, keto, sugar-free) in that last search, so I don't have details like spiciness for a particular recipe.\n\nWould you like me to try one of these options instead?\n1. Look for a shakshuka recipe without the keto and sugar-free restrictions?\n2. Search for other easy keto and sugar-free recipes?\n3. See if there are any restaurants in Austin that serve shakshuka?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 19.853763818740845,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 4,
+        "specificity": 4,
+        "grounding": 5,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 4,
+        "comments": "The assistant gracefully handles not finding a recipe, explains why, and offers clear alternatives, then consistently reiterates this when the user asks for details on a non-existent recipe."
+      }
+    },
+    {
+      "scenario_name": "Recipe Time-Constrained",
+      "total_time_seconds": 63.72791767120361,
+      "avg_turn_seconds": 19.738404273986816,
+      "p50_turn_seconds": 15.427912950515747,
+      "p90_turn_seconds": 26.041348886489867,
+      "p95_turn_seconds": 27.36802837848663,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "30-minute meal please",
+          "assistant_message": "Hey there! You're looking for a 30-minute meal, and I've found a couple of easy recipes that fit the bill perfectly. I also remember you're interested in keto and sugar-free options, and while these don't explicitly carry those tags, they are super quick and easy to prepare!\n\nHere are a couple of options for you:\n\n### Quick Chicken Stir-Fry\nThis is a fantastic option if you're looking for something savory and quick!\n*   **Ingredients:**\n    *   1 pound chicken breast\n    *   2 medium bell peppers\n    *   2 cups broccoli\n    *   2 medium carrots\n    *   0.25 cup soy sauce\n    *   1 tablespoon ginger\n    *   3 cloves garlic\n    *   2 tablespoons vegetable oil\n    *   2 cups rice\n*   **Tags:** Asian, Chicken, Stir-fry, Quick, Main Course\n*   **Total Time:** 30 minutes (15 min prep, 15 min cook)\n*   **Difficulty:** Easy\n\n### Quick Avocado Toast\nIf you're in the mood for something lighter or for a quick breakfast/brunch, this is a great choice!\n*   **Ingredients:**\n    *   2 slices sourdough bread\n    *   1 large avocado\n    *   1 tablespoon lime juice\n    *   0.25 teaspoon salt\n    *   0.25 teaspoon red pepper flakes\n    *   2 large eggs (optional)\n*   **Tags:** Breakfast, Vegetarian, Quick, Healthy\n*   **Total Time:** 10 minutes (5 min prep, 5 min cook)\n*   **Difficulty:** Easy\n\nLet me know if either of these sounds good! If you'd like, I can try to find some other easy, 30-minute meals that are specifically keto and sugar-free for you.\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 15.092592000961304,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I have chicken thighs and rice",
+          "assistant_message": "Ah, I see! You've got chicken thighs and rice on hand, and you're looking for a recipe that uses those, keeping in mind your preferences for a 30-minute, easy, keto, and sugar-free meal, possibly Korean or Mediterranean.\n\nI've looked through my recipes, and it seems finding a perfect match that explicitly uses **chicken thighs** *and* **rice** while also hitting all your other specific tags (keto, sugar-free, Korean, Mediterranean, shakshuka) within 30 minutes and easy difficulty is a bit tricky.\n\nThe \"Quick Chicken Stir-Fry\" I mentioned earlier does use rice and chicken, but it specifically calls for chicken *breast*. However, chicken thighs would work wonderfully as a substitute in that recipe! They might just need a tiny bit more cooking time to ensure they're cooked through, but it would still be an easy and quick meal.\n\nHere's that recipe again, with the note that you can absolutely use your chicken thighs:\n\n### Quick Chicken Stir-Fry\nThis is a fantastic option if you're looking for something savory and quick! You can easily substitute chicken thighs for the breast.\n*   **Ingredients:**\n    *   1 pound chicken breast (or **chicken thighs**, cut into bite-sized pieces)\n    *   2 medium bell peppers\n    *   2 cups broccoli\n    *   2 medium carrots\n    *   0.25 cup soy sauce (you might want to look for a low-sodium or tamari option for keto/sugar-free, or adjust with other seasonings)\n    *   1 tablespoon ginger\n    *   3 cloves garlic\n    *   2 tablespoons vegetable oil\n    *   2 cups rice\n*   **Tags:** Asian, Chicken, Stir-fry, Quick, Main Course\n*   **Total Time:** 30 minutes (15 min prep, 15 min cook)\n*   **Difficulty:** Easy\n\nWhile this recipe doesn't explicitly carry the \"keto\" or \"sugar-free\" tags, you can make it more aligned by:\n*   Using a keto-friendly soy sauce alternative (like tamari or coconut aminos) and checking for added sugars.\n*   Reducing or omitting the carrots if you're strict on carbs, or increasing other low-carb veggies.\n*   Serving it over cauliflower rice instead of regular rice if you're aiming for a keto meal.\n\nWould you like to try adapting this stir-fry with your chicken thighs, or should I look for other options that might be a closer fit for the keto/sugar-free tags, even if they don't use both chicken thighs and rice together?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 15.427912950515747,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Pick the fastest recipe.",
+          "assistant_message": "Okay, you want the fastest one! That would definitely be the **Quick Avocado Toast**, coming in at just 10 minutes total time.\n\nHere's that recipe for you:\n\n### Quick Avocado Toast\nIf you're in the mood for something lighter or for a quick breakfast/brunch, this is a great choice!\n*   **Ingredients:**\n    *   2 slices sourdough bread\n    *   1 large avocado\n    *   1 tablespoon lime juice\n    *   0.25 teaspoon salt\n    *   0.25 teaspoon red pepper flakes\n    *   2 large eggs (optional)\n*   **Tags:** Breakfast, Vegetarian, Quick, Healthy\n*   **Total Time:** 10 minutes (5 min prep, 5 min cook)\n*   **Difficulty:** Easy\n\nJust a quick note regarding your keto and sugar-free preferences: traditional sourdough bread isn't typically keto-friendly due to its carb content. However, you could easily adapt this recipe by serving the avocado mixture on a keto-friendly bread substitute, low-carb crackers, or even just in a bowl with a spoon! The avocado itself is perfectly keto and sugar-free.\n\nLet me know if you'd like any other quick ideas!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.get_recipe_details",
+          "elapsed_seconds": 28.6947078704834,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 5,
+        "specificity": 5,
+        "grounding": 5,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 5,
+        "comments": "The assistant correctly identified and presented the fastest recipe previously offered, and thoughtfully provided advice for adapting it to the user's past dietary preferences."
+      }
+    },
+    {
+      "scenario_name": "User Memory Check",
+      "total_time_seconds": 12.894577980041504,
+      "avg_turn_seconds": 4.943090915679932,
+      "p50_turn_seconds": 4.943090915679932,
+      "p90_turn_seconds": 5.86543493270874,
+      "p95_turn_seconds": 5.980727934837342,
+      "num_turns": 2,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Hi, I'm Alex. I like spicy Korean food.",
+          "assistant_message": "Hi Alex! I can definitely help you find some spicy Korean food in Austin.\n\nBased on your preferences, here are a couple of Korean restaurants in or near Austin that might be a good fit:\n\n1.  **Conscious Kitchen Atx** - 3620 Bee Caves Rd c, West Lake Hills, TX 78746, USA (Price Level: Not available)\n2.  **K food Austin** - 11200 Lakeline Mall Dr, Cedar Park, TX 78613, USA (Price Level: Moderate)\n\nDo any of these sound interesting to you? Let me know if you'd like more details on one of them!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 6.096020936965942,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "Remind me what we discussed about my preferences?",
+          "assistant_message": "Hi Alex! Of course, I can remind you of your preferences.\n\nSo far, we've discussed that you have the following preferences:\n\n*   **Dietary restrictions:** Keto, sugar-free\n*   **Preferred cuisines:** Korean, Mediterranean, and you also like shakshuka\n*   **Location:** Austin, TX\n*   **Preferred difficulty for recipes:** Easy\n\nIs there anything you'd like to add or change to this list?\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 3.790160894393921,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 1,
+        "specificity": 2,
+        "grounding": 1,
+        "coherence": 1,
+        "safety": 5,
+        "overall": 1,
+        "comments": "The assistant completely failed to remember the user's preference (spicy Korean food) from the very first turn of *this* conversation, instead pulling incorrect preferences from what seems to be a different context or a previous interaction."
+      }
+    }
+  ],
+  "on_scenarios": [
+    {
+      "scenario_name": "Restaurant Basic",
+      "total_time_seconds": 26.355918884277344,
+      "avg_turn_seconds": 7.281198978424072,
+      "p50_turn_seconds": 7.6496970653533936,
+      "p90_turn_seconds": 7.809381818771362,
+      "p95_turn_seconds": 7.829342412948608,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Find coffee shops nearby",
+          "assistant_message": "Okay, I looked for coffee shops for you in Austin, TX! While I didn't find places exclusively tagged as \"coffee shops\" in this search, here are a few spots that might have great coffee or a cafe atmosphere that you might enjoy:\n\n1.  **Conscious Kitchen Atx** - 3620 Bee Caves Rd c, West Lake Hills, TX 78746, USA (Price Level: Not available)\n2.  **Revoluci\u00f3n** - 207 San Jacinto Blvd Suite 200, Austin, TX 78701, USA (Price Level: Moderate)\n3.  **Beach Break Market** - 5646 La Jolla Blvd, La Jolla, CA 92037, USA (Price Level: Not available)\n4.  **Bouldin Creek Cafe** - 1900 S 1st St, Austin, TX 78704, USA (Price Level: Inexpensive)\n5.  **True Food Kitchen** - 222 West Ave Ste HR100, Austin, TX 78701, USA (Price Level: Moderate)\n\nBouldin Creek Cafe (number 4) sounds like it could be a good fit for a coffee spot! Let me know if you'd like more details on any of these, or if you'd like to try searching for something else!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 7.8493030071258545,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I'm near Pike Place Market, Seattle",
+          "assistant_message": "Ah, my apologies for the mix-up with the location! Thanks for clarifying.\n\nOkay, I've now looked for coffee shops near **Pike Place Market, Seattle** for you. Here's what I found. While some of these might be more general eateries, they could still offer great coffee or a cafe atmosphere:\n\n1.  **Pike Place Market** - 85 Pike St, Seattle, WA 98101, USA (Price Level: Not available)\n2.  **Miss Cafe** - 1523 1st Ave, Seattle, WA 98101, USA (Price Level: Moderate)\n3.  **Plantiful Capitol Hill** - 734 12th Ave, Seattle, WA 98122, USA (Price Level: Not available)\n4.  **Plantiful SLU** - 340 Westlake Ave N, Seattle, WA 98109, USA (Price Level: Moderate)\n5.  **Plantiful First & Union** - 1405 1st Ave, Seattle, WA 98101, USA (Price Level: Not available)\n\nMiss Cafe (number 2) sounds like it could be a good option for a coffee spot! Would you like more details on any of these, or perhaps I can search for something else?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 7.6496970653533936,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Do they have outdoor seating?",
+          "assistant_message": "That's a great question! Let me check for outdoor seating for those places near Pike Place Market.\n\nI'm checking the details for:\n1.  **Pike Place Market**\n2.  **Miss Cafe**\n3.  **Plantiful Capitol Hill**\n4.  **Plantiful SLU**\n5.  **Plantiful First & Union**\n\nPlease bear with me for a moment while I gather that information for you!\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.get_restaurant_details\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.get_restaurant_details",
+          "elapsed_seconds": 6.344596862792969,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 2,
+        "specificity": 2,
+        "grounding": 2,
+        "coherence": 3,
+        "safety": 5,
+        "overall": 2,
+        "comments": "The assistant initially assumed an incorrect location and provided irrelevant results. After correction, it still included a market as a coffee shop and did not fulfill the final request."
+      }
+    },
+    {
+      "scenario_name": "Restaurant Dietary",
+      "total_time_seconds": 43.75295615196228,
+      "avg_turn_seconds": 13.080781062444052,
+      "p50_turn_seconds": 12.746552228927612,
+      "p90_turn_seconds": 18.711240911483767,
+      "p95_turn_seconds": 19.456826996803283,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Show restaurants in Austin",
+          "assistant_message": "Okay, I can definitely help you find some restaurants in Austin! Based on your preferences, here are a few places that might be a good fit:\n\n1.  **Conscious Kitchen Atx** - 3620 Bee Caves Rd c, West Lake Hills, TX 78746, USA (Price not available)\n2.  **WhataKabob** - 3400 Comsouth Dr, Austin, TX 78744, USA (Price not available)\n3.  **True Food Kitchen** - 222 West Ave Ste HR100, Austin, TX 78701, USA (Moderate)\n4.  **CAVA** - 515 Congress Ave., Austin, TX 78701, USA (Moderate)\n5.  **Picnik Burnet Road** - 4801 Burnet Rd, Austin, TX 78756, USA (Moderate)\n\nLet me know if any of these catch your eye, or if you'd like more details on a specific one!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 6.293377876281738,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I'm keto and avoid sugar",
+          "assistant_message": "Thanks for the reminder! I've definitely kept your keto and sugar-free preferences in mind when looking for restaurants.\n\nHere are those Austin restaurants again, all chosen with your dietary needs in mind:\n\n1.  **Conscious Kitchen Atx** - 3620 Bee Caves Rd c, West Lake Hills, TX 78746, USA (Price not available)\n2.  **WhataKabob** - 3400 Comsouth Dr, Austin, TX 78744, USA (Price not available)\n3.  **True Food Kitchen** - 222 West Ave Ste HR100, Austin, TX 78701, USA (Moderate)\n4.  **Picnik Burnet Road** - 4801 Burnet Rd, Austin, TX 78756, USA (Moderate)\n5.  **Nancy's Sky Garden (@Lakeline Mall Dr)** - 10900 Lakeline Mall Dr #650, Austin, TX 78717, USA (Moderate)\n\nLet me know if you'd like more details on any of these, or if you'd like me to look for something else!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 20.202413082122803,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Which one has the best low-carb options?",
+          "assistant_message": "That's a great question! All the restaurants I listed were chosen because they are known to offer keto and sugar-free options, so you should find suitable choices at any of them.\n\nTo help you decide which one might be \"best\" for your low-carb preferences, we could look into more details about their specific menus or popular dishes. Would you like me to get more information on any particular restaurant from the list? Just let me know the number!\n\nHere's the list again for your convenience:\n\n1.  **Conscious Kitchen Atx** - 3620 Bee Caves Rd c, West Lake Hills, TX 78746, USA (Price not available)\n2.  **WhataKabob** - 3400 Comsouth Dr, Austin, TX 78744, USA (Price not available)\n3.  **True Food Kitchen** - 222 West Ave Ste HR100, Austin, TX 78701, USA (Moderate)\n4.  **Picnik Burnet Road** - 4801 Burnet Rd, Austin, TX 78756, USA (Moderate)\n5.  **Nancy's Sky Garden (@Lakeline Mall Dr)** - 10900 Lakeline Mall Dr #650, Austin, TX 78717, USA (Moderate)\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.get_restaurant_details",
+          "elapsed_seconds": 12.746552228927612,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 3,
+        "specificity": 3,
+        "grounding": 3,
+        "coherence": 4,
+        "safety": 5,
+        "overall": 3,
+        "comments": "The assistant maintains context and acknowledges dietary needs, but fails to provide comparative information to answer 'which one has the best low-carb options,' instead punting back to the user to choose a restaurant for more details."
+      }
+    },
+    {
+      "scenario_name": "Recipe Basic",
+      "total_time_seconds": 35.268702030181885,
+      "avg_turn_seconds": 10.25345746676127,
+      "p50_turn_seconds": 10.07934021949768,
+      "p90_turn_seconds": 10.86590485572815,
+      "p95_turn_seconds": 10.964225435256958,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "I want to make shakshuka",
+          "assistant_message": "Oh, that sounds delicious! Shakshuka is a fantastic choice.\n\nI looked for an easy, sugar-free, and keto-friendly shakshuka recipe for you, but it seems I couldn't find any that perfectly match all those criteria right now.\n\nShakshuka is naturally Mediterranean, but finding one that's both sugar-free *and* keto-friendly, *and* specifically tagged as \"easy\" might be a bit tricky.\n\nWould you like me to try searching again if we adjust some of the criteria? For example, I could look for:\n*   An easy shakshuka recipe that's just keto-friendly (and we can assume it's sugar-free, as most savory shakshuka recipes are).\n*   Or perhaps just an easy shakshuka recipe, and you can adapt it to be keto/sugar-free?\n\nLet me know how you'd like to proceed!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 9.618486166000366,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "What do I need for the first recipe?",
+          "assistant_message": "It looks like I didn't actually find a recipe that perfectly matched all your criteria (easy, sugar-free, keto-friendly shakshuka) in our last chat. I mentioned that finding one with all those specific tags might be a bit tricky.\n\nWould you like me to try searching again with slightly adjusted criteria, like an easy shakshuka recipe that's just keto-friendly (most savory shakshuka recipes are naturally sugar-free)? Or perhaps just an easy shakshuka recipe that you could adapt?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.get_recipe_details",
+          "elapsed_seconds": 10.07934021949768,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "How spicy is it?",
+          "assistant_message": "It looks like I haven't actually found a specific recipe for you yet, as I mentioned in our previous chats. I was having trouble finding one that perfectly matched all your criteria (easy, sugar-free, keto-friendly shakshuka).\n\nSince we don't have a specific recipe selected, I can't tell you how spicy \"it\" is.\n\nWould you like me to try searching again with slightly adjusted criteria, like an easy shakshuka recipe that's just keto-friendly (most savory shakshuka recipes are naturally sugar-free)? Or perhaps just an easy shakshuka recipe that you could adapt?\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 11.062546014785767,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 5,
+        "specificity": 5,
+        "grounding": 5,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 5,
+        "comments": "The assistant correctly identifies that it has not found a recipe and thus cannot answer follow-up questions about ingredients or spiciness. It consistently offers to adjust search criteria to move the conversation forward, managing user expectations well."
+      }
+    },
+    {
+      "scenario_name": "Recipe Time-Constrained",
+      "total_time_seconds": 66.38364696502686,
+      "avg_turn_seconds": 20.623051246007282,
+      "p50_turn_seconds": 21.425307035446167,
+      "p90_turn_seconds": 22.015270948410034,
+      "p95_turn_seconds": 22.089016437530518,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "30-minute meal please",
+          "assistant_message": "You're looking for a 30-minute meal! I checked for easy, sugar-free, keto-friendly options, keeping your preferred Mediterranean, Korean, or shakshuka cuisines in mind.\n\nUnfortunately, I couldn't find any recipes in my current selection that perfectly match all those requirements.\n\nWould you like me to broaden the search a bit? For example, I could look for:\n*   30-minute easy meals without the specific dietary or cuisine tags.\n*   Recipes that fit your dietary/cuisine preferences but might take a little longer or be a medium difficulty.\n\nLet me know how you'd like to proceed!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 18.281084775924683,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I have chicken thighs and rice",
+          "assistant_message": "Okay, you have chicken thighs and rice, and you're still looking for an easy 30-minute meal that's sugar-free and keto-friendly, with a preference for Mediterranean, Korean, or shakshuka flavors!\n\nI looked for recipes using chicken thighs and rice that fit all those criteria. I found one recipe that's very close in terms of time, difficulty, and general ingredients, but it uses chicken breast instead of thighs and doesn't explicitly have the sugar-free or keto tags. It does have an Asian flavor profile, which aligns with your Korean preference.\n\nHere's the recipe I found:\n\n### **Quick Chicken Stir-Fry**\n*   **Total Time:** 30 minutes (15 min prep, 15 min cook)\n*   **Difficulty:** Easy\n*   **Tags:** Asian, Chicken, Stir-fry, Quick, Main Course\n\n**Ingredients:**\n*   1 pound chicken breast (you could substitute chicken thighs here!)\n*   2 medium bell peppers\n*   2 cups broccoli\n*   2 medium carrots\n*   0.25 cup soy sauce\n*   1 tablespoon ginger\n*   3 cloves garlic\n*   2 tablespoons vegetable oil\n*   2 cups rice\n\n**Instructions:**\n1.  Cut chicken into bite-sized pieces.\n2.  Chop vegetables into even sizes.\n3.  Heat oil in wok over high heat.\n4.  Stir-fry chicken until golden.\n5.  Add vegetables and stir-fry until tender-crisp.\n6.  Add sauce and simmer until thickened.\n7.  Serve over rice.\n\nThis recipe is a great 30-minute, easy option with rice and chicken, and an Asian flair. However, it uses chicken breast (though thighs would work as a substitute!) and doesn't specify if the soy sauce is sugar-free or if the overall recipe is keto-friendly.\n\nWould you like to try this recipe, or should I broaden the search again? For example, I could look for:\n*   Recipes that specifically use chicken thighs and rice, even if they don't perfectly match all dietary tags.\n*   Recipes that are sugar-free and keto-friendly with chicken thighs, even if they don't include rice or take a little longer.\n\nLet me know what you'd prefer!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 22.162761926651,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Pick the fastest recipe.",
+          "assistant_message": "Okay, you're looking for the fastest recipe!\n\nBased on the options I found that included chicken and rice, the **Quick Chicken Stir-Fry** is indeed the fastest, coming in at a total of 30 minutes.\n\nHere are the details for that recipe again, keeping in mind your preference for an easy, sugar-free, keto-friendly meal with Mediterranean, Korean, or shakshuka flavors, and your ingredients of chicken thighs and rice:\n\n### **Quick Chicken Stir-Fry**\n*   **Total Time:** 30 minutes (15 min prep, 15 min cook)\n*   **Difficulty:** Easy\n*   **Tags:** Asian, Chicken, Stir-fry, Quick, Main Course\n\n**Ingredients:**\n*   1 pound chicken breast (you can definitely substitute your chicken thighs here!)\n*   2 medium bell peppers\n*   2 cups broccoli\n*   2 medium carrots\n*   0.25 cup soy sauce\n*   1 tablespoon ginger\n*   3 cloves garlic\n*   2 tablespoons vegetable oil\n*   2 cups rice\n\n**Instructions:**\n1.  Cut chicken into bite-sized pieces.\n2.  Chop vegetables into even sizes.\n3.  Heat oil in wok over high heat.\n4.  Stir-fry chicken until golden.\n5.  Add vegetables and stir-fry until tender-crisp.\n6.  Add sauce and simmer until thickened.\n7.  Serve over rice.\n\nJust a reminder, this recipe uses chicken breast (but thighs are a great substitute!) and has an Asian flavor profile, which aligns with your Korean preference. However, it doesn't explicitly have the sugar-free or keto tags, so you might want to use a sugar-free soy sauce alternative and consider the carb content of the rice if strictly adhering to keto.\n\nLet me know if you'd like to explore any other options or if you're ready to get cooking!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 21.425307035446167,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 5,
+        "specificity": 5,
+        "grounding": 5,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 5,
+        "comments": "The assistant correctly identifies the fastest recipe from the previously offered options, reiterates the full recipe, and consistently reminds the user of the original dietary constraints and the recipe's partial alignment."
+      }
+    },
+    {
+      "scenario_name": "User Memory Check",
+      "total_time_seconds": 21.18441081047058,
+      "avg_turn_seconds": 9.088091373443604,
+      "p50_turn_seconds": 9.088091373443604,
+      "p90_turn_seconds": 12.06906213760376,
+      "p95_turn_seconds": 12.44168348312378,
+      "num_turns": 2,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Hi, I'm Alex. I like spicy Korean food.",
+          "assistant_message": "Hi Alex! It's great to meet you. I understand you're looking for some spicy Korean food.\n\nI've looked through some options for you. While I don't have any explicitly Korean restaurants in this list right now, I do have a few places that might fit your other preferences like keto-friendly or Mediterranean cuisine, and are located in or near Austin. There's also one further away, just so you have all the options I found.\n\nHere are the restaurants:\n\n1.  **Keto Keto Carnivore** - 713 E Andy Devine Ave, Kingman, AZ 86401, USA (Inexpensive)\n2.  **Conscious Kitchen Atx** - 3620 Bee Caves Rd c, West Lake Hills, TX 78746, USA (Price Level: Not available)\n3.  **True Food Kitchen** - 222 West Ave Ste HR100, Austin, TX 78701, USA (Moderate)\n4.  **XENiA Mediterranean Kitchen - Austin** - 5610 N Interstate Hwy 35, Austin, TX 78751, USA (Inexpensive)\n5.  **Dai Due** - 2406 Manor Rd, Austin, TX 78722, USA (Expensive)\n\nLet me know if any of these catch your eye, or if you'd like me to look for something else!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 12.814304828643799,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "Remind me what we discussed about my preferences?",
+          "assistant_message": "Hi Alex! Of course, I can remind you of your preferences.\n\nHere's what I have noted down for you:\n\n*   **Dietary restrictions:** Sugar-free, keto, and keto-friendly\n*   **Preferred cuisines:** Mediterranean, Korean, and shakshuka\n*   **Location:** Austin\n*   **Preferred difficulty for recipes:** Easy\n\nIs there anything you'd like to add or change to these preferences?\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 5.361877918243408,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 1,
+        "specificity": 1,
+        "grounding": 1,
+        "coherence": 1,
+        "safety": 5,
+        "overall": 1,
+        "comments": "The assistant completely fails to address the user's request for spicy Korean food, instead offering unrelated cuisines and locations. It then hallucinates a significant number of preferences not stated by the user, demonstrating a critical failure in understanding and maintaining context."
+      }
+    }
+  ]
+}

@@ -1,0 +1,543 @@
+{
+  "off_summary": {
+    "timestamp": "2025-12-07T10:37:35.193649Z",
+    "api_url": "http://localhost:8000",
+    "user": "Tom",
+    "total_scenarios": 5,
+    "total_turns": 14,
+    "total_time_seconds": 144.659197807312,
+    "avg_scenario_time_seconds": 28.931839561462404,
+    "overall_p50_turn_seconds": 5.514490485191345,
+    "overall_p90_turn_seconds": 12.581534075737002,
+    "overall_p95_turn_seconds": 13.625693321228027
+  },
+  "on_summary": {
+    "timestamp": "2025-12-07T10:40:31.282480Z",
+    "api_url": "http://localhost:8000",
+    "user": "Tom",
+    "total_scenarios": 5,
+    "total_turns": 14,
+    "total_time_seconds": 176.08862733840942,
+    "avg_scenario_time_seconds": 35.21772546768189,
+    "overall_p50_turn_seconds": 7.000072479248047,
+    "overall_p90_turn_seconds": 13.432992839813235,
+    "overall_p95_turn_seconds": 16.445722877979275
+  },
+  "comparisons": [
+    {
+      "scenario_name": "Restaurant Basic",
+      "num_turns": 3,
+      "total_time_seconds_off": 25.7916841506958,
+      "total_time_seconds_on": 25.271785020828247,
+      "total_time_seconds_delta": -0.5198991298675537,
+      "avg_turn_seconds_off": 7.090632677078247,
+      "avg_turn_seconds_on": 6.913832346598308,
+      "avg_turn_seconds_delta": -0.17680033047993948,
+      "p50_turn_seconds_off": 5.571671962738037,
+      "p50_turn_seconds_on": 6.861737012863159,
+      "p50_turn_seconds_delta": 1.290065050125122,
+      "p90_turn_seconds_off": 10.316034412384035,
+      "p90_turn_seconds_on": 7.041337728500366,
+      "p90_turn_seconds_delta": -3.2746966838836684,
+      "p95_turn_seconds_off": 10.909079718589782,
+      "p95_turn_seconds_on": 7.063787817955017,
+      "p95_turn_seconds_delta": -3.8452919006347646,
+      "judge_overall_off": 2,
+      "judge_overall_on": 3,
+      "judge_overall_delta": 1,
+      "significance_hint": "likely meaningful"
+    },
+    {
+      "scenario_name": "Restaurant Dietary",
+      "num_turns": 3,
+      "total_time_seconds_off": 21.028934240341187,
+      "total_time_seconds_on": 28.358041286468506,
+      "total_time_seconds_delta": 7.329107046127319,
+      "avg_turn_seconds_off": 5.500016291936238,
+      "avg_turn_seconds_on": 7.943209250768025,
+      "avg_turn_seconds_delta": 2.443192958831787,
+      "p50_turn_seconds_off": 5.457309007644653,
+      "p50_turn_seconds_on": 6.913907051086426,
+      "p50_turn_seconds_delta": 1.4565980434417725,
+      "p90_turn_seconds_off": 5.97470326423645,
+      "p90_turn_seconds_on": 9.406679725646974,
+      "p90_turn_seconds_delta": 3.4319764614105237,
+      "p95_turn_seconds_off": 6.0393775463104244,
+      "p95_turn_seconds_on": 9.718276309967042,
+      "p95_turn_seconds_delta": 3.6788987636566173,
+      "judge_overall_off": 2,
+      "judge_overall_on": 3,
+      "judge_overall_delta": 1,
+      "significance_hint": "likely meaningful"
+    },
+    {
+      "scenario_name": "Recipe Basic",
+      "num_turns": 3,
+      "total_time_seconds_off": 29.270179986953735,
+      "total_time_seconds_on": 30.487519025802612,
+      "total_time_seconds_delta": 1.217339038848877,
+      "avg_turn_seconds_off": 8.248005231221518,
+      "avg_turn_seconds_on": 8.652444044748941,
+      "avg_turn_seconds_delta": 0.40443881352742395,
+      "p50_turn_seconds_off": 7.611494779586792,
+      "p50_turn_seconds_on": 9.245923042297363,
+      "p50_turn_seconds_delta": 1.6344282627105713,
+      "p90_turn_seconds_off": 11.95760931968689,
+      "p90_turn_seconds_on": 9.876820755004882,
+      "p90_turn_seconds_delta": -2.080788564682008,
+      "p95_turn_seconds_off": 12.500873637199401,
+      "p95_turn_seconds_on": 9.955682969093322,
+      "p95_turn_seconds_delta": -2.5451906681060787,
+      "judge_overall_off": 5,
+      "judge_overall_on": 5,
+      "judge_overall_delta": 0,
+      "significance_hint": "unclear"
+    },
+    {
+      "scenario_name": "Recipe Time-Constrained",
+      "num_turns": 3,
+      "total_time_seconds_off": 32.44188594818115,
+      "total_time_seconds_on": 50.923733949661255,
+      "total_time_seconds_delta": 18.481848001480103,
+      "avg_turn_seconds_off": 9.305340846379599,
+      "avg_turn_seconds_on": 15.466432253519693,
+      "avg_turn_seconds_delta": 6.161091407140095,
+      "p50_turn_seconds_off": 8.064805746078491,
+      "p50_turn_seconds_on": 14.2189199924469,
+      "p50_turn_seconds_delta": 6.154114246368408,
+      "p90_turn_seconds_off": 13.377540922164917,
+      "p90_turn_seconds_on": 19.30875515937805,
+      "p90_turn_seconds_delta": 5.931214237213135,
+      "p95_turn_seconds_off": 14.04163281917572,
+      "p95_turn_seconds_on": 19.944984555244446,
+      "p95_turn_seconds_delta": 5.903351736068727,
+      "judge_overall_off": 4,
+      "judge_overall_on": 5,
+      "judge_overall_delta": 1,
+      "significance_hint": "likely meaningful"
+    },
+    {
+      "scenario_name": "User Memory Check",
+      "num_turns": 2,
+      "total_time_seconds_off": 9.910927772521973,
+      "total_time_seconds_on": 15.332143068313599,
+      "total_time_seconds_delta": 5.421215295791626,
+      "avg_turn_seconds_off": 3.4503105878829956,
+      "avg_turn_seconds_on": 6.156108140945435,
+      "avg_turn_seconds_delta": 2.705797553062439,
+      "p50_turn_seconds_off": 3.4503105878829956,
+      "p50_turn_seconds_on": 6.156108140945435,
+      "p50_turn_seconds_delta": 2.705797553062439,
+      "p90_turn_seconds_off": 3.8579684972763064,
+      "p90_turn_seconds_on": 6.159462594985962,
+      "p90_turn_seconds_delta": 2.301494097709656,
+      "p95_turn_seconds_off": 3.90892573595047,
+      "p95_turn_seconds_on": 6.159881901741028,
+      "p95_turn_seconds_delta": 2.250956165790558,
+      "judge_overall_off": 2,
+      "judge_overall_on": 1,
+      "judge_overall_delta": -1,
+      "significance_hint": "likely meaningful"
+    }
+  ],
+  "off_scenarios": [
+    {
+      "scenario_name": "Restaurant Basic",
+      "total_time_seconds": 25.7916841506958,
+      "avg_turn_seconds": 7.090632677078247,
+      "p50_turn_seconds": 5.571671962738037,
+      "p90_turn_seconds": 10.316034412384035,
+      "p95_turn_seconds": 10.909079718589782,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Find pizza near me",
+          "assistant_message": "Hey there! I can definitely help you find some great pizza spots in Phoenix, AZ. Based on your request, here are a few options:\n\n1.  **Pizza To The Rescue** - 2601 E Indian School Rd, Phoenix, AZ 85016, USA (Moderate)\n2.  **Federal Pizza** - 5210 N Central Ave #104, Phoenix, AZ 85012, USA (Moderate)\n3.  **Pizza Heaven Bistro** - 5150 N 7th St, Phoenix, AZ 85014, USA (Moderate)\n4.  **Picazzo's Healthy Italian Kitchen Paradise Valley** - 4669 E Cactus Rd, Phoenix, AZ 85032, USA (Moderate)\n5.  **Pizza Guys** - 1975 Garnet Ave Suite B, San Diego, CA 92109, USA (Inexpensive)\n\nJust a heads up, it looks like \"Pizza Guys\" is actually in San Diego, CA, so that might be a bit far for \"near me\" in Phoenix!\n\nLet me know if you'd like more details on any of the Phoenix locations, or if you'd like to explore other options!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 5.571671962738037,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I'm in Capitol Hill, Washington DC",
+          "assistant_message": "Ah, thanks for the update! Capitol Hill, Washington DC, got it. Let me find some pizza spots for you there.\n\nSearching for pizza in Capitol Hill, Washington DC...\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 4.198101043701172,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Is the first place family-friendly?",
+          "assistant_message": "Oops, my apologies! It looks like I was still in the middle of searching for pizza spots in Capitol Hill, Washington DC, and haven't shown you the list yet.\n\nLet me get those results for you right now, and then we can talk about which ones might be family-friendly!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.get_restaurant_details",
+          "elapsed_seconds": 11.502125024795532,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 2,
+        "specificity": 2,
+        "grounding": 3,
+        "coherence": 3,
+        "safety": 5,
+        "overall": 2,
+        "comments": "The assistant got stuck in a loop, failing to provide pizza results for the updated location after multiple turns and could not answer a follow-up question as a result."
+      }
+    },
+    {
+      "scenario_name": "Restaurant Dietary",
+      "total_time_seconds": 21.028934240341187,
+      "avg_turn_seconds": 5.500016291936238,
+      "p50_turn_seconds": 5.457309007644653,
+      "p90_turn_seconds": 5.97470326423645,
+      "p95_turn_seconds": 6.0393775463104244,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Restaurants in Phoenix",
+          "assistant_message": "Hey there! I can definitely help you find some restaurants in Phoenix. Given your preference for pizza and your low-sodium, high-protein dietary needs, I've found a few places that might be a good fit.\n\nHere are the restaurants I found for you:\n\n1.  **Picazzo's Healthy Italian Kitchen Paradise Valley** - 4669 E Cactus Rd, Phoenix, AZ 85032, USA (Moderate)\n2.  **True Food Kitchen** - 2502 E Camelback Rd Suite 135, Phoenix, AZ 85016, USA (Moderate)\n3.  **MOM'S Pizza & Pasta** - 3422 Tripp Ct A1, San Diego, CA 92121, USA (Price level not available)\n4.  **The Thrive Kitchen** - 720 W Highland Ave, Phoenix, AZ 85013, USA (Price level not available)\n5.  **Federal Pizza** - 5210 N Central Ave #104, Phoenix, AZ 85012, USA (Moderate)\n\nPicazzo's and Federal Pizza sound like they could be good options for your pizza preference, and Picazzo's even has \"Healthy Italian Kitchen\" in its name, which might align with your dietary needs. True Food Kitchen and The Thrive Kitchen also often focus on healthy eating.\n\nLet me know if any of these catch your eye, or if you'd like more details on a specific one!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 6.104051828384399,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I'm on a low-sodium diet",
+          "assistant_message": "Got it! Thanks for letting me know. I've already factored your low-sodium diet into my recommendations, and I'll continue to keep that in mind for anything else you're looking for.\n\nWere you hoping to refine the restaurant search based on that, or is there something else I can help you with today, like finding some low-sodium, high-protein recipes?\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 4.938688039779663,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Which one lists sodium per dish?",
+          "assistant_message": "That's a great question! Unfortunately, I don't have the ability to tell you which specific restaurants list sodium content per dish directly within my system. That kind of detailed nutritional information is usually found on the restaurant's own website, their in-store menus, or by contacting them directly.\n\nHowever, places like **Picazzo's Healthy Italian Kitchen** and **True Food Kitchen** are often known for being more health-conscious and might be more likely to provide nutritional information, including sodium content, on their menus or websites. **The Thrive Kitchen** also sounds like it would be health-focused.\n\nI'd recommend checking the websites for those restaurants directly if knowing the exact sodium per dish is important to you.\n\nIs there anything else I can help you with regarding these restaurants, or perhaps finding some low-sodium, high-protein recipes?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.get_restaurant_details",
+          "elapsed_seconds": 5.457309007644653,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 2,
+        "specificity": 2,
+        "grounding": 1,
+        "coherence": 3,
+        "safety": 5,
+        "overall": 2,
+        "comments": "The assistant hallucinates user preferences (pizza, low-sodium, high-protein) in the first turn and includes a restaurant from the wrong city (San Diego). It then falsely claims to have factored in the low-sodium diet before the user explicitly stated it. The third turn accurately explains limitations, but the initial errors are severe."
+      }
+    },
+    {
+      "scenario_name": "Recipe Basic",
+      "total_time_seconds": 29.270179986953735,
+      "avg_turn_seconds": 8.248005231221518,
+      "p50_turn_seconds": 7.611494779586792,
+      "p90_turn_seconds": 11.95760931968689,
+      "p95_turn_seconds": 12.500873637199401,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "I want to bake cookies",
+          "assistant_message": "Hey there! You're looking to bake some cookies, and I found an easy recipe for you!\n\nHere's a recipe for **Classic Chocolate Chip Cookies** that matches your preference for an easy difficulty level:\n\n**Classic Chocolate Chip Cookies**\n**Difficulty:** Easy\n**Total Time:** 27 minutes (15 minutes prep, 12 minutes cook)\n\n**Ingredients:**\n*   1 cup butter\n*   1 cup sugar\n*   1 cup brown sugar\n*   2 large eggs\n*   1 tablespoon vanilla\n*   2 cups flour\n*   1 teaspoon baking soda\n*   1 cup chocolate chips\n\nThis recipe is designed to be easy, just as you requested! Regarding your low-sodium and high-protein preferences, this is a classic recipe, so you might want to check the sodium content of ingredients like butter and chocolate chips, and consider adding protein powder or using protein-enriched flour if you're looking to boost the protein content. It doesn't explicitly carry 'low-sodium' or 'high-protein' tags.\n\nWould you like me to look for other easy cookie recipes, or perhaps something else that's specifically tagged as low-sodium or high-protein?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 13.044137954711914,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "Ingredients for the first recipe?",
+          "assistant_message": "You got it! Here are the ingredients for the **Classic Chocolate Chip Cookies** recipe again:\n\n**Ingredients:**\n*   1 cup butter\n*   1 cup sugar\n*   1 cup brown sugar\n*   2 large eggs\n*   1 tablespoon vanilla\n*   2 cups flour\n*   1 teaspoon baking soda\n*   1 cup chocolate chips\n\nLet me know if you'd like to see any other details about this recipe, or if you're curious about other easy cookie recipes!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.get_recipe_details",
+          "elapsed_seconds": 4.088382959365845,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Can I halve the butter?",
+          "assistant_message": "That's an interesting question about modifying the **Classic Chocolate Chip Cookies** recipe!\n\nYou *can* technically halve the butter, but it's important to know that butter plays a really big role in cookies. It contributes to their texture, moisture, and how much they spread. If you halve the butter, your cookies will likely turn out much drier, tougher, and won't spread as much, resulting in a more cake-like or crumbly texture rather than the classic chewy or crisp chocolate chip cookie.\n\nIf you're looking to reduce the fat content, it might be better to find a recipe specifically designed to be lower in fat, as those recipes will have adjusted the other ingredients to compensate for less butter.\n\nWhat's making you consider halving the butter? Knowing that might help me suggest a better alternative!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.get_recipe_details",
+          "elapsed_seconds": 7.611494779586792,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 5,
+        "specificity": 5,
+        "grounding": 5,
+        "coherence": 4,
+        "safety": 5,
+        "overall": 5,
+        "comments": "The assistant provided a relevant recipe, successfully retrieved details, and gave excellent, grounded advice on modifying the recipe, explaining the impact of changes."
+      }
+    },
+    {
+      "scenario_name": "Recipe Time-Constrained",
+      "total_time_seconds": 32.44188594818115,
+      "avg_turn_seconds": 9.305340846379599,
+      "p50_turn_seconds": 8.064805746078491,
+      "p90_turn_seconds": 13.377540922164917,
+      "p95_turn_seconds": 14.04163281917572,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Need a 10-minute lunch",
+          "assistant_message": "Hey there! Looking for a quick and easy lunch, I see! You mentioned needing something for lunch that's 10 minutes and easy, and you're also looking for low-sodium and high-protein options.\n\nI found one recipe that fits your time and difficulty perfectly:\n\n### **Quick Avocado Toast**\n\nThis recipe is super fast and easy, making it a great choice for a 10-minute lunch! While it doesn't explicitly have 'low-sodium' or 'high-protein' tags, it's very easy to adapt it to your dietary needs. You can simply omit the added salt or use a low-sodium bread, and the optional poached egg is a fantastic way to boost the protein content!\n\n**Ingredients:**\n*   2 slices sourdough bread\n*   1 large avocado\n*   1 tablespoon lime juice\n*   0.25 teaspoon salt (omit or reduce for low-sodium)\n*   0.25 teaspoon red pepper flakes\n*   2 large eggs (optional, for high-protein)\n\n**Instructions:**\n1.  Toast bread until golden.\n2.  Mash avocado with lime juice and salt (if using).\n3.  Spread on toast.\n4.  Top with red pepper flakes.\n5.  Optional: add poached egg.\n\n**Tags:** breakfast, vegetarian, quick, healthy\n**Total Time:** 10 minutes (Prep: 5 minutes, Cook: 5 minutes)\n**Difficulty:** Easy\n\nIf you'd like to explore other quick and healthy options, perhaps we could look for more breakfast-for-lunch ideas or simple salads that are easy to make high-protein and low-sodium! Let me know what you think!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 14.705724716186523,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I have turkey and lettuce",
+          "assistant_message": "Great! Turkey and lettuce are excellent ingredients for a quick and healthy meal, especially with your low-sodium and high-protein preferences.\n\nLet's see what we can whip up with those! I'm looking for easy, low-sodium, high-protein recipes that use both turkey and lettuce.\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 8.064805746078491,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "What's the fastest recipe?",
+          "assistant_message": "Okay, let's find the absolute fastest recipe using turkey and lettuce, keeping your low-sodium, high-protein, and easy preferences in mind!\n\nSearching for the quickest option...\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.get_recipe_details",
+          "elapsed_seconds": 5.145492076873779,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 3,
+        "specificity": 4,
+        "grounding": 5,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 4,
+        "comments": "The assistant initially provided a good recipe, but the subsequent two turns were just acknowledgments of the user's input and stated it was searching, without providing a new recipe. It correctly remembered constraints."
+      }
+    },
+    {
+      "scenario_name": "User Memory Check",
+      "total_time_seconds": 9.910927772521973,
+      "avg_turn_seconds": 3.4503105878829956,
+      "p50_turn_seconds": 3.4503105878829956,
+      "p90_turn_seconds": 3.8579684972763064,
+      "p95_turn_seconds": 3.90892573595047,
+      "num_turns": 2,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Hi, I'm Tom. I'm trying to eat high-protein meals.",
+          "assistant_message": "Hi Tom! It's great to meet you. I can definitely help you with your goal of eating high-protein meals!\n\nAs Jamie, your food recommendation assistant, I can help you with two main things:\n\n1.  **Finding and recommending delicious recipes** that fit your dietary needs and preferences.\n2.  **Finding restaurants** if you give me a location and some details about what you're in the mood for.\n\nAre you looking for some high-protein **recipes** to cook at home, or would you like me to help you find some **restaurants** in Phoenix, AZ that offer high-protein options? Just let me know!\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 3.959882974624634,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "Remind me what we discussed about my preferences?",
+          "assistant_message": "Hi Tom! Of course, I can remind you of your preferences.\n\nBased on our conversation, here's what I have noted down for you:\n\n*   **Dietary restrictions:** Low-sodium, high-protein\n*   **Preferred cuisines:** Pizza\n*   **Location:** Phoenix, AZ\n*   **Preferred difficulty:** Easy\n\nDoes that sound right, or would you like to add or change anything?\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 2.9407382011413574,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 2,
+        "specificity": 2,
+        "grounding": 1,
+        "coherence": 4,
+        "safety": 5,
+        "overall": 2,
+        "comments": "The assistant hallucinates several preferences (low-sodium, pizza, easy difficulty, and confirms Phoenix, AZ as a preference when it was a suggestion) that were not discussed in the provided transcript, making the summary largely incorrect despite its helpful intent."
+      }
+    }
+  ],
+  "on_scenarios": [
+    {
+      "scenario_name": "Restaurant Basic",
+      "total_time_seconds": 25.271785020828247,
+      "avg_turn_seconds": 6.913832346598308,
+      "p50_turn_seconds": 6.861737012863159,
+      "p90_turn_seconds": 7.041337728500366,
+      "p95_turn_seconds": 7.063787817955017,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Find pizza near me",
+          "assistant_message": "Hey there! I can definitely help you find some great pizza spots in Phoenix, AZ. Here are a few options for you:\n\n1.  **Pizza Heaven Bistro** - 5150 N 7th St, Phoenix, AZ 85014, USA (Moderate)\n2.  **Picazzo's Healthy Italian Kitchen Paradise Valley** - 4669 E Cactus Rd, Phoenix, AZ 85032, USA (Moderate)\n3.  **Stumpy's Pizza & Subs** - 1331 E Northern Ave, Phoenix, AZ 85020, USA (Inexpensive)\n4.  **My Slice Pizzeria - Arcadia (Catering Available)** - 3724 E Indian School Rd, Phoenix, AZ 85018, USA (Inexpensive)\n5.  **Pizza To The Rescue** - 2601 E Indian School Rd, Phoenix, AZ 85016, USA (Moderate)\n\nLet me know if any of these catch your eye, or if you'd like more details on a specific one!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 6.793522119522095,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I'm in Capitol Hill, Washington DC",
+          "assistant_message": "My apologies! Thanks for clarifying your location. Capitol Hill, Washington DC it is!\n\nHere are some pizza places I found for you in Capitol Hill:\n\n1.  **La Casina DC** - 327 7th St SE, Washington, DC 20003, USA (Moderate)\n2.  **We, The Pizza** - 305 Pennsylvania Ave. SE, Washington, DC 20003, USA (Inexpensive)\n3.  **Mad Over Pizzas** - 1123 Pennsylvania Ave. SE, Washington, DC 20003, USA (Moderate)\n4.  **Paccis** - 106 13th St SE, Washington, DC 20003, USA (Moderate)\n5.  **Nostra Cucina** - 320 D St NE, Washington, DC 20002, USA (Moderate)\n\nLet me know if any of these sound good, or if you'd like to know more about a specific one!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 7.086237907409668,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Is the first place family-friendly?",
+          "assistant_message": "That's a great question! You're asking about **La Casina DC**.\n\nLet me check the details for you...\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.get_restaurant_details\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.get_restaurant_details",
+          "elapsed_seconds": 6.861737012863159,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 3,
+        "specificity": 3,
+        "grounding": 4,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 3,
+        "comments": "The assistant initially assumed the wrong location but recovered well. However, the transcript ends with the assistant stating it will check details for a follow-up question, but it doesn't provide the answer, leaving the last user query unresolved."
+      }
+    },
+    {
+      "scenario_name": "Restaurant Dietary",
+      "total_time_seconds": 28.358041286468506,
+      "avg_turn_seconds": 7.943209250768025,
+      "p50_turn_seconds": 6.913907051086426,
+      "p90_turn_seconds": 9.406679725646974,
+      "p95_turn_seconds": 9.718276309967042,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Restaurants in Phoenix",
+          "assistant_message": "I looked for restaurants in Phoenix for you, but it seems like the search results I got back are all located in San Diego. My apologies for the mix-up!\n\nHere are the restaurants I found, all in the San Diego area:\n\n1.  **MOM'S Pizza & Pasta** - 3422 Tripp Ct A1, San Diego, CA 92121, USA (Price level not available)\n2.  **Leucadia Pizza UTC / La Jolla** - 7748 Regents Rd, San Diego, CA 92122, USA (Moderate)\n3.  **Pazza Market & Cucina** - 4577 La Jolla Village Dr, San Diego, CA 92122, USA (Moderate)\n4.  **Regents Pizzeria** - 4150 Regents Park Row #100, La Jolla, CA 92037, USA (Moderate)\n5.  **The Pizza Taproom** - 8657 Villa La Jolla Dr ste 127, La Jolla, CA 92037, USA (Inexpensive)\n\nWould you like me to try searching for restaurants in Phoenix again, or perhaps tell me more about what kind of food you're in the mood for?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 6.885847806930542,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I'm on a low-sodium diet",
+          "assistant_message": "Thanks for letting me know about your low-sodium diet! I've updated the search to find restaurants in Phoenix that might be a good fit for you, keeping your preference for pizza and Italian in mind.\n\nHere are a few options in Phoenix:\n\n1.  **Picazzo's Healthy Italian Kitchen Paradise Valley** - 4669 E Cactus Rd, Phoenix, AZ 85032, USA (Moderate)\n2.  **Pomo Pizzeria** - 705 N 1st St UNIT 120, Phoenix, AZ 85004, USA (Moderate)\n3.  **Federal Pizza** - 5210 N Central Ave #104, Phoenix, AZ 85012, USA (Moderate)\n4.  **Spinato's Pizzeria and Family Kitchen** - 1614 E Bell Rd #104, Phoenix, AZ 85022, USA (Moderate)\n\nWould you like to know more about any of these, or perhaps explore other options?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 10.02987289428711,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Which one lists sodium per dish?",
+          "assistant_message": "That's a great question, and it's really important when you're managing a low-sodium diet!\n\nUnfortunately, I don't have specific information about which of these restaurants list sodium content per dish directly in my database. Nutritional information like that is often best found on the restaurant's official website, or by contacting them directly. Many restaurants are becoming more transparent with their nutritional data, especially for common dietary needs.\n\nWould you like me to try and find more details about one of these restaurants, like their website or phone number, so you can check their menu for nutritional information? Or perhaps I could look for other options that specifically highlight their dietary accommodations?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.get_restaurant_details",
+          "elapsed_seconds": 6.913907051086426,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 3,
+        "specificity": 3,
+        "grounding": 3,
+        "coherence": 4,
+        "safety": 5,
+        "overall": 3,
+        "comments": "The assistant initially failed to provide restaurants in the correct city, but recovered well, acknowledged its mistake, and provided good guidance for a complex dietary query, even though it couldn't directly answer the sodium content."
+      }
+    },
+    {
+      "scenario_name": "Recipe Basic",
+      "total_time_seconds": 30.487519025802612,
+      "avg_turn_seconds": 8.652444044748941,
+      "p50_turn_seconds": 9.245923042297363,
+      "p90_turn_seconds": 9.876820755004882,
+      "p95_turn_seconds": 9.955682969093322,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "I want to bake cookies",
+          "assistant_message": "Okay, I found a recipe for Classic Chocolate Chip Cookies that fits your request for an easy recipe!\n\nHere are the details:\n\n**Classic Chocolate Chip Cookies**\n*   **Difficulty:** Easy\n*   **Total Time:** 27 minutes (15 minutes prep, 12 minutes cook)\n*   **Tags:** Dessert (This recipe was found based on your preference for easy recipes, and I also kept your low-sodium and high-protein preferences in mind, though this specific recipe doesn't have those tags explicitly.)\n\n**Ingredients:**\n*   1 cup butter\n*   1 cup sugar\n*   1 cup brown sugar\n*   2 large eggs\n*   1 tablespoon vanilla\n*   2 cups flour\n*   1 teaspoon baking soda\n*   1 cup chocolate chips\n\n**Instructions:**\n1.  Cream butter and sugars.\n2.  Beat in eggs and vanilla.\n3.  Mix in dry ingredients.\n4.  Fold in chocolate chips.\n5.  Drop onto baking sheets.\n6.  Bake until golden.\n\nWould you like to see other easy dessert recipes, perhaps ones that are more explicitly low-sodium or high-protein?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 10.034545183181763,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "Ingredients for the first recipe?",
+          "assistant_message": "You got it! Here are the ingredients for the Classic Chocolate Chip Cookies recipe:\n\n**Ingredients:**\n*   1 cup butter\n*   1 cup sugar\n*   1 cup brown sugar\n*   2 large eggs\n*   1 tablespoon vanilla\n*   2 cups flour\n*   1 teaspoon baking soda\n*   1 cup chocolate chips\n\nLet me know if you'd like to see the full recipe again, or if you're interested in other easy dessert recipes!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.get_recipe_details",
+          "elapsed_seconds": 6.6768639087677,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Can I halve the butter?",
+          "assistant_message": "That's an interesting question about modifying the recipe!\n\nHalving the butter in the Classic Chocolate Chip Cookies recipe would significantly change the outcome. Butter provides moisture, tenderness, and helps with the spread and texture of the cookies. If you halve it, your cookies would likely be much drier, potentially crumbly, and might not spread as much, resulting in a different texture than classic chocolate chip cookies.\n\nIf you're looking to reduce fat or make a healthier version, it's often better to find a recipe specifically designed with less butter or alternative ingredients, as simply halving a key ingredient can throw off the balance of the recipe.\n\nWould you like me to look for other cookie recipes that might be lower in fat, or perhaps fit your low-sodium and high-protein preferences more closely?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.get_recipe_details",
+          "elapsed_seconds": 9.245923042297363,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 5,
+        "specificity": 4,
+        "grounding": 5,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 5,
+        "comments": "The assistant provides a clear and accurate explanation of the impact of halving butter in a cookie recipe, offers good alternatives, and maintains helpful context."
+      }
+    },
+    {
+      "scenario_name": "Recipe Time-Constrained",
+      "total_time_seconds": 50.923733949661255,
+      "avg_turn_seconds": 15.466432253519693,
+      "p50_turn_seconds": 14.2189199924469,
+      "p90_turn_seconds": 19.30875515937805,
+      "p95_turn_seconds": 19.944984555244446,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Need a 10-minute lunch",
+          "assistant_message": "Okay, I can definitely help you find a quick and easy lunch! You're looking for something that takes about 10 minutes and is easy to make, keeping your low-sodium and high-protein preferences in mind.\n\nBased on that, I found one recipe that fits your criteria perfectly:\n\n### Quick Avocado Toast\n\nThis recipe is super fast and easy, and you can easily boost the protein and keep the sodium low!\n\n**Ingredients:**\n*   2 slices sourdough bread\n*   1 large avocado\n*   1 tablespoon lime juice\n*   0.25 teaspoon salt (adjust to your low-sodium preference, or omit)\n*   0.25 teaspoon red pepper flakes\n*   2 large eggs (optional, for high-protein)\n\n**Instructions:**\n1.  Toast bread until golden.\n2.  Mash avocado with lime juice and salt (if using).\n3.  Spread on toast.\n4.  Top with red pepper flakes.\n5.  Optional: add a poached or fried egg for extra protein.\n\n**Tags:** breakfast, vegetarian, quick, healthy\n**Total Time:** 10 minutes (5 minutes prep, 5 minutes cook)\n**Difficulty:** Easy\n\nThis recipe is naturally low-sodium if you control the amount of salt you add, and adding an egg makes it a great high-protein option for lunch!\n\nWould you like to try this one, or should I look for other options if you're open to a slightly longer cook time or different difficulty?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 11.599162817001343,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I have turkey and lettuce",
+          "assistant_message": "Okay, great! You have turkey and lettuce, and you're still looking for a quick, easy, low-sodium, high-protein lunch that takes about 10 minutes. Let's see what we can whip up with those!\n\nSearching with turkey and lettuce, and keeping your preferences in mind, I found a perfect fit:\n\n### Turkey Lettuce Wraps\n\nThese wraps are super quick, fresh, and packed with protein, making them an ideal low-sodium lunch!\n\n**Ingredients:**\n*   4 large lettuce leaves (like butter lettuce or romaine hearts)\n*   4 oz cooked turkey breast, thinly sliced or shredded\n*   0.25 cup shredded carrots (optional)\n*   0.25 cup cucumber, thinly sliced (optional)\n*   1 tablespoon low-sodium soy sauce or tamari (or coconut aminos for even lower sodium)\n*   1 teaspoon rice vinegar\n*   0.5 teaspoon sesame oil (optional, for flavor)\n*   Pinch of red pepper flakes (optional, for a little kick)\n\n**Instructions:**\n1.  Lay out the lettuce leaves.\n2.  In a small bowl, whisk together the low-sodium soy sauce, rice vinegar, sesame oil (if using), and red pepper flakes (if using).\n3.  Divide the turkey, carrots (if using), and cucumber (if using) among the lettuce leaves.\n4.  Drizzle the sauce over the fillings.\n5.  Fold or roll up the lettuce leaves to create wraps.\n\n**Tags:** lunch, high-protein, low-sodium, quick, healthy, gluten-free\n**Total Time:** 8 minutes (5 minutes prep, 3 minutes assembly)\n**Difficulty:** Easy\n\nThis recipe is fantastic for using up your turkey and lettuce, and it's completely customizable to your taste while staying within your dietary needs.\n\nHow does that sound for your 10-minute lunch?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 20.58121395111084,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "What's the fastest recipe?",
+          "assistant_message": "Okay, you're looking for the absolute fastest recipe! I'll prioritize speed while keeping your low-sodium, high-protein, and easy preferences in mind.\n\nLet's see what's out there that can be whipped up in a flash!\n\nSearching for the quickest options, I found this one that's incredibly fast:\n\n### Quick Cottage Cheese & Fruit Bowl\n\nThis is a super speedy, high-protein, and naturally low-sodium option that requires almost no cooking!\n\n**Ingredients:**\n*   1 cup low-sodium cottage cheese\n*   0.5 cup mixed berries (strawberries, blueberries, raspberries)\n*   1 tablespoon chopped nuts (almonds, walnuts, or pecans)\n*   Optional: a drizzle of honey or a sprinkle of cinnamon\n\n**Instructions:**\n1.  Spoon cottage cheese into a bowl.\n2.  Top with mixed berries and chopped nuts.\n3.  Add honey or cinnamon if desired.\n\n**Tags:** breakfast, snack, high-protein, low-sodium, vegetarian, quick, healthy, no-cook\n**Total Time:** 3 minutes (2 minutes prep, 1 minute assembly)\n**Difficulty:** Very Easy\n\nThis recipe is practically instant and hits all your dietary notes perfectly. It's even faster than the Turkey Lettuce Wraps!\n\nHow does a 3-minute lunch sound?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.get_recipe_details",
+          "elapsed_seconds": 14.2189199924469,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 5,
+        "specificity": 5,
+        "grounding": 5,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 5,
+        "comments": "The assistant consistently understood and adapted to the user's evolving requests and constraints, providing helpful, specific, and relevant recipes throughout the conversation."
+      }
+    },
+    {
+      "scenario_name": "User Memory Check",
+      "total_time_seconds": 15.332143068313599,
+      "avg_turn_seconds": 6.156108140945435,
+      "p50_turn_seconds": 6.156108140945435,
+      "p90_turn_seconds": 6.159462594985962,
+      "p95_turn_seconds": 6.159881901741028,
+      "num_turns": 2,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Hi, I'm Tom. I'm trying to eat high-protein meals.",
+          "assistant_message": "Hi Tom! It's great to meet you, I'm Jamie, your food recommendation assistant.\n\nI can help you with a couple of things:\n1.  Finding and recommending delicious recipes tailored to your preferences.\n2.  Finding restaurants if you give me a location and some details about what you're looking for.\n\nI see you're trying to eat high-protein meals, which is a great goal! Are you looking for some high-protein recipes to cook at home, or would you like me to help you find a restaurant in Phoenix that offers high-protein options?\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 6.151915073394775,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "Remind me what we discussed about my preferences?",
+          "assistant_message": "Hi Tom! Of course, I can remind you of your preferences.\n\nBased on our conversation, here's what I have for you:\n\n*   **Dietary Restrictions:** Low-sodium, high-protein\n*   **Preferred Cuisines:** Pizza, Italian\n*   **Location:** Phoenix, AZ\n*   **Preferred Difficulty (for recipes):** Easy\n\nIs there anything you'd like to add or change to these preferences?\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 6.160301208496094,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 1,
+        "specificity": 1,
+        "grounding": 1,
+        "coherence": 4,
+        "safety": 5,
+        "overall": 1,
+        "comments": "The assistant hallucinates several preferences (low-sodium, pizza/Italian, easy difficulty) that were never mentioned by the user in the provided transcript. The only preference discussed was 'high-protein'."
+      }
+    }
+  ]
+}

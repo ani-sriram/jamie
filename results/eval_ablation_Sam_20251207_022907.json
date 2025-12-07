@@ -1,0 +1,543 @@
+{
+  "off_summary": {
+    "timestamp": "2025-12-07T10:25:20.228408Z",
+    "api_url": "http://localhost:8000",
+    "user": "Sam",
+    "total_scenarios": 5,
+    "total_turns": 14,
+    "total_time_seconds": 203.2314920425415,
+    "avg_scenario_time_seconds": 40.6462984085083,
+    "overall_p50_turn_seconds": 8.879034042358398,
+    "overall_p90_turn_seconds": 20.139697813987738,
+    "overall_p95_turn_seconds": 22.729575157165527
+  },
+  "on_summary": {
+    "timestamp": "2025-12-07T10:29:07.125976Z",
+    "api_url": "http://localhost:8000",
+    "user": "Sam",
+    "total_scenarios": 5,
+    "total_turns": 14,
+    "total_time_seconds": 226.89717602729797,
+    "avg_scenario_time_seconds": 45.37943520545959,
+    "overall_p50_turn_seconds": 12.206430435180664,
+    "overall_p90_turn_seconds": 19.973848867416386,
+    "overall_p95_turn_seconds": 21.580654966831208
+  },
+  "comparisons": [
+    {
+      "scenario_name": "Restaurant Basic",
+      "num_turns": 3,
+      "total_time_seconds_off": 27.772698163986206,
+      "total_time_seconds_on": 38.21700692176819,
+      "total_time_seconds_delta": 10.444308757781982,
+      "avg_turn_seconds_off": 7.754546006520589,
+      "avg_turn_seconds_on": 11.230101664861044,
+      "avg_turn_seconds_delta": 3.475555658340455,
+      "p50_turn_seconds_off": 7.4402830600738525,
+      "p50_turn_seconds_on": 12.138131856918335,
+      "p50_turn_seconds_delta": 4.697848796844482,
+      "p90_turn_seconds_off": 10.651442193984986,
+      "p90_turn_seconds_on": 12.646621656417848,
+      "p90_turn_seconds_delta": 1.995179462432862,
+      "p95_turn_seconds_off": 11.052837085723878,
+      "p95_turn_seconds_on": 12.710182881355287,
+      "p95_turn_seconds_delta": 1.657345795631409,
+      "judge_overall_off": 5,
+      "judge_overall_on": 4,
+      "judge_overall_delta": -1,
+      "significance_hint": "likely meaningful"
+    },
+    {
+      "scenario_name": "Restaurant Dietary",
+      "num_turns": 3,
+      "total_time_seconds_off": 42.413581132888794,
+      "total_time_seconds_on": 49.51138997077942,
+      "total_time_seconds_delta": 7.097808837890625,
+      "avg_turn_seconds_off": 12.632081190745035,
+      "avg_turn_seconds_on": 14.994020620981852,
+      "avg_turn_seconds_delta": 2.3619394302368164,
+      "p50_turn_seconds_off": 6.70897912979126,
+      "p50_turn_seconds_on": 16.23641586303711,
+      "p50_turn_seconds_delta": 9.52743673324585,
+      "p90_turn_seconds_off": 21.831289196014403,
+      "p90_turn_seconds_on": 20.50776786804199,
+      "p90_turn_seconds_delta": -1.3235213279724114,
+      "p95_turn_seconds_off": 23.721577954292293,
+      "p95_turn_seconds_on": 21.0416868686676,
+      "p95_turn_seconds_delta": -2.6798910856246927,
+      "judge_overall_off": 2,
+      "judge_overall_on": 3,
+      "judge_overall_delta": 1,
+      "significance_hint": "likely meaningful"
+    },
+    {
+      "scenario_name": "Recipe Basic",
+      "num_turns": 3,
+      "total_time_seconds_off": 36.07183575630188,
+      "total_time_seconds_on": 37.55290508270264,
+      "total_time_seconds_delta": 1.4810693264007568,
+      "avg_turn_seconds_off": 10.515918493270874,
+      "avg_turn_seconds_on": 11.010196685791016,
+      "avg_turn_seconds_delta": 0.4942781925201416,
+      "p50_turn_seconds_off": 7.157721042633057,
+      "p50_turn_seconds_on": 12.274729013442993,
+      "p50_turn_seconds_delta": 5.1170079708099365,
+      "p90_turn_seconds_off": 15.605937290191651,
+      "p90_turn_seconds_on": 12.639256143569947,
+      "p90_turn_seconds_delta": -2.9666811466217045,
+      "p95_turn_seconds_off": 16.661964321136473,
+      "p95_turn_seconds_on": 12.684822034835816,
+      "p95_turn_seconds_delta": -3.9771422863006567,
+      "judge_overall_off": 2,
+      "judge_overall_on": 4,
+      "judge_overall_delta": 2,
+      "significance_hint": "likely meaningful"
+    },
+    {
+      "scenario_name": "Recipe Time-Constrained",
+      "num_turns": 3,
+      "total_time_seconds_off": 48.76276397705078,
+      "total_time_seconds_on": 51.83215594291687,
+      "total_time_seconds_delta": 3.069391965866089,
+      "avg_turn_seconds_off": 14.74453298250834,
+      "avg_turn_seconds_on": 15.770188728968302,
+      "avg_turn_seconds_delta": 1.025655746459961,
+      "p50_turn_seconds_off": 12.738241910934448,
+      "p50_turn_seconds_on": 13.903419017791748,
+      "p50_turn_seconds_delta": 1.1651771068572998,
+      "p90_turn_seconds_off": 19.489705991744994,
+      "p90_turn_seconds_on": 20.05270929336548,
+      "p90_turn_seconds_delta": 0.563003301620487,
+      "p95_turn_seconds_off": 20.33363900184631,
+      "p95_turn_seconds_on": 20.821370577812196,
+      "p95_turn_seconds_delta": 0.4877315759658849,
+      "judge_overall_off": 3,
+      "judge_overall_on": 2,
+      "judge_overall_delta": -1,
+      "significance_hint": "likely meaningful"
+    },
+    {
+      "scenario_name": "User Memory Check",
+      "num_turns": 2,
+      "total_time_seconds_off": 18.14652991294861,
+      "total_time_seconds_on": 20.2672278881073,
+      "total_time_seconds_delta": 2.1206979751586914,
+      "avg_turn_seconds_off": 7.563727974891663,
+      "avg_turn_seconds_on": 8.625231504440308,
+      "avg_turn_seconds_delta": 1.061503529548645,
+      "p50_turn_seconds_off": 7.563727974891663,
+      "p50_turn_seconds_on": 8.625231504440308,
+      "p50_turn_seconds_delta": 1.061503529548645,
+      "p90_turn_seconds_off": 10.436703801155092,
+      "p90_turn_seconds_on": 9.247369527816772,
+      "p90_turn_seconds_delta": -1.1893342733383196,
+      "p95_turn_seconds_off": 10.795825779438019,
+      "p95_turn_seconds_on": 9.32513678073883,
+      "p95_turn_seconds_delta": -1.4706889986991882,
+      "judge_overall_off": 1,
+      "judge_overall_on": 2,
+      "judge_overall_delta": 1,
+      "significance_hint": "likely meaningful"
+    }
+  ],
+  "off_scenarios": [
+    {
+      "scenario_name": "Restaurant Basic",
+      "total_time_seconds": 27.772698163986206,
+      "avg_turn_seconds": 7.754546006520589,
+      "p50_turn_seconds": 7.4402830600738525,
+      "p90_turn_seconds": 10.651442193984986,
+      "p95_turn_seconds": 11.052837085723878,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Find tacos near me",
+          "assistant_message": "Hey there! I can definitely help you find some tacos in Chicago.\n\nBased on your preferences and what I found, here are a few spots in Chicago that might have what you're looking for:\n\n1.  **Quesadilla La Reina del Sur** - 2237 N Western Ave, Chicago, IL 60647, USA (Inexpensive)\n2.  **Alice & Friends' Vegan Kitchen** - 5812 N Broadway, Chicago, IL 60660, USA (Inexpensive)\n3.  **Palmita** - 850 W Superior St, Chicago, IL 60642, USA (Price level not specified)\n\nI've kept your dietary needs (gluten-free, dairy-free, vegan) and cuisine preferences (Mexican) in mind. While the first two are listed as \"Inexpensive\" ($), which is a bit below your preferred \"$$\" range, they are known for their Mexican or vegan options, which often cater to those dietary needs. Palmita's price level isn't specified, but it's also in Chicago.\n\nLet me know if you'd like more details on any of these, or if you'd like to explore other options!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 7.4402830600738525,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I'm in the Mission District, San Francisco",
+          "assistant_message": "Ah, okay! You've moved to the Mission District in San Francisco. No problem at all, let's find some tacos for you there!\n\nJust to confirm, should I still keep your preferences in mind: gluten-free, dairy-free, vegan, dedicated gluten-free kitchen, and a price range around $$?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 4.3691229820251465,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Is the first spot open past 10pm?",
+          "assistant_message": "You're asking about **Quesadilla La Reina del Sur**, the first spot I mentioned, which is located in Chicago.\n\nBased on their typical hours, Quesadilla La Reina del Sur is usually open until 9 PM on most days, but they are open until **10 PM on Fridays and Saturdays**. So, they are open past 10 PM on those two days.\n\nJust a friendly reminder that this restaurant is in Chicago! Since you mentioned you're now in the Mission District, San Francisco, would you like me to find some taco spots for you there instead, keeping your preferences in mind?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.get_restaurant_details",
+          "elapsed_seconds": 11.454231977462769,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 5,
+        "specificity": 5,
+        "grounding": 5,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 5,
+        "comments": "The assistant correctly identifies the restaurant, answers the specific question about hours accurately, and helpfully reminds the user about their current location preference while offering to adjust."
+      }
+    },
+    {
+      "scenario_name": "Restaurant Dietary",
+      "total_time_seconds": 42.413581132888794,
+      "avg_turn_seconds": 12.632081190745035,
+      "p50_turn_seconds": 6.70897912979126,
+      "p90_turn_seconds": 21.831289196014403,
+      "p95_turn_seconds": 23.721577954292293,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Find restaurants in Chicago",
+          "assistant_message": "Hey there! I can definitely help you find some restaurants in Chicago. Based on your request, here are a few places that might be a good fit:\n\n1.  **Alice & Friends' Vegan Kitchen** - 5812 N Broadway, Chicago, IL 60660, USA (Inexpensive)\n2.  **True Food Kitchen** - 1 W Erie St Unit A/Floor 1, Chicago, IL 60654, USA (Moderate)\n3.  **Healthy Substance Kitchen** - 6852 W Archer Ave, Chicago, IL 60638, USA (Moderate)\n\nThese are all located in Chicago. Let me know if any of these catch your eye, or if you'd like more details on a specific one!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 5.575397729873657,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I'm gluten-free and dairy-free",
+          "assistant_message": "Thanks for letting me know about your dietary needs! I've updated your preferences to include gluten-free and dairy-free options.\n\nIt looks like the search results I have now are for the San Diego area. Here are some places that might work for you there:\n\n1.  **True Food Kitchen** - 4303 La Jolla Village Dr Ste 2100, San Diego, CA 92122, USA (Moderate)\n2.  **Second Nature** - 5026 Cass St, San Diego, CA 92109, USA (Moderate)\n3.  **Plant Power Fast Food** - 9685 Scholars Dr N, La Jolla, CA 92093, USA (Moderate)\n4.  **Flower Child** - 2690 Via De La Valle, Del Mar, CA 92014, USA (Moderate)\n5.  **Fresher\u00eda - La Jolla** - 627 Pearl St, La Jolla, CA 92037, USA (Inexpensive)\n\nDid you mean to search in San Diego, or were you still looking for options in Chicago? Let me know!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 6.70897912979126,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Any dedicated gluten-free kitchens?",
+          "assistant_message": "That's a really important detail! Finding a dedicated gluten-free kitchen is key for peace of mind.\n\nFirst, my apologies for the mix-up with San Diego in my last message! We're definitely looking in Chicago for you.\n\nI don't have specific information about dedicated gluten-free kitchens for the restaurants I've found so far. However, I can perform a new search in Chicago specifically looking for places that meet your gluten-free, dairy-free, vegan, and dedicated gluten-free kitchen preferences, along with your preferred price range and cuisines.\n\nWould you like me to go ahead and search for those new options?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 25.61186671257019,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 2,
+        "specificity": 3,
+        "grounding": 2,
+        "coherence": 2,
+        "safety": 5,
+        "overall": 2,
+        "comments": "The assistant failed significantly by losing context and switching the restaurant search location from Chicago to San Diego, and incorrectly added 'vegan' to user preferences, despite apologies and offers to re-search."
+      }
+    },
+    {
+      "scenario_name": "Recipe Basic",
+      "total_time_seconds": 36.07183575630188,
+      "avg_turn_seconds": 10.515918493270874,
+      "p50_turn_seconds": 7.157721042633057,
+      "p90_turn_seconds": 15.605937290191651,
+      "p95_turn_seconds": 16.661964321136473,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "I want to cook ramen",
+          "assistant_message": "Oh, that sounds delicious! Ramen is a fantastic choice.\n\nI looked for an easy, gluten-free, dairy-free, and vegan Japanese ramen recipe for you, but it seems I couldn't find one that perfectly matches all those criteria in my current database. Traditional ramen noodles are made with wheat, and many broths contain non-vegan ingredients or dairy.\n\nWould you like me to try searching for:\n1.  **Ramen recipes with slightly fewer restrictions?** For example, just vegan and gluten-free, or perhaps just easy and vegan?\n2.  **Other easy, gluten-free, dairy-free, and vegan Japanese recipes** that aren't ramen?\n3.  **Other easy, gluten-free, dairy-free, and vegan comfort food recipes** that might hit the spot?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 7.157721042633057,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "Ingredients for the first recipe?",
+          "assistant_message": "It looks like I wasn't able to find a ramen recipe that fit all your criteria (easy, gluten-free, dairy-free, and vegan) in the last search, so I didn't provide a specific recipe.\n\nWould you like me to try searching again with slightly different criteria, or perhaps look for other types of Japanese or comfort food recipes that are easy, gluten-free, dairy-free, and vegan?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.get_recipe_details",
+          "elapsed_seconds": 17.7179913520813,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Do I need a pressure cooker?",
+          "assistant_message": "That's a great question, but since I wasn't able to find a specific ramen recipe that met all your dietary needs (easy, gluten-free, dairy-free, and vegan), I don't have any recipe details to tell you whether a pressure cooker would be needed.\n\nWould you like me to try searching again with slightly different criteria, or perhaps look for other types of Japanese or comfort food recipes that are easy, gluten-free, dairy-free, and vegan?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.get_recipe_details",
+          "elapsed_seconds": 6.672043085098267,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 2,
+        "specificity": 3,
+        "grounding": 5,
+        "coherence": 2,
+        "safety": 5,
+        "overall": 2,
+        "comments": "The assistant correctly states it couldn't find a recipe and why, but gets stuck in a repetitive loop of offering the same three options without making progress."
+      }
+    },
+    {
+      "scenario_name": "Recipe Time-Constrained",
+      "total_time_seconds": 48.76276397705078,
+      "avg_turn_seconds": 14.74453298250834,
+      "p50_turn_seconds": 12.738241910934448,
+      "p90_turn_seconds": 19.489705991744994,
+      "p95_turn_seconds": 20.33363900184631,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Dinner in 25 minutes",
+          "assistant_message": "Hi there! You're looking for an easy dinner recipe that's ready in about 25 minutes, and also fits your gluten-free, dairy-free, and vegan preferences. I've checked through my recipes, and it looks like I don't have any that perfectly hit all those marks right now.\n\nFor example, I found a 'Quick Avocado Toast' that's easy and ready in just 10 minutes, but it typically uses sourdough bread (which isn't gluten-free) and often includes eggs, which wouldn't work for a vegan meal. The other quick and easy options I have don't align with your dietary needs.\n\nWould you be open to a recipe that takes a little longer, or perhaps adjusting one of your dietary preferences for this meal? We could also explore some restaurant options in Chicago that cater to your needs!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 21.177572011947632,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I have tofu and broccoli",
+          "assistant_message": "Okay, you have tofu and broccoli! That's a great start. I looked for easy recipes using those ingredients that are also gluten-free, dairy-free, and vegan, and ready quickly.\n\nUnfortunately, I wasn't able to find a recipe that includes both tofu and broccoli while also meeting all your dietary preferences and being easy to make within a short timeframe. The recipes I found either didn't include tofu, or weren't fully vegan/gluten-free.\n\nWould you be open to:\n*   Looking for a recipe that uses just one of those ingredients, or perhaps a different main ingredient?\n*   Considering a recipe that takes a little longer to prepare?\n*   Or, we could shift gears and look for some restaurant options in Chicago that offer gluten-free, dairy-free, and vegan dishes?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 12.738241910934448,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Which recipe is fastest to prep?",
+          "assistant_message": "Okay, focusing on speed! Based on what we've discussed, the 'Quick Avocado Toast' recipe I mentioned earlier is the fastest, with a total time of just **10 minutes** and an **easy** difficulty level.\n\nHowever, as we noted, the traditional version of this recipe typically uses sourdough bread (which isn't gluten-free) and often includes eggs, which wouldn't work for a vegan meal.\n\nI don't have a fully gluten-free and vegan version of that specific recipe with an ingredient list ready to share right now. Would you like me to try and find a recipe for a **gluten-free and vegan avocado toast** that you could make quickly, or perhaps look for other fast, compliant recipes? We could also go back to exploring restaurant options in Chicago!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.get_recipe_details",
+          "elapsed_seconds": 10.317785024642944,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 3,
+        "specificity": 4,
+        "grounding": 4,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 3,
+        "comments": "The assistant is very coherent and helpful in its communication, explaining its limitations clearly and offering alternative solutions consistently. However, it ultimately fails to provide any suitable recipe throughout the entire conversation, which is its primary function, despite multiple attempts and user input."
+      }
+    },
+    {
+      "scenario_name": "User Memory Check",
+      "total_time_seconds": 18.14652991294861,
+      "avg_turn_seconds": 7.563727974891663,
+      "p50_turn_seconds": 7.563727974891663,
+      "p90_turn_seconds": 10.436703801155092,
+      "p95_turn_seconds": 10.795825779438019,
+      "num_turns": 2,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Hi, I'm Sam. I prefer vegan comfort food.",
+          "assistant_message": "Hi Sam! It's great to meet you. I understand you're looking for vegan comfort food, and I've found a few options for you. Here are the restaurants I found:\n\n1.  **True Food Kitchen** - 4303 La Jolla Village Dr Ste 2100, San Diego, CA 92122, USA (PRICE_LEVEL_MODERATE)\n2.  **Alice & Friends' Vegan Kitchen** - 5812 N Broadway, Chicago, IL 60660, USA (PRICE_LEVEL_INEXPENSIVE)\n3.  **Itoko** - 3325 N Southport Ave, Chicago, IL 60657, USA (PRICE_LEVEL_MODERATE)\n4.  **Flower Child** - 2690 Via De La Valle, Del Mar, CA 92014, USA (PRICE_LEVEL_MODERATE)\n\nOut of these, **Alice & Friends' Vegan Kitchen** (number 2) in Chicago looks like a fantastic option for vegan comfort food. It's a dedicated vegan kitchen right in Chicago! It's also on the more inexpensive side, which is a bit below your usual $$ preference, but it could be a great find.\n\nThe other Chicago option, **Itoko** (number 3), is a Japanese restaurant. While it might have vegan options, it might not align with the 'comfort food' style you're looking for. The other two, True Food Kitchen (number 1) and Flower Child (number 4), are located in California, so they might not be what you're looking for right now.\n\nWould you like more details on Alice & Friends' Vegan Kitchen, or perhaps I can look for more options in Chicago that fit your vegan comfort food preference?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 11.154947757720947,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "Remind me what we discussed about my preferences?",
+          "assistant_message": "Hi Sam! Of course, I can remind you of your preferences.\n\nHere's what we've discussed so far:\n\n*   **Dietary restrictions:** gluten-free, dairy-free, vegan, dedicated gluten-free kitchen\n*   **Preferred cuisines:** Mexican, comfort food, Japanese\n*   **Price range preference:** $$ (moderate)\n*   **Location:** Chicago\n*   **Preferred difficulty (for recipes):** easy\n\nIs there anything you'd like to add or change to these preferences?\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 3.972508192062378,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 1,
+        "specificity": 3,
+        "grounding": 1,
+        "coherence": 3,
+        "safety": 5,
+        "overall": 1,
+        "comments": "The assistant hallucinates a significant number of user preferences that were never discussed, such as gluten-free, dairy-free, Mexican cuisine, Japanese cuisine, price range, location, and recipe difficulty. Only 'vegan' and 'comfort food' were correctly recalled."
+      }
+    }
+  ],
+  "on_scenarios": [
+    {
+      "scenario_name": "Restaurant Basic",
+      "total_time_seconds": 38.21700692176819,
+      "avg_turn_seconds": 11.230101664861044,
+      "p50_turn_seconds": 12.138131856918335,
+      "p90_turn_seconds": 12.646621656417848,
+      "p95_turn_seconds": 12.710182881355287,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Find tacos near me",
+          "assistant_message": "Hey there! I found a few places that might have tacos for you, keeping your preferences in mind. Here are the restaurants I found:\n\n1.  **Quesadilla La Reina del Sur** - 2237 N Western Ave, Chicago, IL 60647, USA (Inexpensive)\n2.  **True Food Kitchen** - 1 W Erie St Unit A/Floor 1, Chicago, IL 60654, USA (Moderate)\n3.  **Alice & Friends' Vegan Kitchen** - 5812 N Broadway, Chicago, IL 60660, USA (Inexpensive)\n4.  **The Melt** - 8849 Villa La Jolla Dr, La Jolla, CA 92037, USA (Moderate)\n5.  **Urban Plates** - 8707 Villa La Jolla Dr, La Jolla, CA 92037, USA (Moderate)\n\nBased on your request for tacos in Chicago and your dietary preferences (gluten-free, dairy-free, vegan), **Quesadilla La Reina del Sur** (1) looks like a fantastic option! It's a vegan Mexican spot right in Chicago, so they should have some delicious tacos that fit your needs.\n\n**True Food Kitchen** (2) is also in Chicago and is known for its health-conscious menu with many gluten-free, dairy-free, and vegan options, so they might have some great taco-like dishes too, and it matches your preferred price range ($$).\n\nAlice & Friends' Vegan Kitchen (3) is also vegan and in Chicago, but their cuisine is more Asian-inspired, so while they're great for your dietary needs, they might not have traditional tacos.\n\nThe Melt (4) and Urban Plates (5) are located in La Jolla, CA, so they're not \"near you\" in Chicago.\n\nLet me know if you'd like more details on any of the Chicago options!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 12.773744106292725,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I'm in the Mission District, San Francisco",
+          "assistant_message": "Ah, my apologies for the mix-up with the location! Thanks for clarifying that you're in the **Mission District, San Francisco**. That makes much more sense!\n\nI've found a couple of great spots in or very close to the Mission District that fit your dietary needs (gluten-free, dairy-free, vegan) and price range ($$). While they might not be traditional \"taco\" places, they offer delicious options that align with your preferences for comfort food, Mexican, or Japanese cuisine.\n\nHere are the restaurants I found for you:\n\n1.  **Kitava** - 2011 Mission St, San Francisco, CA 94110, USA (Moderate)\n2.  **Shizen** - 370 14th St, San Francisco, CA 94103, USA (Moderate)\n\nLet me tell you a bit about them:\n\n**Kitava** (1) is right in the Mission District and is fantastic for your dietary needs! They focus on healthy, whole-food meals that are naturally gluten-free, dairy-free, and vegan-friendly. While they might not have traditional tacos, they often have bowls and other comfort food options that are incredibly satisfying and fit your preferences perfectly.\n\n**Shizen** (2) is a highly-rated vegan sushi bar, which aligns perfectly with your preference for Japanese cuisine and your vegan diet. They're known for their creative and delicious plant-based sushi rolls and other Japanese dishes.\n\nBoth of these options are in your preferred price range ($$) and cater to your dietary restrictions. Would you like more details on either Kitava or Shizen?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 12.138131856918335,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Is the first spot open past 10pm?",
+          "assistant_message": "Let me check that for you! You're asking about **Kitava** (1).\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.get_restaurant_details\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.get_restaurant_details",
+          "elapsed_seconds": 8.77842903137207,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 4,
+        "specificity": 5,
+        "grounding": 5,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 4,
+        "comments": "The assistant correctly identifies the restaurant the user is asking about and confirms it will check the information, setting the expectation for the next turn."
+      }
+    },
+    {
+      "scenario_name": "Restaurant Dietary",
+      "total_time_seconds": 49.51138997077942,
+      "avg_turn_seconds": 14.994020620981852,
+      "p50_turn_seconds": 16.23641586303711,
+      "p90_turn_seconds": 20.50776786804199,
+      "p95_turn_seconds": 21.0416868686676,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Find restaurants in Chicago",
+          "assistant_message": "Hey there! I can definitely help you find some great restaurants in Chicago. Based on your preferences for gluten-free, dairy-free, and vegan options, and keeping in mind your love for comfort food, Mexican, and Japanese, here are a few places that might pique your interest:\n\n1.  **True Food Kitchen** - 1 W Erie St Unit A/Floor 1, Chicago, IL 60654, USA (Moderate)\n2.  **Alice & Friends' Vegan Kitchen** - 5812 N Broadway, Chicago, IL 60660, USA (Inexpensive)\n3.  **The Chicago Diner, Logan Square** - 2333 N Milwaukee Ave, Chicago, IL 60647, USA (Moderate)\n4.  **Wheat's End Cafe & Bakery (NO DINE-IN)** - 543 W Diversey Pkwy, Chicago, IL 60614, USA (Moderate)\n5.  **Aba** - 302 N Green St 3rd Floor, Chicago, IL 60607, USA (Expensive)\n\nLet me know if any of these catch your eye, or if you'd like more details on a specific one!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 7.170040130615234,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I'm gluten-free and dairy-free",
+          "assistant_message": "Thanks for confirming! I've definitely got your gluten-free and dairy-free preferences noted. The restaurants I suggested earlier were all chosen with those dietary needs (and vegan options) in mind.\n\nDid any of those initial recommendations catch your eye, or would you like me to refine the search further with these preferences in mind?\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 16.23641586303711,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Any dedicated gluten-free kitchens?",
+          "assistant_message": "Absolutely! I've refined the search to specifically look for restaurants with dedicated gluten-free kitchens, keeping all your other preferences like dairy-free, vegan options, and preferred cuisines in mind.\n\nHere are some options that fit the bill:\n\n1.  **True Food Kitchen** - 1 W Erie St Unit A/Floor 1, Chicago, IL 60654, USA (Moderate)\n2.  **Alice & Friends' Vegan Kitchen** - 5812 N Broadway, Chicago, IL 60660, USA (Inexpensive)\n3.  **The Chicago Diner, Logan Square** - 2333 N Milwaukee Ave, Chicago, IL 60647, USA (Moderate)\n4.  **Wheat's End Cafe & Bakery (NO DINE-IN)** - 543 W Diversey Pkwy, Chicago, IL 60614, USA (Moderate)\n5.  **Arya Bhavan** - 2508 W Devon Ave, Chicago, IL 60659, USA (Moderate)\n\nAmong these, **Wheat's End Cafe & Bakery** is particularly known for being a dedicated gluten-free facility, which is fantastic for ensuring no cross-contamination. Just a heads-up, their listing specifies \"NO DINE-IN,\" so it's more for takeout or bakery items.\n\nWould you like more details on any of these, or perhaps some other suggestions?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 21.575605869293213,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 3,
+        "specificity": 3,
+        "grounding": 4,
+        "coherence": 2,
+        "safety": 5,
+        "overall": 3,
+        "comments": "The assistant makes unprompted assumptions in the first turn. In the second turn, it acknowledges user preferences but doesn't refine the search, leading to a confusing conversational turn. In the third turn, it claims to refine the search for 'dedicated gluten-free kitchens' but the resulting list is largely identical to the first, undermining its specificity, though it does highlight one specific venue. The overall conversational flow is clunky and not very helpful in truly refining the search."
+      }
+    },
+    {
+      "scenario_name": "Recipe Basic",
+      "total_time_seconds": 37.55290508270264,
+      "avg_turn_seconds": 11.010196685791016,
+      "p50_turn_seconds": 12.274729013442993,
+      "p90_turn_seconds": 12.639256143569947,
+      "p95_turn_seconds": 12.684822034835816,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "I want to cook ramen",
+          "assistant_message": "Oh, ramen! That sounds delicious. I looked for an easy, gluten-free, dairy-free, and vegan Japanese ramen recipe for you, but it seems I couldn't find any that perfectly match all those criteria in my current database.\n\nWould you like me to try searching for ramen recipes with slightly fewer restrictions? For example, I could look for:\n*   Gluten-free and vegan ramen (without the dairy-free tag, though vegan implies dairy-free)\n*   Gluten-free Japanese recipes that aren't specifically ramen\n*   Or perhaps a different type of easy, gluten-free, dairy-free, and vegan comfort food or Mexican recipe?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 8.02547311782837,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "Ingredients for the first recipe?",
+          "assistant_message": "It looks like I wasn't able to find a ramen recipe that perfectly matched all your preferences (easy, gluten-free, dairy-free, and vegan Japanese ramen) in the last search, so there isn't a \"first recipe\" to provide ingredients for.\n\nWould you like me to try searching again with slightly fewer restrictions, or perhaps for a different type of easy, gluten-free, dairy-free, and vegan comfort food or Mexican recipe?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.get_recipe_details",
+          "elapsed_seconds": 12.274729013442993,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Do I need a pressure cooker?",
+          "assistant_message": "That's a great question! However, since I wasn't able to find a ramen recipe that perfectly matched all your preferences (easy, gluten-free, dairy-free, and vegan Japanese ramen) in our last search, there isn't a specific recipe to check for pressure cooker requirements.\n\nWould you like me to try searching again with slightly fewer restrictions, or perhaps for a different type of easy, gluten-free, dairy-free, and vegan comfort food or Mexican recipe?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.get_recipe_details",
+          "elapsed_seconds": 12.730387926101685,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 4,
+        "specificity": 4,
+        "grounding": 5,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 4,
+        "comments": "The assistant correctly identifies that it could not find a recipe based on the initial constraints and therefore cannot answer subsequent questions about ingredients or equipment for a non-existent recipe. It consistently offers helpful alternative search options."
+      }
+    },
+    {
+      "scenario_name": "Recipe Time-Constrained",
+      "total_time_seconds": 51.83215594291687,
+      "avg_turn_seconds": 15.770188728968302,
+      "p50_turn_seconds": 13.903419017791748,
+      "p90_turn_seconds": 20.05270929336548,
+      "p95_turn_seconds": 20.821370577812196,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Dinner in 25 minutes",
+          "assistant_message": "Okay, Jamie here! Looking for dinner in 25 minutes, got it! That's definitely doable for a quick bite out.\n\nBased on your preferences for gluten-free, dairy-free, and vegan options, along with comfort food, Mexican, or Japanese cuisine in Chicago, here are a few spots that might work for a quick dinner:\n\n1.  **Alice & Friends' Vegan Kitchen** - 5812 N Broadway, Chicago, IL 60660, USA (Inexpensive)\n2.  **True Food Kitchen** - 1 W Erie St Unit A/Floor 1, Chicago, IL 60654, USA (Moderate)\n3.  **Star of Siam** - 11 E Illinois St # 1, Chicago, IL 60611, USA (Inexpensive)\n4.  **Palmita** - 850 W Superior St, Chicago, IL 60642, USA (Price level not available)\n5.  **Healthy Substance Kitchen** - 6852 W Archer Ave, Chicago, IL 60638, USA (Moderate)\n\nDo any of these catch your eye for a quick dinner tonight? I can tell you more about any of them!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 11.817115306854248,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I have tofu and broccoli",
+          "assistant_message": "You've got tofu and broccoli, great! Let's see what we can whip up for dinner in 25 minutes, keeping your gluten-free, dairy-free, and vegan preferences in mind, along with your love for comfort food, Mexican, or Japanese cuisine.\n\nI looked for recipes that include both tofu and broccoli, are easy to make, and fit within your 25-minute timeframe. However, I wasn't able to find a recipe that perfectly matches *all* those specific criteria, especially with the tofu and your preferred cuisines. The search didn't return any vegan recipes with both tofu and broccoli that fit the other tags and time limit.\n\nWould you be open to:\n*   Slightly extending the cooking time?\n*   Trying a different cuisine type?\n*   Or perhaps focusing on just one of the ingredients, like tofu, and seeing what else we can add?\n\nLet me know how you'd like to adjust, and I'll search again!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 13.903419017791748,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Which recipe is fastest to prep?",
+          "assistant_message": "Ah, that's a good question! However, based on our last chat, I wasn't able to find any recipes that perfectly matched *all* your specific criteria \u2013 having both tofu and broccoli, being easy, fitting within 25 minutes, and also being gluten-free, dairy-free, vegan, and aligning with comfort food, Mexican, or Japanese cuisine.\n\nSo, unfortunately, I don't have a recipe to tell you the prep time for right now.\n\nWould you still be open to:\n*   Slightly extending the cooking time?\n*   Trying a different cuisine type?\n*   Or perhaps focusing on just one of the ingredients, like tofu, and seeing what else we can add?\n\nLet me know how you'd like to adjust, and I'll search again!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 21.59003186225891,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 2,
+        "specificity": 4,
+        "grounding": 5,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 2,
+        "comments": "The assistant correctly recalls it found no recipes matching all criteria, but fails to pivot and offer *any* recipes with tofu and broccoli to answer the 'fastest to prep' question, even if they don't meet all preferences. It just reiterates the previous failure and suggestions."
+      }
+    },
+    {
+      "scenario_name": "User Memory Check",
+      "total_time_seconds": 20.2672278881073,
+      "avg_turn_seconds": 8.625231504440308,
+      "p50_turn_seconds": 8.625231504440308,
+      "p90_turn_seconds": 9.247369527816772,
+      "p95_turn_seconds": 9.32513678073883,
+      "num_turns": 2,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Hi, I'm Sam. I prefer vegan comfort food.",
+          "assistant_message": "Hi Sam! It's great to meet you. I can definitely help you find some delicious vegan comfort food.\n\nI found a couple of \"True Food Kitchen\" restaurants that might fit the bill for vegan options, but it looks like these are in San Diego, not Chicago, which is your preferred location.\n\nHere are the places I found:\n1.  **True Food Kitchen** - 4303 La Jolla Village Dr Ste 2100, San Diego, CA 92122, USA (Moderate)\n2.  **True Food Kitchen** - 7007 Friars Rd Suite 394, San Diego, CA 92108, USA (Moderate)\n\nWould you like me to look for vegan comfort food restaurants in Chicago instead, or are you interested in exploring these San Diego options?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 9.402904033660889,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "Remind me what we discussed about my preferences?",
+          "assistant_message": "Of course, Sam! Here's a summary of your preferences:\n\n*   **Dietary restrictions:** gluten-free (and preferably a dedicated gluten-free kitchen), dairy-free, vegan\n*   **Preferred cuisines:** comfort food, Mexican, Japanese\n*   **Price range:** $$ (moderate)\n*   **Location:** Chicago\n*   **Recipe difficulty:** easy\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 7.847558975219727,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 2,
+        "specificity": 3,
+        "grounding": 2,
+        "coherence": 2,
+        "safety": 5,
+        "overall": 2,
+        "comments": "The assistant knew the user's preferred location was Chicago but still presented San Diego options and asked if the user wanted to explore them, making the first turn very unhelpful and incoherent. The second turn was excellent in recalling preferences."
+      }
+    }
+  ]
+}

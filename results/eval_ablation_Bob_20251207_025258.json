@@ -1,0 +1,543 @@
+{
+  "off_summary": {
+    "timestamp": "2025-12-07T10:49:29.922526Z",
+    "api_url": "http://localhost:8000",
+    "user": "Bob",
+    "total_scenarios": 5,
+    "total_turns": 14,
+    "total_time_seconds": 170.16624426841736,
+    "avg_scenario_time_seconds": 34.033248853683475,
+    "overall_p50_turn_seconds": 6.005272388458252,
+    "overall_p90_turn_seconds": 16.052319145202638,
+    "overall_p95_turn_seconds": 18.35621153116226
+  },
+  "on_summary": {
+    "timestamp": "2025-12-07T10:52:58.412614Z",
+    "api_url": "http://localhost:8000",
+    "user": "Bob",
+    "total_scenarios": 5,
+    "total_turns": 14,
+    "total_time_seconds": 208.4898509979248,
+    "avg_scenario_time_seconds": 41.69797019958496,
+    "overall_p50_turn_seconds": 9.27865445613861,
+    "overall_p90_turn_seconds": 17.062094378471375,
+    "overall_p95_turn_seconds": 18.477329039573668
+  },
+  "comparisons": [
+    {
+      "scenario_name": "Restaurant Basic",
+      "num_turns": 3,
+      "total_time_seconds_off": 24.07414197921753,
+      "total_time_seconds_on": 30.536139965057373,
+      "total_time_seconds_delta": 6.461997985839844,
+      "avg_turn_seconds_off": 6.518024365107219,
+      "avg_turn_seconds_on": 8.668637116750082,
+      "avg_turn_seconds_delta": 2.1506127516428633,
+      "p50_turn_seconds_off": 4.689380884170532,
+      "p50_turn_seconds_on": 9.259430170059204,
+      "p50_turn_seconds_delta": 4.570049285888672,
+      "p90_turn_seconds_off": 9.532947587966918,
+      "p90_turn_seconds_on": 10.264507722854615,
+      "p90_turn_seconds_delta": 0.7315601348876974,
+      "p95_turn_seconds_off": 10.138393425941466,
+      "p95_turn_seconds_on": 10.39014241695404,
+      "p95_turn_seconds_delta": 0.2517489910125743,
+      "judge_overall_off": 3,
+      "judge_overall_on": 4,
+      "judge_overall_delta": 1,
+      "significance_hint": "likely meaningful"
+    },
+    {
+      "scenario_name": "Restaurant Dietary",
+      "num_turns": 3,
+      "total_time_seconds_off": 21.37735605239868,
+      "total_time_seconds_on": 33.91809701919556,
+      "total_time_seconds_delta": 12.540740966796875,
+      "avg_turn_seconds_off": 5.617808262507121,
+      "avg_turn_seconds_on": 9.795965909957886,
+      "avg_turn_seconds_delta": 4.178157647450765,
+      "p50_turn_seconds_off": 5.323704957962036,
+      "p50_turn_seconds_on": 9.297878742218018,
+      "p50_turn_seconds_delta": 3.9741737842559814,
+      "p90_turn_seconds_off": 6.414212846755982,
+      "p90_turn_seconds_on": 10.969033336639404,
+      "p90_turn_seconds_delta": 4.554820489883422,
+      "p95_turn_seconds_off": 6.550526332855225,
+      "p95_turn_seconds_on": 11.177927660942077,
+      "p95_turn_seconds_delta": 4.627401328086852,
+      "judge_overall_off": 5,
+      "judge_overall_on": 4,
+      "judge_overall_delta": -1,
+      "significance_hint": "likely meaningful"
+    },
+    {
+      "scenario_name": "Recipe Basic",
+      "num_turns": 3,
+      "total_time_seconds_off": 38.992201805114746,
+      "total_time_seconds_on": 34.45532011985779,
+      "total_time_seconds_delta": -4.536881685256958,
+      "avg_turn_seconds_off": 11.49068276087443,
+      "avg_turn_seconds_on": 9.976672252019247,
+      "avg_turn_seconds_delta": -1.5140105088551827,
+      "p50_turn_seconds_off": 7.886171102523804,
+      "p50_turn_seconds_on": 7.997024059295654,
+      "p50_turn_seconds_delta": 0.11085295677185059,
+      "p90_turn_seconds_off": 18.73163104057312,
+      "p90_turn_seconds_on": 13.0691575050354,
+      "p90_turn_seconds_delta": -5.662473535537719,
+      "p95_turn_seconds_off": 20.087313532829285,
+      "p95_turn_seconds_on": 13.703174185752868,
+      "p95_turn_seconds_delta": -6.384139347076417,
+      "judge_overall_off": 1,
+      "judge_overall_on": 4,
+      "judge_overall_delta": 3,
+      "significance_hint": "likely meaningful"
+    },
+    {
+      "scenario_name": "Recipe Time-Constrained",
+      "num_turns": 3,
+      "total_time_seconds_off": 44.23882818222046,
+      "total_time_seconds_on": 57.79377770423889,
+      "total_time_seconds_delta": 13.554949522018433,
+      "avg_turn_seconds_off": 13.238563299179077,
+      "avg_turn_seconds_on": 17.758119742075603,
+      "avg_turn_seconds_delta": 4.519556442896526,
+      "p50_turn_seconds_off": 14.554837942123413,
+      "p50_turn_seconds_on": 17.674997091293335,
+      "p50_turn_seconds_delta": 3.120159149169922,
+      "p90_turn_seconds_off": 16.26624503135681,
+      "p90_turn_seconds_on": 19.50889868736267,
+      "p90_turn_seconds_delta": 3.24265365600586,
+      "p95_turn_seconds_off": 16.480170917510986,
+      "p95_turn_seconds_on": 19.73813638687134,
+      "p95_turn_seconds_delta": 3.2579654693603537,
+      "judge_overall_off": 2,
+      "judge_overall_on": 5,
+      "judge_overall_delta": 3,
+      "significance_hint": "likely meaningful"
+    },
+    {
+      "scenario_name": "User Memory Check",
+      "num_turns": 2,
+      "total_time_seconds_off": 11.070560693740845,
+      "total_time_seconds_on": 16.56763195991516,
+      "total_time_seconds_delta": 5.497071266174316,
+      "avg_turn_seconds_off": 4.028807044029236,
+      "avg_turn_seconds_on": 6.77375602722168,
+      "avg_turn_seconds_delta": 2.744948983192444,
+      "p50_turn_seconds_off": 4.028807044029236,
+      "p50_turn_seconds_on": 6.77375602722168,
+      "p50_turn_seconds_delta": 2.744948983192444,
+      "p90_turn_seconds_off": 4.578451800346374,
+      "p90_turn_seconds_on": 7.0312200546264645,
+      "p90_turn_seconds_delta": 2.45276825428009,
+      "p95_turn_seconds_off": 4.647157394886016,
+      "p95_turn_seconds_on": 7.063403058052064,
+      "p95_turn_seconds_delta": 2.4162456631660474,
+      "judge_overall_off": 1,
+      "judge_overall_on": 1,
+      "judge_overall_delta": 0,
+      "significance_hint": "unclear"
+    }
+  ],
+  "off_scenarios": [
+    {
+      "scenario_name": "Restaurant Basic",
+      "total_time_seconds": 24.07414197921753,
+      "avg_turn_seconds": 6.518024365107219,
+      "p50_turn_seconds": 4.689380884170532,
+      "p90_turn_seconds": 9.532947587966918,
+      "p95_turn_seconds": 10.138393425941466,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Find barbecue near me",
+          "assistant_message": "Okay, I can help you find some barbecue places! Here are a few options near Minneapolis:\n\n1.  **Beast Barbecue** - 825 E Hennepin Ave, Minneapolis, MN 55414 (Moderate)\n2.  **Scott Ja-Mama's** - 3 W Diamond Lake Rd, Minneapolis, MN 55419 (Inexpensive)\n3.  **ZZQ Smokehouse** - 3390 Coachman Rd #204, Eagan, MN 55121 (Moderate)\n4.  **Rack Shack BBQ** - 2141 Cliff Rd, Eagan, MN 55122 (Moderate)\n5.  **Baker's Ribs** - 8019 Glen Ln, Eden Prairie, MN 55344 (Moderate)\n\nLet me know if you'd like more details on any of these, or if you're looking for something else!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 4.689380884170532,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I'm in Nashville",
+          "assistant_message": "Ah, got it! You're in Nashville now. No problem at all, let's find some great barbecue spots there for you.\n\nSearching for barbecue restaurants in Nashville...\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 4.120852947235107,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Is the first place cash-only?",
+          "assistant_message": "Ah, good question! My apologies, it looks like I mentioned searching for barbecue in Nashville but didn't actually show you the results yet. Let me fix that right away!\n\nHere are some great barbecue options in Nashville:\n\n1.  **Martin's Bar-B-Que Joint** - 410 4th Ave S, Nashville, TN 37201 (Moderate)\n2.  **Peg Leg Porker** - 900 Carroll St, Nashville, TN 37203 (Moderate)\n3.  **Jack's Bar-B-Que** - 416 Broadway, Nashville, TN 37203 (Inexpensive)\n4.  **Edley's Bar-B-Que** - 2706 12th Ave S, Nashville, TN 37204 (Moderate)\n\nTo answer your question about Martin's Bar-B-Que Joint (the first one on the list), no, it is not cash-only. They accept various forms of payment.\n\nWould you like more details on Martin's or any of the other places?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.get_restaurant_details",
+          "elapsed_seconds": 10.743839263916016,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 3,
+        "specificity": 4,
+        "grounding": 4,
+        "coherence": 2,
+        "safety": 5,
+        "overall": 3,
+        "comments": "The assistant initially assumed location and then failed to display search results after stating it was searching, but recovered well by apologizing, providing the results, and answering the specific question about the first item."
+      }
+    },
+    {
+      "scenario_name": "Restaurant Dietary",
+      "total_time_seconds": 21.37735605239868,
+      "avg_turn_seconds": 5.617808262507121,
+      "p50_turn_seconds": 5.323704957962036,
+      "p90_turn_seconds": 6.414212846755982,
+      "p95_turn_seconds": 6.550526332855225,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Restaurants in Minneapolis",
+          "assistant_message": "Hey there! I can definitely help you find some restaurants in Minneapolis. Here are a few options I found for you:\n\n1.  **Stonegarden** - 5401 Chicago Ave, Minneapolis, MN 55417, USA\n2.  **Black Duck Spirits & Hearth** - 2900 Johnson St NE, Minneapolis, MN 55418, USA (Moderate)\n3.  **Spoon and Stable** - 211 N 1st St, Minneapolis, MN 55401, USA (Expensive)\n4.  **Carbon Kitchen + Market** - 2400 University Ave NE, Minneapolis, MN 55418, USA (Moderate)\n5.  **B\u00fbcheron** - 4257 Nicollet Ave, Minneapolis, MN 55409, USA\n\nLet me know if any of these catch your eye, or if you'd like more details on a specific one!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 4.842880010604858,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I'm diabetic and watch carbs",
+          "assistant_message": "Got it! Thanks for letting me know about your dietary needs. I'll look for restaurants in Minneapolis that are diabetic-friendly and offer low-carb options.\n\nHere are some places I found for you:\n\n1.  **Stonegarden** - 5401 Chicago Ave, Minneapolis, MN 55417, USA\n2.  **B\u00fbcheron** - 4257 Nicollet Ave, Minneapolis, MN 55409, USA\n3.  **Cardamom** - 723 Vineland Pl, Minneapolis, MN 55403, USA (Moderate)\n4.  **The Tipsy Steer Hiawatha** - 5000 Hiawatha Ave, Minneapolis, MN 55417, USA (Moderate)\n5.  **Hawaii Poke Bowl** - 3234 W Lake St, Minneapolis, MN 55416, USA (Moderate)\n\nDo any of these sound good, or would you like more details on a particular one?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 5.323704957962036,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Which spot provides detailed nutrition info?",
+          "assistant_message": "That's a great question! Unfortunately, the information I have for these restaurants doesn't specify which ones provide detailed nutrition information directly. Many restaurants, especially those catering to specific dietary needs, often list this on their websites or have it available upon request.\n\nIf you'd like, I can give you the address and any other details I have for a specific restaurant, and you could check their website or give them a call to inquire about their nutrition information.\n\nWould you like me to try searching for restaurants that explicitly mention providing detailed nutrition info, or perhaps give you more details on one of the places I've already listed so you can check their site?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.get_restaurant_details",
+          "elapsed_seconds": 6.686839818954468,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 5,
+        "specificity": 4,
+        "grounding": 5,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 5,
+        "comments": "The assistant understood all user queries, provided relevant restaurant lists, and gracefully handled the limitation of not having detailed nutrition info by offering practical next steps and alternative search options."
+      }
+    },
+    {
+      "scenario_name": "Recipe Basic",
+      "total_time_seconds": 38.992201805114746,
+      "avg_turn_seconds": 11.49068276087443,
+      "p50_turn_seconds": 7.886171102523804,
+      "p90_turn_seconds": 18.73163104057312,
+      "p95_turn_seconds": 20.087313532829285,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "I want to make chili",
+          "assistant_message": "Oh, that sounds delicious! You're looking for an easy, diabetic-friendly, low-carb chili recipe, and we'll make sure there are no mushrooms in it.\n\nI've just checked, and it looks like I couldn't find any recipes that perfectly match *all* those specific criteria right now.\n\nWould you like me to try searching again by perhaps:\n*   Broadening the search a bit (e.g., removing the \"easy\" difficulty, or just focusing on \"diabetic-friendly\" without \"low-carb\")?\n*   Or would you be interested in finding a restaurant in Minneapolis that serves chili instead?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 7.886171102523804,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "What do I need for the first recipe?",
+          "assistant_message": "It looks like I wasn't able to find any recipes that perfectly matched all your criteria (easy, diabetic-friendly, low-carb chili with no mushrooms) in my last search. So, there isn't a \"first recipe\" to give you ingredients for at the moment.\n\nWould you like me to try searching again by:\n*   Broadening the search a bit (e.g., removing the \"easy\" difficulty, or just focusing on \"diabetic-friendly\" without \"low-carb\")?\n*   Or would you be interested in finding a restaurant in Minneapolis that serves chili instead?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.get_recipe_details",
+          "elapsed_seconds": 5.142881155014038,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Can it simmer overnight?",
+          "assistant_message": "That's a great question for a chili recipe! However, it looks like I still haven't found any recipes that perfectly match all your criteria (easy, diabetic-friendly, low-carb chili with no mushrooms) from our previous searches. So, there isn't a recipe to check for overnight simmering instructions right now.\n\nWould you like me to try searching again by:\n*   Broadening the search a bit (e.g., removing the \"easy\" difficulty, or just focusing on \"diabetic-friendly\" without \"low-carb\")?\n*   Or would you be interested in finding a restaurant in Minneapolis that serves chili instead?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 21.44299602508545,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 1,
+        "specificity": 2,
+        "grounding": 2,
+        "coherence": 4,
+        "safety": 5,
+        "overall": 1,
+        "comments": "The assistant hallucinated specific dietary restrictions in the first turn, completely derailing the conversation and failing to provide any chili recipe to the user."
+      }
+    },
+    {
+      "scenario_name": "Recipe Time-Constrained",
+      "total_time_seconds": 44.23882818222046,
+      "avg_turn_seconds": 13.238563299179077,
+      "p50_turn_seconds": 14.554837942123413,
+      "p90_turn_seconds": 16.26624503135681,
+      "p95_turn_seconds": 16.480170917510986,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "15-minute dinner idea",
+          "assistant_message": "You're looking for a 15-minute, easy dinner idea that's diabetic-friendly, low-carb, and doesn't include mushrooms. That's a great set of preferences!\n\nI've checked my recipes, and while I found a fantastic option that's quick, easy, and mushroom-free, it doesn't perfectly align with the 'diabetic-friendly' and 'low-carb' tags as written. However, it's very adaptable! Here's what I found:\n\n### Quick Avocado Toast\n\nThis recipe is super fast and easy, and can be made low-carb and diabetic-friendly with a simple swap for the bread!\n\n**Ingredients:**\n*   2 slices sourdough bread (or low-carb bread/lettuce wraps for a diabetic-friendly/low-carb option)\n*   1 large avocado\n*   1 tablespoon lime juice\n*   0.25 teaspoon salt\n*   0.25 teaspoon red pepper flakes\n*   2 large eggs (optional, for added protein)\n\n**Instructions:**\n1.  Toast bread until golden.\n2.  Mash avocado with lime juice and salt.\n3.  Spread on toast.\n4.  Top with red pepper flakes.\n5.  Optional: add a poached or fried egg for extra protein.\n\n**Tags:** Breakfast, Vegetarian, Quick, Healthy\n**Total Time:** 10 minutes (Prep: 5 minutes, Cook: 5 minutes)\n**Difficulty:** Easy\n\nTo make this recipe more suitable for your diabetic-friendly and low-carb preferences, I highly recommend swapping the sourdough bread for a low-carb bread option or even serving the avocado and egg in a lettuce wrap!\n\nWhile this recipe doesn't have the specific \"diabetic-friendly\" or \"low-carb\" tags in my system, it's a great base that can be easily modified to fit those needs. If you'd like, I can look for other quick, easy, and healthy recipes that might be more inherently low-carb or diabetic-friendly, or perhaps explore some barbecue or chili options for you, keeping your dietary needs in mind!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 16.69409680366516,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I have ground turkey and beans",
+          "assistant_message": "I'm having trouble understanding that. Could you try rephrasing your request? I can help with recipes or restaurants.\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 8.466755151748657,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Pick the quickest recipe.",
+          "assistant_message": "Okay, you'd like to go with the quickest recipe! That would be the **Quick Avocado Toast** I mentioned, which comes in at just 10 minutes total. It's a great easy option!\n\nHere are the details again, keeping in mind the suggestions for making it diabetic-friendly and low-carb:\n\n### Quick Avocado Toast\n\nThis recipe is super fast and easy, and can be made low-carb and diabetic-friendly with a simple swap for the bread!\n\n**Ingredients:**\n*   2 slices sourdough bread (or low-carb bread/lettuce wraps for a diabetic-friendly/low-carb option)\n*   1 large avocado\n*   1 tablespoon lime juice\n*   0.25 teaspoon salt\n*   0.25 teaspoon red pepper flakes\n*   2 large eggs (optional, for added protein)\n\n**Instructions:**\n1.  Toast bread until golden.\n2.  Mash avocado with lime juice and salt.\n3.  Spread on toast.\n4.  Top with red pepper flakes.\n5.  Optional: add a poached or fried egg for extra protein.\n\n**Tags:** Breakfast, Vegetarian, Quick, Healthy\n**Total Time:** 10 minutes (Prep: 5 minutes, Cook: 5 minutes)\n**Difficulty:** Easy\n\nJust a reminder, for your diabetic-friendly and low-carb preferences, I highly recommend swapping the sourdough bread for a low-carb bread option or serving the avocado and egg in a lettuce wrap!\n\nYou also mentioned having ground turkey and beans earlier. Would you like me to try and find a quick recipe using those ingredients, keeping your dietary needs in mind?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.get_recipe_details",
+          "elapsed_seconds": 14.554837942123413,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 2,
+        "specificity": 1,
+        "grounding": 1,
+        "coherence": 1,
+        "safety": 5,
+        "overall": 2,
+        "comments": "The assistant hallucinates user preferences (diabetic-friendly, low-carb, no mushrooms) not present in the prompt, provides a breakfast recipe for a dinner request, and fails to understand a simple ingredient list in the second turn. While it recovers by remembering context in the third turn, the initial misinterpretations and functional failure are significant."
+      }
+    },
+    {
+      "scenario_name": "User Memory Check",
+      "total_time_seconds": 11.070560693740845,
+      "avg_turn_seconds": 4.028807044029236,
+      "p50_turn_seconds": 4.028807044029236,
+      "p90_turn_seconds": 4.578451800346374,
+      "p95_turn_seconds": 4.647157394886016,
+      "num_turns": 2,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Hi, I'm Bob. I love smoky flavors and hate mushrooms.",
+          "assistant_message": "Hello Bob, it's great to meet you! I understand you love smoky flavors and definitely want to avoid mushrooms \u2013 got it!\n\nI can help you with a couple of things:\n1.  **Finding and recommending recipes** based on your tastes and dietary needs.\n2.  **Finding restaurants** if you tell me your location and what kind of food you're in the mood for.\n\nAre you looking for some recipe ideas today, or would you like me to help you find a restaurant?\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 4.715862989425659,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "Remind me what we discussed about my preferences?",
+          "assistant_message": "Hello Bob! Of course, I can remind you of your preferences.\n\nSo far, we've discussed:\n*   **Dietary Restrictions:** No mushrooms (definitely!), diabetic-friendly, and low-carb.\n*   **Preferred Flavors:** You love smoky flavors.\n*   **Preferred Cuisines:** Barbecue and Chili.\n*   **Location:** Minneapolis.\n*   **Difficulty:** You prefer easy recipes.\n\nDoes that sound right? Is there anything else you'd like to add or change?\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 3.3417510986328125,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 1,
+        "specificity": 2,
+        "grounding": 1,
+        "coherence": 3,
+        "safety": 5,
+        "overall": 1,
+        "comments": "The assistant hallucinates a significant amount of information about the user's preferences that was not mentioned in the transcript (diabetic-friendly, low-carb, cuisines, location, difficulty)."
+      }
+    }
+  ],
+  "on_scenarios": [
+    {
+      "scenario_name": "Restaurant Basic",
+      "total_time_seconds": 30.536139965057373,
+      "avg_turn_seconds": 8.668637116750082,
+      "p50_turn_seconds": 9.259430170059204,
+      "p90_turn_seconds": 10.264507722854615,
+      "p95_turn_seconds": 10.39014241695404,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Find barbecue near me",
+          "assistant_message": "Hey there! I can definitely help you find some great barbecue spots in Minneapolis. Here are a few options for you:\n\n1.  **Old Southern BBQ - 45th & France** - 4501 France Ave S, Minneapolis, MN 55410, USA (Moderate)\n2.  **Ted Cooks 19th Hole BBQ** - 2814 E 38th St, Minneapolis, MN 55406, USA (Moderate)\n3.  **Scott Ja-Mama's** - 3 W Diamond Lake Rd, Minneapolis, MN 55419, USA (Inexpensive)\n4.  **Beast Barbecue** - 825 E Hennepin Ave, Minneapolis, MN 55414, USA (Moderate)\n5.  **Jellybean and Julia's BBQ** - 2501 Coon Rapids Blvd NW, Coon Rapids, MN 55433, USA (Moderate)\n\nLet me know if any of these catch your eye, or if you'd like more details on a specific one!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 6.230704069137573,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I'm in Nashville",
+          "assistant_message": "My apologies for the mix-up with the location! Thanks for clarifying that you're in Nashville.\n\nIt looks like I found a few spots for you in the Nashville area. While some of these are more general American restaurants, they might have options that fit your preferences. Here are the results:\n\n1.  **Chili's Grill & Bar** - 7624 Hwy 70 S, Nashville, TN 37221, USA (Moderate)\n2.  **Greenery Co.** - 1705 21st Ave S, Nashville, TN 37212, USA (Moderate)\n3.  **Chili's Grill & Bar** - 2322 West End Ave, Nashville, TN 37203, USA (Moderate)\n4.  **Chili's Grill & Bar** - 1820 Gallatin Pike N, Madison, TN 37115, USA (Moderate)\n5.  **Chili's Grill & Bar** - 7083 Bakers Bridge Ave, Franklin, TN 37067, USA (Moderate)\n\nIt seems like a lot of Chili's popped up! If you're still looking specifically for barbecue, I can try another search for that in Nashville. Just let me know!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 9.259430170059204,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Is the first place cash-only?",
+          "assistant_message": "That's a great question! Let me check for you.\n\nNo, **Chili's Grill & Bar** at 7624 Hwy 70 S in Nashville is not cash-only. They accept credit cards, debit cards, and cash.\n\nHere are the details for that location:\n\n**Chili's Grill & Bar**\n*   **Address:** 7624 Hwy 70 S, Nashville, TN 37221, USA\n*   **Hours:**\n    *   Monday - Thursday: 11 AM - 10 PM\n    *   Friday - Saturday: 11 AM - 11 PM\n    *   Sunday: 11 AM - 9 PM\n*   **Price Level:** Moderate\n*   **Cuisine:** American, Tex-Mex\n*   **Payment Options:** Credit Card, Debit Card, Cash\n\nLet me know if you'd like details on any of the other Chili's locations, or if you'd like me to try searching for something else!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.get_restaurant_details",
+          "elapsed_seconds": 10.515777111053467,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 4,
+        "specificity": 5,
+        "grounding": 5,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 4,
+        "comments": "The assistant initially failed to identify the user's location, but recovered gracefully by apologizing, correcting the location, and offering to refine the search. The final turn provided highly specific and accurate details."
+      }
+    },
+    {
+      "scenario_name": "Restaurant Dietary",
+      "total_time_seconds": 33.91809701919556,
+      "avg_turn_seconds": 9.795965909957886,
+      "p50_turn_seconds": 9.297878742218018,
+      "p90_turn_seconds": 10.969033336639404,
+      "p95_turn_seconds": 11.177927660942077,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Restaurants in Minneapolis",
+          "assistant_message": "Hey there! Looking for some great spots in Minneapolis, huh? I can definitely help with that!\n\nHere are a few restaurants I found for you in Minneapolis:\n\n1.  **Red Cow North Loop** - 208 N 1st Ave, Minneapolis, MN 55401, USA (Moderate)\n2.  **B\u00fbcheron** - 4257 Nicollet Ave, Minneapolis, MN 55409, USA (Price level not available)\n3.  **Hell's Kitchen Inc.** - 80 S 9th St, Minneapolis, MN 55402, USA (Moderate)\n4.  **French Meadow Cafe & Bluestem Bar** - 2610 Lyndale Ave S, Minneapolis, MN 55408, USA (Moderate)\n5.  **The Tipsy Steer Hiawatha** - 5000 Hiawatha Ave, Minneapolis, MN 55417, USA (Moderate)\n\nLet me know if any of these catch your eye, or if you'd like more details on a specific one!\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 8.703197002410889,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I'm diabetic and watch carbs",
+          "assistant_message": "Thanks for letting me know about your dietary needs! I'll definitely keep \"diabetic-friendly\" and \"low-carb\" in mind when looking for restaurants for you.\n\nLet me see what I can find with those preferences in Minneapolis!\n\nHere are some restaurants that might be a good fit, keeping your diabetic and low-carb needs in mind:\n\n1.  **Stonegarden** - 5401 Chicago Ave, Minneapolis, MN 55417, USA (Price level not available)\n2.  **Hell's Kitchen Inc.** - 80 S 9th St, Minneapolis, MN 55402, USA (Moderate)\n3.  **B\u00fbcheron** - 4257 Nicollet Ave, Minneapolis, MN 55409, USA (Price level not available)\n4.  **Cardamom** - 723 Vineland Pl, Minneapolis, MN 55403, USA (Moderate)\n5.  **Hawaii Poke Bowl** - 3234 W Lake St, Minneapolis, MN 55416, USA (Moderate)\n\nDo any of these sound interesting, or would you like to explore more options?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.search_restaurants",
+          "elapsed_seconds": 11.386821985244751,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Which spot provides detailed nutrition info?",
+          "assistant_message": "That's a great question! Unfortunately, I don't have specific information on which of these restaurants provide detailed nutrition information on their menus. That kind of detail isn't usually available through my search tools.\n\nHowever, if you're interested in a particular restaurant from the list, I can certainly provide you with more general details like their hours, full address, and sometimes a brief description of their cuisine. You could then check their website directly or give them a call to inquire about nutrition information.\n\nWould you like me to look up more details for any of the restaurants I listed?\n\n[Debug Info]\nTools used in this interaction:\n- RestaurantTool.get_restaurant_details",
+          "elapsed_seconds": 9.297878742218018,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 4,
+        "specificity": 4,
+        "grounding": 4,
+        "coherence": 4,
+        "safety": 5,
+        "overall": 4,
+        "comments": "The assistant provides relevant restaurant suggestions, attempts to filter by dietary needs, and clearly communicates its limitations regarding detailed nutrition information while offering helpful next steps."
+      }
+    },
+    {
+      "scenario_name": "Recipe Basic",
+      "total_time_seconds": 34.45532011985779,
+      "avg_turn_seconds": 9.976672252019247,
+      "p50_turn_seconds": 7.997024059295654,
+      "p90_turn_seconds": 13.0691575050354,
+      "p95_turn_seconds": 13.703174185752868,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "I want to make chili",
+          "assistant_message": "Oh, I'm sorry, it looks like I couldn't find any chili recipes that perfectly match *all* your preferences right now, especially with the \"easy,\" \"diabetic-friendly,\" \"low-carb,\" and \"no mushrooms\" criteria combined.\n\nWould you like me to try searching for:\n1. Chili recipes with slightly broader criteria (e.g., removing the \"easy\" filter, or just focusing on \"diabetic-friendly\" and \"low-carb\")?\n2. Other low-carb or diabetic-friendly recipes that aren't chili?\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 7.595801830291748,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "What do I need for the first recipe?",
+          "assistant_message": "It looks like I wasn't able to find any chili recipes that perfectly matched all your preferences in the last search, so there isn't a \"first recipe\" to share ingredients for just yet.\n\nWould you like me to try searching again with slightly broader criteria, or perhaps look for other low-carb and diabetic-friendly recipes that aren't chili? Let me know which option you'd prefer!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.get_recipe_details",
+          "elapsed_seconds": 7.997024059295654,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Can it simmer overnight?",
+          "assistant_message": "That's a great question! Many chili recipes are perfect for simmering overnight, especially in a slow cooker, as it really helps the flavors meld together.\n\nHowever, it looks like we still haven't found a specific chili recipe that perfectly matches all your preferences (diabetic-friendly, low-carb, no mushrooms, easy) yet. So, there isn't a particular recipe for me to confirm can simmer overnight.\n\nWould you like me to try searching for chili recipes again with slightly broader criteria (perhaps removing the \"easy\" filter, or just focusing on \"diabetic-friendly\" and \"low-carb\")? If we find one, I can definitely check if it's suitable for a long, slow simmer!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.get_recipe_details",
+          "elapsed_seconds": 14.337190866470337,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 4,
+        "specificity": 4,
+        "grounding": 5,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 4,
+        "comments": "The assistant correctly identifies that no recipe was found and therefore cannot answer questions about a specific recipe. It politely reiterates its options and provides some general helpful information about chili simmering."
+      }
+    },
+    {
+      "scenario_name": "Recipe Time-Constrained",
+      "total_time_seconds": 57.79377770423889,
+      "avg_turn_seconds": 17.758119742075603,
+      "p50_turn_seconds": 17.674997091293335,
+      "p90_turn_seconds": 19.50889868736267,
+      "p95_turn_seconds": 19.73813638687134,
+      "num_turns": 3,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "15-minute dinner idea",
+          "assistant_message": "Hi there! I looked for a 15-minute dinner idea for you, keeping in mind your preferences for easy, low-carb, diabetic-friendly meals with no mushrooms.\n\nIt's a bit tricky to find a full dinner that meets all those requirements within a strict 15-minute total time! However, I did find one recipe that fits the time and difficulty, and is free of mushrooms:\n\n**Quick Avocado Toast**\n*   **Total Time:** 10 minutes (Prep: 5 minutes, Cook: 5 minutes)\n*   **Difficulty:** Easy\n*   **Tags:** Breakfast, Vegetarian, Quick, Healthy\n\nWhile this recipe is super quick and easy, and doesn't contain mushrooms, it's typically considered a breakfast or light meal. Also, the sourdough bread might not align with a strict low-carb or diabetic-friendly diet. You could consider using a low-carb bread alternative if you'd like to try it!\n\nHere are the ingredients:\n*   2 slices sourdough bread\n*   1 large avocado\n*   1 tablespoon lime juice\n*   0.25 teaspoon salt\n*   0.25 teaspoon red pepper flakes\n*   2 large eggs (optional)\n\nIf you're open to a slightly longer cooking time, say 30 minutes, I might be able to find other options that better fit your low-carb and diabetic-friendly dinner criteria! Just let me know.\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 19.967374086380005,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "I have ground turkey and beans",
+          "assistant_message": "Okay, Jamie here! You've got ground turkey and beans, and you're looking for an easy, low-carb, diabetic-friendly dinner idea that doesn't include mushrooms. Let's see what we can whip up with those ingredients!\n\nI've searched for recipes using ground turkey and beans, keeping all your dietary needs and preferences in mind.\n\nHere's what I found for you:\n\n**Turkey and Bean Chili**\n*   **Total Time:** 45 minutes (Prep: 15 minutes, Cook: 30 minutes)\n*   **Difficulty:** Easy\n*   **Tags:** American, Chili, Diabetic-Friendly, Low-Carb, High-Protein, Gluten-Free\n\nThis chili recipe is a fantastic way to use your ground turkey and beans, and it fits perfectly with your low-carb and diabetic-friendly requirements. It's also easy to make!\n\nHere are the ingredients:\n*   1 tablespoon olive oil\n*   1 pound ground turkey\n*   1 large onion, chopped\n*   2 cloves garlic, minced\n*   1 (14.5 ounce) can diced tomatoes, undrained\n*   1 (15 ounce) can kidney beans, rinsed and drained\n*   1 (15 ounce) can black beans, rinsed and drained\n*   1 (8 ounce) can tomato sauce\n*   1 cup chicken broth (low sodium)\n*   2 tablespoons chili powder\n*   1 teaspoon cumin\n*   0.5 teaspoon smoked paprika\n*   0.25 teaspoon cayenne pepper (optional, for heat)\n*   Salt and freshly ground black pepper to taste\n*   Optional toppings: shredded low-fat cheese, a dollop of plain Greek yogurt, chopped fresh cilantro\n\nIf you're looking for other easy, low-carb, diabetic-friendly meals, we could explore more chili recipes or even some turkey stir-fries (without mushrooms, of course!). Just let me know!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.search_recipes",
+          "elapsed_seconds": 15.631988048553467,
+          "error": null
+        },
+        {
+          "turn_index": 3,
+          "user_message": "Pick the quickest recipe.",
+          "assistant_message": "Okay, you got it! Between the two recipes we've discussed, the **Quick Avocado Toast** is definitely the quickest one. It only takes 10 minutes total!\n\nHere are the details for that recipe again, keeping in mind your preferences for easy, low-carb, diabetic-friendly meals with no mushrooms:\n\n**Quick Avocado Toast**\n*   **Total Time:** 10 minutes (Prep: 5 minutes, Cook: 5 minutes)\n*   **Difficulty:** Easy\n*   **Tags:** Breakfast, Vegetarian, Quick, Healthy\n\nAs I mentioned before, while this recipe is super quick and easy, and doesn't contain mushrooms, it's typically considered a breakfast or light meal. The sourdough bread might not align with a strict low-carb or diabetic-friendly diet, but you could definitely use a low-carb bread alternative to make it more suitable!\n\nHere are the ingredients:\n*   2 slices sourdough bread (consider a low-carb alternative)\n*   1 large avocado\n*   1 tablespoon lime juice\n*   0.25 teaspoon salt\n*   0.25 teaspoon red pepper flakes\n*   2 large eggs (optional)\n\nLet me know if you'd like to explore other quick, low-carb, diabetic-friendly options, perhaps with different ingredients!\n\n[Debug Info]\nTools used in this interaction:\n- RecipeTool.get_recipe_details",
+          "elapsed_seconds": 17.674997091293335,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 5,
+        "specificity": 5,
+        "grounding": 5,
+        "coherence": 5,
+        "safety": 5,
+        "overall": 5,
+        "comments": "The assistant consistently provides helpful, specific, and well-grounded responses, remembering user preferences across turns and accurately comparing recipes based on user requests."
+      }
+    },
+    {
+      "scenario_name": "User Memory Check",
+      "total_time_seconds": 16.56763195991516,
+      "avg_turn_seconds": 6.77375602722168,
+      "p50_turn_seconds": 6.77375602722168,
+      "p90_turn_seconds": 7.0312200546264645,
+      "p95_turn_seconds": 7.063403058052064,
+      "num_turns": 2,
+      "conversation": [
+        {
+          "turn_index": 1,
+          "user_message": "Hi, I'm Bob. I love smoky flavors and hate mushrooms.",
+          "assistant_message": "Hi Bob! It's great to meet you. I'm Jamie, your food recommendation assistant.\n\nI can help you with a couple of things:\n1.  **Finding and recommending recipes** based on your tastes and dietary needs.\n2.  **Finding restaurants** if you tell me your location and what kind of food you're in the mood for.\n\nI've noted your love for smoky flavors and that you're not a fan of mushrooms \u2013 thanks for letting me know!\n\nAre you looking for some recipes to cook, or would you like me to help you find a restaurant in Minneapolis that fits your preferences?\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 6.451925992965698,
+          "error": null
+        },
+        {
+          "turn_index": 2,
+          "user_message": "Remind me what we discussed about my preferences?",
+          "assistant_message": "Hi Bob! Of course, I can remind you.\n\nSo far, I know that:\n*   You're looking for **diabetic-friendly** and **low-carb** options.\n*   You **don't like mushrooms**.\n*   You love **smoky flavors**.\n*   You enjoy **Chili** and **barbecue** cuisines.\n*   You prefer **easy** recipes.\n*   Your location is **Minneapolis** for restaurant searches.\n\nIs there anything else you'd like to add or change about your preferences?\n\nYou can ask me about recipes or restaurants. How can I help?\n\n[Debug Info]\nTools used in this interaction:\n- ",
+          "elapsed_seconds": 7.095586061477661,
+          "error": null
+        }
+      ],
+      "judge_scores": {
+        "helpfulness": 1,
+        "specificity": 1,
+        "grounding": 1,
+        "coherence": 1,
+        "safety": 5,
+        "overall": 1,
+        "comments": "The assistant hallucinated most of the user's preferences, recalling only 'smoky flavors' and 'no mushrooms' correctly, while inventing 'diabetic-friendly', 'low-carb', 'Chili', 'barbecue', 'easy recipes', and 'Minneapolis'."
+      }
+    }
+  ]
+}
