@@ -50,15 +50,19 @@ class JamieAgent:
 
         return workflow.compile()
 
-    def _build_conversation_context(self, messages: List[ConversationMessage], user_id: str = None) -> str:
+    def _build_conversation_context(
+        self, messages: List[ConversationMessage], user_id: str = None
+    ) -> str:
         """Build a conversation context string from all messages"""
         context_parts = []
-        
+
         if self.memory_manager and user_id:
-            preferences_context = self.memory_manager.get_user_preferences_context(user_id)
+            preferences_context = self.memory_manager.get_user_preferences_context(
+                user_id
+            )
             if preferences_context:
                 context_parts.append(preferences_context)
-        
+
         if not messages:
             if context_parts:
                 return "\n".join(context_parts)
@@ -79,7 +83,9 @@ class JamieAgent:
         - Use 'recipe_details' for follow-up questions about specific recipes that have already been mentioned (e.g., "what are the ingredients for that recipe?", "tell me more about that recipe"). Do not route to this if there is no prior recipe search in the conversation.
         Consider the full conversation context. Return only the intent type."""
 
-        conversation_context = self._build_conversation_context(state.messages, state.user_id)
+        conversation_context = self._build_conversation_context(
+            state.messages, state.user_id
+        )
         intent_response = self.llm_client.generate_response(
             f"Conversation context: {conversation_context}", system_prompt
         )
@@ -112,7 +118,9 @@ class JamieAgent:
             return "unknown"
 
     def _get_restaurant_details(self, state: SessionState) -> SessionState:
-        conversation_context = self._build_conversation_context(state.messages, state.user_id)
+        conversation_context = self._build_conversation_context(
+            state.messages, state.user_id
+        )
 
         # Build restaurant list for the prompt (1-indexed for natural language)
         restaurant_list = []
@@ -236,7 +244,9 @@ Do not include any other text, just the JSON object."""
         return state
 
     def _search_restaurants(self, state: SessionState) -> SessionState:
-        conversation_context = self._build_conversation_context(state.messages, state.user_id)
+        conversation_context = self._build_conversation_context(
+            state.messages, state.user_id
+        )
         # Track tool usage
         state.context["tools_used"] = state.context.get("tools_used", [])
         state.context["tools_used"].append("RestaurantTool.search_restaurants")
@@ -246,8 +256,10 @@ Do not include any other text, just the JSON object."""
         return state
 
     def _search_recipes(self, state: SessionState) -> SessionState:
-        conversation_context = self._build_conversation_context(state.messages, state.user_id)
-        
+        conversation_context = self._build_conversation_context(
+            state.messages, state.user_id
+        )
+
         if self.memory_manager:
             profile = self.memory_manager.get_user_profile(state.user_id)
             prefs = profile.preferences
@@ -293,8 +305,8 @@ Do not include any other text, just the JSON object."""
         search_criteria = criteria
         if "```" in search_criteria:
             search_criteria = search_criteria.split("```")[1]
-            if search_criteria.startswith('json'):
-                search_criteria=search_criteria[4:]
+            if search_criteria.startswith("json"):
+                search_criteria = search_criteria[4:]
             search_criteria = search_criteria.strip()
 
         try:
@@ -320,7 +332,9 @@ Do not include any other text, just the JSON object."""
             )
 
             # Fallback 1: If no results and we had filters, try with just title or ingredients
-            if not recipes and (criteria.get("difficulty") or criteria.get("max_total_time")):
+            if not recipes and (
+                criteria.get("difficulty") or criteria.get("max_total_time")
+            ):
                 print("No results with filters, trying without difficulty/time filters")
                 recipes = self.recipe_tool.search_recipes(
                     recipe_title=criteria.get("recipe_title"),
@@ -355,13 +369,19 @@ Do not include any other text, just the JSON object."""
         return state
 
     def _get_recipe_details(self, state: SessionState) -> SessionState:
-        conversation_context = self._build_conversation_context(state.messages, state.user_id)
+        conversation_context = self._build_conversation_context(
+            state.messages, state.user_id
+        )
 
         # Build recipe list for the prompt (1-indexed for natural language)
         recipe_list = []
         for i, recipe in enumerate(self.recipe_tool.last_search_results, start=1):
             recipe_list.append(f"{i}. {recipe.title} (ID: {recipe.id})")
-        recipe_list_str = "\n".join(recipe_list) if recipe_list else "No recipes from previous search."
+        recipe_list_str = (
+            "\n".join(recipe_list)
+            if recipe_list
+            else "No recipes from previous search."
+        )
 
         # Use structured JSON output for reliable parsing (like restaurant_details)
         system_prompt = f"""You are analyzing a conversation to identify which recipe the user wants details about.
@@ -461,7 +481,9 @@ Do not include any other text, just the JSON object."""
         return state
 
     def _generate_response(self, state: SessionState) -> SessionState:
-        conversation_context = self._build_conversation_context(state.messages, state.user_id)
+        conversation_context = self._build_conversation_context(
+            state.messages, state.user_id
+        )
 
         # Different prompts based on intent
         if state.current_intent == IntentType.UNKNOWN:
@@ -496,10 +518,27 @@ Do not include any other text, just the JSON object."""
 
         context_info = ""
         print("Generating response with context:\n\n", state.context)
-        if "restaurants" in state.context:
-            context_info += f"Restaurants: {state.context['restaurants']}\n"
-        if "recipes" in state.context:
-            context_info += f"Recipes: {state.context['recipes']}\n"
+
+        # Only inject data relevant to the active intent
+        if state.current_intent in [
+            IntentType.RESTAURANT,
+            IntentType.RESTAURANT_DETAILS,
+        ]:
+            if "restaurants" in state.context:
+                context_info += f"Restaurants: {state.context['restaurants']}\n"
+            if "restaurant_details" in state.context:
+                context_info += f"Selected Restaurant Details: {state.context['restaurant_details']}\n"
+
+        elif state.current_intent in [
+            IntentType.RECIPE_SEARCH,
+            IntentType.RECIPE_DETAILS,
+        ]:
+            if "recipes" in state.context:
+                context_info += f"Recipes: {state.context['recipes']}\n"
+            if "recipe_details" in state.context:
+                context_info += (
+                    f"Selected Recipe Details: {state.context['recipe_details']}\n"
+                )
             if "search_criteria" in state.context:
                 context_info += f"Search Criteria: {state.context['search_criteria']}\n"
 
