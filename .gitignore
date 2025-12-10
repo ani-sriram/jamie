@@ -12,6 +12,7 @@ src/*/*/__pycache__/
 
 src/data/*
 logs/*
+results/*
 service-account-key.json
 
 .firebase/
