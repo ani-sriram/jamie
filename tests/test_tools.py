@@ -68,10 +68,10 @@ class TestRecipeTool:
         # Test excluded ingredients
         results = recipe_tool.search_recipes(
             ingredients=[{"name": "pasta"}],
-            excluded_ingredients=["seafood"]
+            excluded_ingredients=["garlic"]
         )
         assert len(results) > 0
-        assert all("seafood" not in [ing.name.lower() for ing in r.ingredients] for r in results)
+        assert all("garlic" not in [ing.name.lower() for ing in r.ingredients] for r in results)
     
     def test_get_recipe_by_id(self, recipe_tool):
         # Get a recipe we know exists

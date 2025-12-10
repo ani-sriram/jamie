@@ -25,11 +25,14 @@ frontend_url = os.getenv("FRONTEND_URL", "")
 cors_origins = ["http://localhost:3000"]
 
 if frontend_url:
-    cors_origins.append(frontend_url)
+    cors_origins.append(frontend_url.rstrip("/"))
+
+logger.info(f"CORS origins configured: {cors_origins}")
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=cors_origins,
+    allow_origin_regex=r"https://jamie-frontend.*\.run\.app",
     allow_credentials=True,
     allow_methods=["GET", "POST", "DELETE", "OPTIONS"],
     allow_headers=["*"],
@@ -75,6 +78,10 @@ def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(securit
 
 def get_secret(secret_name: str) -> str:
     """Get a secret from Secret Manager"""
+    env_var_name = secret_name.upper().replace('-', '_')
+    if os.getenv(env_var_name):
+        return os.getenv(env_var_name)
+
     try:
         client = secretmanager.SecretManagerServiceClient()
         name = f"projects/{os.getenv('GCP_PROJECT_ID')}/secrets/{secret_name}/versions/latest"

@@ -3,6 +3,18 @@
 # Deployment script for Jamie
 set -e
 
+# Source environment variables from .env file
+ENV_FILE="${ENV_FILE:-$(dirname "$0")/../.env}"
+if [ -f "$ENV_FILE" ]; then
+    echo "Loading environment variables from: $ENV_FILE"
+    set -a  # automatically export all variables
+    source "$ENV_FILE"
+    set +a
+else
+    echo "Warning: .env file not found at $ENV_FILE"
+    echo "Using environment variables or defaults"
+fi
+
 # Configuration using env variables
 PROJECT_ID=${GCP_PROJECT_ID:-"your-project-id"}
 REGION=${GCP_REGION:-"us-west1"}
@@ -32,17 +44,111 @@ if [ "$MIGRATE_RECIPES" = "true" ]; then
     echo "Recipes migrated successfully to Firestore"
 fi
 
+echo ""
+echo "Verifying prerequisites..."
+
+if ! command -v gcloud &> /dev/null; then
+    echo "ERROR: gcloud CLI is not installed or not in PATH"
+    exit 1
+fi
+echo "gcloud CLI found: $(gcloud --version | head -n 1)"
+
+if ! command -v docker &> /dev/null; then
+    echo "ERROR: Docker is not installed or not in PATH"
+    exit 1
+fi
+echo "Docker found: $(docker --version)"
+
+# Verify service account key file exists
+SERVICE_ACCOUNT_KEY="${GOOGLE_APPLICATION_CREDENTIALS:-./service-account-key.json}"
+if [ ! -f "$SERVICE_ACCOUNT_KEY" ]; then
+    echo "ERROR: Service account key file not found at: $SERVICE_ACCOUNT_KEY"
+    echo "Please ensure GOOGLE_APPLICATION_CREDENTIALS is set correctly in .env file"
+    echo "Expected location: $SERVICE_ACCOUNT_KEY"
+    exit 1
+fi
+echo "Service account key file found: $SERVICE_ACCOUNT_KEY"
+
+echo ""
+
+# GCP Auth
+
+SERVICE_ACCOUNT_EMAIL=$(grep -o '"client_email":\s*"[^"]*"' "$SERVICE_ACCOUNT_KEY" | cut -d'"' -f4)
+if [ -z "$SERVICE_ACCOUNT_EMAIL" ]; then
+    echo "ERROR: Could not extract service account email from key file"
+    echo "Please verify the key file format at: $SERVICE_ACCOUNT_KEY"
+    exit 1
+fi
+echo "Service account: $SERVICE_ACCOUNT_EMAIL"
+
+echo "Activating service account..."
+if ! gcloud auth activate-service-account "$SERVICE_ACCOUNT_EMAIL" \
+    --key-file="$SERVICE_ACCOUNT_KEY" \
+    --project="$PROJECT_ID" 2>&1; then
+    echo "ERROR: Failed to activate service account"
+    exit 1
+fi
+echo "Service account activated"
+
+echo "Setting active GCP project to: $PROJECT_ID"
+if ! gcloud config set project "$PROJECT_ID" 2>&1; then
+    echo "ERROR: Failed to set GCP project"
+    exit 1
+fi
+echo "GCP project set"
+
+echo "Configure Docker authentication for GCR..."
+if ! gcloud auth configure-docker gcr.io --quiet 2>&1; then
+    echo "ERROR: Failed to configure Docker credential helper"
+    exit 1
+fi
+echo "Docker configured for GCR auth"
+
+echo "GCR access test"
+if ! gcloud container images list --repository=gcr.io/${PROJECT_ID} --limit=1 &>/dev/null; then
+    echo "WARNING: Could not verify GCR access. This might be expected if no images exist yet."
+    echo "Continuing with deployment..."
+else
+    echo "GCR access verified"
+fi
+
+echo ""
+
 echo "Building and pushing Docker images..."
 
 # Build orchestrator image
 echo "Building orchestrator image..."
-docker build --platform linux/amd64 -f deployment/orchestrator.Dockerfile -t ${ORCHESTRATOR_IMAGE} .
-docker push ${ORCHESTRATOR_IMAGE}
+if ! docker build --platform linux/amd64 -f deployment/orchestrator.Dockerfile -t ${ORCHESTRATOR_IMAGE} .; then
+    echo "ERROR: Failed to build orchestrator image"
+    exit 1
+fi
+
+echo "Pushing orchestrator image to GCR..."
+if ! docker push ${ORCHESTRATOR_IMAGE}; then
+    echo "ERROR: Failed to push orchestrator image to GCR"
+    echo "Image: ${ORCHESTRATOR_IMAGE}"
+    echo "Please verify the service account has 'Storage Admin' or 'Artifact Registry Writer' role"
+    exit 1
+fi
+echo "Orchestrator image pushed successfully"
+echo ""
 
 # Build agent image
 echo "Building agent image..."
-docker build --platform linux/amd64 -f deployment/agent.Dockerfile -t ${AGENT_IMAGE} .
-docker push ${AGENT_IMAGE}
+if ! docker build --platform linux/amd64 -f deployment/agent.Dockerfile -t ${AGENT_IMAGE} .; then
+    echo "ERROR: Failed to build agent image"
+    exit 1
+fi
+
+echo "Pushing agent image to GCR..."
+if ! docker push ${AGENT_IMAGE}; then
+    echo "ERROR: Failed to push agent image to GCR"
+    echo "Image: ${AGENT_IMAGE}"
+    echo "Please verify the service account has 'Storage Admin' or 'Artifact Registry Writer' role"
+    exit 1
+fi
+echo "Agent image pushed successfully"
+echo ""
 
 # Deploy orchestrator service
 echo "Deploying orchestrator service..."
@@ -118,8 +224,20 @@ fi
 cd ..
 
 echo "Building frontend Docker image..."
-docker build --platform linux/amd64 -f deployment/frontend.Dockerfile -t ${FRONTEND_IMAGE} .
-docker push ${FRONTEND_IMAGE}
+if ! docker build --platform linux/amd64 -f deployment/frontend.Dockerfile -t ${FRONTEND_IMAGE} .; then
+    echo "ERROR: Failed to build frontend image"
+    exit 1
+fi
+
+echo "Pushing frontend image to GCR..."
+if ! docker push ${FRONTEND_IMAGE}; then
+    echo "ERROR: Failed to push frontend image to GCR"
+    echo "Image: ${FRONTEND_IMAGE}"
+    echo "Please verify the service account has 'Storage Admin' or 'Artifact Registry Writer' role"
+    exit 1
+fi
+echo "Frontend image pushed successfully"
+echo ""
 
 echo "Deploying frontend service..."
 gcloud run deploy ${FRONTEND_SERVICE} \
@@ -135,11 +253,19 @@ gcloud run deploy ${FRONTEND_SERVICE} \
 
 FRONTEND_URL=$(gcloud run services describe ${FRONTEND_SERVICE} --region=${REGION} --format="value(status.url)")
 
-echo "Updating orchestrator CORS settings with frontend URL..."
+echo "Updating orchestrator CORS settings with frontend URL: ${FRONTEND_URL}"
 gcloud run services update ${ORCHESTRATOR_SERVICE} \
   --region=${REGION} \
-  --update-env-vars "FRONTEND_URL=${FRONTEND_URL}" \
-  --quiet
+  --update-env-vars "FRONTEND_URL=${FRONTEND_URL}"
+
+# Verify the update was applied
+echo "Verifying FRONTEND_URL was set..."
+VERIFY_URL=$(gcloud run services describe ${ORCHESTRATOR_SERVICE} --region=${REGION} --format="value(spec.template.spec.containers[0].env[FRONTEND_URL])" 2>/dev/null || echo "")
+if [ -z "${VERIFY_URL}" ]; then
+    echo "WARNING: FRONTEND_URL may not have been set correctly. Please verify manually."
+else
+    echo "FRONTEND_URL successfully set to: ${VERIFY_URL}"
+fi
 
 echo ""
 echo "=========================================="

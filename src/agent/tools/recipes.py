@@ -1,5 +1,5 @@
 import json
-from typing import List, Optional
+from typing import Any, Dict, List, Optional
 from google.cloud import firestore
 from agent.schemas import Recipe, Ingredient
 
@@ -9,6 +9,67 @@ class RecipeTool:
         """Initialize RecipeTool with Firestore client"""
         self.db = firestore.Client()
         self.collection = self.db.collection("recipes")
+        self.last_search_results: List[Recipe] = []
+        self._details_cache: Dict[str, Recipe] = {}
+
+    def clear_cache(self):
+        """Clear the details cache"""
+        self._details_cache.clear()
+        print("Recipe details cache cleared")
+
+    def get_cache_stats(self) -> Dict[str, Any]:
+        """Get cache statistics"""
+        return {
+            "cached_recipes": len(self._details_cache),
+            "cached_ids": list(self._details_cache.keys()),
+        }
+
+    def get_indexed_recipe_list(self) -> str:
+        """Return a formatted string of recipes with indices for display"""
+        if not self.last_search_results:
+            return "No recipes found."
+        lines = []
+        for i, recipe in enumerate(self.last_search_results, start=1):
+            total_time = recipe.prep_time + recipe.cook_time
+            lines.append(f"{i}. {recipe.title} ({recipe.difficulty}, {total_time} mins)")
+        return "\n".join(lines)
+
+    def get_recipe_by_position(self, position: int) -> Optional[Recipe]:
+        """Get a recipe from the last search results by position (1-indexed)"""
+        if 1 <= position <= len(self.last_search_results):
+            return self.last_search_results[position - 1]
+        return None
+
+    def get_recipe_by_name(self, name: str) -> Optional[Recipe]:
+        """Get a recipe from last search results by name (fuzzy match)"""
+        name_lower = name.lower().strip()
+
+        # First: Exact match
+        for recipe in self.last_search_results:
+            if recipe.title.lower() == name_lower:
+                return recipe
+
+        # Second: Partial/contains match
+        for recipe in self.last_search_results:
+            if name_lower in recipe.title.lower() or recipe.title.lower() in name_lower:
+                return recipe
+
+        # Third: Fuzzy word overlap matching
+        name_words = set(name_lower.split())
+        best_match = None
+        best_score = 0
+        for recipe in self.last_search_results:
+            title_words = set(recipe.title.lower().split())
+            overlap = len(name_words & title_words)
+            if overlap > best_score:
+                best_score = overlap
+                best_match = recipe
+
+        if best_match and best_score > 0:
+            print(f"Found recipe by fuzzy match: {best_match.title} (score {best_score})")
+            return best_match
+
+        return None
 
     def find_recipes(
         self,
@@ -46,10 +107,19 @@ class RecipeTool:
 
     def get_recipe_by_id(self, recipe_id: str) -> Optional[Recipe]:
         """Get a single recipe by ID"""
+        if recipe_id in self._details_cache:
+            print(f"Cache hit for recipe: {recipe_id}")
+            return self._details_cache[recipe_id]
+
+        print(f"Cache miss for recipe: {recipe_id}, fetching from DB...")
         doc = self.collection.document(recipe_id).get()
         if not doc.exists:
             return None
-        return self._doc_to_recipe(doc.id, doc.to_dict())
+        
+        recipe = self._doc_to_recipe(doc.id, doc.to_dict())
+        self._details_cache[recipe_id] = recipe
+        print(f"Cached recipe: {recipe_id}")
+        return recipe
 
     def search_by_title(self, title: str) -> List[Recipe]:
         """Search recipes by title (case-insensitive partial match)"""
@@ -79,6 +149,7 @@ class RecipeTool:
         difficulty: Optional[str] = None,
         servings: Optional[int] = None,
         tags: Optional[List[str]] = None,
+        require_all_ingredients: bool = False,
         limit: int = 5,
     ) -> List[Recipe]:
         """
@@ -91,6 +162,8 @@ class RecipeTool:
             difficulty: Recipe difficulty level
             servings: Minimum number of servings
             tags: List of tags to match
+            require_all_ingredients: If True, recipes must contain ALL ingredients (AND).
+                                     If False, recipes can contain ANY ingredient (OR).
             limit: Maximum number of results to return
         """
         query = self.collection
@@ -129,9 +202,22 @@ class RecipeTool:
                 continue
             
             ingredients_text = data.get("ingredients_text", "").lower()
+            tags_text = ",".join(data.get("tags", [])).lower() if isinstance(data.get("tags"), list) else (data.get("tags", "") or "").lower()
             
-            if ingredient_names and not any(ing.lower() in ingredients_text for ing in ingredient_names):
-                continue
+            if ingredient_names:
+                ingredient_matches = []
+                for ing in ingredient_names:
+                    ing_lower = ing.lower()
+                    matches_ingredient = ing_lower in ingredients_text
+                    matches_tag = ing_lower in tags_text
+                    ingredient_matches.append(matches_ingredient or matches_tag)
+                
+                if require_all_ingredients:
+                    if not all(ingredient_matches):
+                        continue
+                else:
+                    if not any(ingredient_matches):
+                        continue
             
             if excluded_names_lower and any(excluded in ingredients_text for excluded in excluded_names_lower):
                 continue
@@ -145,6 +231,7 @@ class RecipeTool:
             if len(results) >= limit:
                 break
         
+        self.last_search_results = results
         return results
 
     def _doc_to_recipe(self, doc_id: str, data: dict) -> Recipe:
