@@ -14,9 +14,6 @@ COPY src/agent_service/ ./src/agent_service/
 COPY src/agent/ ./src/agent/
 COPY src/config.py ./src/config.py
 
-# temporarily until we deploy full db
-COPY src/data/ ./src/data/
-
 RUN mkdir -p /tmp
 
 EXPOSE 8080

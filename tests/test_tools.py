@@ -26,22 +26,9 @@ class TestRestaurantTool:
 
 class TestRecipeTool:
     @pytest.fixture
-    def recipe_tool(self, tmp_path):
-        """Create a RecipeTool instance with a temporary test database"""
-        # Create temp DB path
-        db_path = tmp_path / "test_recipes.db"
-        
-        # Import the migration script
-        from scripts import migrate_db
-        
-        # Run migration with temp DB
-        migrate_db.migrate_recipes(
-            Path(__file__).parent.parent / "src" / "data" / "recipes.json",
-            db_path
-        )
-        
-        # Create tool instance with test DB
-        tool = RecipeTool(str(db_path))
+    def recipe_tool(self):
+        """Create a RecipeTool instance with Firestore"""
+        tool = RecipeTool()
         return tool
     
     def test_find_recipes(self, recipe_tool):

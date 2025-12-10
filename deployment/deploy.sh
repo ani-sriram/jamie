@@ -12,10 +12,25 @@ AGENT_IMAGE="gcr.io/${PROJECT_ID}/jamie-agent"
 ORCHESTRATOR_IMAGE="gcr.io/${PROJECT_ID}/jamie-orchestrator"
 BASE_BUCKET=${BASE_BUCKET:-"jamie-storage-bucket"}
 
+MIGRATE_RECIPES=${MIGRATE_RECIPES:-"false"}
+
 echo "Deploying Jamie Backend Services to GCP..."
 echo "Project: ${PROJECT_ID}"
 echo "Region: ${REGION}"
 
+if [ "$MIGRATE_RECIPES" = "true" ]; then
+    echo "Migrating recipes to Firestore..."
+    if command -v uv &> /dev/null; then
+        uv run python src/scripts/migrate_db.py
+    else
+        PYTHONPATH=src python src/scripts/migrate_db.py
+    fi
+    if [ $? -ne 0 ]; then
+        echo "Error: Recipe migration failed"
+        exit 1
+    fi
+    echo "Recipes migrated successfully to Firestore"
+fi
 
 echo "Building and pushing Docker images..."
 

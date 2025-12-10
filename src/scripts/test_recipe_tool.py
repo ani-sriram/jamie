@@ -52,26 +52,8 @@ def test_recipe_tool():
         print(f"\n❌ Error occurred: {str(e)}")
         print("\nFull traceback:")
         print(traceback.format_exc())
-        print("\nDebug info:")
-        print(f"DB path: {tool.db_path}")
-        
-        # Check if DB exists
-        db_path = Path(tool.db_path or str(src_path / "data" / "recipes.db"))
-        print(f"DB exists: {db_path.exists()}")
-        if db_path.exists():
-            print(f"DB size: {db_path.stat().st_size} bytes")
-            
-        # Try to connect to DB
-        try:
-            from agent.tools.recipes import get_connection
-            conn = get_connection(str(db_path))
-            cur = conn.cursor()
-            cur.execute("SELECT COUNT(*) FROM recipes")
-            count = cur.fetchone()[0]
-            print(f"Recipe count in DB: {count}")
-            conn.close()
-        except Exception as db_e:
-            print(f"Failed to query DB: {str(db_e)}")
+        print("\nNote: This test requires Firestore to be set up and populated with recipes.")
+        print("Run: python src/scripts/migrate_db.py to populate Firestore with recipes.")
 
 if __name__ == "__main__":
     test_recipe_tool()

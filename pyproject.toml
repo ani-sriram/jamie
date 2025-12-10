@@ -15,6 +15,7 @@ dependencies = [
   "pydantic",
   "google-generativeai",
   "google-cloud-storage",
+  "google-cloud-firestore",
   "google-cloud-run",
   "google-cloud-secret-manager",
   "google-cloud-iam",

@@ -61,7 +61,7 @@ More details can be found in `/deployment/README.md`.
 - **Backend**: Python with FastAPI, LangGraph, and Google Cloud services
 - **Frontend**: React with nginx on Cloud Run
 - **Deployment**: Docker containers on Google Cloud Run
-- **Storage**: Cloud Storage for user session data
+- **Storage**: Cloud Storage for user session data, Firestore for database (used in db search tools)
 
 ## AI usage in development
 

@@ -73,6 +73,20 @@ The script will:
 
 Upon successful deployment, you will receive URLs for both the orchestrator and frontend services. The frontend is automatically configured to connect to the orchestrator.
 
+#### Database initialization
+
+If deploying for the first time, you will need to create a database on Firestore and populate it with recipes for the recipes tool:
+
+```bash
+# Set MIGRATE_RECIPES=true to automatically migrate during deployment
+export MIGRATE_RECIPES=true
+
+# Or manually run the migration script
+python src/scripts/migrate_db.py
+```
+
+This will read recipes from `src/data/recipes.json` and populate Firestore. Currently, `src/data/recipes.json` contains sample AI-generated recipes following a schema we designed ourselves. You may need to update `src/data/recipes.json`, `src/agent/tools/recipes.py`, and `src/agent/schemas.py` if you wish to include more recipes or follow a different schema.
+
 
 ## Service Configuration
 
