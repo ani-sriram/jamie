@@ -20,9 +20,9 @@ The application is split into three components:
 - Proxies all chat requests to user-specific agent services
 
 ### Agent Service (`src/agent_service/`)
-- Simplified FastAPI app without authentication
-- **(WIP)**Accepts requests only from orchestrator via service-to-service auth
+- Simplified FastAPI app only accessible through orchestrator
 - Hosts agent using Gemini API with defined set of tools
+- Connected to Firebase for session management and user profiles
 
 ### Frontend (`frontend/`)
 - Static React application
